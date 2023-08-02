@@ -1,0 +1,15 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="50" fill="#FFC9C9"/>
+<mask id="mask0_31_23" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="50" width="100" height="100">
+<path d="M100 100C100 127.614 77.6142 150 50 150C22.3858 150 0 127.614 0 100C0 72.3858 22.3858 50 50 50C77.6142 50 100 72.3858 100 100Z" fill="#630D0D"/>
+</mask>
+<g mask="url(#mask0_31_23)">
+<path d="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z" fill="#FF8484"/>
+</g>
+<ellipse cx="38" cy="69.5" rx="2" ry="3.5" fill="#493232"/>
+<ellipse cx="62" cy="69.5" rx="2" ry="3.5" fill="#493232"/>
+<path d="M26.7143 75.9016C26.4386 76.8392 25.8015 77.8997 25.1341 78.6106C24.8995 78.8605 24.6186 78.8741 24.4795 79.1524" stroke="#FF5050" stroke-width="3" stroke-linecap="round"/>
+<path d="M30.9809 76.1048C30.5232 76.994 30.1303 77.923 29.3555 78.5429" stroke="#FF5050" stroke-width="3" stroke-linecap="round"/>
+<path d="M72.4275 75.4953C71.7769 76.462 71.1234 77.4302 70.3958 78.3397" stroke="#FF5050" stroke-width="3" stroke-linecap="round"/>
+<path d="M76.2878 75.2921C75.1918 75.9315 75.0615 77.736 74.0529 78.5429" stroke="#FF5050" stroke-width="3" stroke-linecap="round"/>
+</svg>
