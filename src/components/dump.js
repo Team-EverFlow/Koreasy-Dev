@@ -19,10 +19,8 @@ function ProfileEdit() {
                     ))}
                 </div>
                 <div className="check-cancel">
-                    <div className="cancel cell">
-                        가나다라마바사아자차카타파하
-                    </div>
-                    <div className="check cell">abcdefghijk</div>
+                    <div className="cancel cell">취소</div>
+                    <div className="check cell">확인</div>
                 </div>
             </div>
         </div>
