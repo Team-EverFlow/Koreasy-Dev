@@ -1,0 +1,107 @@
+.wordbook-container {
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 1);
+  width: 390px;
+  height: 844px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  width: 358px;
+  height: 38px;
+  position: absolute;
+  left: 16px;
+  top: 66px;
+
+  .icon-back {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 8px;
+  }
+
+  .title {
+    color: rgba(0, 0, 0, 1);
+    width: 156px;
+    height: 38px;
+    position: absolute;
+    left: 95.5px;
+    top: 0;
+    font-family: Pretendard;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 0;
+  }
+
+  .icon-search {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    top: 8px;
+  }
+}
+
+.date-section {
+  width: 349px;
+  height: 102px;
+  position: absolute;
+  left: 20px;
+  top: 128px;
+}
+
+.date-item {
+  width: 309px;
+  height: 94px;
+  position: absolute;
+  left: 18px;
+  top: 8px;
+  border-radius: 12px;
+
+  .date-text {
+    color: rgba(0, 0, 0, 1);
+    width: 150px;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: Pretendard;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 0;
+  }
+
+  .separator {
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    left: 0;
+    top: -10px; 
+    background-color: rgba(174, 174, 178, 1);
+  }
+
+  .date-range {
+    color: rgba(83, 83, 86, 1);
+    width: 150px;
+    height: 22px;
+    position: absolute;
+    left: 0;
+    top: 44px; 
+    font-family: Pretendard;
+    text-align: center;
+    font-size: 17px;
+    letter-spacing: 0;
+  }
+
+  .icon-front {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0; 
+    top: 24px; 
+  }
+}

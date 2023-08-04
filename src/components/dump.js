@@ -5,17 +5,17 @@ import './ProfileEdit.css';
 import Profile_red from '../assets/Profile_Red.svg';
 
 function ProfileEdit() {
-    var colorList = ['red', 'yellow', 'green', 'blue', 'purple'];
+    let colorList = ['red', 'yellow', 'green', 'blue', 'purple'];
 
     return (
         <div className="ProfileEdit-style">
             <div className="Profile-img">
-                <img src={Profile_red} width={269}></img>
+                <img src={Profile_red} width={269} />
             </div>
             <div className="ProfileEdit-color">
                 <div className="color-info">
                     {colorList.map(v => (
-                        <div className={v}></div>
+                        <div className={v} />
                     ))}
                 </div>
                 <div className="check-cancel">
