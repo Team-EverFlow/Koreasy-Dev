@@ -1,0 +1,126 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+// text style base
+@mixin text-style-base {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-style: normal;
+}
+
+// title
+// title 01
+@mixin title01 {
+    @include text-style-base;
+    font-size: 26px;
+    line-height: 38px;
+}
+
+@mixin title01-heavy {
+    @include title01;
+    font-weight: 800;
+}
+
+// title 02
+@mixin title02 {
+    @include text-style-base;
+    font-size: 22px;
+    line-height: 32px;
+}
+
+@mixin title02-bold {
+    @include title02;
+    font-weight: 700;
+}
+
+@mixin title02-medium {
+    @include title02;
+    font-weight: 500;
+}
+
+// subtitle
+@mixin subtitle {
+    @include text-style-base;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@mixin subtitle-bold {
+    @include subtitle;
+    font-weight: 700;
+}
+
+@mixin subtitle-medium {
+    @include subtitle;
+    font-weight: 500;
+}
+
+// body
+// body 01
+@mixin body01 {
+    @include text-style-base;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+@mixin body01-bold {
+    @include body01;
+    font-weight: 700;
+}
+
+@mixin body01-medium {
+    @include body01;
+    font-weight: 500;
+}
+
+@mixin body01-regular {
+    @include body01;
+    font-weight: 400;
+}
+
+// body 02
+@mixin body02 {
+    @include text-style-base;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+@mixin body02-heavy {
+    @include body02;
+    font-weight: 800;
+}
+
+@mixin body02-bold {
+    @include body02;
+    font-weight: 700;
+}
+
+@mixin body02-medium {
+    @include body02;
+    font-weight: 500;
+}
+
+@mixin body02-regular {
+    @include body02;
+    font-weight: 400;
+}
+
+// subtext
+@mixin subtext {
+    @include text-style-base;
+    font-size: 13px;
+    line-height: 10px;
+}
+
+@mixin subtext-bold {
+    @include subtext;
+    font-weight: 600;
+}
+
+@mixin subtext-medium {
+    @include subtext;
+    font-weight: 500;
+}
+
+@mixin subtext-regular {
+    @include subtext;
+    font-weight: 400;
+}
