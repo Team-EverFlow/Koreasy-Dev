@@ -1,1 +1,18 @@
 // scss내 반복적으로 사용하는 변수 정리
+@mixin font-face($name, $file, $weight: noraml, $style: normal) {
+    @font-face {
+        font-family: '#{$name}';
+
+        src:
+            url('폰트 경로/#{$file}.woff') format('woff'),
+            url('폰트 경로/#{$file}.ttf') format('truetype');
+
+        font-weight: $weight;
+
+        font-style: $style;
+    }
+
+    @include font-face('설정할 폰트 이름', '폰트 파일 이름');
+
+    @include font-face('설정할 폰트 이름', '폰트 파일 이름', bold);
+}

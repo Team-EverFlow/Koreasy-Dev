@@ -2,16 +2,21 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './components/dump';
+import DumpView from './components/dump';
+import TodayWordView from './pages/todayWordView/todayWordView';
 
 const Router = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<DumpView />} />
+                <Route path="/Main" element={<TodayWordView />} />
+                <Route path="/TodayWord" element={<DumpView />} />
+                <Route path="/Profile" element={<DumpView />} />
+                <Route path="/WordTest" element={<DumpView />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default Router;

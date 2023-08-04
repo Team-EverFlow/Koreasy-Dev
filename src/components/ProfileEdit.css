@@ -20,6 +20,8 @@ white_back : FFFFFF, 0.5
     flex-direction: column;
     background-color: #333333;
     color: white;
+
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .ProfileEdit-color {
@@ -35,11 +37,10 @@ white_back : FFFFFF, 0.5
     height: 52px;
     background-color: #464646;
     border-radius: 20px;
-    
 }
 
 .red {
-    background-color: #FF8484;
+    background-color: #ff8484;
     border-radius: 50px;
     width: 30px;
     height: 30px;
@@ -47,7 +48,7 @@ white_back : FFFFFF, 0.5
 }
 
 .yellow {
-    background-color: #FFC656;
+    background-color: #ffc656;
     border-radius: 50px;
     width: 30px;
     height: 30px;
@@ -55,7 +56,7 @@ white_back : FFFFFF, 0.5
 }
 
 .green {
-    background-color: #65AE4B;
+    background-color: #65ae4b;
     border-radius: 50px;
     width: 30px;
     height: 30px;
@@ -63,7 +64,7 @@ white_back : FFFFFF, 0.5
 }
 
 .blue {
-    background-color: #5FA7FC;
+    background-color: #5fa7fc;
     border-radius: 50px;
     width: 30px;
     height: 30px;
@@ -71,7 +72,7 @@ white_back : FFFFFF, 0.5
 }
 
 .purple {
-    background-color: #D884FF;
+    background-color: #d884ff;
     border-radius: 50px;
     width: 30px;
     height: 30px;
@@ -84,7 +85,7 @@ white_back : FFFFFF, 0.5
 }
 
 .check {
-    color: #FFC656;
+    color: #ffc656;
     font-weight: 600;
 }
 
