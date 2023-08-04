@@ -17,24 +17,22 @@ $default-color-system-gray-05: rgb(229, 229, 234);
 $default-color-system-gray-06: rgb(242, 242, 247);
 
 // Default Colors (Dark)
-.theme-dark {
-    $default-color-system-red: rgb(255, 69, 58);
-    $default-color-system-orange: rgb(255, 159, 10);
-    $default-color-system-yellow: rgb(255, 214, 10);
-    $default-color-system-green: rgb(48, 209, 88);
-    $default-color-system-teal: rgb(100, 210, 255);
-    $default-color-system-blue: rgb(10, 132, 255);
-    $default-color-system-indigo: rgb(94, 92, 230);
-    $default-color-system-purple: rgb(191, 90, 242);
-    $default-color-system-pink: rgb(255, 45, 85);
+$default-color-system-red-dark: rgb(255, 69, 58);
+$default-color-system-orange-dark: rgb(255, 159, 10);
+$default-color-system-yellow-dark: rgb(255, 214, 10);
+$default-color-system-green-dark: rgb(48, 209, 88);
+$default-color-system-teal-dark: rgb(100, 210, 255);
+$default-color-system-blue-dark: rgb(10, 132, 255);
+$default-color-system-indigo-dark: rgb(94, 92, 230);
+$default-color-system-purple-dark: rgb(191, 90, 242);
+$default-color-system-pink-dark: rgb(255, 45, 85);
 
-    $default-color-system-gray-01: rgb(142, 142, 147);
-    $default-color-system-gray-02: rgb(99, 99, 102);
-    $default-color-system-gray-03: rgb(72, 72, 74);
-    $default-color-system-gray-04: rgb(58, 58, 60);
-    $default-color-system-gray-05: rgb(44, 44, 46);
-    $default-color-system-gray-06: rgb(28, 28, 30);
-}
+$default-color-system-gray-01-dark: rgb(142, 142, 147);
+$default-color-system-gray-02-dark: rgb(99, 99, 102);
+$default-color-system-gray-03-dark: rgb(72, 72, 74);
+$default-color-system-gray-04-dark: rgb(58, 58, 60);
+$default-color-system-gray-05-dark: rgb(44, 44, 46);
+$default-color-system-gray-06-dark: rgb(28, 28, 30);
 
 // Accessible Colors (Light, Default)
 $accessible-color-system-red: rgb(215, 0, 21);
@@ -55,21 +53,19 @@ $accessible-color-system-gray-05: rgb(216, 216, 220);
 $accessible-color-system-gray-06: rgb(235, 235, 240);
 
 // Accessible Colors (Dark)
-.theme-dark {
-    $accessible-color-system-red: rgb(255, 105, 97);
-    $accessible-color-system-orange: rgb(255, 179, 64);
-    $accessible-color-system-yellow: rgb(255, 212, 38);
-    $accessible-color-system-green: rgb(48, 219, 91);
-    $accessible-color-system-teal: rgb(112, 215, 255);
-    $accessible-color-system-blue: rgb(64, 156, 255);
-    $accessible-color-system-indigo: rgb(125, 122, 255);
-    $accessible-color-system-purple: rgb(218, 143, 255);
-    $accessible-color-system-pink: rgb(255, 100, 130);
+$accessible-color-system-red-dark: rgb(255, 105, 97);
+$accessible-color-system-orange-dark: rgb(255, 179, 64);
+$accessible-color-system-yellow-dark: rgb(255, 212, 38);
+$accessible-color-system-green-dark: rgb(48, 219, 91);
+$accessible-color-system-teal-dark: rgb(112, 215, 255);
+$accessible-color-system-blue-dark: rgb(64, 156, 255);
+$accessible-color-system-indigo-dark: rgb(125, 122, 255);
+$accessible-color-system-purple-dark: rgb(218, 143, 255);
+$accessible-color-system-pink-dark: rgb(255, 100, 130);
 
-    $accessible-color-system-gray-01: rgb(174, 174, 178);
-    $accessible-color-system-gray-02: rgb(124, 124, 128);
-    $accessible-color-system-gray-03: rgb(84, 84, 86);
-    $accessible-color-system-gray-04: rgb(68, 68, 70);
-    $accessible-color-system-gray-05: rgb(54, 54, 56);
-    $accessible-color-system-gray-06: rgb(36, 36, 38);
-}
+$accessible-color-system-gray-01-dark: rgb(174, 174, 178);
+$accessible-color-system-gray-02-dark: rgb(124, 124, 128);
+$accessible-color-system-gray-03-dark: rgb(84, 84, 86);
+$accessible-color-system-gray-04-dark: rgb(68, 68, 70);
+$accessible-color-system-gray-05-dark: rgb(54, 54, 56);
+$accessible-color-system-gray-06-dark: rgb(36, 36, 38);
