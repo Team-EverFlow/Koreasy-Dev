@@ -1,107 +1,122 @@
-.wordbook-container {
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 1);
-  width: 390px;
-  height: 844px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.header {
-  width: 358px;
-  height: 38px;
-  position: absolute;
-  left: 16px;
-  top: 66px;
-
-  .icon-back {
-    width: 20px;
-    height: 20px;
+.WordbookContainer {
+    overflow: hidden;
+    background-color: #fff;
+    width: 393px;
+    height: 844px;
     position: absolute;
-    left: 0;
-    top: 8px;
-  }
+    left: 0%;
+    top: 0%;
 
-  .title {
-    color: rgba(0, 0, 0, 1);
-    width: 156px;
-    height: 38px;
-    position: absolute;
-    left: 95.5px;
-    top: 0;
-    font-family: Pretendard;
-    text-align: center;
-    font-size: 32px;
-    letter-spacing: 0;
-  }
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
 
-  .icon-search {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 0;
-    top: 8px;
-  }
-}
+    .WordbookHeader {
+        display: flex;
+        width: 393px;
+        height: 66px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f2f2f7;
 
-.date-section {
-  width: 349px;
-  height: 102px;
-  position: absolute;
-  left: 20px;
-  top: 128px;
-}
+        .ServiceName {
+            font-family: Pretendard;
+            font-size: 26px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 38px;
+            position: absolute;
+            padding: 12px 20px 16px 20px;
+            left: 0px;
+            right: 0px;
+            justify-content: space-between;
+            align-items: center;
+            float: left;
 
-.date-item {
-  width: 309px;
-  height: 94px;
-  position: absolute;
-  left: 18px;
-  top: 8px;
-  border-radius: 12px;
+            .ProfileIcon {
+                width: 36px;
+                height: 36px;
+                flex-shrink: 0;
+                float: right;
+            }
+        }
+    }
 
-  .date-text {
-    color: rgba(0, 0, 0, 1);
-    width: 150px;
-    height: 32px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-family: Pretendard;
-    text-align: center;
-    font-size: 22px;
-    letter-spacing: 0;
-  }
+    .Space {
+        width: 393px;
+        height: 32px;
+    }
 
-  .separator {
-    width: 100%;
-    height: 3px;
-    position: absolute;
-    left: 0;
-    top: -10px; 
-    background-color: rgba(174, 174, 178, 1);
-  }
+    .PageTitle {
+        color: #44da92;
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 38px;
+        display: flex;
+        padding: 0px 20px;
+        height: 44px;
+        flex: 1 0 0;
+    }
 
-  .date-range {
-    color: rgba(83, 83, 86, 1);
-    width: 150px;
-    height: 22px;
-    position: absolute;
-    left: 0;
-    top: 44px; 
-    font-family: Pretendard;
-    text-align: center;
-    font-size: 17px;
-    letter-spacing: 0;
-  }
+    .DateSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
 
-  .icon-front {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 0; 
-    top: 24px; 
-  }
+        .DateItemContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+
+            .DateItem {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 353px;
+                padding: 12px 20px;
+
+                .DateInfo {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 4px;
+                    flex: 1;
+
+                    .DateText {
+                        color: #1c1c1e;
+                        font-family: Pretendard;
+                        font-size: 22px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 32px;
+                    }
+
+                    .DateRange {
+                        color: #aeaeb2;
+                        font-family: Pretendard;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px;
+                    }
+                }
+
+                .TabBarItem {
+                    width: 24px;
+                    height: 32px;
+                    flex-shrink: 0;
+                }
+                .Line {
+                    width: 1px;
+                    height: 100%;
+                }
+            }
+        }
+    }
 }
