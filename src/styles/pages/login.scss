@@ -32,8 +32,8 @@ div.login_button_group {
     flex-direction: column;
     gap: 32px;
     margin: 0 0 52px 0;
-    position: absolute;
-    width: 100vw;
+    position: fixed;
+    width: 100%;
 
     button.login_button {
         align-items: center;
