@@ -6,20 +6,20 @@ import googleLogo from '../assets/google.png';
 function LoginPage() {
     return (
         <div>
-            <div className={'login_service_group'}>
-                <h1 className={'login_service_name'}>Koreasy</h1>
-                <span className={'login_service_description'}>
+            <div className={'login-service-group'}>
+                <h1 className={'login-service-name'}>Koreasy</h1>
+                <span className={'login-service-description'}>
                     Easy way to learn Korean
                 </span>
             </div>
-            <div className={'login_button_group'}>
-                <Button className={'login_button'}>
+            <div className={'login-button-group'}>
+                <Button className={'login-button'}>
                     <img src={googleLogo} />
-                    <span className={'login_button_title'}>
+                    <span className={'login-button-title'}>
                         Sign in with Google
                     </span>
                 </Button>
-                <span className={'login_button_description'}>
+                <span className={'login-button-description'}>
                     Sign up with Google
                 </span>
             </div>

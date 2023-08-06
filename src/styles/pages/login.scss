@@ -1,13 +1,13 @@
 @import "../textStyles";
 @import "../colors";
 
-div.login_service_group {
+div.login-service-group {
     display: flex;
     flex-direction: column;
     gap: 24px;
     margin: 200px 0 0 0;
 
-    h1.login_service_name {
+    h1.login-service-name {
         @include title01;
 
         color: $default-color-system-blue;
@@ -16,7 +16,7 @@ div.login_service_group {
         margin: 0;
     }
 
-    span.login_service_description {
+    span.login-service-description {
         @include body01-regular;
 
         color: $default-color-system-gray-02;
@@ -25,7 +25,7 @@ div.login_service_group {
     }
 }
 
-div.login_button_group {
+div.login-button-group {
     align-items: center;
     bottom: 0;
     display: flex;
@@ -35,7 +35,7 @@ div.login_button_group {
     position: fixed;
     width: 100%;
 
-    button.login_button {
+    button.login-button {
         align-items: center;
         background: rgba(0, 0, 0, 0);
         border-radius: 12px;
@@ -50,14 +50,14 @@ div.login_button_group {
             flex-shrink: 0;
         }
 
-        span.login_button_title {
+        span.login-button-title {
             @include body01-bold;
 
             color: #1C1C1E;
         }
     }
 
-    span.login_button_description {
+    span.login-button-description {
         @include body01-medium;
         color: $default-color-system-gray-01;
     }
