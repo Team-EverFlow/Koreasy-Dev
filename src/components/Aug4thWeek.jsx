@@ -1,7 +1,9 @@
 import React from 'react';
 import './Aug4thWeek.scss';
+import NavigationBar from '../assets/NavigationBar.svg';
 import ProfileIcon from '../assets/Profile.svg';
 import BookmarkIcon from './BookmarkIcon';
+import Line from '../assets/Line.svg';
 
 const contentData = [
     {
@@ -23,34 +25,59 @@ const contentData = [
 
 const Aug4thWeek = () => {
     return (
-        <div className="container">
-            <div className="header">
-                <div className="company-name">
+        <div className="Container">
+            <div className="Header">
+                <div className="ServiceName">
                     Koreasy
                     <img
                         src={ProfileIcon}
                         alt="Profile"
-                        className="profile-icon"
+                        className="ProfileIcon"
                     />
                 </div>
-                <div className="separator" />
             </div>
-            <div className="content">
+            <div className="Previous">
+                <div className="NavigationBarItem">
+                    <img
+                        src={NavigationBar}
+                        alt="Navigation"
+                        className="NavigationBar"
+                    />
+                    <div className="NavigationText">WordBook</div>
+                </div>
+                <div className="Frame" />
+            </div>
+            <div className="Space" />
+            <div className="PageTitle">ViewName</div>
+            <div className="Content">
                 {contentData.map((content, index) => (
-                    <div
-                        key={index}
-                        className="item"
-                        style={{ top: `${index * 135}px` }}
-                    >
-                        <div className="item-info">
-                            <div className="item-name">
-                                {content.name}
-                                <span className="pronunciation">
-                                    {content.pronunciation}
-                                </span>
+                    <React.Fragment key={index}>
+                        <div
+                            key={index}
+                            className="Item"
+                            style={{ top: `${index * 135}px` }}
+                        >
+                            <div className="ItemState">
+                                <div className="ItemInfo">
+                                    <div className="ItemStandard">
+                                        <div className="ItemName">
+                                            {content.name}
+                                        </div>
+                                        <div className="Pronunciation">
+                                            {content.pronunciation}
+                                        </div>
+                                    </div>
+                                    <div className="ItemType">
+                                        {content.type}
+                                    </div>
+                                </div>
+                                <div className="Example">
+                                    <div className="ItemExample">
+                                        About Word
+                                    </div>
+                                </div>
                             </div>
-                            <div className="item-type">
-                                {content.type}
+                            <div className="BookmarkIcon">
                                 <BookmarkIcon
                                     onClick={isClicked => {
                                         console.log(
@@ -60,12 +87,9 @@ const Aug4thWeek = () => {
                                     }}
                                 />
                             </div>
-                            <div className="item-example">
-                                Example sentences
-                            </div>
                         </div>
-                        <div className="separator" />
-                    </div>
+                        <img className="LineWeek" src={Line} alt="Line" />
+                    </React.Fragment>
                 ))}
             </div>
         </div>

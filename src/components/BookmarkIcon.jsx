@@ -12,10 +12,11 @@ const BookmarkIcon = ({ onClick }) => {
 
     return (
         <svg
-            width="21"
-            height="30"
+            width="18"
+            height="24"
+            style={{ width: '100%', height: '100%' }}
             viewBox="0 0 21 30"
-            fill={isClicked ? '#007AFF' : 'none'}
+            fill={isClicked ? '#44DA92' : 'none'}
             xmlns="http://www.w3.org/2000/svg"
             onClick={handleClick}
         >
