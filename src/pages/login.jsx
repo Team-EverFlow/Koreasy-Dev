@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/login.scss';
 import { Button } from 'react-bootstrap';
-import googleLogo from '../assets/google.png';
+import googleLogo from '../assets/images/google.png';
 
 function LoginPage() {
     return (
