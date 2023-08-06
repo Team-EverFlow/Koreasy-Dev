@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './ProfileEdit.css';
-import Profile_red from '../assets/Profile_Red.svg';
+import Profile_red from '../assets/images/Profile_Red.svg';
 
 function ProfileEdit() {
     var colorList = ['red', 'yellow', 'green', 'blue', 'purple'];
