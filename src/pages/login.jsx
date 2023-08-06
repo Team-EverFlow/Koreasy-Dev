@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/pages/login.scss';
+import '../styles/login.scss';
 import { Button } from 'react-bootstrap';
 import googleLogo from '../assets/google.png';
 
