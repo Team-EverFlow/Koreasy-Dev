@@ -240,3 +240,4 @@ $RECYCLE.BIN/
 
 ###eslint###
 .eslintcache
+src/firebase/token.js
