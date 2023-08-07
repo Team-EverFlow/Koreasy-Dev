@@ -1,0 +1,12 @@
+@import '../styles/variables/colors.scss';
+
+.line {
+    display: flex;
+    width: 100vw;
+    height: 0.5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    background-color: $koreasy-color-gray-03;
+}

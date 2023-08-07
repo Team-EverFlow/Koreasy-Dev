@@ -6,7 +6,7 @@ import { GetDocFromCollection } from '../functions/util';
 
 /**
  * Google로그인을 Popup으로 열어 로그인 시도
- * @returns {Promise<{state: ("signIn" | "register" | "error"), data: import("firebase/auth").User | undefined, error: any }>}
+ * @returns {Promise<{state: ("signIn" | "register" | "error"), user: import("firebase/auth").User | undefined, error: any }>}
  */
 export async function GoogleAuth() {
     const googleProvider = new GoogleAuthProvider();
