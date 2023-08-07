@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
-import PreviousView from './NavigationBar';
+import NavigationBar from './NavigationBar';
 import Divider from './Divider';
 
 const Header = () => {
@@ -18,7 +18,7 @@ const Header = () => {
                     />
                 </div>
             </div>
-            <PreviousView />
+            <NavigationBar />
             <Divider />
         </div>
     );
