@@ -1,5 +1,5 @@
 import React from 'react';
-import chevron from '../assets/images/chevron.left.svg';
+import Chevron from './Chevrion';
 import './NavigationBar.scss';
 
 const PageTitle = ({ value }) => {
@@ -14,7 +14,7 @@ const PageTitle = ({ value }) => {
     return (
         <div className="previous-view">
             <div className="text">
-                <img src={chevron} alt="chevron-left" className="chevron" />
+                <Chevron direction="Left" color="MainColor" />
                 {View}
             </div>
             <div className="dump-box" />

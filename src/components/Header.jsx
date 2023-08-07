@@ -3,6 +3,8 @@ import './Header.scss';
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import NavigationBar from './NavigationBar';
 import Divider from './Divider';
+import PageTitle from './PageTitle';
+import Footer from './Footer';
 
 const Header = () => {
     const ProfileIcon = ProfileIconDump;
@@ -20,6 +22,8 @@ const Header = () => {
             </div>
             <NavigationBar />
             <Divider />
+            <PageTitle />
+            <Footer />
         </div>
     );
 };
