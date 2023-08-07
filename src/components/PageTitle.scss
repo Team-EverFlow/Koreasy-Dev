@@ -1,0 +1,22 @@
+@import '../styles/colors.scss';
+@import '../styles/textStyles.scss';
+
+.page-title {
+    @include title01-heavy;
+    color: $default-color-system-blue;
+    display: flex;
+    width: calc(100vw - 40px);
+    padding: 0px 20px 0px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .text {
+        display: flex;
+        height: 44px;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+        border-radius: 12px;
+    }
+}
