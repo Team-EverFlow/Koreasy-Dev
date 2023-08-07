@@ -2,24 +2,20 @@ import React from 'react';
 import Chevron from './Chevrion';
 import './NavigationBar.scss';
 
-const PageTitle = ({ value }) => {
-    // 컴포넌트에서 인자 전달시 사용
-    /**
-     * @View {string || undefined}
-     */
-    let View = value;
-    if (View === undefined) {
-        View = 'PreviousView';
-    }
+// Navigation Bar
+/**
+ * @param {string | undefined} [viewName=PreviousView] viewName Navigation Bar에 들어갈 Page View Name
+ */
+const NavigationBar = ({ viewName  = 'PreviousView'}) => {
     return (
         <div className="previous-view">
             <div className="text">
                 <Chevron direction="Left" color="MainColor" />
-                {View}
+                {viewName}
             </div>
             <div className="dump-box" />
         </div>
     );
 };
 
-export default PageTitle;
+export default NavigationBar;
