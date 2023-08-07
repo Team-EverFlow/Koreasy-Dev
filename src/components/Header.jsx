@@ -4,9 +4,13 @@ import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import NavigationBar from './NavigationBar';
 import Divider from './Divider';
 import PageTitle from './PageTitle';
-import Footer from './Footer';
 
-const Header = () => {
+const Header = ({
+    isNavigationBar,
+    isPageTitle,
+    viewName,
+    navigationViewName,
+}) => {
     const ProfileIcon = ProfileIconDump;
     return (
         <div>
@@ -20,9 +24,10 @@ const Header = () => {
                     />
                 </div>
             </div>
-            <NavigationBar />
+
+            {isNavigationBar && <NavigationBar viewName={navigationViewName} />}
             <Divider />
-            <PageTitle />
+            {isPageTitle && <PageTitle viewName={viewName} />}
         </div>
     );
 };
