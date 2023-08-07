@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './components/dump';
+import Header from './components/Header';
 
 const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Header />} />
             </Routes>
         </BrowserRouter>
     );
