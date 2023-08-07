@@ -14,7 +14,7 @@ function LoginPage() {
             </div>
             <div className={'login-button-group'}>
                 <Button className={'login-button'}>
-                    <img src={googleLogo} alt={'google logo'}/>
+                    <img src={googleLogo} alt={'google logo'} />
                     <span className={'login-button-title'}>
                         Sign in with Google
                     </span>
