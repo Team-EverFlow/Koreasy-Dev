@@ -3,8 +3,8 @@ import '../styles/variables/colors.scss';
 
 /**
  *
- * @param {*} direction 방향 설정: Left, Right
- * @param {*} color 색상 설정: MainColor, Gray
+ * @param {string} direction 방향 설정: Left, Right
+ * @param {string} color 색상 설정: MainColor, Gray
  * @returns
  */
 const Chevrion = ({ direction, color }) => {
