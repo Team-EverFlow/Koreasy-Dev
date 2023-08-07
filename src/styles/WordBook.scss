@@ -1,17 +1,20 @@
-.WordbookContainer {
+@import './variables/colors.scss';
+@import './variables/textStyles.scss';
+
+.wordbook-container {
     overflow: hidden;
     background-color: #fff;
     width: 393px;
     height: 844px;
     position: absolute;
-    left: 0%;
-    top: 0%;
+    left: 0;
+    top: 0;
 
     @media screen and (max-width: 768px) {
         width: 100%;
     }
 
-    .WordbookHeader {
+    .wordbook-header {
         display: flex;
         width: 393px;
         height: 66px;
@@ -19,21 +22,17 @@
         align-items: center;
         background-color: #f2f2f7;
 
-        .ServiceName {
-            font-family: Pretendard;
-            font-size: 26px;
-            font-style: normal;
-            font-weight: 800;
-            line-height: 38px;
+        .service-name {
+            @include title01-heavy;
             position: absolute;
             padding: 12px 20px 16px 20px;
-            left: 0px;
-            right: 0px;
+            left: 0;
+            right: 0;
             justify-content: space-between;
             align-items: center;
             float: left;
 
-            .ProfileIcon {
+            .profile-icon {
                 width: 36px;
                 height: 36px;
                 flex-shrink: 0;
@@ -42,45 +41,41 @@
         }
     }
 
-    .Space {
+    .space {
         width: 393px;
         height: 32px;
     }
 
-    .PageTitle {
+    .page-title {
         color: #44da92;
         text-align: center;
-        font-family: Pretendard;
-        font-size: 26px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: 38px;
+        @include title01-heavy;
         display: flex;
         padding: 0px 20px;
         height: 44px;
         flex: 1 0 0;
     }
 
-    .DateSection {
+    .date-section {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 4px;
 
-        .DateItemContainer {
+        .dateitem-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 4px;
 
-            .DateItem {
+            .date-item {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 width: 353px;
                 padding: 12px 20px;
 
-                .DateInfo {
+                .date-info {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -88,32 +83,24 @@
                     gap: 4px;
                     flex: 1;
 
-                    .DateText {
+                    .date-text {
                         color: #1c1c1e;
-                        font-family: Pretendard;
-                        font-size: 22px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: 32px;
+                        @include title02-bold;
                     }
 
-                    .DateRange {
+                    .date-range {
                         color: #aeaeb2;
-                        font-family: Pretendard;
-                        font-size: 17px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 22px;
+                        @include body01-regular;
                     }
                 }
 
-                .TabBarItem {
+                .tabbar-item {
                     width: 24px;
                     height: 32px;
                     flex-shrink: 0;
                 }
 
-                .Line {
+                .line {
                     width: 1px;
                     height: 100%;
                 }

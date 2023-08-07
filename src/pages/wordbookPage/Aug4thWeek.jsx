@@ -1,9 +1,9 @@
 import React from 'react';
-import './Aug4thWeek.scss';
-import NavigationBar from '../assets/NavigationBar.svg';
-import ProfileIcon from '../assets/Profile.svg';
+import '../../styles/Aug4thWeek.scss';
+import NavigationBar from '../../assets/NavigationBar.svg';
+import ProfileIcon from '../../assets/Profile.svg';
 import BookmarkIcon from './BookmarkIcon';
-import Line from '../assets/Line.svg';
+import Line from '../../assets/Line.svg';
 
 const contentData = [
     {
@@ -25,59 +25,59 @@ const contentData = [
 
 const Aug4thWeek = () => {
     return (
-        <div className="Container">
-            <div className="Header">
-                <div className="ServiceName">
+        <div className="container">
+            <div className="header">
+                <div className="service-name">
                     Koreasy
                     <img
                         src={ProfileIcon}
                         alt="Profile"
-                        className="ProfileIcon"
+                        className="profile-icon"
                     />
                 </div>
             </div>
-            <div className="Previous">
-                <div className="NavigationBarItem">
+            <div className="previous">
+                <div className="navigationbar-item">
                     <img
                         src={NavigationBar}
                         alt="Navigation"
-                        className="NavigationBar"
+                        className="navigation-bar"
                     />
-                    <div className="NavigationText">WordBook</div>
+                    <div className="navigation-text">WordBook</div>
                 </div>
-                <div className="Frame" />
+                <div className="frame" />
             </div>
-            <div className="Space" />
-            <div className="PageTitle">ViewName</div>
-            <div className="Content">
+            <div className="space" />
+            <div className="page-title">ViewName</div>
+            <div className="content">
                 {contentData.map((content, index) => (
                     <React.Fragment key={index}>
                         <div
                             key={index}
-                            className="Item"
+                            className="item"
                             style={{ top: `${index * 135}px` }}
                         >
-                            <div className="ItemState">
-                                <div className="ItemInfo">
-                                    <div className="ItemStandard">
-                                        <div className="ItemName">
+                            <div className="item-state">
+                                <div className="item-info">
+                                    <div className="item-standard">
+                                        <div className="item-name">
                                             {content.name}
                                         </div>
-                                        <div className="Pronunciation">
+                                        <div className="pronunciation">
                                             {content.pronunciation}
                                         </div>
                                     </div>
-                                    <div className="ItemType">
+                                    <div className="item-type">
                                         {content.type}
                                     </div>
                                 </div>
-                                <div className="Example">
-                                    <div className="ItemExample">
+                                <div className="example">
+                                    <div className="item-example">
                                         About Word
                                     </div>
                                 </div>
                             </div>
-                            <div className="BookmarkIcon">
+                            <div className="bookmark-icon">
                                 <BookmarkIcon
                                     onClick={isClicked => {
                                         console.log(
@@ -88,7 +88,7 @@ const Aug4thWeek = () => {
                                 />
                             </div>
                         </div>
-                        <img className="LineWeek" src={Line} alt="Line" />
+                        <img className="line-week" src={Line} alt="Line" />
                     </React.Fragment>
                 ))}
             </div>

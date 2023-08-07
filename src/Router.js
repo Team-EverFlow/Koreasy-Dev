@@ -3,8 +3,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/dump';
-import Wordbook from './components/Wordbook';
-import Aug4thWeek from './components/Aug4thWeek';
+import Wordbook from './pages/wordbookPage/WordBook';
+import Aug4thWeek from './pages/wordbookPage/Aug4thWeek';
 
 const Router = () => {
     return (

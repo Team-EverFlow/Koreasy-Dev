@@ -1,17 +1,20 @@
-.Container {
+@import './variables/colors.scss';
+@import './variables/textStyles.scss';
+
+.container {
     overflow: hidden;
     background-color: #fff;
     width: 393px;
     height: 844px;
     position: absolute;
-    left: 0%;
-    top: 0%;
+    left: 0;
+    top: 0;
 
     @media screen and (max-width: 768px) {
         width: 100%;
     }
 
-    .Header {
+    .header {
         display: flex;
         width: 393px;
         height: 66px;
@@ -19,21 +22,17 @@
         align-items: center;
         background-color: #f2f2f7;
 
-        .ServiceName {
-            font-family: Pretendard;
-            font-size: 26px;
-            font-style: normal;
-            font-weight: 800;
-            line-height: 38px;
+        .service-name {
+            @include title01-heavy;
             position: absolute;
             padding: 12px 20px 16px 20px;
-            left: 0px;
-            right: 0px;
+            left: 0;
+            right: 0;
             justify-content: space-between;
             align-items: center;
             float: left;
 
-            .ProfileIcon {
+            .profile-icon {
                 width: 36px;
                 height: 36px;
                 flex-shrink: 0;
@@ -42,7 +41,7 @@
         }
     }
 
-    .Previous {
+    .previous {
         display: flex;
         padding: 8px 20px;
         justify-content: space-between;
@@ -50,113 +49,93 @@
         align-self: stretch;
         background-color: #f2f2f7;
 
-        .NavigationBarItem {
+        .navigationbar-item {
             display: flex;
             height: 22px;
             align-items: center;
             gap: 12px;
 
-            .NavigationBar {
+            .navigation-bar {
                 width: 10.506px;
                 height: 18.648px;
             }
 
-            .NavigationText {
+            .navigation-text {
                 color: #1c1c1e;
-                font-family: Pretendard;
-                font-size: 17px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 22px;
+                @include body01-medium;
             }
         }
 
-        .Frame {
+        .frame {
             width: 32px;
             height: 32px;
         }
     }
 
-    .Space {
+    .space {
         width: 393px;
         height: 32px;
     }
 
-    .PageTitle {
+    .page-title {
         color: #44da92;
         text-align: center;
-        font-family: Pretendard;
-        font-size: 26px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: 38px;
+        @include title01-heavy;
         display: flex;
         padding: 0px 20px;
         height: 44px;
         flex: 1 0 0;
     }
 
-    .Content {
+    .content {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
 
-        .Item {
+        .item {
             display: flex;
             width: 353px;
             padding: 12px 20px;
             justify-content: space-between;
             align-items: center;
 
-            .ItemState {
+            .item-state {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
                 gap: 8px;
 
-                .ItemInfo {
+                .item-info {
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
                     gap: 4px;
 
-                    .ItemStandard {
+                    .item-standard {
                         display: flex;
                         align-items: center;
                         gap: 8px;
 
-                        .ItemName {
+                        .item-name {
                             color: #44da92;
-                            font-family: Pretendard;
-                            font-size: 22px;
-                            font-style: normal;
-                            font-weight: 700;
-                            line-height: 32px;
+                            @include title02-bold;
                         }
 
-                        .Pronunciation {
+                        .pronunciation {
                             color: #8e8e93;
-                            font-family: Pretendard;
-                            font-size: 17px;
-                            font-style: normal;
-                            font-weight: 500;
-                            line-height: 22px;
+                            @include body01-medium;
                         }
                     }
 
-                    .ItemType {
+                    .item-type {
                         color: #8e8e93;
-                        font-family: Pretendard;
-                        font-size: 17px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 22px;
+                        @include body01-medium;
                     }
                 }
 
-                .Example {
+                .example {
                     display: flex;
                     padding: 4px 16px;
                     justify-content: center;
@@ -165,24 +144,20 @@
                     border-radius: 8px;
                     border: 1px solid #c7c7cc;
 
-                    .ItemExample {
+                    .item-example {
                         color: #44da92;
-                        font-family: Pretendard;
-                        font-size: 17px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 22px;
+                        @include body01-medium;
                     }
                 }
             }
 
-            .BookmarkIcon {
+            .bookmark-icon {
                 width: 18px;
                 height: 24px;
                 flex-shrink: 0;
             }
         }
-        .LineWeek {
+        .line-week {
             margin: 0 auto;
         }
     }

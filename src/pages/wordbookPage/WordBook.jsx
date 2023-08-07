@@ -1,8 +1,8 @@
 import React from 'react';
-import './Wordbook.scss';
-import ProfileIcon from '../assets/Profile.svg';
-import TabBarItem from '../assets/TabBarItem.svg';
-import Line from '../assets/Line.svg';
+import '../../styles/WordBook.scss';
+import ProfileIcon from '../../assets/Profile.svg';
+import TabBarItem from '../../assets/TabBarItem.svg';
+import Line from '../../assets/Line.svg';
 
 /**
  * @typedef {Object} ContentDataItem
@@ -43,38 +43,38 @@ const contentData = [
 
 const Wordbook = () => {
     return (
-        <div className="WordbookContainer">
-            <div className="WordbookHeader">
-                <div className="ServiceName">
+        <div className="wordbook-container">
+            <div className="wordbook-header">
+                <div className="service-name">
                     Koreasy
                     <img
                         src={ProfileIcon}
                         alt="Profile"
-                        className="ProfileIcon"
+                        className="profile-icon"
                     />
                 </div>
             </div>
-            <div className="Space" />
-            <div className="PageTitle">ViewName</div>
-            <div className="DateSection">
+            <div className="space" />
+            <div className="page-title">ViewName</div>
+            <div className="date-section">
                 {contentData.map((content, index) => (
-                    <div key={index} className="DateItemContainer">
-                        <div className="DateItem">
-                            <div className="DateInfo">
-                                <span className="DateText">
+                    <div key={index} className="dateitem-container">
+                        <div className="date-item">
+                            <div className="date-info">
+                                <span className="date-text">
                                     {content.dateText}
                                 </span>
-                                <span className="DateRange">
+                                <span className="date-range">
                                     {content.dateRange}
                                 </span>
                             </div>
                             <img
-                                className="TabBarItem"
+                                className="tabbar-item"
                                 src={TabBarItem}
-                                alt="Front"
+                                alt="front"
                             />
                         </div>
-                        <img className="Line" src={Line} alt="Line" />
+                        <img className="line" src={Line} alt="Line" />
                     </div>
                 ))}
             </div>
