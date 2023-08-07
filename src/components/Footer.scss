@@ -1,0 +1,22 @@
+@import '../styles/variables/colors.scss';
+@import '../styles/variables/textStyles.scss';
+
+.background {
+    display: flex;
+    width: 100vw;
+    padding: 20px 10px 40px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    background-color: $default-color-system-gray-06;
+
+    .text {
+        @include subtext-regular;
+        color: $accessible-color-system-gray-03-dark;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
