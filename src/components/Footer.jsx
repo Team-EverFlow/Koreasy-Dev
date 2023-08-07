@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="text">
                 <p>
                     <a
-                        class="text link-offset-2 link-underline link-underline-opacity-0"
+                        className="text link-offset-2 link-underline link-underline-opacity-0"
                         href="."
                     >
                         Privacy Policy
@@ -15,7 +15,7 @@ const Footer = () => {
                 </p>
                 <p>
                     <a
-                        class="text link-offset-2 link-underline link-underline-opacity-0"
+                        className="text link-offset-2 link-underline link-underline-opacity-0"
                         href="."
                     >
                         Sign out
@@ -23,7 +23,7 @@ const Footer = () => {
                 </p>
                 <p>
                     <a
-                        class="text link-offset-2 link-underline link-underline-opacity-0"
+                        className="text link-offset-2 link-underline link-underline-opacity-0"
                         href="."
                     >
                         Quit Service
@@ -31,7 +31,7 @@ const Footer = () => {
                 </p>
                 <p>
                     <a
-                        class="text link-offset-2 link-underline link-underline-opacity-0"
+                        className="text link-offset-2 link-underline link-underline-opacity-0"
                         href="."
                     >
                         About team

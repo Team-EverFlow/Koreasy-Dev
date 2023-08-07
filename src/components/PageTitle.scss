@@ -5,8 +5,8 @@
     @include title01-heavy;
     color: $default-color-system-blue;
     display: flex;
-    width: calc(100vw - 40px);
-    padding: 0px 20px 0px 20px;
+    width: 100vw;
+    padding: 0 20px 0 20px;
     justify-content: center;
     align-items: center;
     gap: 10px;
