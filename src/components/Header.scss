@@ -1,0 +1,29 @@
+@import '../styles/colors.scss';
+@import '../styles/textStyles.scss';
+
+.header {
+    display: flex;
+    width: 100vw;
+    height: 66px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $default-color-system-gray-06;
+
+    .service-name {
+        @include title01-heavy;
+        position: absolute;
+        padding: 12px 20px 16px 20px;
+        left: 0px;
+        right: 0px;
+        justify-content: space-between;
+        align-items: center;
+        float: left;
+
+        .profile-icon {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            float: right;
+        }
+    }
+}
