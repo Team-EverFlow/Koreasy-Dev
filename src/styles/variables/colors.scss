@@ -12,3 +12,8 @@ $koreasy-color-gray-05: #e5e5ea;
 $koreasy-color-gray-06: #f2f2f7;
 $koreasy-color-red: #ff3b30;
 $koreasy-color-yellow: #ffc940;
+
+:root {
+    --primary-color: #{$koreasy-color-primary};
+    --gray-color: #{$koreasy-color-gray-011};
+}
