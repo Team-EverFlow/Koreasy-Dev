@@ -8,13 +8,11 @@ import PageTitle from './PageTitle';
 // Header
 /**
  * @param {boolean} [isNavigationBar=false] isNavigationBar Navigation 활성화 유무
- * @param {boolean} [isPageTitle=false] isPageTitle PageTitle 활성화 유무
- * @param {string | undefined} viewName PageTitle에 들어갈 viewName 값
+ * @param {string | undefined} [viewName=undefined] viewName PageTitle에 들어갈 viewName 값, 기본값으로 둘 경우 비활성화 됩니다.
  * @param {string} [navigationViewName=PreviousView] navigationViewName Navigation에 들어갈 viewName 값
  */
 const Header = ({
     isNavigationBar = false,
-    isPageTitle = false,
     viewName = undefined,
     navigationViewName = 'PreviousView',
 }) => {
@@ -34,7 +32,7 @@ const Header = ({
 
             {isNavigationBar && <NavigationBar viewName={navigationViewName} />}
             <Divider />
-            {isPageTitle && <PageTitle viewName={viewName} />}
+            {viewName !== null && <PageTitle viewName={viewName} />}
         </div>
     );
 };
