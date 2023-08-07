@@ -10,7 +10,7 @@ import '../styles/variables/colors.scss';
 const Chevrion = ({ direction, color }) => {
     const MainColor = getComputedStyle(
         document.documentElement,
-    ).getPropertyValue('--main-color');
+    ).getPropertyValue('--primary-color');
     const GrayColor = getComputedStyle(
         document.documentElement,
     ).getPropertyValue('--gray-color');
