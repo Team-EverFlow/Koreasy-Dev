@@ -4,8 +4,10 @@ import Header from '../components/Header';
 function MyBadgesView() {
     return (
         <div>
-            <Header></Header>
-            <h1> Badges</h1>
+            <Header isNavigationBar={true} viewName={'My Badges'} />
+            <div>
+
+            </div>
         </div>
     );
 }
