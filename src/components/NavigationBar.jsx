@@ -2,7 +2,7 @@ import React from 'react';
 import Chevron from './Chevrion';
 import './NavigationBar.scss';
 
-const NavigationBar = ({ View }) => {
+const NavigationBar = ({ viewName }) => {
     // 컴포넌트에서 인자 전달시 사용
     /**
      * @View {string | undefined}
@@ -11,7 +11,7 @@ const NavigationBar = ({ View }) => {
         <div className="previous-view">
             <div className="text">
                 <Chevron direction="Left" color="MainColor" />
-                {View === undefined ? 'PreviousView' : View}
+                {viewName === undefined ? 'PreviousView' : viewName}
             </div>
             <div className="dump-box" />
         </div>
