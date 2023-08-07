@@ -4,7 +4,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/dump';
 import Wordbook from './pages/wordbookPage/WordBook';
-import Aug4thWeek from './pages/wordbookPage/Aug4thWeek';
+import WordWeek0 from './pages/wordbookPage/WordWeek0';
 
 const Router = () => {
     return (
@@ -12,7 +12,7 @@ const Router = () => {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/wordbook" element={<Wordbook />} />
-                <Route path="/aug4thweek" element={<Aug4thWeek />} />
+                <Route path="/wordweek0" element={<WordWeek0 />} />
             </Routes>
         </BrowserRouter>
     );

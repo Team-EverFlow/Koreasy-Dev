@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Aug4thWeek.scss';
+import '../../styles/WordWeek0.scss';
 import NavigationBar from '../../assets/NavigationBar.svg';
 import ProfileIcon from '../../assets/Profile.svg';
 import BookmarkIcon from './BookmarkIcon';
@@ -23,7 +23,7 @@ const contentData = [
     },
 ];
 
-const Aug4thWeek = () => {
+const WordWeek0 = () => {
     return (
         <div className="container">
             <div className="header">
@@ -96,4 +96,4 @@ const Aug4thWeek = () => {
     );
 };
 
-export default Aug4thWeek;
+export default WordWeek0;
