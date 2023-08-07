@@ -23,7 +23,6 @@ const Header = () => {
             <NavigationBar />
             <Divider />
             <PageTitle />
-            <Footer />
         </div>
     );
 };
