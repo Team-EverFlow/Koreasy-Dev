@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/colors.scss';
+import '../styles/variables/colors.scss';
 
 /**
  *
