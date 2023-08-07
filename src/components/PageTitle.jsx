@@ -2,8 +2,7 @@ import React from 'react';
 
 import './PageTitle.scss';
 
-const PageTitle = () => {
-    const ViewName = 'ViewName';
+const PageTitle = ({ ViewName }) => {
     return (
         <div className="page-title">
             <div className="text">{ViewName}</div>
