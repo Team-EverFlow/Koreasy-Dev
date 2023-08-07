@@ -2,7 +2,7 @@ import React from 'react';
 import Chevron from './Chevrion';
 import './NavigationBar.scss';
 
-const PageTitle = ({ value }) => {
+const NavigationBar = ({ value }) => {
     // 컴포넌트에서 인자 전달시 사용
     /**
      * @View {string || undefined}
@@ -22,4 +22,4 @@ const PageTitle = ({ value }) => {
     );
 };
 
-export default PageTitle;
+export default NavigationBar;
