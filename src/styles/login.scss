@@ -1,5 +1,5 @@
-@import "../textStyles";
-@import "../colors";
+@import "./variables/colors";
+@import "./variables/textStyles";
 
 div.login-service-group {
     display: flex;
@@ -10,7 +10,7 @@ div.login-service-group {
     h1.login-service-name {
         @include title01;
 
-        color: $default-color-system-blue;
+        color: $koreasy-color-primary;
         font-size: 48px;
         text-align: center;
         margin: 0;
@@ -19,7 +19,7 @@ div.login-service-group {
     span.login-service-description {
         @include body01-regular;
 
-        color: $default-color-system-gray-02;
+        color: $koreasy-color-gray-02;
         display: block;
         text-align: center;
     }
@@ -39,7 +39,7 @@ div.login-button-group {
         align-items: center;
         background: rgba(0, 0, 0, 0);
         border-radius: 12px;
-        border: 1px solid $default-color-system-gray-02;
+        border: 1px solid $koreasy-color-gray-02;
         display: flex;
         gap: 12px;
         padding: 12px 24px;
@@ -60,6 +60,6 @@ div.login-button-group {
 
     span.login-button-description {
         @include body01-medium;
-        color: $default-color-system-gray-01;
+        color: $koreasy-color-gray-01;
     }
 }
