@@ -1,9 +1,8 @@
 import React from 'react';
 import './Header.scss';
-import ProfileIconDump from '../assets/Profile_Red.svg';
+import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import PreviousView from './NavigationBar';
 import Divider from './Divider';
-import PageTitle from './PageTitle';
 
 const Header = () => {
     const ProfileIcon = ProfileIconDump;
