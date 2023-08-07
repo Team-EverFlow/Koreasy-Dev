@@ -69,3 +69,8 @@ $accessible-color-system-gray-03-dark: rgb(84, 84, 86);
 $accessible-color-system-gray-04-dark: rgb(68, 68, 70);
 $accessible-color-system-gray-05-dark: rgb(54, 54, 56);
 $accessible-color-system-gray-06-dark: rgb(36, 36, 38);
+
+:root {
+    --main-color: #{$default-color-system-blue};
+    --gray-color: #{$default-color-system-gray-01};
+}
