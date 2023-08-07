@@ -1,1 +1,2 @@
 export const USER_COLLECTION_ID = 'User';
+export const USER_NOT_REGISTERED = 'USER_NOT_REGISTERED';
