@@ -3,7 +3,10 @@ import chevron from '../assets/images/chevron.left.svg';
 import './NavigationBar.scss';
 
 const PageTitle = () => {
-    const View = 'PreviousView';
+    let View = null;
+    if (View === null) {
+        View = 'PreviousView';
+    }
     return (
         <div className="previous-view">
             <div className="text">
