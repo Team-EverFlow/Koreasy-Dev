@@ -5,7 +5,7 @@ import '../types/typedef';
 
 /**
  * Badge 컴포넌트
- * @param {Badge} badge 뱃지
+ * @param {BadgeObject} badge 뱃지
  * @param {MouseEventHandler<T> | undefined} onClick 클릭하면 반환하는 이벤트
  */
 function Badge({ badge, onClick }) {

@@ -4,15 +4,19 @@ import Badge from './Badge';
 import '../types/typedef';
 
 /**
- *
- * @param {Array[Badge]} badges
- * @param onClick
+ * @param {Array<BadgeObject>} badges
+ * @param {function({string}) | undefined} onClick
  */
 function BadgeGroup({ badges, onClick }) {
     return (
         <div className={'badge-group'}>
             {badges.map(badge => (
-                <Badge badge={badge} onClick={onClick} />
+                <Badge
+                    badge={badge}
+                    onClick={() => {
+                        onClick !== null ? onClick(badge.id) : undefined;
+                    }}
+                />
             ))}
         </div>
     );
