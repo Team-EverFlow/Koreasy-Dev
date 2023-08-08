@@ -1,0 +1,34 @@
+@import "./variables/colors";
+@import "./variables/textStyles";
+
+div.profile {
+    position: relative;
+
+    div.profile-background {
+        background: linear-gradient(146deg, rgba(255, 255, 255, 0.20) 19.20%, rgba(0, 0, 0, 0.07) 100%), $koreasy-color-primary;
+        display: block;
+        height: 120px;
+    }
+
+    div.profile-main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: absolute;
+        gap: 16px;
+        top: 60px;
+        width: 100%;
+
+        img {
+            height: 120px;
+            width: 120px;
+        }
+
+        span.profile-nickname {
+            @include title01-heavy;
+            color: #000;
+            text-align: center;
+        }
+    }
+}
