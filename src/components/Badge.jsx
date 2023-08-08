@@ -2,6 +2,7 @@ import React from 'react';
 import './Badge.scss';
 import Check from '../assets/images/check.svg';
 import '../types/typedef';
+import moment from 'moment';
 
 /**
  * Badge 컴포넌트
@@ -16,7 +17,9 @@ function Badge({ badge, onClick }) {
                 <img src={Check} className={'bagde-check'} />
             </div>
             <span className={'badge-title'}>{badge.title}</span>
-            <span className={'badge-date'}>{badge.date}</span>
+            <span className={'badge-date'}>
+                {moment(badge.date).format('YYYY-MM-DD')}
+            </span>
         </div>
     );
 }

@@ -5,7 +5,7 @@ import '../types/typedef';
 
 /**
  * @param {Array<BadgeObject>} badges
- * @param {function({string}) | undefined} onClick
+ * @param {function({string}, {MouseEvent}) | undefined} onClick
  */
 function BadgeGroup({ badges, onClick }) {
     return (
@@ -13,8 +13,8 @@ function BadgeGroup({ badges, onClick }) {
             {badges.map(badge => (
                 <Badge
                     badge={badge}
-                    onClick={() => {
-                        onClick !== null ? onClick(badge.id) : undefined;
+                    onClick={(T) => {
+                        onClick !== null ? onClick(badge.id, T) : undefined;
                     }}
                 />
             ))}
