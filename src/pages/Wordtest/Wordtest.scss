@@ -35,25 +35,14 @@
     }
 
     .id {
-        display: flex;
-        padding: 4px 12px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 10px;
-
-        display: inline-block;
-
-        border-radius: 8px;
-        background: var(--gray-1, #8e8e93);
-        // // display: inline-block;
-        // // text-align: center;
-        // // width: 37px;
-        // // float: left;
-        // background-color: aquamarine;
-        // // border-radius: 8px;
-        // // padding: 12px 4px;
-        // margin-left: 12px;
-        // margin-right: 12px;
+        // display: inline-block;
+        // text-align: center;
+        // width: 37px;
+        // float: left;
+        background-color: aquamarine;
+        // border-radius: 8px;
+        // padding: 12px 4px;
+        margin-left: 12px;
+        margin-right: 12px;
     }
 }
