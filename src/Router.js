@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import WordTestSheetButton from './pages/wordTest/WordTestSheetButton';
-import Quiz from './pages/wordTest/WordTestQuiz';
-import WordtestSheet from './pages/wordTest/WordTestSheet';
+import WordTestSheetButton from './pages/Wordtest/WordTestSheetButton';
+import Quiz from './pages/Wordtest/WordTestQuiz';
+import WordtestSheet from './pages/Wordtest/WordTestQuiz';
 
 const Router = () => {
     return (

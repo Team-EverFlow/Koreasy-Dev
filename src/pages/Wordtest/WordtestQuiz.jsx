@@ -23,7 +23,9 @@ const WordTestQuiz = () => {
         <div className="word-test-quiz-container">
             {QuizData.map((item, index) => (
                 <div key={item.id} className="quiz-item">
-                    <span className="id">{item.id}</span>
+                    <div>
+                        <div className="id">{item.id}</div>
+                    </div>
                     <span className="question">{item.Question}</span>
                     <div className="seonji-container">
                         {item.Seonji.slice(1, -1)
