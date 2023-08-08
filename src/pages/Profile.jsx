@@ -5,6 +5,7 @@ import '../styles/Profile.scss';
 import '../styles/MyBadge.scss';
 import ProfileButton from '../components/ProfileButton';
 import BadgeGroup from '../components/BadgeGroup';
+import Chevrion from '../components/Chevrion';
 
 function ProfileView() {
     let dumpProfile = {
