@@ -3,7 +3,7 @@
 
 .container {
     overflow: hidden;
-    background-color: #fff;
+    background-color: $koreasy-color-white;
     width: 393px;
     height: 844px;
     position: absolute;
@@ -20,7 +20,7 @@
         height: 66px;
         justify-content: space-between;
         align-items: center;
-        background-color: #f2f2f7;
+        background-color: $koreasy-color-gray-06;
 
         .service-name {
             @include title01-heavy;
@@ -47,7 +47,7 @@
         justify-content: space-between;
         align-items: center;
         align-self: stretch;
-        background-color: #f2f2f7;
+        background-color: $koreasy-color-gray-06;
 
         .navigationbar-item {
             display: flex;
@@ -61,7 +61,7 @@
             }
 
             .navigation-text {
-                color: #1c1c1e;
+                color: $koreasy-color-black;
                 @include body01-medium;
             }
         }
@@ -78,7 +78,7 @@
     }
 
     .page-title {
-        color: #44da92;
+        color: $koreasy-color-primary;
         text-align: center;
         @include title01-heavy;
         display: flex;
@@ -119,18 +119,18 @@
                         gap: 8px;
 
                         .item-name {
-                            color: #44da92;
+                            color: $koreasy-color-primary;
                             @include title02-bold;
                         }
 
                         .pronunciation {
-                            color: #8e8e93;
+                            color: $koreasy-color-gray-01;
                             @include body01-medium;
                         }
                     }
 
                     .item-type {
-                        color: #8e8e93;
+                        color: $koreasy-color-gray-01;
                         @include body01-medium;
                     }
                 }
@@ -142,10 +142,10 @@
                     align-items: flex-start;
                     gap: 10px;
                     border-radius: 8px;
-                    border: 1px solid #c7c7cc;
+                    border: 1px solid $koreasy-color-gray-03;
 
                     .item-example {
-                        color: #44da92;
+                        color: $koreasy-color-primary;
                         @include body01-medium;
                     }
                 }

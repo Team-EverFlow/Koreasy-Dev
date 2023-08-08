@@ -3,7 +3,7 @@
 
 .wordbook-container {
     overflow: hidden;
-    background-color: #fff;
+    background-color: $koreasy-color-white;
     width: 393px;
     height: 844px;
     position: absolute;
@@ -20,7 +20,7 @@
         height: 66px;
         justify-content: space-between;
         align-items: center;
-        background-color: #f2f2f7;
+        background-color: $koreasy-color-gray-06;
 
         .service-name {
             @include title01-heavy;
@@ -47,7 +47,7 @@
     }
 
     .page-title {
-        color: #44da92;
+        color: $koreasy-color-primary;
         text-align: center;
         @include title01-heavy;
         display: flex;
@@ -85,12 +85,12 @@
                     flex: 1;
 
                     .date-text {
-                        color: #1c1c1e;
+                        color: $koreasy-color-black;
                         @include title02-bold;
                     }
 
                     .date-range {
-                        color: #aeaeb2;
+                        color: $koreasy-color-gray-02;
                         @include body01-regular;
                     }
                 }
