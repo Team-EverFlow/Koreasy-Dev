@@ -11,7 +11,17 @@ div.badge {
         display: none;
     }
 
-    &.active {
+    &.badge-active {
+        div.badge-image {
+            background: $koreasy-color-gray-04;
+
+            img {
+                opacity: .5;
+            }
+        }
+    }
+
+    &.check {
         div.badge-image {
             border: $koreasy-color-primary solid 1px;
 

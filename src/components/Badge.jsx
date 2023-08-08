@@ -11,7 +11,15 @@ import moment from 'moment';
  */
 function Badge({ badge, onClick }) {
     return (
-        <div className={badge.active ? 'badge active' : 'badge'}>
+        <div
+            className={
+                badge.check
+                    ? 'badge check'
+                    : badge.active
+                    ? 'badge badge-active'
+                    : 'badge'
+            }
+        >
             <div className="badge-image" onClick={onClick}>
                 <img src={badge.imageUrl} alt="badge icon" />
                 <img src={Check} className="badge-check" alt="check-mark" />

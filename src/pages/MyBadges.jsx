@@ -11,6 +11,7 @@ function MyBadgesView() {
             imageUrl: 'https://yhs.kr/static/image/python.svg',
             date: new Date(),
             active: false,
+            check: false,
         },
         {
             id: 2,
@@ -18,6 +19,15 @@ function MyBadgesView() {
             imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
             date: new Date(),
             active: true,
+            check: false,
+        },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: false,
+            check: true,
         },
         {
             id: 2,
@@ -25,6 +35,7 @@ function MyBadgesView() {
             imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
             date: new Date(),
             active: true,
+            check: false,
         },
         {
             id: 2,
@@ -32,6 +43,7 @@ function MyBadgesView() {
             imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
             date: new Date(),
             active: true,
+            check: true,
         },
         {
             id: 2,
@@ -39,6 +51,7 @@ function MyBadgesView() {
             imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
             date: new Date(),
             active: true,
+            check: false,
         },
         {
             id: 2,
@@ -46,13 +59,7 @@ function MyBadgesView() {
             imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
             date: new Date(),
             active: true,
-        },
-        {
-            id: 2,
-            title: 'Kotlin 최고',
-            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-            date: new Date(),
-            active: true,
+            check: false,
         },
     ];
     return (
