@@ -2,11 +2,14 @@ import React from 'react';
 
 import './PageTitle.scss';
 
-const PageTitle = () => {
-    const ViewName = 'ViewName';
+// PageTitle
+/**
+ * @param {string} viewName PageTitle View 이름
+ */
+const PageTitle = ({ viewName }) => {
     return (
         <div className="page-title">
-            <div className="text">{ViewName}</div>
+            <div className="text">{viewName}</div>
         </div>
     );
 };
