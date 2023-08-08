@@ -1,16 +1,25 @@
 import React from 'react';
 import './Badge.scss';
-import CheckMark from '../assets/images/check.svg';
+import Check from '../assets/images/check.svg';
+import '../types/typedef';
+import moment from 'moment';
 
-function Badge({ imageUrl, active }) {
+/**
+ * Badge 컴포넌트
+ * @param {BadgeObject} badge 뱃지
+ * @param {MouseEventHandler<T> | undefined} onClick 클릭하면 반환하는 이벤트
+ */
+function Badge({ badge, onClick }) {
     return (
-        <div className={active ? 'badge active' : 'badge'}>
-            <div className={'badge-image'}>
-                <img src={imageUrl} />
-                <img src={CheckMark} className={'bagde-check'} />
+        <div className={badge.active ? 'badge active' : 'badge'}>
+            <div className="badge-image" onClick={onClick}>
+                <img src={badge.imageUrl} alt="badge icon" />
+                <img src={Check} className="badge-check" alt="check-mark" />
             </div>
-            <span className={'badge-title'}>1st Day</span>
-            <span className={'badge-date'}>2023.6.2</span>
+            <span className="badge-title">{badge.title}</span>
+            <span className="badge-date">
+                {moment(badge.date).format('YYYY-MM-DD')}
+            </span>
         </div>
     );
 }

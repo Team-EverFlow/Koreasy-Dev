@@ -1,23 +1,38 @@
-import { React } from 'react';
-import '../styles/MyBadge.scss';
+import React from 'react';
 import Header from '../components/Header';
-import Badge from '../components/Badge';
+import BadgeGroup from '../components/BadgeGroup';
+import '../styles/MyBadge.scss';
 
 function MyBadgesView() {
+    let dumpBadge = [
+        {
+            id: 1,
+            title: 'Python 최고',
+            imageUrl: 'https://yhs.kr/static/image/python.svg',
+            date: new Date(),
+            active: false,
+        },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: true,
+        },
+    ];
     return (
         <div>
-            <Header isNavigationBar={true} viewName={'My Badges'} />
-            <div className={'badge-group'}>
-                <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
-                <Badge
-                    imageUrl={'https://yhs.kr/static/image/python.svg'}
-                    active={true}
-                />
-                <Badge
-                    imageUrl={'https://yhs.kr/static/image/python.svg'}
-                    active={true}
-                />
-                <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
+            <Header isNavigationBar={true} viewName="My Badges" />
+            <BadgeGroup
+                badges={dumpBadge}
+                onClick={id => {
+                    console.log(id); // for debug
+                }}
+            />
+            <div className="my-badge-button-group">
+                <button className="my-badge-button">
+                    Set my signiture badge
+                </button>
             </div>
         </div>
     );
