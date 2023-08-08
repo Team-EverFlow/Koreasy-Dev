@@ -1,6 +1,7 @@
-import { React } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import BadgeGroup from '../components/BadgeGroup';
+import '../styles/MyBadge.scss';
 
 function MyBadgesView() {
     let dumpBadge = [
@@ -21,14 +22,18 @@ function MyBadgesView() {
     ];
     return (
         <div>
-            <Header isNavigationBar={true} viewName={'My Badges'} />
+            <Header isNavigationBar={true} viewName="My Badges" />
             <BadgeGroup
                 badges={dumpBadge}
                 onClick={id => {
                     console.log(id); // for debug
                 }}
             />
-            <div></div>
+            <div className="my-badge-button-group">
+                <button className="my-badge-button">
+                    Set my signiture badge
+                </button>
+            </div>
         </div>
     );
 }
