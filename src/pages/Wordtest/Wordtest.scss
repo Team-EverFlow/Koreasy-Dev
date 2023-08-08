@@ -1,15 +1,18 @@
 // WordTestQuiz.scss
-
 .word-test-quiz-container {
     display: flex;
     flex-direction: column;
+    margin: 0px;
 
     .quiz-item {
         display: flex;
         flex-direction: column;
-        margin: 16px 0;
+        // margin: 16px;z
         background-color: #e5e5ea;
         border-radius: 8px;
+        margin-bottom: 12px;
+        margin-left: 20px;
+        margin-right: 20px;
 
         .question {
             margin-top: 20px;
@@ -33,7 +36,12 @@
         margin-right: 4px;
         margin-left: 16px;
     }
+
+    .test-key {
+        margin: 0;
+    }
 }
+
 .id {
     display: flex;
     padding: 4px 12px;
@@ -41,9 +49,26 @@
     justify-content: center;
     align-items: flex-start;
     gap: 10px;
-
     display: inline-block;
-
     border-radius: 8px;
     background: var(--gray-1, #8e8e93);
+    margin-left: 16px;
+    margin-top: 20px;
+}
+
+.title-container {
+    text-align: center;
+    background-color: #8e8e93;
+}
+
+.title {
+    font-size: 36px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.subtitle {
+    font-size: 26px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
