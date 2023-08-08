@@ -1,16 +1,21 @@
 import React from 'react';
 import './Badge.scss';
 import CheckMark from '../assets/images/check.svg';
+import '../types/typedef';
 
-function Badge({ imageUrl, active }) {
+/**
+ * Badge 컴포넌트
+ * @param {Badge} badge 뱃지
+ */
+function Badge({ badge }) {
     return (
-        <div className={active ? 'badge active' : 'badge'}>
+        <div className={badge.active ? 'badge active' : 'badge'}>
             <div className={'badge-image'}>
-                <img src={imageUrl} />
+                <img src={badge.imageUrl} />
                 <img src={CheckMark} className={'bagde-check'} />
             </div>
-            <span className={'badge-title'}>1st Day</span>
-            <span className={'badge-date'}>2023.6.2</span>
+            <span className={'badge-title'}>{badge.title}</span>
+            <span className={'badge-date'}>{badge.date}</span>
         </div>
     );
 }
