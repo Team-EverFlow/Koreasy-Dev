@@ -5,7 +5,7 @@ import '../type/typedef';
 /**
  * 해당 id 값을 가진 Badge의 정보를 반환합니다.
  * @param {string} id
- * @returns {{ success: boolean, error: any, data: Badge }}
+ * @returns {Promise<{ success: boolean, error: any, data: Badge }>}
  */
 export async function GetBadgeInformation(id) {
     try {
