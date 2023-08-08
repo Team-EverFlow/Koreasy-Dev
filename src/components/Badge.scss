@@ -7,7 +7,7 @@ div.badge {
     flex-wrap: nowrap;
     align-items: center;
 
-    img.bagde-check {
+    img.badge-check {
         display: none;
     }
 
@@ -15,7 +15,7 @@ div.badge {
         div.badge-image {
             border: $koreasy-color-primary solid 1px;
 
-            img.bagde-check {
+            img.badge-check {
                 display: block;
             }
         }
@@ -35,7 +35,7 @@ div.badge {
             height: 100px;
         }
 
-        img.bagde-check {
+        img.badge-check {
             position: absolute;
             left: 0;
             right: 0;

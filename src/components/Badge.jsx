@@ -12,12 +12,12 @@ import moment from 'moment';
 function Badge({ badge, onClick }) {
     return (
         <div className={badge.active ? 'badge active' : 'badge'}>
-            <div className={'badge-image'} onClick={onClick}>
-                <img src={badge.imageUrl} />
-                <img src={Check} className={'bagde-check'} />
+            <div className="badge-image" onClick={onClick}>
+                <img src={badge.imageUrl} alt="badge icon" />
+                <img src={Check} className="badge-check" alt="check-mark" />
             </div>
-            <span className={'badge-title'}>{badge.title}</span>
-            <span className={'badge-date'}>
+            <span className="badge-title">{badge.title}</span>
+            <span className="badge-date">
                 {moment(badge.date).format('YYYY-MM-DD')}
             </span>
         </div>
