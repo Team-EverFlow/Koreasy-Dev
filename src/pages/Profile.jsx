@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
-import '../styles/profile.scss';
+import '../styles/Profile.scss';
 import ProfileButton from '../components/ProfileButton';
 
 function ProfileView() {
