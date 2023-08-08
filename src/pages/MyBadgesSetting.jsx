@@ -1,23 +1,13 @@
 import { React } from 'react';
 import Header from '../components/Header';
 import Badge from '../components/Badge';
+import BadgeGroup from '../components/BadgeGroup';
 
 function MyBadgesViewSetting() {
     return (
         <div>
             <Header isNavigationBar={true} viewName={'My Badges'} />
-            <div className={'badge-group'}>
-                <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
-                <Badge
-                    imageUrl={'https://yhs.kr/static/image/python.svg'}
-                    active={true}
-                />
-                <Badge
-                    imageUrl={'https://yhs.kr/static/image/python.svg'}
-                    active={true}
-                />
-                <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
-            </div>
+            <BadgeGroup badges={[]} />
             <div></div>
         </div>
     );

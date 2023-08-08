@@ -22,7 +22,12 @@ function MyBadgesView() {
     return (
         <div>
             <Header isNavigationBar={true} viewName={'My Badges'} />
-            <BadgeGroup badges={dumpBadge} />
+            <BadgeGroup
+                badges={dumpBadge}
+                onClick={id => {
+                    console.log(id); // for debug
+                }}
+            />
             <div></div>
         </div>
     );
