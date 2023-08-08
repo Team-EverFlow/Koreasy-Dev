@@ -43,6 +43,7 @@ div.profile {
         display: flex;
         justify-content: space-between;
         padding: 0 20px 8px 20px;
+        width: 100%;
 
         h2 {
             @include subtitle-bold;
@@ -55,5 +56,10 @@ div.profile {
             width: 24px;
             height: 32px;
         }
+    }
+
+    div.badge-group {
+        padding: 0 20px;
+        width: 100%;
     }
 }
