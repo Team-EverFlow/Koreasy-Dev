@@ -29,7 +29,7 @@
  * @typedef {Object} Badge
  * @property {string} name
  * @property {string} achievementDescription
- * @property {int} achivementValue
+ * @property {int} achievementValue
  * @property {string} eventName
  */
 
