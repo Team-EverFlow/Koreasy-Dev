@@ -52,9 +52,9 @@ div.profile {
         }
 
         div.my-badge-right-arrow-icon {
-            background: url('../assets/images/right_arrow.svg') no-repeat center;
             width: 24px;
             height: 32px;
+            flex-shrink: 0;
         }
     }
 
