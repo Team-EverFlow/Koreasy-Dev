@@ -9,7 +9,7 @@
     font-style: normal;
 }
 
-.background {
+.learntodayword-background {
     display: flex;
     width: 100vw;
     padding: 80px 0px;
@@ -19,7 +19,7 @@
     gap: 52px;
     background-color: $koreasy-color-primary;
 
-    .text {
+    .learntodayword-text {
         display: flex;
         flex-direction: column;
         justify-content: center;

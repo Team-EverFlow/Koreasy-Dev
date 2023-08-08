@@ -24,7 +24,7 @@ const StartThumbnail = ({ startText }) => {
     }
 
     return (
-        <div className="background">
+        <div className="thumbnail-background">
             <div className="img">
                 <img
                     src={Thumbnail}
