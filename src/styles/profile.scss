@@ -20,7 +20,7 @@ div.profile {
         top: 60px;
         width: 100%;
 
-        img {
+        img.profile-image {
             height: 120px;
             width: 120px;
         }
@@ -29,6 +29,11 @@ div.profile {
             @include title01-heavy;
             color: #000;
             text-align: center;
+        }
+
+        div.profiles-button-group {
+            display: flex;
+            gap: 52px;
         }
     }
 }

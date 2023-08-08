@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import '../styles/profile.scss';
+import ProfileButton from '../components/ProfileButton';
 
 function ProfileView() {
     const ProfileIcon = ProfileIconDump;
@@ -11,8 +12,24 @@ function ProfileView() {
             <div className={'profile'}>
                 <div className={'profile-background'}></div>
                 <div className={'profile-main'}>
-                    <img src={ProfileIcon} />
+                    <img
+                        src={ProfileIcon}
+                        className={'profile-image'}
+                        alt="profile image"
+                    />
                     <span className={'profile-nickname'}>Halogen</span>
+                    <div className={'profiles-button-group'}>
+                        <ProfileButton
+                            icon={'bookmarks_icon'}
+                            title={'Bookmarks'}
+                            onClick={undefined}
+                        />
+                        <ProfileButton
+                            icon={'activities_icon'}
+                            title={'Activities'}
+                            onClick={undefined}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
