@@ -3,7 +3,7 @@
 
 .wordbook-container {
     background-color: $koreasy-color-white;
-    width: 100%;
+    width: 100vw;
     height: 844px;
     position: absolute;
     left: 0;
@@ -26,7 +26,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                width: 353px;
+                width: 100vw;
                 padding: 12px 20px;
 
                 .date-info {
@@ -53,12 +53,12 @@
                     height: 32px;
                     flex-shrink: 0;
                 }
-
-                .line {
-                    width: 1px;
-                    height: 100%;
-                }
             }
         }
     }
+}
+.line {
+    width: 94.5vw;
+    margin: 0 auto;
+    height: 1px;
 }

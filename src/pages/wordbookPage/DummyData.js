@@ -1,9 +1,5 @@
 const DummyData = [
     {
-        dateText: '4th week, Aug',
-        dateRange: '2023.08.21 ~ 08.25',
-    },
-    {
         dateText: '3rd week, Aug',
         dateRange: '2023.08.14 ~ 08.18',
     },

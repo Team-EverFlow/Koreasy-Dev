@@ -3,7 +3,7 @@
 
 .container {
     background-color: $koreasy-color-white;
-    width: 100%;
+    width: 100vw;
     height: 844px;
     position: absolute;
     left: 0;
@@ -16,7 +16,7 @@
 
         .item {
             display: flex;
-            width: 353px;
+            width: 100vw;
             padding: 12px 20px;
             justify-content: space-between;
             align-items: center;
@@ -80,7 +80,7 @@
             }
         }
         .line-week {
-            width: 100%;
+            width: 100vw;
             margin: 0 auto;
         }
     }
