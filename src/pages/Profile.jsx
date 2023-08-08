@@ -4,10 +4,30 @@ import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import '../styles/Profile.scss';
 import '../styles/MyBadge.scss';
 import ProfileButton from '../components/ProfileButton';
-import Badge from '../components/Badge';
+import BadgeGroup from '../components/BadgeGroup';
 
 function ProfileView() {
-    const ProfileIcon = ProfileIconDump;
+    let dumpProfile = {
+        id: "halogen",
+        name: "Halogen",
+        profileIcon: ProfileIconDump,
+        badges: [
+            {
+                id: 1,
+                title: 'Python 최고',
+                imageUrl: 'https://yhs.kr/static/image/python.svg',
+                date: new Date(),
+                active: false,
+            },
+            {
+                id: 2,
+                title: 'Kotlin 최고',
+                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+                date: new Date(),
+                active: true,
+            },
+        ],
+    };
     return (
         <div>
             <Header />
@@ -15,11 +35,11 @@ function ProfileView() {
                 <div className={'profile-background'}></div>
                 <div className={'profile-main'}>
                     <img
-                        src={ProfileIcon}
+                        src={dumpProfile.profileIcon}
                         className={'profile-image'}
                         alt="profile image"
                     />
-                    <span className={'profile-nickname'}>Halogen</span>
+                    <span className={'profile-nickname'}>{dumpProfile.name}</span>
                     <div className={'profiles-button-group'}>
                         <ProfileButton
                             icon={'bookmarks_icon'}
@@ -38,16 +58,7 @@ function ProfileView() {
                         <div className={'my-badge-right-arrow-icon'} />
                     </div>
                     <div className={'badge-group'}>
-                        <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
-                        <Badge
-                            imageUrl={'https://yhs.kr/static/image/python.svg'}
-                            active={true}
-                        />
-                        <Badge
-                            imageUrl={'https://yhs.kr/static/image/python.svg'}
-                            active={true}
-                        />
-                        <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
+                        <BadgeGroup badges={dumpProfile.badges} />
                     </div>
                 </div>
             </div>
