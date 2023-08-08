@@ -6,7 +6,7 @@
  * @property {Array<string>} [recentWord]
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
- * @property {Array<BadgeProgess>} [badgeProgess]
+ * @property {Array<BadgeProgress>} [badgeProgress]
  * @property {Array<string>} [myBadges]
  */
 
@@ -34,7 +34,7 @@
  */
 
 /**
- * @typedef {Object} BadgeProgess
+ * @typedef {Object} BadgeProgress
  * @property {string} id
  * @property {string} status
  */
