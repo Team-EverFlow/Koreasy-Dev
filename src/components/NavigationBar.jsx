@@ -6,7 +6,7 @@ import './NavigationBar.scss';
 /**
  * @param {string | undefined} [viewName=PreviousView] viewName Navigation Bar에 들어갈 Page View Name
  */
-const NavigationBar = ({ viewName  = 'PreviousView'}) => {
+const NavigationBar = ({ viewName = 'PreviousView' }) => {
     return (
         <div className="previous-view">
             <div className="text">
