@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/LearnTodayWord.scss';
-import ChevronRight from '../../assets/images/ChevronRight.svg';
+import Chevrion from '../../components/Chevrion';
 
 /**
  *
@@ -24,7 +24,7 @@ function LearnTodayWord({ language }) {
             </div>
             <button type="button" className="btn">
                 <div className="learn-text">Learn words</div>
-                <img src={ChevronRight} alt="chevron-right" />
+                <Chevrion direction="Right" color="MainColor" />
             </button>
         </div>
     );
