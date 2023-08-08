@@ -20,7 +20,11 @@ function MainPage() {
                     <div className="title-more">more</div>
                 </div>
                 <div className="words">
-                    <div id="carouselExample" className="carousel slide">
+                    <div
+                        id="carouselExampleAutoplaying"
+                        className="carousel slide"
+                        data-bs-ride="carousel"
+                    >
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="card-margin">
@@ -45,7 +49,7 @@ function MainPage() {
                         <button
                             className="carousel-control-prev"
                             type="button"
-                            data-bs-target="#carouselExample"
+                            data-bs-target="#carouselExampleAutoplaying"
                             data-bs-slide="prev"
                         >
                             <Chevrion direction="Left" />
@@ -53,7 +57,7 @@ function MainPage() {
                         <button
                             className="carousel-control-next"
                             type="button"
-                            data-bs-target="#carouselExample"
+                            data-bs-target="#carouselExampleAutoplaying"
                             data-bs-slide="next"
                         >
                             <Chevrion />
