@@ -30,6 +30,11 @@ function ProfileView() {
                             onClick={undefined}
                         />
                     </div>
+
+                    <div className={'my-badge-title'}>
+                        <h2>My Badge</h2>
+                        <div className={'my-badge-right-arrow-icon'} />
+                    </div>
                 </div>
             </div>
         </div>

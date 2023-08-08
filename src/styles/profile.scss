@@ -34,6 +34,26 @@ div.profile {
         div.profiles-button-group {
             display: flex;
             gap: 52px;
+            padding: 0 0 32px 0;
+        }
+    }
+
+    div.my-badge-title {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 8px 20px;
+
+        h2 {
+            @include subtitle-bold;
+            color: $koreasy-color-black;
+            margin: 0;
+        }
+
+        div.my-badge-right-arrow-icon {
+            background: url('../assets/images/right_arrow.svg') no-repeat center;
+            width: 24px;
+            height: 32px;
         }
     }
 }
