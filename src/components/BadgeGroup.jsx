@@ -1,13 +1,21 @@
 import React from 'react';
 import './BadgeGroup.scss.scss';
 import Badge from './Badge';
+import '../types/typedef';
 
+/**
+ *
+ * @param {Array[Badge]} badges
+ * @param onClick
+ */
 function BadgeGroup({ badges, onClick }) {
     return (
         <div className={'badge-group'}>
-            <Badge imageUrl={'https://yhs.kr/static/image/python.svg'} />
+            {badges.map(badge => (
+                <Badge badge={badge} onClick={onClick} />
+            ))}
         </div>
     );
 }
 
-export default Badge;
+export default BadgeGroup;
