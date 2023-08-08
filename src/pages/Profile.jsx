@@ -86,7 +86,9 @@ function ProfileView() {
 
                     <div className={'my-badge-title'}>
                         <h2>My Badge</h2>
-                        <div className={'my-badge-right-arrow-icon'} />
+                        <div className={'my-badge-right-arrow-icon'}>
+                            <Chevrion direction='Right' color='MainColor' />
+                        </div>
                     </div>
                     <BadgeGroup badges={dumpProfile.badges} />
                 </div>
