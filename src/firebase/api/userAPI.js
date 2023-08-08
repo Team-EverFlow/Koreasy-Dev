@@ -1,5 +1,5 @@
 import { auth, db } from '../root';
-import { USER_COLLECTION_ID, USER_NOT_REGISTERED } from '../type/const';
+import { DOES_NOT_EXIST_DOC, USER_COLLECTION_ID } from '../type/const';
 import { setDoc, doc } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
@@ -44,7 +44,7 @@ export async function GetUserInformation(UID) {
     try {
         const userSnapRef = await GetDocFromCollection(USER_COLLECTION_ID, UID);
         if (!userSnapRef.exists())
-            return { success: false, error: USER_NOT_REGISTERED };
+            return { success: false, error: DOES_NOT_EXIST_DOC };
         return { success: true, user: userSnapRef.data() };
     } catch (e) {
         return { success: false, error: e };
