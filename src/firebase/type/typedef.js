@@ -6,7 +6,8 @@
  * @property {Array<string>} [recentWord]
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
- *
+ * @property {Array<BadgeProgess>} [badgeProgess]
+ * @property {Array<string>} [myBadges]
  */
 
 /**
@@ -22,4 +23,18 @@
  * @property {string} pronunciation
  * @property {string} meaning
  * @property {Array<string>} exampleSentence
+ */
+
+/**
+ * @typedef {Object} Badge
+ * @property {string} name
+ * @property {string} achievementDescription
+ * @property {int} achivementValue
+ * @property {string} eventName
+ */
+
+/**
+ * @typedef {Object} BadgeProgess
+ * @property {string} id
+ * @property {string} status
  */
