@@ -8,10 +8,66 @@ import BadgeGroup from '../components/BadgeGroup';
 
 function ProfileView() {
     let dumpProfile = {
-        id: "halogen",
-        name: "Halogen",
+        id: 'halogen',
+        name: 'Halogen',
         profileIcon: ProfileIconDump,
         badges: [
+            {
+                id: 1,
+                title: 'Python 최고',
+                imageUrl: 'https://yhs.kr/static/image/python.svg',
+                date: new Date(),
+                active: false,
+            },
+            {
+                id: 2,
+                title: 'Kotlin 최고',
+                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+                date: new Date(),
+                active: true,
+            },
+            {
+                id: 1,
+                title: 'Python 최고',
+                imageUrl: 'https://yhs.kr/static/image/python.svg',
+                date: new Date(),
+                active: false,
+            },
+            {
+                id: 2,
+                title: 'Kotlin 최고',
+                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+                date: new Date(),
+                active: true,
+            },
+            {
+                id: 1,
+                title: 'Python 최고',
+                imageUrl: 'https://yhs.kr/static/image/python.svg',
+                date: new Date(),
+                active: false,
+            },
+            {
+                id: 2,
+                title: 'Kotlin 최고',
+                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+                date: new Date(),
+                active: true,
+            },
+            {
+                id: 1,
+                title: 'Python 최고',
+                imageUrl: 'https://yhs.kr/static/image/python.svg',
+                date: new Date(),
+                active: false,
+            },
+            {
+                id: 2,
+                title: 'Kotlin 최고',
+                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+                date: new Date(),
+                active: true,
+            },
             {
                 id: 1,
                 title: 'Python 최고',
@@ -39,7 +95,9 @@ function ProfileView() {
                         className={'profile-image'}
                         alt="profile image"
                     />
-                    <span className={'profile-nickname'}>{dumpProfile.name}</span>
+                    <span className={'profile-nickname'}>
+                        {dumpProfile.name}
+                    </span>
                     <div className={'profiles-button-group'}>
                         <ProfileButton
                             icon={'bookmarks_icon'}
@@ -57,9 +115,7 @@ function ProfileView() {
                         <h2>My Badge</h2>
                         <div className={'my-badge-right-arrow-icon'} />
                     </div>
-                    <div className={'badge-group'}>
-                        <BadgeGroup badges={dumpProfile.badges} />
-                    </div>
+                    <BadgeGroup badges={dumpProfile.badges} />
                 </div>
             </div>
         </div>
