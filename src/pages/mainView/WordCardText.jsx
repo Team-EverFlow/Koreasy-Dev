@@ -10,7 +10,6 @@ import '../../styles/WordCardText.scss';
  * @returns
  */
 function WordCardText({ word }) {
-    console.log(word);
     let wordCard =
         word !== undefined
             ? {

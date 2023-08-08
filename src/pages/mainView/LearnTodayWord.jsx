@@ -17,7 +17,7 @@ function LearnTodayWord({ language }) {
     }
 
     return (
-        <div className="backgraund">
+        <div className="background">
             <div className="text">
                 <div className="today-text">{word.today}</div>
                 <div className="head-text">{word.text}</div>
