@@ -19,6 +19,41 @@ function MyBadgesView() {
             date: new Date(),
             active: true,
         },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: true,
+        },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: true,
+        },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: true,
+        },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: true,
+        },
+        {
+            id: 2,
+            title: 'Kotlin 최고',
+            imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
+            date: new Date(),
+            active: true,
+        },
     ];
     return (
         <div>
