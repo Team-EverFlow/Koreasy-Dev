@@ -47,7 +47,7 @@ const Wordbook = () => {
                                     alt="front"
                                 />
                             </div>
-                            <img className="line" src={Line} alt="Line" />
+                            <img className="line-word" src={Line} alt="Line" />
                         </Link>
                     ))}
                 </div>

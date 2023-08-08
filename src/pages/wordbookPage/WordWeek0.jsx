@@ -24,7 +24,7 @@ const contentData = [
 
 const WordWeek0 = () => {
     return (
-        <div className="container">
+        <div className="wordweek0-container">
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
                 {contentData.map((content, index) => (

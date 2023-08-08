@@ -1,7 +1,7 @@
 @import './variables/colors.scss';
 @import './variables/textStyles.scss';
 
-.container {
+.wordweek0-container {
     background-color: $koreasy-color-white;
     width: 100vw;
     height: 844px;
@@ -80,7 +80,7 @@
             }
         }
         .line-week {
-            width: 100vw;
+            width: 90vw;
             margin: 0 auto;
         }
     }
