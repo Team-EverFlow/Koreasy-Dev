@@ -1,5 +1,5 @@
 import { GetDocFromCollection } from '../functions/util';
-import { DOES_NOT_EXIST_DOC } from '../type/const';
+import { BADGE_COLLECTION_ID, DOES_NOT_EXIST_DOC } from '../type/const';
 import '../type/typedef';
 
 /**
@@ -9,7 +9,7 @@ import '../type/typedef';
  */
 export async function GetBadgeInformation(id) {
     try {
-        const badgeRef = await GetDocFromCollection(id);
+        const badgeRef = await GetDocFromCollection(BADGE_COLLECTION_ID, id);
         if (!badgeRef.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
         return { success: true, data: badgeRef.data() };
