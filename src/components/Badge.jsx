@@ -1,6 +1,6 @@
 import React from 'react';
 import './Badge.scss';
-import CheckMark from '../assets/images/check.svg';
+import Check from '../assets/images/check.svg';
 import '../types/typedef';
 
 /**
@@ -12,7 +12,7 @@ function Badge({ badge }) {
         <div className={badge.active ? 'badge active' : 'badge'}>
             <div className={'badge-image'}>
                 <img src={badge.imageUrl} />
-                <img src={CheckMark} className={'bagde-check'} />
+                <img src={Check} className={'bagde-check'} />
             </div>
             <span className={'badge-title'}>{badge.title}</span>
             <span className={'badge-date'}>{badge.date}</span>
