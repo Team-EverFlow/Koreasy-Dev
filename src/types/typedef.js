@@ -1,6 +1,6 @@
 /**
  * @typedef {Object} BadgeObject
- * @property {string} id
+ * @property {number} id
  * @property {string} title
  * @property {string} imageUrl
  * @property {boolean} active
