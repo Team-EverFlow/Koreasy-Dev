@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import WordTestSheetButton from './WordTestSheetButton';
 import QuizData from '../dumpPage/DumpData';
-import './Wordtest.scss';
+import '../../styles/Wordtest.scss';
+import Headers from '../.././components/Header.jsx';
 
 const WordTestQuiz = () => {
     const [buttonStates, setButtonStates] = useState(
@@ -21,6 +22,7 @@ const WordTestQuiz = () => {
 
     return (
         <div className="main-cantainer">
+            <Headers />
             <div className="title-container">
                 <p className="title">{QuizData.Title}</p>
                 <p className="subtititle">{QuizData.Subtitle}</p>
@@ -49,9 +51,12 @@ const WordTestQuiz = () => {
                                                 handleClick(index, seonjiIndex)
                                             }
                                         />
-                                        <span>
-                                            {seonjiIndex + 1}. {seonji.trim()}
-                                        </span>
+                                        <div className="seonji-mid">
+                                            <span className="seonji-text">
+                                                {seonjiIndex + 1}.{' '}
+                                                {seonji.trim()}
+                                            </span>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
