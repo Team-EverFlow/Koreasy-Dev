@@ -32,7 +32,7 @@ const Header = ({
 
             {isNavigationBar && <NavigationBar viewName={navigationViewName} />}
             <Divider />
-            {viewName !== null && <PageTitle viewName={viewName} />}
+            {viewName !== undefined && <PageTitle viewName={viewName} />}
         </div>
     );
 };
