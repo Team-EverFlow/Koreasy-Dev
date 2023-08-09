@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import test1 from './test1';
 
-const Takeatest = () => (
-    <div className="Takeatest">
+const GoToTest = () => (
+    <div className="take-test">
         <Link to="/test1">
-            <button className="Testbutton">Take a test</button>
+            <button className="test-button">Go to test</button>
         </Link>
     </div>
 );
 
-export default Takeatest;
+export default GoToTest;

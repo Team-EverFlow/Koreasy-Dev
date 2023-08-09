@@ -1,0 +1,70 @@
+@import './variables/colors.scss';
+@import './variables/textStyles.scss';
+
+.babo {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid;
+    padding-bottom: 16px;
+    margin-bottom: 12px;
+    width: calc(100vw - 40px);
+    margin-left: auto;
+    margin-right: auto;
+    color: $koreasy-color-gray-03;
+}
+
+.test-button {
+    @include body01-bold;
+    background-color: $koreasy-color-primary;
+    color: $koreasy-color-white;
+    border: none;
+    margin-right: 12px;
+    margin-left: 20px;
+    width: calc((100vw - 52px) / 2);
+    height: 40px;
+    border-radius: 12px;
+    font-size: medium;
+}
+
+.learn-button {
+    @include body01-bold;
+    border: none;
+    background-color: $koreasy-color-gray-06;
+    color: $koreasy-color-primary;
+    width: calc((100vw - 52px) / 2);
+    margin-right: 20px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: medium;
+}
+
+.word-test-list-view-name {
+    @include title01-heavy;
+    color: $koreasy-color-primary;
+    margin-left: 20px;
+    // margin-bottom: 12px;
+}
+
+.word-test-main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.word-test-list-title {
+    padding-left: 0px;
+    align-items: center;
+}
+
+.big-title {
+    @include title02-bold;
+    color: $koreasy-color-black;
+    margin-left: 20px;
+    padding-bottom: 0px;
+    // margin-top: 12px;
+}
+
+.small-title {
+    @include body01-regular;
+    color: $koreasy-color-gray-01;
+    margin-left: 20px;
+}

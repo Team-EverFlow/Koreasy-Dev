@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Learnwords = () => (
-    <div className="Learnwords">
+const LearnWords = () => (
+    <div className="learn-words">
         <Link to="/Learnwords">
-            <button className="Learnbutton">Learn Words</button>
+            <button className="learn-button">Learn Words</button>
         </Link>
     </div>
 );
 
-export default Learnwords;
+export default LearnWords;

@@ -1,36 +1,30 @@
 import React from 'react';
-import WordtestTitle from './WordtestTitle';
-import './WordtestList.scss';
+import WordtestTitle from './WordTestTitle';
+import '../../styles/WordTestList.scss';
+import ListData from './DumpData'; // 해당 경로와 파일명에 따라 수정해야 함
+import Header from '../../components/Header';
 
-function WordtestList() {
-    const myList = [
-        'Wordtest 1',
-        'Wordtest 2',
-        'Wordtest 3',
-        'Wordtest 4',
-        'Wordtest 5',
-    ];
-
-    const List = [
-        'week 1 , Aug. 2023',
-        'week 2 , Aug. 2023',
-        'week 3 , Aug. 2023',
-        'week 4 , Aug. 2023',
-        'week 5 , Aug. 2023',
-    ];
-
-    const tests = myList.map((item, index) => ({
-        test: item,
-        date: List[index],
+function WordTestList() {
+    const tests = ListData.map(item => ({
+        test: item.BigTitle,
+        date: item.SmallTitle,
     }));
 
     return (
-        <div className="Rtitle">
-            {tests.map((item, index) => (
-                <WordtestTitle key={index} test={item.test} date={item.date} />
-            ))}
+        <div>
+            <Header />
+            <div className="r-title">
+                <p className="word-test-list-view-name">ViewName</p>
+                {tests.map((item, index) => (
+                    <WordtestTitle
+                        key={index}
+                        test={item.test}
+                        date={item.date}
+                    />
+                ))}
+            </div>
         </div>
     );
 }
 
-export default WordtestList;
+export default WordTestList;

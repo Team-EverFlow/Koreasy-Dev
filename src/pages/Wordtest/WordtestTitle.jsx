@@ -1,17 +1,17 @@
 import React from 'react';
-import Takeatest from './Takeatest';
-import Learnwords from './Learnwords';
+import GoToTest from './GoToTest';
+import LearnWords from './LearnWords';
 
 function WordtestTitle({ test, date }) {
     return (
-        <div className="WordtestTitle">
-            <div className="Title">
-                <p className="test">{test}</p>
-                <p className="data">{date}</p>
+        <div className="word-test-main-container">
+            <div className="word-test-list-title">
+                <p className="big-title">{test}</p>
+                <p className="small-title">{date}</p>
             </div>
-            <div className="Babo">
-                <Takeatest />
-                <Learnwords />
+            <div className="babo">
+                <GoToTest />
+                <LearnWords />
             </div>
         </div>
     );
