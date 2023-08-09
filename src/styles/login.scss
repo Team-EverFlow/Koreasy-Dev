@@ -1,0 +1,65 @@
+@import "./variables/colors";
+@import "./variables/textStyles";
+
+div.login-service-group {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 200px 0 0 0;
+
+    h1.login-service-name {
+        @include title01;
+
+        color: $koreasy-color-primary;
+        font-size: 48px;
+        text-align: center;
+        margin: 0;
+    }
+
+    span.login-service-description {
+        @include body01-regular;
+
+        color: $koreasy-color-gray-02;
+        display: block;
+        text-align: center;
+    }
+}
+
+div.login-button-group {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0 0 52px 0;
+    position: fixed;
+    width: 100%;
+
+    button.login-button {
+        align-items: center;
+        background: rgba(0, 0, 0, 0);
+        border-radius: 12px;
+        border: 1px solid $koreasy-color-gray-02;
+        display: flex;
+        gap: 12px;
+        padding: 12px 24px;
+
+        img {
+            width: 28.16px;
+            height: 28.8px;
+            padding: 1.6px 1.92px;
+            flex-shrink: 0;
+        }
+
+        span.login-button-title {
+            @include body01-bold;
+
+            color: #1C1C1E;
+        }
+    }
+
+    span.login-button-description {
+        @include body01-medium;
+        color: $koreasy-color-gray-01;
+    }
+}
