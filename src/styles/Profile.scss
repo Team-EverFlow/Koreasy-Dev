@@ -1,0 +1,65 @@
+@import "./variables/colors";
+@import "./variables/textStyles";
+
+div.profile {
+    position: relative;
+
+    div.profile-background {
+        background: linear-gradient(146deg, rgba(255, 255, 255, 0.20) 19.20%, rgba(0, 0, 0, 0.07) 100%), $koreasy-color-primary;
+        display: block;
+        height: 120px;
+    }
+
+    div.profile-main {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        position: absolute;
+        gap: 16px;
+        top: 60px;
+        width: 100%;
+
+        img.profile-image {
+            height: 120px;
+            width: 120px;
+        }
+
+        span.profile-nickname {
+            @include title01-heavy;
+            color: #000;
+            text-align: center;
+        }
+
+        div.profiles-button-group {
+            display: flex;
+            gap: 52px;
+            padding: 0 0 32px 0;
+        }
+    }
+
+    div.my-badge-title {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 8px 20px;
+        width: 100%;
+
+        h2 {
+            @include subtitle-bold;
+            color: $koreasy-color-black;
+            margin: 0;
+        }
+
+        div.my-badge-right-arrow-icon {
+            width: 24px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+    }
+
+    div.badge-group {
+        padding: 0 20px;
+        width: 100%;
+    }
+}
