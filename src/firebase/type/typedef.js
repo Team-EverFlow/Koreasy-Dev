@@ -11,7 +11,7 @@
 
 /**
  * @typedef {Object} Bookmark
- * @property {string} UID
+ * @property {string} id
  * @property {Date} date
  */
 
