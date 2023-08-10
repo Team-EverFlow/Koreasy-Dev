@@ -12,7 +12,7 @@ import { GetDocFromCollection } from '../functions/util';
  */
 export async function SetUserInformation(UID, initialUserInformation) {
     try {
-        await setDoc(doc(db, DOES_NOT_EXIST_DOC, UID), initialUserInformation);
+        await setDoc(doc(db, USER_COLLECTION_ID, UID), initialUserInformation);
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
