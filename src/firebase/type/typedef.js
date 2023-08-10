@@ -11,7 +11,7 @@
 
 /**
  * @typedef {Object} Bookmark
- * @property {string} UID
+ * @property {string} id
  * @property {Date} date
  */
 
@@ -21,5 +21,27 @@
  * @property {string} wordEn
  * @property {string} pronunciation
  * @property {string} meaning
- * @property {Array<string>} exampleSentence
+ * @property {ExampleSentence[]} exampleSentence
+ */
+
+/**
+ * @typedef {Object} ExampleSentence
+ * @property {string} sentenceKr
+ * @property {string} sentenceEn
+ */
+
+/**
+ * @typedef {Object} WeekWord
+ * @property {string} dateText
+ * @property {string} dateRange
+ * @property {string[]} wordIdList
+ */
+
+/**
+ * @typedef {Object} Badge
+ * @property {string} name
+ * @property {string} imageUrl
+ * @property {string} description
+ * @property {string} goalValue
+ * @property {string} eventName
  */
