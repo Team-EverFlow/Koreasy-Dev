@@ -36,3 +36,12 @@
  * @property {string} dateRange
  * @property {string[]} wordIdList
  */
+
+/**
+ * @typedef {Object} Badge
+ * @property {string} name
+ * @property {string} imageUrl
+ * @property {string} description
+ * @property {string} goalValue
+ * @property {string} eventName
+ */
