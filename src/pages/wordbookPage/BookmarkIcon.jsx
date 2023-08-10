@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
+import UserInformation from './UserInformation.js';
 
-const BookmarkIcon = ({ onClick }) => {
-    const [isClicked, setIsClicked] = useState(false);
+const BookmarkIcon = ({ wordId }) => {
+    const [isClicked, setIsClicked] = useState(
+        UserInformation.bookmark.some(item => item.wordId === wordId),
+    );
 
     const handleClick = () => {
-        setIsClicked(!isClicked);
-        if (onClick) {
-            onClick(!isClicked);
-        }
+        const updatedIsClicked = !isClicked;
+        setIsClicked(updatedIsClicked);
+
+        const updatedBookmark = updatedIsClicked
+            ? [
+                  ...UserInformation.bookmark,
+                  { wordId, bookmarkDate: getCurrentDate() },
+              ]
+            : UserInformation.bookmark.filter(item => item.wordId !== wordId);
+
+        console.log('Updated Bookmark:', updatedBookmark);
+
+        UserInformation.bookmark = updatedBookmark;
+    };
+
+    const getCurrentDate = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        return `${year}${month}${day}`;
     };
 
     return (

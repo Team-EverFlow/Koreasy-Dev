@@ -3,34 +3,18 @@ import Header from '../../components/Header';
 import '../../styles/WordWeek0.scss';
 import BookmarkIcon from './BookmarkIcon';
 import Line from '../../assets/Line.svg';
-
-const contentData = [
-    {
-        name: '사과',
-        pronunciation: '[sagua]',
-        type: 'noun - Apple',
-    },
-    {
-        name: '사과',
-        pronunciation: '[sagua]',
-        type: 'noun - Apple',
-    },
-    {
-        name: '사과',
-        pronunciation: '[sagua]',
-        type: 'noun - Apple',
-    },
-];
+import WordData from './WordData.js';
+import UserInformation from './UserInformation.js';
 
 const WordWeek0 = () => {
     return (
         <div className="wordweek0-container">
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
-                {contentData.map((content, index) => (
-                    <React.Fragment key={index}>
+                {WordData.map((content, index) => (
+                    <React.Fragment key={content.wordId}>
                         <div
-                            key={index}
+                            key={content.wordId}
                             className="item"
                             style={{ top: `${index * 135}px` }}
                         >
@@ -38,14 +22,14 @@ const WordWeek0 = () => {
                                 <div className="item-info">
                                     <div className="item-standard">
                                         <div className="item-name">
-                                            {content.name}
+                                            {content.wordKr}
                                         </div>
                                         <div className="pronunciation">
                                             {content.pronunciation}
                                         </div>
                                     </div>
                                     <div className="item-type">
-                                        {content.type}
+                                        {content.meaning}
                                     </div>
                                 </div>
                                 <div className="example">
@@ -55,14 +39,7 @@ const WordWeek0 = () => {
                                 </div>
                             </div>
                             <div className="bookmark-icon">
-                                <BookmarkIcon
-                                    onClick={isClicked => {
-                                        console.log(
-                                            'Bookmark Icon Clicked:',
-                                            isClicked,
-                                        );
-                                    }}
-                                />
+                                <BookmarkIcon wordId={content.wordId} />
                             </div>
                         </div>
                         <img className="line-week" src={Line} alt="Line" />
