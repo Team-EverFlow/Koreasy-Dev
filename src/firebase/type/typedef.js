@@ -21,5 +21,18 @@
  * @property {string} wordEn
  * @property {string} pronunciation
  * @property {string} meaning
- * @property {Array<string>} exampleSentence
+ * @property {ExampleSentence[]} exampleSentence
+ */
+
+/**
+ * @typedef {Object} ExampleSentence
+ * @property {string} sentenceKr
+ * @property {string} sentenceEn
+ */
+
+/**
+ * @typedef {Object} WeekWord
+ * @property {string} dateText
+ * @property {string} dateRange
+ * @property {string[]} wordIdList
  */
