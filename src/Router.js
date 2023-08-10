@@ -5,12 +5,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import WordTestList from './pages/wordTest/WordTestList';
 import TestPageGoToTest from './pages/wordTest/TestPageGoToTest';
 import TestPageLearnWords from './pages/wordTest/TestPageLearnWords';
+import Login from './pages/Login';
 
 const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                {/* <Route path="/" element={<Login />} /> */}
+                <Route path="/login" element={<Login />} />
                 <Route path="/" element={<WordTestList />} />
                 <Route
                     path="/TestPageGoToTest"
