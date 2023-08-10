@@ -1,4 +1,4 @@
-import { NOT_EXIST_WORD, WORD_COLLECTION_ID } from '../type/const';
+import { DOES_NOT_EXIST_DOC, WORD_COLLECTION_ID } from '../type/const';
 import { GetDocFromCollection } from '../functions/util';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../root';
@@ -12,7 +12,8 @@ import '../type/typedef';
 export async function GetWordUsingId(id) {
     try {
         const word = await GetDocFromCollection(WORD_COLLECTION_ID, id);
-        if (!word.exists()) return { success: false, error: NOT_EXIST_WORD };
+        if (!word.exists())
+            return { success: false, error: DOES_NOT_EXIST_DOC };
         return { success: true, data: word.data() };
     } catch (e) {
         return { success: false, error: e };
