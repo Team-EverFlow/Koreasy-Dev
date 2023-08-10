@@ -6,57 +6,23 @@ import '../styles/MyBadge.scss';
 import ProfileButton from '../components/ProfileButton';
 import BadgeGroup from '../components/BadgeGroup';
 import Chevrion from '../components/Chevrion';
+import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 
 function ProfileView() {
-    let dumpProfile = {
-        id: 'halogen',
-        name: 'Halogen',
+    let profile = {
+        name: 'user',
         profileIcon: ProfileIconDump,
-        badges: [
-            {
-                id: 1,
-                title: 'Python 최고',
-                imageUrl: 'https://yhs.kr/static/image/python.svg',
-                date: new Date(),
-                active: false,
-            },
-            {
-                id: 2,
-                title: 'Kotlin 최고',
-                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-                date: new Date(),
-                active: true,
-            },
-            {
-                id: 1,
-                title: 'Python 최고',
-                imageUrl: 'https://yhs.kr/static/image/python.svg',
-                date: new Date(),
-                active: false,
-            },
-            {
-                id: 2,
-                title: 'Kotlin 최고',
-                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-                date: new Date(),
-                active: true,
-            },
-            {
-                id: 1,
-                title: 'Python 최고',
-                imageUrl: 'https://yhs.kr/static/image/python.svg',
-                date: new Date(),
-                active: false,
-            },
-            {
-                id: 2,
-                title: 'Kotlin 최고',
-                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-                date: new Date(),
-                active: true,
-            },
-        ],
+        badges: [],
     };
+    GetCurrentUserInformation().then(result => {
+        if (result.success) {
+            profile = {
+                name: result.user.username,
+                profileIcon: result.user.profileAvatarUrl
+                // badges: result.user.repBadge ?
+            }
+        }
+    });
     return (
         <div>
             <Header />
@@ -64,12 +30,12 @@ function ProfileView() {
                 <div className={'profile-background'}></div>
                 <div className={'profile-main'}>
                     <img
-                        src={dumpProfile.profileIcon}
+                        src={profile.profileIcon}
                         className={'profile-image'}
                         alt="profile image"
                     />
                     <span className={'profile-nickname'}>
-                        {dumpProfile.name}
+                        {profile.name}
                     </span>
                     <div className={'profiles-button-group'}>
                         <ProfileButton
@@ -90,7 +56,7 @@ function ProfileView() {
                             <Chevrion direction='Right' color='MainColor' />
                         </div>
                     </div>
-                    <BadgeGroup badges={dumpProfile.badges} />
+                    <BadgeGroup badges={profile.badges} />
                 </div>
             </div>
         </div>
