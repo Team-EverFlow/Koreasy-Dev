@@ -1,10 +1,10 @@
 import React from 'react';
-import WordtestTitle from './WordTestTitle';
+import WordTestTitle from './WordTestTitle';
 import '../../styles/WordTestList.scss';
-import ListData from './DumpData'; // 해당 경로와 파일명에 따라 수정해야 함
+import ListData from './DumpData';
 import Header from '../../components/Header';
 
-function WordTestList() {
+const WordTestList = () => {
     const tests = ListData.map(item => ({
         test: item.BigTitle,
         date: item.SmallTitle,
@@ -14,9 +14,9 @@ function WordTestList() {
         <div>
             <Header />
             <div className="r-title">
-                <p className="word-test-list-view-name">ViewName</p>
+                <div className="word-test-list-view-name">ViewName</div>
                 {tests.map((item, index) => (
-                    <WordtestTitle
+                    <WordTestTitle
                         key={index}
                         test={item.test}
                         date={item.date}
@@ -25,6 +25,6 @@ function WordTestList() {
             </div>
         </div>
     );
-}
+};
 
 export default WordTestList;

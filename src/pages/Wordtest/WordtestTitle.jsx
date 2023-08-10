@@ -1,20 +1,21 @@
 import React from 'react';
-import GoToTest from './GoToTest';
 import LearnWords from './LearnWords';
+import GoToTest from './GoToTest';
+import '../../styles/WordTestTitle.scss';
 
-function WordtestTitle({ test, date }) {
+const WordTestTitle = ({ test, date }) => {
     return (
         <div className="word-test-main-container">
             <div className="word-test-list-title">
-                <p className="big-title">{test}</p>
-                <p className="small-title">{date}</p>
+                <div className="big-title">{test}</div>
+                <div className="small-title">{date}</div>
             </div>
-            <div className="babo">
+            <div className="word-test-button-set">
                 <GoToTest />
                 <LearnWords />
             </div>
         </div>
     );
-}
+};
 
-export default WordtestTitle;
+export default WordTestTitle;
