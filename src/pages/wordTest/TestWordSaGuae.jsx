@@ -1,5 +1,5 @@
 import React from 'react';
-import WordTestTitle from './WordTestTitle';
+import WordTestTitle from './PODO';
 import '../../styles/WordTestList.scss';
 import ListData from './DumpData';
 import Header from '../../components/Header';

@@ -1,5 +1,5 @@
 import React from 'react';
-import LearnWords from './LearnWords';
+import LearnWords from './IOEKQl';
 import GoToTest from './GoToTest';
 import '../../styles/WordTestTitle.scss';
 
