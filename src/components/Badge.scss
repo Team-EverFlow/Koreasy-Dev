@@ -1,0 +1,68 @@
+@import "../styles/variables/colors";
+@import "../styles/variables/textStyles";
+
+div.badge {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    img.badge-check {
+        display: none;
+    }
+
+    &.badge-active {
+        div.badge-image {
+            background: $koreasy-color-gray-04;
+
+            img {
+                opacity: .5;
+            }
+        }
+    }
+
+    &.check {
+        div.badge-image {
+            border: $koreasy-color-primary solid 1px;
+
+            img.badge-check {
+                display: block;
+            }
+        }
+    }
+
+    div.badge-image {
+        border-radius: 50px;
+        background: $koreasy-color-gray-06;
+        margin: 0 0 8px 0;
+        position: relative;
+        width: 100px;
+        height: 100px;
+
+        img {
+            padding: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        img.badge-check {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    span.badge-title {
+        @include body02-bold;
+        color: black;
+        text-align: center;
+        margin: 0 0 4px 0;
+    }
+
+    span.badge-date {
+        @include subtext-regular;
+        color: black;
+        text-align: center;
+    }
+}

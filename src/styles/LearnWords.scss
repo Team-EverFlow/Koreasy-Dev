@@ -1,0 +1,13 @@
+@import '../styles/variables/colors.scss';
+@import '../styles/variables/textStyles.scss';
+
+.learn-words-button {
+    @include body01-bold;
+    border: none;
+    background-color: $koreasy-color-gray-06;
+    color: $koreasy-color-primary;
+    width: calc((100vw - 52px) / 2);
+    margin-right: 20px;
+    height: 40px;
+    border-radius: 12px;
+}
