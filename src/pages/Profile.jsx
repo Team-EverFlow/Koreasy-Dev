@@ -18,9 +18,9 @@ function ProfileView() {
         if (result.success) {
             profile = {
                 name: result.user.username,
-                profileIcon: result.user.profileAvatarUrl
+                profileIcon: result.user.profileAvatarUrl,
                 // badges: result.user.repBadge ?
-            }
+            };
         }
     });
     return (
@@ -34,9 +34,7 @@ function ProfileView() {
                         className={'profile-image'}
                         alt="profile image"
                     />
-                    <span className={'profile-nickname'}>
-                        {profile.name}
-                    </span>
+                    <span className={'profile-nickname'}>{profile.name}</span>
                     <div className={'profiles-button-group'}>
                         <ProfileButton
                             icon={'bookmarks_icon'}
@@ -53,7 +51,7 @@ function ProfileView() {
                     <div className={'my-badge-title'}>
                         <h2>My Badge</h2>
                         <div className={'my-badge-right-arrow-icon'}>
-                            <Chevrion direction='Right' color='MainColor' />
+                            <Chevrion direction="Right" color="MainColor" />
                         </div>
                     </div>
                     <BadgeGroup badges={profile.badges} />
