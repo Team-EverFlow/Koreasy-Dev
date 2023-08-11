@@ -1,9 +1,9 @@
-@import './variables/colors.scss';
-@import './variables/textStyles.scss';
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
 
 .todaywordcard-background {
     display: flex;
-    width: 100vw;
+    width: 100%;
     padding: 16px;
     flex-direction: column;
     align-items: flex-start;
@@ -12,7 +12,7 @@
     border-radius: 16px;
     background-color: $koreasy-color-gray-06;
 
-    .useally {
+    .wordInfo-frame {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -70,5 +70,36 @@
 
         color: $koreasy-color-primary;
         @include body01-bold;
+    }
+
+    .option-frame {
+        display: flex;
+        padding: 0 24px;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+
+        .option-buttion {
+            display: flex;
+            height: 40px;
+            padding: 8px 16px;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            white-space: pre;
+
+            color: $koreasy-color-gray-00;
+            @include body01-medium;
+
+            .icon-box {
+                display: flex;
+                width: 24px;
+                height: 32px;
+                padding: 10px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+        }
     }
 }
