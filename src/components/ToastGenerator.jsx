@@ -11,7 +11,7 @@ export function ToastGenerator() {
     };
 
     return [
-        ({ message, icon = undefined }) => {
+        ({ message, icon = false }) => {
             return (
                 <Toast reference={reference} icon={icon} message={message} />
             );
