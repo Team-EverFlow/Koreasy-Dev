@@ -1,6 +1,10 @@
 import { useRef } from 'react';
 import { Toast } from './Toast';
 
+/**
+ * Toast 를 사용하기 위한 요소를 불러옵니다.
+ * @returns {((function({message: string, icon?: boolean}): JSX.Element)| function(): void )[]}
+ */
 export function ToastGenerator() {
     const reference = useRef(null);
     const onToastCallEvent = () => {
