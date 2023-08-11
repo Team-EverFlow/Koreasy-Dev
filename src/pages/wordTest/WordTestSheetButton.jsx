@@ -1,6 +1,7 @@
 import React from 'react';
 import checkBoxActive from '../../assets/checkBox.svg';
 import checkBoxInactive from '../../assets/checkBox-1.svg';
+import '../../styles/WordTestSheetButton.scss';
 
 const WordTestSheetButton = ({ isChecked, onClick }) => {
     const buttonStyle = {
@@ -13,7 +14,11 @@ const WordTestSheetButton = ({ isChecked, onClick }) => {
     };
 
     return (
-        <button className="button" style={buttonStyle} onClick={onClick}>
+        <button
+            className="word-test-check-button"
+            style={buttonStyle}
+            onClick={onClick}
+        >
             {isChecked ? (
                 <img src={checkBoxActive} alt="Button 2" />
             ) : (

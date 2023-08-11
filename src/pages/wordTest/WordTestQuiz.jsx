@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import WordTestSheetButton from './WordTestSheetButton';
-import QuizData from '../dumpPage/DumpData';
-import '../../styles/Wordtest.scss';
+import QuizData from '../dumpPage/WordTestSheetDump';
+import '../../styles/WordTestQuiz.scss';
 import Headers from '../../components/Header.jsx';
 
 const WordTestQuiz = () => {
