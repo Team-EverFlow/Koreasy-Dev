@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import '../styles/Profile.scss';
@@ -10,20 +10,23 @@ import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 import { Link } from 'react-router-dom';
 
 function ProfileView() {
-    let profile = {
+    let [profile, setProfile] = useState({
         name: 'user',
         profileIcon: ProfileIconDump,
         badges: [],
-    };
-    GetCurrentUserInformation().then(result => {
-        if (result.success) {
-            profile = {
-                name: result.user.username,
-                profileIcon: result.user.profileAvatarUrl,
-                // badges: result.user.repBadge ?
-            };
-        }
     });
+    useEffect(() => {
+        GetCurrentUserInformation().then(result => {
+            if (result.success) {
+                setProfile({
+                    ...profile,
+                    name: result.user.username,
+                    profileIcon:
+                        result.user.profileAvatarUrl ?? ProfileIconDump, // badges: result.user.repBadge ?
+                });
+            }
+        });
+    }, []);
     return (
         <div>
             <Header />
