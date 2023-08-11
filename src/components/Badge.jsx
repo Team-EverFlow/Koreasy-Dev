@@ -1,6 +1,6 @@
 import React from 'react';
 import './Badge.scss';
-import Check from '../assets/images/check.svg';
+import Check from '../assets/images/success.svg';
 import '../types/typedef';
 import moment from 'moment';
 
