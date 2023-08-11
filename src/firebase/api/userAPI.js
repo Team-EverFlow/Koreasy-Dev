@@ -12,7 +12,12 @@ import { GetDocFromCollection } from '../functions/util';
  */
 export async function SetUserInformation(UID, initialUserInformation) {
     try {
-        await setDoc(doc(db, USER_COLLECTION_ID, UID), initialUserInformation);
+        await setDoc(doc(db, USER_COLLECTION_ID, UID), {
+            recentWord: [],
+            repBadge: [],
+            bookmark: [],
+            ...initialUserInformation,
+        });
         return { success: true };
     } catch (e) {
         return { success: false, error: e };

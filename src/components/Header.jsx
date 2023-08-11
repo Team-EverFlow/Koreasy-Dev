@@ -4,6 +4,7 @@ import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import NavigationBar from './NavigationBar';
 import Divider from './Divider';
 import PageTitle from './PageTitle';
+import { Link } from 'react-router-dom';
 
 // Header
 /**
@@ -22,11 +23,13 @@ const Header = ({
             <div className="header">
                 <div className="service-name">
                     Koreasy
-                    <img
-                        src={ProfileIcon}
-                        alt="Profile"
-                        className="profile-icon"
-                    />
+                    <Link to="/profile">
+                        <img
+                            src={ProfileIcon}
+                            alt="Profile"
+                            className="profile-icon"
+                        />
+                    </Link>
                 </div>
             </div>
 
