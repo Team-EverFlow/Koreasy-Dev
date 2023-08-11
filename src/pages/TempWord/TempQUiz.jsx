@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import WordTestSheetButton from './WordTestSheetButton';
 import QuizData from '../dumpPage/DumpData';
 import '../../styles/Wordtest.scss';
-import Headers from '../.././components/Header.jsx';
+import Headers from '../../components/Header.jsx';
 
 const WordTestQuiz = () => {
     const [buttonStates, setButtonStates] = useState(
