@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import BadgeGroup from '../components/BadgeGroup';
 import '../styles/MyBadge.scss';
+import { Link } from 'react-router-dom';
 
 function MyBadgesViewSetting() {
     return (
@@ -9,8 +10,12 @@ function MyBadgesViewSetting() {
             <Header isNavigationBar={true} viewName="My Badges" />
             <BadgeGroup badges={[]} />
             <div className="my-badge-button-group">
-                <button className="my-badge-button cancel">Cancel</button>
-                <button className="my-badge-button">Confirm</button>
+                <Link to="/badge" className="my-badge-button cancel">
+                    Cancel
+                </Link>
+                <Link to="/badge" className="my-badge-button">
+                    Confirm
+                </Link>
             </div>
         </div>
     );

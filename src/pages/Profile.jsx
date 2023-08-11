@@ -7,6 +7,7 @@ import ProfileButton from '../components/ProfileButton';
 import BadgeGroup from '../components/BadgeGroup';
 import Chevrion from '../components/Chevrion';
 import { GetCurrentUserInformation } from '../firebase/api/userAPI';
+import { Link } from 'react-router-dom';
 
 function ProfileView() {
     let profile = {
@@ -51,7 +52,9 @@ function ProfileView() {
                     <div className={'my-badge-title'}>
                         <h2>My Badge</h2>
                         <div className={'my-badge-right-arrow-icon'}>
-                            <Chevrion direction="Right" color="MainColor" />
+                            <Link to="/badge">
+                                <Chevrion direction="Right" color="MainColor" />
+                            </Link>
                         </div>
                     </div>
                     <BadgeGroup badges={profile.badges} />
