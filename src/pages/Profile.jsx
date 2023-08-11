@@ -61,33 +61,31 @@ function ProfileView() {
     return (
         <div>
             <Header />
-            <div className={'profile'}>
-                <div className={'profile-background'}></div>
-                <div className={'profile-main'}>
+            <div className="profile">
+                <div className="profile-background" />
+                <div className="profile-main">
                     <img
                         src={dumpProfile.profileIcon}
-                        className={'profile-image'}
-                        alt="profile image"
+                        className="profile-image"
+                        alt="profile"
                     />
-                    <span className={'profile-nickname'}>
-                        {dumpProfile.name}
-                    </span>
-                    <div className={'profiles-button-group'}>
+                    <span className="profile-nickname">{dumpProfile.name}</span>
+                    <div className="profiles-button-group">
                         <ProfileButton
-                            icon={'bookmarks_icon'}
-                            title={'Bookmarks'}
+                            icon="bookmarks_icon"
+                            title="Bookmarks"
                             onClick={undefined}
                         />
                         <ProfileButton
-                            icon={'activities_icon'}
-                            title={'Activities'}
+                            icon="activities_icon"
+                            title="Activities"
                             onClick={undefined}
                         />
                     </div>
 
-                    <div className={'my-badge-title'}>
+                    <div className="my-badge-title">
                         <h2>My Badge</h2>
-                        <div className={'my-badge-right-arrow-icon'}>
+                        <div className="my-badge-right-arrow-icon">
                             <Link to="/badge">
                                 <Chevrion direction="Right" color="MainColor" />
                             </Link>
