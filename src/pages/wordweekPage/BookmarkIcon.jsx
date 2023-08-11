@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import UserInformation from './UserInformation.js';
+import BookmarkUpdate from './BookmarkUpdate.jsx';
 
 const BookmarkIcon = ({ wordId }) => {
     const [isClicked, setIsClicked] = useState(
@@ -10,24 +11,15 @@ const BookmarkIcon = ({ wordId }) => {
         const updatedIsClicked = !isClicked;
         setIsClicked(updatedIsClicked);
 
-        const updatedBookmark = updatedIsClicked
-            ? [
-                  ...UserInformation.bookmark,
-                  { wordId, bookmarkDate: getCurrentDate() },
-              ]
-            : UserInformation.bookmark.filter(item => item.wordId !== wordId);
+        const updatedBookmark = BookmarkUpdate(
+            updatedIsClicked,
+            wordId,
+            UserInformation.bookmark,
+        );
 
         console.log('Updated Bookmark:', updatedBookmark);
 
         UserInformation.bookmark = updatedBookmark;
-    };
-
-    const getCurrentDate = () => {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        return `${year}${month}${day}`;
     };
 
     return (

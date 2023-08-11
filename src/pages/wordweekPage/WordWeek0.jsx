@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import Header from '../../components/Header';
-import '../../styles/WordWeek0.scss';
-import BookmarkIcon from './BookmarkIcon';
+import Header from '../../components/Header.jsx';
+import '../../styles/wordweekStyles/WordWeek0.scss';
+import BookmarkIcon from './BookmarkIcon.jsx';
 import Line from '../../assets/Line.svg';
 import WordData from './WordData.js';
-import ExampleSentence from './ExampleSentence';
+import ExampleSentence from './ExampleSentence.jsx';
+import ExampleToggle from './ExampleToggle.jsx';
 
 const WordWeek0 = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
 
     const handleExampleToggle = wordId => {
-        if (visibleExamples.includes(wordId)) {
-            setVisibleExamples(visibleExamples.filter(id => id !== wordId));
-        } else {
-            setVisibleExamples([...visibleExamples, wordId]);
-        }
+        const updatedVisibleExamples = ExampleToggle(visibleExamples, wordId);
+        setVisibleExamples(updatedVisibleExamples);
     };
 
     const isVisible = wordId => {
