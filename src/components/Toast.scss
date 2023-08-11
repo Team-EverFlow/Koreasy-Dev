@@ -22,6 +22,7 @@
         align-items: center;
         background-color: $koreasy-color-gray-06;
         border-radius: 50px;
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
         display: flex;
         gap: 4px;
         justify-content: center;
@@ -47,7 +48,8 @@
             span.toast-message-block {
                 display: block;
             }
-        };
+        }
+    ;
     }
 }
 
