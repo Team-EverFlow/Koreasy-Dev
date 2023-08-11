@@ -10,10 +10,10 @@ import Sound from '../assets/images/Sound.svg';
 
 /**
  * test
- * @param {{isSound: boolean, exampleSentence: {sentenceKr: string, sentenceKr: string} }} exampleText
+ * @param {{isSound: boolean, exampleSentence: {sentenceKr: string, sentenceEn: string} }} exampleText
  * @returns {React.ReactElement}
  */
-function ExampleSentence({ isSound, exampleText }) {
+function ExampleSentence({ isSound, ExampleSentence }) {
     return (
         <div className="exsentence-background">
             {isSound && (
@@ -23,17 +23,10 @@ function ExampleSentence({ isSound, exampleText }) {
                     </div>
                 </div>
             )}
-            <div>{exampleText.sentenceKr}</div>
-            <div>{exampleText.sentenceEn}</div>
+            <div>{ExampleSentence.sentenceKr}</div>
+            <div>{ExampleSentence.sentenceEn}</div>
         </div>
     );
 }
 
 export default ExampleSentence;
-/**
- * 설명
- * @constructor
- * @param {string} title - The title of the book.
- * @param {string} author - The author of the book.
- */
-function Book(title, author) {}
