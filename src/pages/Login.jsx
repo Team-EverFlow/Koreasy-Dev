@@ -3,31 +3,12 @@ import '../styles/Login.scss';
 import { Button } from 'react-bootstrap';
 import googleLogo from '../assets/images/google.png';
 import { GoogleAuth } from '../firebase/api/authAPI';
-import { SetUserInformation } from '../firebase/api/userAPI';
+import { RegisterUser } from '../firebase/api/userAPI';
 import { ToastGenerator } from '../components/ToastGenerator';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const navigate = useNavigate();
-
-    /**
-     * 회원가입을 하는 함수입니다.
-     * @param user 회원가입된 사용자 정보를 반환합니다.
-     * @returns {Promise<boolean>}
-     */
-    const registerUser = async user => {
-        try {
-            const userProfile = {
-                username: user.displayName,
-                profile_background_color: 'blue',
-                profile_avatar_url: user.photoURL,
-            };
-            const { success } = await SetUserInformation(user.uid, userProfile);
-            return success;
-        } catch (e) {
-            return false;
-        }
-    };
 
     /**
      * 로그인 처리를 담당하는 함수입니다.
@@ -40,8 +21,8 @@ function LoginPage() {
                 case 'signIn':
                     return true;
                 case 'register':
-                    onRegisterFailedToastCall();
-                    return await registerUser(user);
+                    const { success } = await RegisterUser(user);
+                    return success;
                 case 'error':
                     onLoginFailedToastCall();
                     return false;
@@ -56,6 +37,7 @@ function LoginPage() {
 
     const onLoginButtonClick = () => {
         onSignEvent().then(result => {
+            console.log(result);
             if (result) {
                 navigate('/');
             }
