@@ -1,0 +1,74 @@
+@import './variables/colors.scss';
+@import './variables/textStyles.scss';
+
+.todaywordcard-background {
+    display: flex;
+    width: 100vw;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    border-radius: 16px;
+    background-color: $koreasy-color-gray-06;
+
+    .useally {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+
+        color: $koreasy-color-gray-00;
+        @include body01-medium;
+
+        .mean {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+
+            .text-box {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .krWord {
+                    color: $koreasy-color-primary;
+                    @include title01-heavy;
+                }
+
+                .sound-box {
+                    display: flex;
+                    width: 24px;
+                    height: 32px;
+                    padding: 10px;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                }
+            }
+        }
+
+        .bookmark-box {
+            display: flex;
+
+            padding: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+    }
+
+    .example-frame {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        align-self: stretch;
+
+        color: $koreasy-color-primary;
+        @include body01-bold;
+    }
+}
