@@ -38,6 +38,18 @@ const WordTestQuiz = () => {
         setButtonStates(newButtonStates);
     };
 
+    const onGradingEvent = (quizzes, userChosen) => {
+        let count = 0;
+        quizzes.forEach((quiz, index) => {
+            if (quiz.answer === quiz.choose[userChosen[index]]) count += 1;
+        });
+        return count;
+    };
+    /* onGradingEvent(
+        quizData.quizzes,
+        buttonStates.map(state => state.indexOf(true)),
+    ); */
+
     return (
         <div className="main-cantainer">
             <Headers />
