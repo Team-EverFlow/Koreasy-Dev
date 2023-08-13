@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserInformation from '../dummyData/UserInformation.js';
+import UserInformation from '../../dummyData/UserInformation.js';
 
 const BookmarkIcon = ({ wordId }) => {
     const [isClicked, setIsClicked] = useState(
@@ -37,7 +37,6 @@ const BookmarkIcon = ({ wordId }) => {
             style={{ width: '100%', height: '100%' }}
             viewBox="0 0 14 20"
             fill={isClicked ? '#44DA92' : 'none'}
-            stroke={isClicked ? 'none' : '#44DA92'}
             xmlns="http://www.w3.org/2000/svg"
             onClick={handleClick}
         >
