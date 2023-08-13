@@ -3,10 +3,14 @@ import WordTestSheetButton from './WordTestSheetButton';
 import '../../styles/WordTestQuiz.scss';
 import Headers from '../../components/Header.jsx';
 import { GetTestDataList } from '../../firebase/api/QuizApi';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const WordTestQuiz = () => {
     const [searchParameter, _] = useSearchParams();
+    const navigate = useNavigate();
+    if (!searchParameter.has('id')) {
+        navigate('/quiz');
+    }
 
     const quizId = searchParameter.get('id');
     const [quizData, setQuizData] = useState({
