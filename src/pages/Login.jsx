@@ -16,15 +16,12 @@ function LoginPage() {
      */
     const onSignEvent = async () => {
         try {
-            const { state } = await GoogleAuth();
+            const { state, user } = await GoogleAuth();
             switch (state) {
                 case 'signIn':
                     return true;
                 case 'register':
-                    const { success } = await RegisterUser();
-                    if (!success) {
-                        onRegisterFailedToastCall();
-                    }
+                    const { success } = await RegisterUser(user);
                     return success;
                 case 'error':
                     onLoginFailedToastCall();
