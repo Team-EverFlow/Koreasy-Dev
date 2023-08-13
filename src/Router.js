@@ -12,8 +12,7 @@ import TestPageGoToTest from './pages/wordTest/TestPageGoToTest';
 import TestPageLearnWords from './pages/wordTest/TestPageLearnWords';
 import WordBook from './pages/wordbookPage/WordBook';
 import WordWeek0 from './pages/wordweekPage/WordWeek0';
-
-import Quiz from './pages/wordTest/WordTestSheet';
+import WordTestQuiz from './pages/wordTest/WordTestQuiz';
 
 const Router = () => {
     return (
@@ -34,7 +33,7 @@ const Router = () => {
                 />
 
                 <Route path="/quiz" element={<WordTestList />} />
-                <Route path="/quiz/test" element={<Quiz />} />
+                <Route path="/quiz/test" element={<WordTestQuiz />} />
 
                 <Route path="/" element={<MainView />} />
                 <Route path="/profile" element={<Profile />} />
