@@ -1,25 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import WordTestTitle from './WordTestTitle';
 import '../../styles/WordTestList.scss';
-import ListData from './DumpData';
 import Header from '../../components/Header';
+import { GetWordTestList } from '../../firebase/api/QuizApi';
 
 const WordTestList = () => {
-    const tests = ListData.map(item => ({
-        test: item.BigTitle,
-        date: item.SmallTitle,
-    }));
+    const [quizList, setQuizList] = useState([]);
+    useEffect(() => {
+        GetWordTestList().then(result => {
+            if (result.success) {
+                setQuizList(
+                    result.data.map(quiz => {
+                        return {
+                            id: quiz.testDataId,
+                            test: quiz.title,
+                            date: quiz.date,
+                        };
+                    }),
+                );
+            }
+        });
+    }, []);
 
     return (
         <div>
             <Header />
             <div className="r-title">
                 <div className="word-test-list-view-name">ViewName</div>
-                {tests.map((item, index) => (
+                {quizList.map((item, index) => (
                     <WordTestTitle
                         key={index}
                         test={item.test}
                         date={item.date}
+                        id={item.id}
                     />
                 ))}
             </div>
