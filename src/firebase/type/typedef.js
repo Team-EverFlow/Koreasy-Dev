@@ -45,3 +45,25 @@
  * @property {string} goalValue
  * @property {string} eventName
  */
+
+/**
+ * @typedef {Object} Quiz
+ * @property {int} id
+ * @property {string} question
+ * @property {string[]} choose
+ * @property {string} answer
+ */
+
+/**
+ * @typedef {Object} TestData
+ * @property {string} title
+ * @property {string} subtitle
+ * @property {Quiz[]} quizzes
+ */
+
+/**
+ * @typedef {Object} WordTestView
+ * @property {string} title
+ * @property {string} date
+ * @property {string} testDataId
+ */
