@@ -4,12 +4,12 @@
 textarea {
     color: $koreasy-color-gray-06;
 }
-button {
+button.upload-box {
     border: 0;
     background-color: $koreasy-color-gray-06;
 }
 
-button:hover {
+button.upload-box:hover {
     background-color: $koreasy-color-gray-06;
 }
 
@@ -41,7 +41,7 @@ button:hover {
     .input-frame {
         display: flex;
         padding: 8px 12px;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         align-self: stretch;
 
@@ -53,16 +53,12 @@ button:hover {
             background-color: $koreasy-color-gray-06;
             color: $koreasy-color-gray-00;
             width: 100%;
+
             @include subtext-regular;
             line-height: 1.3em;
             resize: none;
-            padding: 0 0 0 0;
-            line-height: 32px;
-            height: 18px;
-        }
-
-        .input-box::placeholder {
-            color: $koreasy-color-gray-02;
+            padding: 0;
+            height: 1.3em;
         }
 
         .input-box:focus {

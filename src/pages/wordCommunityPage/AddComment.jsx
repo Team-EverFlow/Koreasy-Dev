@@ -17,10 +17,13 @@ function AddComment() {
         // console.log(event.target.value);
     };
 
-    const textarea = useRef();
+    const textarea = useRef(null);
     const handleResizeHeight = () => {
-        textarea.current.style.height = 'auto';
-        textarea.current.style.height = textarea.current.scrollHeight + 'px';
+        if (textarea.current) {
+            textarea.current.style.height = 'auto';
+            textarea.current.style.height =
+                textarea.current.scrollHeight + 'px';
+        }
     };
 
     return (
@@ -33,11 +36,14 @@ function AddComment() {
             </div>
             <div className="input-frame">
                 <textarea
-                    className="input-box form-control"
+                    className="input-box"
                     id="exampleFormControlInput1"
                     placeholder="write your opinion or new example"
                     value={textValue}
-                    onChange={checkText}
+                    onInput={checkText}
+                    onChange={handleResizeHeight}
+                    rows={1}
+                    ref={textarea}
                 />
                 <button className="upload-box" onClick={uploadButton}>
                     {textValue.length > 0 && textValue.length <= 250 ? (

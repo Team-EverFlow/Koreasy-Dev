@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Heart from '../../components/Heart';
 
 import '../../styles/wordCommunityPage/Comment.scss';
@@ -11,6 +11,12 @@ function Comment() {
         comment: '와! 내가 정말 좋아하는 한국어 단어야!\n두번째\n세번째',
         heartCnt: 3,
     };
+    const heartColor = useRef(null);
+    const heartColorChange = () => {
+        if (heartColor) {
+            heartColor.current.style.color = 'red';
+        }
+    };
 
     return (
         <div className="comment-background">
@@ -21,9 +27,9 @@ function Comment() {
             <div className="comment-comment">{comment.comment}</div>
             <div className="comment-util">
                 <div className="heart-frame">
-                    <div className="heart">
+                    <button className="heart">
                         <Heart />
-                    </div>
+                    </button>
                     {comment.heartCnt}
                 </div>
                 <button className="comment-delete">Delete</button>
