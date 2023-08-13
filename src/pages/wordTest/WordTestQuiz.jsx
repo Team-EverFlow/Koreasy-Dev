@@ -1,19 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import WordTestSheetButton from './WordTestSheetButton';
-import QuizData from '../dumpPage/WordTestSheetDump';
 import '../../styles/WordTestQuiz.scss';
 import Headers from '../../components/Header.jsx';
+import { GetTestDataList } from '../../firebase/api/QuizApi';
+import { useSearchParams } from 'react-router-dom';
 
 const WordTestQuiz = () => {
-    const [buttonStates, setButtonStates] = useState(
-        QuizData.Quiz.map(() => Array(4).fill(false)),
-    );
+    const [searchParameter, _] = useSearchParams();
+
+    const quizId = searchParameter.get('id');
+    const [quizData, setQuizData] = useState({
+        title: '',
+        subtitle: '',
+        quizzes: [],
+    });
+    const [buttonStates, setButtonStates] = useState([]);
+    useEffect(() => {
+        GetTestDataList(quizId).then(result => {
+            if (result.success) {
+                setQuizData(result.data);
+                setButtonStates(
+                    result.data.quizzes.map(quiz =>
+                        Array(quiz.choose.length).fill(false),
+                    ),
+                );
+            }
+        });
+    }, []);
 
     const handleClick = (index, seonjiIndex) => {
         const newButtonStates = buttonStates.map((states, idx) => {
             if (idx === index) {
-                const newStates = states.map((state, i) => i === seonjiIndex);
-                return newStates;
+                return states.map((state, i) => i === seonjiIndex);
             }
             return states;
         });
@@ -24,37 +42,37 @@ const WordTestQuiz = () => {
         <div className="main-cantainer">
             <Headers />
             <div className="title-container">
-                <p className="title">{QuizData.Title}</p>
-                <p className="subtititle">{QuizData.Subtitle}</p>
+                <p className="title">{quizData.title}</p>
+                <p className="subtititle">{quizData.subtitle}</p>
             </div>
 
             <div className="word-test-quiz-container">
-                {QuizData.Quiz.map((item, index) => (
+                {quizData.quizzes.map((item, index) => (
                     <div key={item.id} className="quiz-item">
                         <div>
                             <div className="id">{item.id}</div>
                         </div>
-                        <span className="question">{item.Question}</span>
+                        <span className="question">{item.question}</span>
                         <div className="seonji-container">
-                            {item.Seonji.slice(1, -1)
-                                .split(',')
-                                .map((seonji, seonjiIndex) => (
+                            {item.choose
+                                .slice(1, -1)
+                                .map((option, chooseIndex) => (
                                     <div
-                                        key={seonjiIndex}
+                                        key={chooseIndex}
                                         className="seonji-item"
                                     >
                                         <WordTestSheetButton
                                             isChecked={
-                                                buttonStates[index][seonjiIndex]
+                                                buttonStates[index][chooseIndex]
                                             }
                                             onClick={() =>
-                                                handleClick(index, seonjiIndex)
+                                                handleClick(index, chooseIndex)
                                             }
                                         />
                                         <div className="seonji-mid">
                                             <span className="seonji-text">
-                                                {seonjiIndex + 1}.{' '}
-                                                {seonji.trim()}
+                                                {chooseIndex + 1}.{' '}
+                                                {option.trim()}
                                             </span>
                                         </div>
                                     </div>
