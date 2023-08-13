@@ -42,12 +42,20 @@ const WordTestQuiz = () => {
         setButtonStates(newButtonStates);
     };
 
+    /**
+     * 채점하는 함수입니다.
+     * @param {Quiz[]} quizzes 문제가 들어간 값
+     * @param {number[]} userChosen 사용자가 고른 값
+     * @returns {[number,boolean[]]} 사용자가 문제를 맞춘 갯수 / 문제 정답 유/무 (배열)
+     */
     const onGradingEvent = (quizzes, userChosen) => {
         let count = 0;
+        let correct = Array(quizzes.length).fill(false);
         quizzes.forEach((quiz, index) => {
-            if (quiz.answer === quiz.choose[userChosen[index]]) count += 1;
+            correct[index] = (quiz.choose[userChosen[index]] === quiz.answer);
+            if (correct[index]) count += 1;
         });
-        return count;
+        return [count, correct];
     };
     /* onGradingEvent(
         quizData.quizzes,
