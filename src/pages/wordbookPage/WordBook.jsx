@@ -2,9 +2,9 @@ import React from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordbookStyles/WordBook.scss';
 import TabBarItem from '../../assets/TabBarItem.svg';
-import Line from '../../assets/Line.svg';
 import { Link } from 'react-router-dom';
-import DateData from './DateData.js';
+import DateData from '../../dummyData/DateData.js';
+import Divider from '../../components/Divider.jsx';
 
 const WordBook = () => {
     return (
@@ -33,7 +33,7 @@ const WordBook = () => {
                                     alt="front"
                                 />
                             </div>
-                            <img className="line-word" src={Line} alt="Line" />
+                            <Divider />
                         </Link>
                     ))}
                 </div>

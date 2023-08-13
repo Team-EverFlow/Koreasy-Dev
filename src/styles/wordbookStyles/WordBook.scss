@@ -4,7 +4,6 @@
 .wordbook-container {
     background-color: $koreasy-color-white;
     width: 100vw;
-    height: 844px;
     position: absolute;
     left: 0;
     top: 0;
@@ -54,10 +53,6 @@
                     flex-shrink: 0;
                 }
             }
-        }
-        .line-word {
-            width: 90vw;
-            margin: 0 auto;
         }
     }
 }

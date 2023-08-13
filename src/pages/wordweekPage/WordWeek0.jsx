@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordweekStyles/WordWeek0.scss';
-import BookmarkIcon from './BookmarkIcon.jsx';
-import Line from '../../assets/Line.svg';
-import WordData from './WordData.js';
+import WordData from '../../dummyData/WordData.js';
 import ExampleSentence from './ExampleSentence.jsx';
 import ExampleToggle from './ExampleToggle.jsx';
+import Divider from '../../components/Divider.jsx';
+import Bookmark from '../../components/Bookmark.jsx';
 
 const WordWeek0 = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
@@ -44,7 +44,7 @@ const WordWeek0 = () => {
                                         {content.meaning}
                                     </div>
                                 </div>
-                                <div className="example">
+                                <button className="example">
                                     <div
                                         className="item-example"
                                         onClick={() =>
@@ -55,10 +55,10 @@ const WordWeek0 = () => {
                                             ? 'Hide'
                                             : 'About Word'}
                                     </div>
-                                </div>
+                                </button>
                             </div>
                             <div className="bookmark-icon">
-                                <BookmarkIcon wordId={content.wordId} />
+                                <Bookmark wordId={content.wordId} />
                             </div>
                         </div>
                         {isVisible(content.wordId) && (
@@ -67,7 +67,7 @@ const WordWeek0 = () => {
                                 exampleSentences={content.exampleSentence}
                             />
                         )}
-                        <img className="line-week" src={Line} alt="Line" />
+                        <Divider />
                     </React.Fragment>
                 ))}
             </div>
