@@ -15,6 +15,18 @@ function ProfileView() {
         profileIcon: ProfileIconDump,
         badges: [],
     });
+
+    const convertBadgeObject = object => {
+        return object;
+    }; // TODO()
+    const defaultBadge = {
+        title: 'Python 최고',
+        imageUrl: 'https://yhs.kr/static/image/python.svg',
+        date: new Date(),
+        active: false,
+        check: false,
+    };
+
     useEffect(() => {
         GetCurrentUserInformation().then(result => {
             if (result.success) {
@@ -22,7 +34,14 @@ function ProfileView() {
                     ...profile,
                     name: result.user.username,
                     profileIcon:
-                        result.user.profileAvatarUrl ?? ProfileIconDump, // badges: result.user.repBadge ?
+                        result.user.profileAvatarUrl ?? ProfileIconDump,
+                    badges: convertBadgeObject(
+                        result.user.repBadge.concat(
+                            Array(6 - result.user.repBadge.length).fill(
+                                defaultBadge,
+                            ),
+                        ),
+                    ),
                 });
             }
         });
