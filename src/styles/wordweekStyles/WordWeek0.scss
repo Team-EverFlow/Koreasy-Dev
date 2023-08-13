@@ -1,0 +1,83 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.wordweek0-container {
+    background-color: $koreasy-color-white;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .item {
+            display: flex;
+            width: 100vw;
+            padding: 12px 20px;
+            justify-content: space-between;
+            align-items: center;
+
+            .item-state {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 8px;
+
+                .item-info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 4px;
+
+                    .item-standard {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
+                        .item-name {
+                            color: $koreasy-color-primary;
+                            @include title02-bold;
+                        }
+
+                        .pronunciation {
+                            color: $koreasy-color-gray-01;
+                            @include body01-medium;
+                        }
+                    }
+
+                    .item-type {
+                        color: $koreasy-color-gray-01;
+                        @include body01-medium;
+                    }
+                }
+
+                .example {
+                    display: flex;
+                    padding: 4px 16px;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 10px;
+                    border-radius: 8px;
+                    border: 1px solid $koreasy-color-gray-03;
+                    background-color: $koreasy-color-white;
+
+                    .item-example {
+                        color: $koreasy-color-primary;
+                        @include body01-medium;
+                    }
+                }
+            }
+
+            .bookmark-icon {
+                width: 18px;
+                height: 24px;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

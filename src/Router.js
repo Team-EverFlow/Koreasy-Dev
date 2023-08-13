@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import WordTestList from './pages/wordTest/WordTestList';
 import TestPageGoToTest from './pages/wordTest/TestPageGoToTest';
 import TestPageLearnWords from './pages/wordTest/TestPageLearnWords';
+import WordBook from './pages/wordbookPage/WordBook';
+import WordWeek0 from './pages/wordweekPage/WordWeek0';
 
 const Router = () => {
     return (
@@ -30,6 +32,8 @@ const Router = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/badge" element={<MyBadges />} />
                 <Route path="/badge/setting" element={<MyBadgesSetting />} />
+                <Route path="/wordbook" element={<WordBook />} />
+                <Route path="/wordweek0" element={<WordWeek0 />} />
             </Routes>
         </BrowserRouter>
     );
