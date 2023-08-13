@@ -7,15 +7,19 @@ import { GetDocFromCollection } from '../functions/util';
 /**
  * UserInformation을 User collection에 UID를 PK로 저장
  * @param {string} UID
- * @param {UserInformation} initialUserInformation
+ * @param {UserInformation} [initialUserInformation=undefined]
  * @returns {Promise<{success: boolean, error: any}>}
  */
-export async function SetUserInformation(UID, initialUserInformation) {
+export async function RegisterUser(initialUserInformation = {}) {
     try {
-        await setDoc(doc(db, USER_COLLECTION_ID, UID), {
+        const user = GetCurrentUserFromFirebase();
+        await setDoc(doc(db, USER_COLLECTION_ID, user.uid), {
             recentWord: [],
             repBadge: [],
             bookmark: [],
+            username: user.displayName,
+            profileBackgroundColor: 'black',
+            profileAvatarUrl: user.photoURL,
             ...initialUserInformation,
         });
         return { success: true };
