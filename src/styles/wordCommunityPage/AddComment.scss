@@ -56,7 +56,13 @@ button:hover {
             @include subtext-regular;
             line-height: 1.3em;
             resize: none;
-            padding: 0;
+            padding: 0 0 0 0;
+            line-height: 32px;
+            height: 18px;
+        }
+
+        .input-box::placeholder {
+            color: $koreasy-color-gray-02;
         }
 
         .input-box:focus {

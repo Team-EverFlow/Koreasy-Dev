@@ -1,1 +1,37 @@
 @import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.today-check-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .circle-frame {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 12px;
+
+        .circle-first {
+            border-radius: 50px;
+            width: 50px;
+            border-style: $koreasy-color-primary;
+        }
+    }
+
+    .today-check-text-frame {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $koreasy-color-gray-00;
+
+        .today-check-title {
+            @include title02-bold;
+        }
+
+        .today-check-info {
+            @include body01-medium;
+        }
+    }
+}

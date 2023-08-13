@@ -15,7 +15,7 @@ function Comment() {
     return (
         <div className="comment-background">
             <div className="name-frame">
-                <div className="user-name">{comment.userName}</div>
+                <button className="user-name">{comment.userName}</button>
                 <div className="comment-date">{comment.date}</div>
             </div>
             <div className="comment-comment">{comment.comment}</div>
@@ -26,7 +26,7 @@ function Comment() {
                     </div>
                     {comment.heartCnt}
                 </div>
-                <span className="comment-delete">Delete</span>
+                <button className="comment-delete">Delete</button>
             </div>
 
             <Divider />

@@ -5,7 +5,7 @@ import Upload from '../../components/Upload';
 function AddComment() {
     let [textValue, setText] = useState('');
 
-    function updateButton() {
+    function uploadButton() {
         //버튼 실행 조건(텍스트 카운트)
         if (textValue.length <= 250 || textValue.length > 0) {
             setText('');
@@ -39,7 +39,7 @@ function AddComment() {
                     value={textValue}
                     onChange={checkText}
                 />
-                <button className="upload-box" onClick={updateButton}>
+                <button className="upload-box" onClick={uploadButton}>
                     {textValue.length > 0 && textValue.length <= 250 ? (
                         <Upload color={true} />
                     ) : (
