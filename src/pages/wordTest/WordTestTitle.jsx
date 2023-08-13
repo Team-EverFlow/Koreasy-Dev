@@ -3,7 +3,7 @@ import LearnWords from './LearnWords';
 import GoToTest from './GoToTest';
 import '../../styles/WordTestTitle.scss';
 
-const WordTestTitle = ({ test, date }) => {
+const WordTestTitle = ({ id, test, date }) => {
     return (
         <div className="word-test-main-container">
             <div className="word-test-list-title">
