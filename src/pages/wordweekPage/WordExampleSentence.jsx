@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/wordweekStyles/ExampleSentence.scss';
+import '../../styles/wordweekStyles/WordExampleSentence.scss';
 
 const ExampleSentence = ({ exampleSentences }) => {
     return (

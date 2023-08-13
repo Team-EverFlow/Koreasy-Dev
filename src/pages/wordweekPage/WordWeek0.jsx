@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordweekStyles/WordWeek0.scss';
 import WordData from '../../dummyData/WordData.js';
-import ExampleSentence from './ExampleSentence.jsx';
-import ExampleToggle from './ExampleToggle.jsx';
+import WordExampleSentence from './WordExampleSentence.jsx';
+import WordExampleToggle from './WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
 
@@ -11,7 +11,10 @@ const WordWeek0 = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
 
     const handleExampleToggle = wordId => {
-        const updatedVisibleExamples = ExampleToggle(visibleExamples, wordId);
+        const updatedVisibleExamples = WordExampleToggle(
+            visibleExamples,
+            wordId,
+        );
         setVisibleExamples(updatedVisibleExamples);
     };
 
@@ -62,7 +65,7 @@ const WordWeek0 = () => {
                             </div>
                         </div>
                         {isVisible(content.wordId) && (
-                            <ExampleSentence
+                            <WordExampleSentence
                                 wordId={content.wordId}
                                 exampleSentences={content.exampleSentence}
                             />
