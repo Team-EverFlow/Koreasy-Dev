@@ -2,10 +2,12 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import WordTestList from './pages/wordTest/WordTestList';
 import TestPageGoToTest from './pages/wordTest/TestPageGoToTest';
 import TestPageLearnWords from './pages/wordTest/TestPageLearnWords';
 import Login from './pages/Login';
+
 import MainView from './pages/MyBadgesSetting';
 import Profile from './pages/Profile';
 import MyBadges from './pages/MyBadges';
