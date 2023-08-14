@@ -8,24 +8,26 @@ import moment from 'moment';
  * Badge 컴포넌트
  * @param {BadgeObject} badge 뱃지
  * @param {MouseEventHandler<T> | undefined} onClick 클릭하면 반환하는 이벤트
+ * @param {boolean} [checked=false] 뱃지 선택 유무 (MyBadgeSetting 에서만 사용되는 뷰)
  */
-function Badge({ badge, onClick }) {
+function Badge({ badge, onClick, checked = false }) {
     if (!badge.hasOwnProperty('check')) {
         badge.check = false;
     }
-    const badgeImage = badge.special
-        ? require(`../assets/badges/${badge.type}_badge/${badge.type}_badge_lv${
-              badge.level
-          }${badge.active ? '_disable' : ''}.svg`)
-        : require()`../assets/badges/special_badge/${badge.title}${
-              badge.active ? '_disable' : ''
-          }.svg`;
+    const badgeImage =
+        badge.type !== 'special'
+            ? require(`../assets/badges/${badge.type}_badge/${
+                  badge.type
+              }_badge_lv${badge.level}${!badge.active ? '_disable' : ''}.svg`)
+            : require(`../assets/badges/special_badge/${badge.title}${
+                  !badge.active ? '_disable' : ''
+              }.svg`);
     return (
         <div
             className={
-                badge.check
+                checked
                     ? 'badge check'
-                    : badge.active
+                    : !badge.active
                     ? 'badge badge-active'
                     : 'badge'
             }

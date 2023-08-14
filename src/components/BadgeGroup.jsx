@@ -6,8 +6,15 @@ import '../types/typedef';
 /**
  * @param {Array<BadgeObject>} badges
  * @param {MouseEventHandler<function({index: number, id: number})> | undefined} onClick
+ * @param {Array<boolean>} badgesChecked
  */
-function BadgeGroup({ badges, onClick = undefined }) {
+function BadgeGroup({
+    badges,
+    onClick = undefined,
+    badgesChecked = undefined,
+}) {
+    if (badgesChecked === undefined)
+        badgesChecked = Array(badges.length).fill(false);
     return (
         <div className="badge-group">
             {badges.map((badge, index) => (
@@ -18,6 +25,7 @@ function BadgeGroup({ badges, onClick = undefined }) {
                             ? onClick(index, badge.id)
                             : undefined;
                     }}
+                    checked={badgesChecked[index]}
                 />
             ))}
         </div>
