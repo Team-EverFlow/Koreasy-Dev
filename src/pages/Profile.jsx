@@ -8,6 +8,7 @@ import BadgeGroup from '../components/BadgeGroup';
 import Chevrion from '../components/Chevrion';
 import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 import { Link } from 'react-router-dom';
+import unknownBadge from './mybadge/unknownBadge';
 
 function ProfileView() {
     let [profile, setProfile] = useState({
@@ -19,13 +20,6 @@ function ProfileView() {
     const convertBadgeObject = object => {
         return object;
     }; // TODO()
-    const defaultBadge = {
-        title: 'Python 최고',
-        imageUrl: 'https://yhs.kr/static/image/python.svg',
-        date: new Date(),
-        active: false,
-        check: false,
-    };
 
     useEffect(() => {
         GetCurrentUserInformation().then(result => {
@@ -38,7 +32,7 @@ function ProfileView() {
                     badges: convertBadgeObject(
                         result.user.repBadge.concat(
                             Array(6 - result.user.repBadge.length).fill(
-                                defaultBadge,
+                                unknownBadge,
                             ),
                         ),
                     ),
