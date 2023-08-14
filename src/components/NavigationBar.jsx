@@ -1,7 +1,7 @@
 import React from 'react';
 import Chevron from './Chevrion';
 import './NavigationBar.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // Navigation Bar
 /**
@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const NavigationBar = ({ viewName = 'PreviousView' }) => {
     let navigate = useNavigate();
     const onPreviousViewClick = () => {
-        navigate(-1);
+        navigate('./../');
     };
 
     return (
