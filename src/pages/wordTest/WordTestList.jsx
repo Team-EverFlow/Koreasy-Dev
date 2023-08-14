@@ -24,7 +24,7 @@ const WordTestList = () => {
 
     return (
         <div>
-            <Header />
+            <Header viewName="Wordtest" />
             <div className="r-title">
                 <div className="word-test-list-view-name">ViewName</div>
                 {quizList.map((item, index) => (
