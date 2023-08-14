@@ -5,6 +5,10 @@
  * @property {number} level
  * @property {boolean} active
  * @property {string | undefined} imageId
+ * @property {number | undefined} achievement
+ * @property {number | undefined} currentAchievement
+ * @property {string | undefined} achievementCommentSuffix
+ * @property {description | undefined} [description=''] description
  * @property {Date | undefined} [date=undefined] date
  *
  */

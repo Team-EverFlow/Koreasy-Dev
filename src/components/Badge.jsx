@@ -39,10 +39,15 @@ function Badge({ badge, onClick, checked = false, detail = true }) {
             </div>
             <span className="badge-title">{badge.title}</span>
             {detail && (
-                <span className="badge-date">
+                <span className="badge-detail">
                     {badge.date !== undefined
                         ? moment(badge.date).format('YYYY-MM-DD')
-                        : ''}
+                        : (badge.achievement !== badge.currentAchievement) !==
+                          undefined
+                        ? `${badge.currentAchievement} / ${badge.achievement} ${
+                              badge.achievementCommentSuffix ?? ''
+                          }`
+                        : badge.description ?? ''}
                 </span>
             )}
         </div>
