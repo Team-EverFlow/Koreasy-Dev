@@ -13,6 +13,13 @@ function Badge({ badge, onClick }) {
     if (!badge.hasOwnProperty('check')) {
         badge.check = false;
     }
+    const badgeImage = badge.special
+        ? require(`../assets/badges/${badge.type}_badge/${badge.type}_badge_lv${
+              badge.level
+          }${badge.active ? '_disable' : ''}.svg`)
+        : require()`../assets/badges/special_badge/${badge.title}${
+              badge.active ? '_disable' : ''
+          }.svg`;
     return (
         <div
             className={
@@ -24,14 +31,7 @@ function Badge({ badge, onClick }) {
             }
         >
             <div className="badge-image" onClick={onClick}>
-                <img
-                    src={require(`../assets/badges/${badge.type}_badge/${
-                        badge.type
-                    }_badge_lv${badge.level}${
-                        badge.active ? '_disable' : ''
-                    }.svg`)}
-                    alt="badge icon"
-                />
+                <img src={badgeImage} alt="badge icon" />
                 <img src={Check} className="badge-check" alt="check-mark" />
             </div>
             <span className="badge-title">{badge.title}</span>
