@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/Header';
 import BadgeGroup from '../../components/BadgeGroup';
 import '../../styles/MyBadge.scss';
-import dumpBadge from './dumpBadge';
+import badgeList from './badgeList';
 import { Link } from 'react-router-dom';
 
 function MyBadgesView() {
@@ -10,7 +10,7 @@ function MyBadgesView() {
         <div>
             <Header isNavigationBar={true} viewName="My Badges" />
             <BadgeGroup
-                badges={dumpBadge}
+                badges={badgeList}
                 onClick={id => {
                     console.log(id); // for debug
                 }}
