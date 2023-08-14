@@ -42,8 +42,8 @@ function Badge({ badge, onClick, checked = false, detail = true }) {
                 <span className="badge-detail">
                     {badge.date !== undefined
                         ? moment(badge.date).format('YYYY-MM-DD')
-                        : (badge.achievement !== badge.currentAchievement) !==
-                          undefined
+                        : (badge.achievement !== undefined ||
+                              badge.currentAchievement) !== undefined
                         ? `${badge.currentAchievement} / ${badge.achievement} ${
                               badge.achievementCommentSuffix ?? ''
                           }`
