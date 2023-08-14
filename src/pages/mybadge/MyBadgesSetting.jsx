@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import BadgeGroup from '../components/BadgeGroup';
-import '../styles/MyBadge.scss';
+import Header from '../../components/Header';
+import BadgeGroup from '../../components/BadgeGroup';
+import '../../styles/MyBadge.scss';
 import dumpBadge from './dumpBadge';
 import { Link } from 'react-router-dom';
 
