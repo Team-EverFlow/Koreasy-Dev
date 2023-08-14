@@ -5,7 +5,6 @@ import '../styles/MyBadge.scss';
 import dumpBadge from './dumpBadge';
 import { Link } from 'react-router-dom';
 
-
 function MyBadgesView() {
     return (
         <div>
@@ -17,7 +16,7 @@ function MyBadgesView() {
                 }}
             />
             <div className="my-badge-button-group">
-                <Link to="/badge/setting" className="my-badge-button">
+                <Link to="/profile/badge/setting" className="my-badge-button">
                     Set my signiture badge
                 </Link>
             </div>

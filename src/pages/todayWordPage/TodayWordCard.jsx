@@ -1,6 +1,6 @@
 import React from 'react';
 import Sound from '../../assets/images/Sound.svg';
-import ExampleSentence from './ExampleSentence';
+import ExampleSentence from '../../components/ExampleSentence';
 import '../../styles/TodayWordCard.scss';
 import Bookmark from '../../components/Bookmark';
 
