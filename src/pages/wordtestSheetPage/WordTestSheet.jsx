@@ -3,6 +3,9 @@ import '../../styles/wordtestSheetPage/WordTestSheet.scss';
 import Header from '../../components/Header';
 import WordTestTitle from './WordTestTitle';
 import WordTestQuiz from './WordTestQuiz';
+import WordTestCheckOut from './WordTestCheckOut';
+import WordTestScore from './WordTestScore';
+import WordTestResult from './WordTestResult';
 
 const WordtestQuiz = () => {
     const dateText = '1st week, Aug 2023';
@@ -12,6 +15,9 @@ const WordtestQuiz = () => {
             <div className="wordtestsheet-container">
                 <WordTestTitle dateText={dateText} />
                 <WordTestQuiz />
+                <WordTestCheckOut />
+                <WordTestScore />
+                <WordTestResult />
             </div>
         </div>
     );

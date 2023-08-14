@@ -15,30 +15,23 @@ const WordtestQuiz = () => {
                         </div>
                         <div className="question">{quiz.question}</div>
                         <div className="quiz-content">
-                            {quiz.seonji
-                                .slice(1, -1)
-                                .split(',')
-                                .map((seonji, seonjiIndex) => (
+                            {quiz.seonji.map((seonji, seonjiIndex) => (
+                                <div
+                                    key={seonjiIndex}
+                                    className={`seonji-item seonji-${
+                                        seonjiIndex + 1
+                                    }`}
+                                >
                                     <div
-                                        key={seonjiIndex}
-                                        className={`seonji-item seonji-${
+                                        className={`checkbox-${
                                             seonjiIndex + 1
                                         }`}
-                                    >
-                                        <div
-                                            className={`checkbox-${
-                                                seonjiIndex + 1
-                                            }`}
-                                        />
-                                        <div
-                                            className={`text-${
-                                                seonjiIndex + 1
-                                            }`}
-                                        >
-                                            {seonji.trim()}
-                                        </div>
+                                    />
+                                    <div className={`text-${seonjiIndex + 1}`}>
+                                        {seonji.trim()}
                                     </div>
-                                ))}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

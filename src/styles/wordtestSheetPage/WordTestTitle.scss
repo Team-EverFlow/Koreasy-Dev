@@ -14,7 +14,7 @@
             rgba(255, 255, 255, 0.2) 19.2%,
             rgba(0, 0, 0, 0.07) 100%
         ),
-        var(--main-color, #44da92);
+        $koreasy-color-primary;
 
     .test-title-item {
         display: flex;
@@ -29,26 +29,21 @@
             flex-direction: column;
             justify-content: center;
             align-self: stretch;
-            color: var(--white, #fff);
+            color: $koreasy-color-white;
             text-align: center;
-            font-family: Sandoll BaikzongyulPen;
+            // 폰트 패밀리 저작권
+            font-family: Pretendard;
             font-size: 36px;
             font-style: normal;
             font-weight: 400;
-            line-height: 38px; /* 105.556% */
+            line-height: 38px;
         }
 
         .sub-title {
             align-self: stretch;
-            color: var(--black, #1c1c1e);
+            color: $koreasy-color-black;
             text-align: center;
-
-            /* Title01 | Extrabold */
-            font-family: Pretendard;
-            font-size: 26px;
-            font-style: normal;
-            font-weight: 800;
-            line-height: 38px; /* 146.154% */
+            @include title01-heavy;
         }
     }
 }

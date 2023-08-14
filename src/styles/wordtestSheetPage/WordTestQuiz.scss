@@ -16,7 +16,7 @@
         align-items: flex-start;
         gap: 16px;
         border-radius: 20px;
-        background: var(--gray-6, #f2f2f7);
+        background: $koreasy-color-gray-06;
 
         .quiz-state {
             display: flex;
@@ -33,30 +33,18 @@
                 align-items: flex-start;
                 gap: 10px;
                 border-radius: 8px;
-                background: var(--gray-1, #8e8e93);
+                background: $koreasy-color-gray-01;
 
                 .number {
-                    color: var(--gray-6, #f2f2f7);
-
-                    /* Subtitle | Bold */
-                    font-family: Pretendard;
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: 700;
-                    line-height: 28px; /* 140% */
+                    color: $koreasy-color-gray-06;
+                    @include subtitle-bold;
                 }
             }
 
             .question {
                 align-self: stretch;
-                color: var(--black, #1c1c1e);
-
-                /* Body01 | Regular */
-                font-family: Pretendard;
-                font-size: 17px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 22px; /* 129.412% */
+                color: $koreasy-color-black;
+                @include body01-regular;
             }
 
             .quiz-content {
@@ -81,18 +69,12 @@
                         align-items: center;
                         gap: 10px;
                         border-radius: 6px;
-                        background: var(--gray-3, #c7c7cc);
+                        background: $koreasy-color-gray-03;
                     }
 
                     .text-1 {
-                        color: var(--black, #1c1c1e);
-
-                        /* Subtitle | Medium */
-                        font-family: Pretendard;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 28px; /* 140% */
+                        color: $koreasy-color-black;
+                        @include subtitle-medium;
                     }
                 }
 
@@ -111,18 +93,12 @@
                         align-items: center;
                         gap: 10px;
                         border-radius: 6px;
-                        background: var(--gray-3, #c7c7cc);
+                        background: $koreasy-color-gray-03;
                     }
 
                     .text-2 {
-                        color: var(--black, #1c1c1e);
-
-                        /* Subtitle | Medium */
-                        font-family: Pretendard;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 28px; /* 140% */
+                        color: $koreasy-color-black;
+                        @include subtitle-medium;
                     }
                 }
 
@@ -141,18 +117,12 @@
                         align-items: center;
                         gap: 10px;
                         border-radius: 6px;
-                        background: var(--gray-3, #c7c7cc);
+                        background: $koreasy-color-gray-03;
                     }
 
                     .text-3 {
-                        color: var(--black, #1c1c1e);
-
-                        /* Subtitle | Medium */
-                        font-family: Pretendard;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 28px; /* 140% */
+                        color: $koreasy-color-black;
+                        @include subtitle-medium;
                     }
                 }
 
@@ -171,18 +141,12 @@
                         align-items: center;
                         gap: 10px;
                         border-radius: 6px;
-                        background: var(--gray-3, #c7c7cc);
+                        background: $koreasy-color-gray-03;
                     }
 
                     .text-4 {
-                        color: var(--black, #1c1c1e);
-
-                        /* Subtitle | Medium */
-                        font-family: Pretendard;
-                        font-size: 20px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: 28px; /* 140% */
+                        color: $koreasy-color-black;
+                        @include subtitle-medium;
                     }
                 }
             }

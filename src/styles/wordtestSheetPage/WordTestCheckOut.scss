@@ -1,0 +1,20 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.checkout-box {
+    display: flex;
+    width: calc(100vw - 20px * 2);
+    height: 52px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: $koreasy-color-gray-03;
+
+    checkout-text {
+        color: $koreasy-color-white;
+        text-align: center;
+        @include subtitle-bold;
+    }
+}
