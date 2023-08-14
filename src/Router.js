@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainView from './pages/MyBadgesSetting';
+import MainView from './pages/todayWordPage/TodayWordView';
 import Profile from './pages/Profile';
 import MyBadges from './pages/MyBadges';
 import MyBadgesSetting from './pages/MyBadgesSetting';
@@ -18,7 +18,6 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/login" element={<Login />} />
-                <Route path="/" element={<WordTestList />} />
                 <Route
                     path="/TestPageGoToTest"
                     element={<TestPageGoToTest />}

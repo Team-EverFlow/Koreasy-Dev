@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, Routes, Route } from 'react-router-dom';
 // import Sound from '../../assets/images/Sound.svg';
 import ExampleSentence from '../../components/ExampleSentence';
 import Bookmark from '../../components/Bookmark';
@@ -10,7 +11,7 @@ import '../../styles/todayWordPage/TodayWordCard.scss';
 
 /**
  *
- * @param {{wordID: string, wordKr: string, wordEn: string, pronunciation: string, meaning: string,
+ * @param {{wordId: string, wordKr: string, wordEn: string, pronunciation: string, meaning: string,
  * ExampleSentence: {sentenceKr: string, sentenceEn: string}}} wordData wordData json data
  * @returns
  */
@@ -55,24 +56,24 @@ function TodayWordCard({ wordData, onClick }) {
                 />
             </div>
             <div className="option-frame">
-                <a
-                    href="./todayword/reply"
+                <Link
+                    to={'./todayword/reply?id=' + wordData.wordId}
                     className="option-buttion link-offset-2 link-underline link-underline-opacity-0"
                 >
                     <div className="icon-box">
                         <img src={Reply} alt="Reply" />
                     </div>
                     Reply
-                </a>
-                <a
-                    href="."
+                </Link>
+                <Link
+                    to="."
                     className="option-buttion link-offset-2 link-underline link-underline-opacity-0"
                 >
                     <div className="icon-box">
                         <img src={MySentences} alt="My Sentences" />
                     </div>
                     My Sentences
-                </a>
+                </Link>
             </div>
         </div>
     );
