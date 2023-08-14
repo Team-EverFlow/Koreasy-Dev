@@ -27,3 +27,20 @@ div.my-badge-button-group {
         }
     }
 }
+
+div.my-badge-count-group {
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    span.my-badge-count-description {
+        @include body02-medium;
+        color: $koreasy-color-gray-01;
+    }
+
+    span.my-badge-count {
+        @include body02-bold;
+        color: $koreasy-color-gray-00;
+    }
+}
