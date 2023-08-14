@@ -23,10 +23,10 @@ div.badge {
 
     &.check {
         div.badge-image {
-            border: $koreasy-color-primary solid 1px;
-
             img.badge-check {
+                border: #44da92 solid 2px;
                 display: block;
+                background: rgba(242, 242, 247, 0.5);
             }
         }
     }
@@ -45,10 +45,12 @@ div.badge {
         }
 
         img.badge-check {
+            border-radius: 50px;
             position: absolute;
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: 1;
         }
     }
 
