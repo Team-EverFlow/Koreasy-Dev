@@ -52,7 +52,7 @@ function ProfileView() {
                     <img
                         src={profile.profileIcon}
                         className="profile-image"
-                        alt="profile image"
+                        alt="profile"
                     />
                     <span className="profile-nickname">{profile.name}</span>
                     <div className="profiles-button-group">
