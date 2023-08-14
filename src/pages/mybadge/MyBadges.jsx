@@ -17,7 +17,7 @@ function MyBadgesView() {
             />
             <div className="my-badge-button-group">
                 <Link to="/badge/setting" className="my-badge-button">
-                    Set my signiture badge
+                    Set my signature badge
                 </Link>
             </div>
         </div>
