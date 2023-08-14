@@ -7,18 +7,6 @@ import { Link } from 'react-router-dom';
 import badge from '../../components/Badge';
 
 function MyBadgesViewSetting() {
-    // let [badge, setBadge] = useState(badgeList);
-
-    // const onBadgeClick = id => {
-    //     if (!badge[id].active) {
-    //         setBadge(prevBadge => {
-    //             return prevBadge.map((b, index) => {
-    //                 return index === id ? { ...b, check: !b.check } : b;
-    //             });
-    //         });
-    //     }
-    // };
-
     // TODO(profile.repBadge)
     const [selectedBadge, setSelectedBadge] = useState(
         Array(badgeList.length).fill(false),
