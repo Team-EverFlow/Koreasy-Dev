@@ -11,7 +11,7 @@ const WordTestTitle = ({ id, test, date }) => {
                 <div className="small-title">{date}</div>
             </div>
             <div className="word-test-button-set">
-                <GoToTest />
+                <GoToTest id={id} />
                 <LearnWords />
             </div>
         </div>

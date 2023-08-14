@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/GoToTest.scss';
 
-const GoToTest = () => (
+const GoToTest = ({ id }) => (
     <div className="go-to-test">
-        <Link to="/TestPageGoToTest">
+        <Link to={`/quiz/test?id=${id}`}>
             <button className="go-to-test-button">Go to test</button>
         </Link>
     </div>
