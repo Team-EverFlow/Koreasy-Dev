@@ -107,7 +107,7 @@
 @mixin subtext {
     @include text-style-base;
     font-size: 13px;
-    line-height: 10px;
+    line-height: 18px;
 }
 
 @mixin subtext-bold {

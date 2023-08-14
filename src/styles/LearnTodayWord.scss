@@ -9,17 +9,17 @@
     font-style: normal;
 }
 
-.background {
+.learntodayword-background {
     display: flex;
     width: 100vw;
-    padding: 80px 0px;
+    padding: 80px 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 52px;
     background-color: $koreasy-color-primary;
 
-    .text {
+    .learntodayword-text {
         display: flex;
         flex-direction: column;
         justify-content: center;

@@ -1,0 +1,58 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.wordbook-container {
+    background-color: $koreasy-color-white;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .date-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        .dateitem-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+
+            .date-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100vw;
+                padding: 12px 20px;
+
+                .date-info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 4px;
+                    flex: 1;
+
+                    .date-text {
+                        color: $koreasy-color-black;
+                        @include title02-bold;
+                    }
+
+                    .date-range {
+                        color: $koreasy-color-gray-02;
+                        @include body01-regular;
+                    }
+                }
+
+                .tabbar-item {
+                    width: 24px;
+                    height: 32px;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+}

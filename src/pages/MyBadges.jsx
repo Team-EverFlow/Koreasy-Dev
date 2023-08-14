@@ -3,6 +3,8 @@ import Header from '../components/Header';
 import BadgeGroup from '../components/BadgeGroup';
 import '../styles/MyBadge.scss';
 import dumpBadge from './dumpBadge';
+import { Link } from 'react-router-dom';
+
 
 function MyBadgesView() {
     return (
@@ -15,9 +17,9 @@ function MyBadgesView() {
                 }}
             />
             <div className="my-badge-button-group">
-                <button className="my-badge-button">
+                <Link to="/badge/setting" className="my-badge-button">
                     Set my signiture badge
-                </button>
+                </Link>
             </div>
         </div>
     );

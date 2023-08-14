@@ -11,7 +11,6 @@
 
 /**
  * @typedef {Object} ProfileObject
- * @property {string} id
  * @property {string} name
  * @property {string} profileIcon
  * @property {Array<BadgeObject>} badges

@@ -1,4 +1,5 @@
 export const USER_COLLECTION_ID = 'User';
-export const USER_NOT_REGISTERED = 'USER_NOT_REGISTERED';
 export const WORD_COLLECTION_ID = 'Word';
-export const NOT_EXIST_WORD = 'NOT_EXIST_WORD';
+export const DOES_NOT_EXIST_DOC = 'DOES_NOT_EXIST_DOC';
+export const WORDTESTVIEW_COLLECTION_ID = 'WordTestView';
+export const TESTDATA_COLLECTION_ID = 'TestData';
