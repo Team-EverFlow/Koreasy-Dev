@@ -9,6 +9,7 @@ import Chevrion from '../components/Chevrion';
 import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 import { Link } from 'react-router-dom';
 import unknownBadge from './mybadge/unknownBadge';
+import { ToastGenerator } from '../components/ToastGenerator';
 
 function ProfileView() {
     let [profile, setProfile] = useState({
@@ -20,6 +21,8 @@ function ProfileView() {
     const convertBadgeObject = object => {
         return object;
     }; // TODO()
+
+    let [MySentenceWIPToast, onMySentenceWIPToastCall] = ToastGenerator();
 
     useEffect(() => {
         GetCurrentUserInformation().then(result => {
@@ -61,7 +64,9 @@ function ProfileView() {
                         <ProfileButton
                             icon={'activities_icon'}
                             title={'My Sentences'}
-                            onClick={undefined}
+                            onClick={() => {
+                                onMySentenceWIPToastCall();
+                            }}
                         />
                     </div>
 
@@ -76,6 +81,10 @@ function ProfileView() {
                     <BadgeGroup badges={profile.badges} detail={false} />
                 </div>
             </div>
+            <MySentenceWIPToast
+                message="로그인 하는 중에 에러가 발생하였어요.\n잠시 후에 다시 시도해주세요."
+                icon={false}
+            />
         </div>
     );
 }
