@@ -5,6 +5,7 @@ import '../styles/MyBadge.scss';
 import dumpBadge from './dumpBadge';
 import { Link } from 'react-router-dom';
 
+
 function MyBadgesViewSetting() {
     let [badge, setBadge] = useState(dumpBadge);
 

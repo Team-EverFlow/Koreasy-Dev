@@ -2,8 +2,9 @@ import React from 'react';
 import Header from '../components/Header';
 import BadgeGroup from '../components/BadgeGroup';
 import '../styles/MyBadge.scss';
-import { Link } from 'react-router-dom';
 import dumpBadge from './dumpBadge';
+import { Link } from 'react-router-dom';
+
 
 function MyBadgesView() {
     return (
