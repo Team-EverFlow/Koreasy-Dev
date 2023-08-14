@@ -4,6 +4,7 @@
  * @property {("special" | "attend" | "comment" | "test")} type
  * @property {number} level
  * @property {boolean} active
+ * @property {string | undefined} imageId
  * @property {Date | undefined} [date=undefined] date
  *
  */
