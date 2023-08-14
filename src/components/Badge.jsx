@@ -10,6 +10,9 @@ import moment from 'moment';
  * @param {MouseEventHandler<T> | undefined} onClick 클릭하면 반환하는 이벤트
  */
 function Badge({ badge, onClick }) {
+    if (!badge.hasOwnProperty('check')) {
+        badge.check = false;
+    }
     return (
         <div
             className={
