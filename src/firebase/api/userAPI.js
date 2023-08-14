@@ -17,6 +17,7 @@ export async function RegisterUser(initialUserInformation = {}) {
             recentWord: [],
             repBadge: [],
             bookmark: [],
+            testScore: [],
             username: user.displayName,
             profileBackgroundColor: 'black',
             profileAvatarUrl: user.photoURL,
