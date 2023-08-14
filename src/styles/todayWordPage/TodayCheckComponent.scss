@@ -1,6 +1,22 @@
 @import '../variables/colors.scss';
 @import '../variables/textStyles.scss';
 
+@mixin circle {
+    display: flex;
+    width: 52px;
+    height: 52px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 26px;
+
+    @include title02-bold;
+    background-color: $koreasy-color-gray-06;
+}
+
 .today-check-background {
     display: flex;
     flex-direction: column;
@@ -13,10 +29,18 @@
         align-items: flex-start;
         gap: 12px;
 
-        .circle-first {
-            border-radius: 50px;
-            width: 50px;
-            border-style: $koreasy-color-primary;
+        .check-word {
+            @include circle;
+            border: 1px solid $koreasy-color-primary;
+            color: $koreasy-color-primary;
+            text-align: center;
+        }
+
+        .not-check-word {
+            @include circle;
+            border: 1px solid $koreasy-color-gray-03;
+            color: $koreasy-color-gray-03;
+            text-align: center;
         }
     }
 
