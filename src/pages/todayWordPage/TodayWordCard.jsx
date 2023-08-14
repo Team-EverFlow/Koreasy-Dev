@@ -1,5 +1,5 @@
-import React from 'react';
-import Sound from '../../assets/images/Sound.svg';
+import React, { useState } from 'react';
+// import Sound from '../../assets/images/Sound.svg';
 import ExampleSentence from '../../components/ExampleSentence';
 import Bookmark from '../../components/Bookmark';
 
@@ -14,34 +14,25 @@ import '../../styles/todayWordPage/TodayWordCard.scss';
  * ExampleSentence: {sentenceKr: string, sentenceEn: string}}} wordData wordData json data
  * @returns
  */
-function TodayWordCard({ wordData }) {
-    wordData = {
-        wordId: 'word1',
-        wordKr: '사과',
-        wordEn: 'Apple',
-        pronunciation: '[sagua]',
-        meaning: 'noun-Apple',
-        ExampleSentence: [
-            {
-                sentenceKr: '나는 사과사의 아이폰을 이용한다.',
-                sentenceEn: "I'm using iPhone by apple company.",
-            },
-            {
-                sentenceKr: '나는 사과사의 아이폰을 이용한다.',
-                sentenceEn: "I'm using iPhone by apple company.",
-            },
-        ],
+function TodayWordCard({ wordData, onClick }) {
+    let [isClickCard, setIsClickCard] = useState(false);
+
+    const handleClick = () => {
+        setIsClickCard(!isClickCard);
+        if (onClick) {
+            onClick(!isClickCard);
+        }
     };
 
     return (
-        <div className="todaywordcard-background">
+        <div className="todaywordcard-background" onClick={handleClick}>
             <div className="wordInfo-frame">
                 <div className="mean">
                     <div className="text-box">
                         <div className="krWord">{wordData.wordKr}</div>
-                        <div className="sound-box">
+                        {/* <div className="sound-box">
                             <img src={Sound} alt="sound" />
-                        </div>
+                        </div> */}
                         <div className="pronunciation">
                             {wordData.pronunciation}
                         </div>
@@ -55,12 +46,12 @@ function TodayWordCard({ wordData }) {
             <div className="example-frame">
                 Example sentence
                 <ExampleSentence
-                    isSound={true}
-                    ExampleSentence={wordData.ExampleSentence[0]}
+                    isSound={false}
+                    ExampleSentence={wordData.exampleSentence[0]}
                 />
                 <ExampleSentence
-                    isSound={true}
-                    ExampleSentence={wordData.ExampleSentence[1]}
+                    isSound={false}
+                    ExampleSentence={wordData.exampleSentence[1]}
                 />
             </div>
             <div className="option-frame">
