@@ -24,7 +24,14 @@ function Badge({ badge, onClick }) {
             }
         >
             <div className="badge-image" onClick={onClick}>
-                <img src={badge.imageUrl} alt="badge icon" />
+                <img
+                    src={require(`../assets/badges/${badge.type}_badge/${
+                        badge.type
+                    }_badge_lv${badge.level}${
+                        badge.active ? '_disable' : ''
+                    }.svg`)}
+                    alt="badge icon"
+                />
                 <img src={Check} className="badge-check" alt="check-mark" />
             </div>
             <span className="badge-title">{badge.title}</span>
