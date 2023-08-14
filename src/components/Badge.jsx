@@ -38,7 +38,9 @@ function Badge({ badge, onClick, checked = false }) {
             </div>
             <span className="badge-title">{badge.title}</span>
             <span className="badge-date">
-                {moment(badge.date).format('YYYY-MM-DD')}
+                {badge.date !== undefined
+                    ? moment(badge.date).format('YYYY-MM-DD')
+                    : ''}
             </span>
         </div>
     );

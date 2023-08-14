@@ -62,7 +62,10 @@ div.badge {
 
     span.badge-date {
         @include subtext-regular;
+
+        display: block;
         color: black;
+        min-height: 18px;
         text-align: center;
     }
 }
