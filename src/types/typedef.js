@@ -1,11 +1,10 @@
 /**
  * @typedef {Object} BadgeObject
  * @property {string} title
- * @property {string} type
+ * @property {("special" | "attend" | "comment" | "test")} type
  * @property {number} level
  * @property {boolean} active
- * @property {boolean} [check=false] check
- * @property {Date} date
+ * @property {Date | undefined} [date=undefined] date
  *
  */
 
