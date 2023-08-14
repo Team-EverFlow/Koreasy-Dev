@@ -37,7 +37,7 @@ function TodayWordCard({ wordData, onClick }) {
                             {wordData.pronunciation}
                         </div>
                     </div>
-                    <div className="info">{wordData.wordEn}</div>
+                    <div className="todaywordcard-info">{wordData.wordEn}</div>
                 </div>
                 <div className="bookmark-box">
                     <Bookmark />

@@ -17,6 +17,7 @@
         justify-content: space-between;
         align-items: flex-start;
         align-self: stretch;
+        word-break: break-all;
 
         color: $koreasy-color-gray-00;
         @include body01-medium;
