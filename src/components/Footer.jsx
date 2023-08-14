@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Footer.scss';
 
 const Footer = () => {
@@ -8,7 +9,7 @@ const Footer = () => {
                 <p>
                     <a
                         className="text link-offset-2 link-underline link-underline-opacity-0"
-                        href="."
+                        href="https://halogen.notion.site/Koreasy-8019c878f7b745758e5a20c643525722?pvs=4"
                     >
                         Privacy Policy
                     </a>
@@ -26,13 +27,13 @@ const Footer = () => {
                         className="text link-offset-2 link-underline link-underline-opacity-0"
                         href="."
                     >
-                        Quit Service
+                        Withdrawal
                     </a>
                 </p>
                 <p>
                     <a
                         className="text link-offset-2 link-underline link-underline-opacity-0"
-                        href="."
+                        href="https://halogen.notion.site/Koreasy-8019c878f7b745758e5a20c643525722?pvs=4"
                     >
                         About team
                     </a>
