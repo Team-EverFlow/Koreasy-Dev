@@ -82,7 +82,7 @@ function ProfileView() {
                 </div>
             </div>
             <MySentenceWIPToast
-                message="로그인 하는 중에 에러가 발생하였어요.\n잠시 후에 다시 시도해주세요."
+                message="아직은 준비 중인 기능입니다.\n재미있는 기능을 위해 노력하도록 할께요!"
                 icon={false}
             />
         </div>
