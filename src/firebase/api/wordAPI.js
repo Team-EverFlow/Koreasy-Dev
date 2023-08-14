@@ -1,13 +1,16 @@
 import {
+    COMMENT_COLLECTION_ID,
     DOES_NOT_EXIST_DOC,
     USER_COLLECTION_ID,
     WORD_COLLECTION_ID,
 } from '../type/const';
 import { GetDocFromCollection } from '../functions/util';
 import {
+    addDoc,
     arrayRemove,
     arrayUnion,
     collection,
+    deleteDoc,
     doc,
     getDoc,
     getDocs,
@@ -29,7 +32,25 @@ export async function GetWordUsingId(id) {
         const word = await GetDocFromCollection(WORD_COLLECTION_ID, id);
         if (!word.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
-        return { success: true, data: word.data() };
+        const commentSnap = await getDocs(
+            collection(db, WORD_COLLECTION_ID, id, COMMENT_COLLECTION_ID),
+        );
+        const comments = [];
+        commentSnap.forEach(v =>
+            comments.push({
+                id: v.id,
+                ...v.data(),
+            }),
+        );
+
+        return {
+            success: true,
+            data: {
+                ...word.data(),
+                id: word.id,
+                comments,
+            },
+        };
     } catch (e) {
         return { success: false, error: e };
     }
@@ -65,7 +86,12 @@ async function GetWordsUsingField(field, word) {
         const wordQry = query(wordRef, where(field, '==', word));
         const querySnapshot = await getDocs(wordQry);
         const wordList = [];
-        querySnapshot.forEach(doc => wordList.push(doc.data()));
+        querySnapshot.forEach(doc =>
+            wordList.push({
+                ...doc.data(),
+                id: doc.id,
+            }),
+        );
         return { success: true, data: wordList };
     } catch (e) {
         return { success: false, error: e };
@@ -75,7 +101,7 @@ async function GetWordsUsingField(field, word) {
 /**
  * 해당 단어를 현재 유저의 프로필의 북마크 목록에 추가합니다.
  * @param {string} id
- * @returns {{success: boolean, error: any}}
+ * @returns {Promise<{success: boolean, error: any}>}
  */
 export async function AddBookmark(id) {
     try {
@@ -102,7 +128,7 @@ export async function AddBookmark(id) {
 /**
  * 해당 단어를 현재 유저의 프로필의 북마크 목록에서 제거합니다.
  * @param {string} id
- * @returns {{success: boolean, error: any}}
+ * @returns {Promise<{success: boolean, error: any}>}
  */
 export async function RemoveBookmark(id) {
     try {
@@ -121,4 +147,43 @@ export async function RemoveBookmark(id) {
     } catch (e) {
         return { success: false, error: e };
     }
+}
+
+/**
+ * 단어에 댓글을 추가합니다.
+ * @param {string} wordId 단어 ID(PK값)
+ * @param {string} comment 댓글 내용
+ * @returns {Promise<{ success:boolean, error: any | undefined }>}
+ */
+export async function CreateComment(wordId, comment) {
+    try {
+        const user = GetCurrentUserFromFirebase();
+        const commentRef = collection(
+            db,
+            WORD_COLLECTION_ID,
+            wordId,
+            COMMENT_COLLECTION_ID,
+        );
+        await addDoc(commentRef, {
+            username: user.displayName,
+            date: new Date(),
+            comment,
+            hearCount: 0,
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 단어의 특정 댓글을 삭제합니다
+ * @param {string} wordId
+ * @param {string} commentId
+ * @returns {Promise<void>}
+ */
+export async function DeleteComment(wordId, commentId) {
+    return deleteDoc(
+        doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID, commentId),
+    );
 }

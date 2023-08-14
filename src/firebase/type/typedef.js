@@ -17,11 +17,13 @@
 
 /**
  * @typedef {Object} Word
+ * @property {string} id
  * @property {string} wordKr
  * @property {string} wordEn
  * @property {string} pronunciation
  * @property {string} meaning
  * @property {ExampleSentence[]} exampleSentence
+ * @property {Array<Comment>} comments
  */
 
 /**
@@ -44,4 +46,35 @@
  * @property {string} description
  * @property {string} goalValue
  * @property {string} eventName
+ */
+
+/**
+ * @typedef {Object} Quiz
+ * @property {int} id
+ * @property {string} question
+ * @property {string[]} choose
+ * @property {string} answer
+ */
+
+/**
+ * @typedef {Object} TestData
+ * @property {string} title
+ * @property {string} subtitle
+ * @property {Quiz[]} quizzes
+ */
+
+/**
+ * @typedef {Object} WordTestView
+ * @property {string} title
+ * @property {string} date
+ * @property {string} testDataId
+ */
+
+/**
+ * @typedef {Object} Comment
+ * @property {string} id
+ * @property {string} username
+ * @property {Date} date
+ * @property {string} comment
+ * @property {int} heartCount
  */

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import '../styles/Profile.scss';
@@ -6,58 +6,46 @@ import '../styles/MyBadge.scss';
 import ProfileButton from '../components/ProfileButton';
 import BadgeGroup from '../components/BadgeGroup';
 import Chevrion from '../components/Chevrion';
+import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 import { Link } from 'react-router-dom';
 
 function ProfileView() {
-    let dumpProfile = {
-        id: 'halogen',
-        name: 'Halogen',
+    let [profile, setProfile] = useState({
+        name: 'user',
         profileIcon: ProfileIconDump,
-        badges: [
-            {
-                id: 1,
-                title: 'Python 최고',
-                imageUrl: 'https://yhs.kr/static/image/python.svg',
-                date: new Date(),
-                active: false,
-            },
-            {
-                id: 2,
-                title: 'Kotlin 최고',
-                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-                date: new Date(),
-                active: true,
-            },
-            {
-                id: 1,
-                title: 'Python 최고',
-                imageUrl: 'https://yhs.kr/static/image/python.svg',
-                date: new Date(),
-                active: false,
-            },
-            {
-                id: 2,
-                title: 'Kotlin 최고',
-                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-                date: new Date(),
-                active: true,
-            },
-            {
-                id: 1,
-                title: 'Python 최고',
-                imageUrl: 'https://yhs.kr/static/image/python.svg',
-                date: new Date(),
-                active: false,
-            },
-            {
-                id: 2,
-                title: 'Kotlin 최고',
-                imageUrl: 'https://yhs.kr/static/image/kotlin.svg',
-                date: new Date(),
-                active: true,
-            },
-        ],
+        badges: [],
+    });
+
+    const convertBadgeObject = object => {
+        return object;
+    }; // TODO()
+    const defaultBadge = {
+        title: 'Python 최고',
+        imageUrl: 'https://yhs.kr/static/image/python.svg',
+        date: new Date(),
+        active: false,
+        check: false,
     };
+
+    useEffect(() => {
+        GetCurrentUserInformation().then(result => {
+            if (result.success) {
+                setProfile({
+                    ...profile,
+                    name: result.user.username,
+                    profileIcon:
+                        result.user.profileAvatarUrl ?? ProfileIconDump,
+                    badges: convertBadgeObject(
+                        result.user.repBadge.concat(
+                            Array(6 - result.user.repBadge.length).fill(
+                                defaultBadge,
+                            ),
+                        ),
+                    ),
+                });
+            }
+        });
+    }, []);
     return (
         <div>
             <Header />
@@ -65,11 +53,11 @@ function ProfileView() {
                 <div className="profile-background" />
                 <div className="profile-main">
                     <img
-                        src={dumpProfile.profileIcon}
+                        src={profile.profileIcon}
                         className="profile-image"
                         alt="profile"
                     />
-                    <span className="profile-nickname">{dumpProfile.name}</span>
+                    <span className="profile-nickname">{profile.name}</span>
                     <div className="profiles-button-group">
                         <ProfileButton
                             icon="bookmarks_icon"
@@ -91,7 +79,7 @@ function ProfileView() {
                             </Link>
                         </div>
                     </div>
-                    <BadgeGroup badges={dumpProfile.badges} />
+                    <BadgeGroup badges={profile.badges} />
                 </div>
             </div>
         </div>

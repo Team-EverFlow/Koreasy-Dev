@@ -1,13 +1,13 @@
 import React from 'react';
+import BadgeNotification from '../../components/BadgeNotification';
 
-const TestPageGoToTest = () => {
+const App = () => {
     return (
         <div>
-            <h2>임시 테스트 시험 페이지입니다.</h2>
-            <p>지금 무화과 먹방 중</p>
             <p>깃허브 돌아와</p>
+            <BadgeNotification badgeId="badge1" />
         </div>
     );
 };
 
-export default TestPageGoToTest;
+export default App;
