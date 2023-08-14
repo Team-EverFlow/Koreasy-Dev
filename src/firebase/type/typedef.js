@@ -6,9 +6,15 @@
  * @property {Array<string>} [recentWord]
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
- *
+ * @property {Array<TestScore>} [testScore]
  */
 
+/**
+ * @typedef {Object} TestScore
+ * @property {string} testDataId
+ * @property {number} solve
+ * @property {number} question
+ */
 /**
  * @typedef {Object} Bookmark
  * @property {string} id
