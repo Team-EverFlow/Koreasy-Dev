@@ -4,6 +4,7 @@ import BadgeGroup from '../../components/BadgeGroup';
 import '../../styles/MyBadge.scss';
 import badgeList from './badgeList';
 import { Link } from 'react-router-dom';
+import badge from '../../components/Badge';
 
 function MyBadgesViewSetting() {
     // let [badge, setBadge] = useState(badgeList);
@@ -17,12 +18,30 @@ function MyBadgesViewSetting() {
     //         });
     //     }
     // };
-    const onBadgeClick = id => {};
+
+    // TODO(profile.repBadge)
+    const [selectedBadge, setSelectedBadge] = useState(
+        Array(badgeList.length).fill(false),
+    );
+    const onBadgeClick = id => {
+        if (!badgeList[id].active) {
+            return;
+        }
+        setSelectedBadge(prevState => {
+            return prevState.map((badgeChecked, index) => {
+                return index === id ? !badgeChecked : badgeChecked;
+            });
+        });
+    };
 
     return (
         <div>
             <Header isNavigationBar={true} viewName="My Badges" />
-            <BadgeGroup badges={badgeList} onClick={onBadgeClick} />
+            <BadgeGroup
+                badges={badgeList}
+                onClick={onBadgeClick}
+                badgesChecked={selectedBadge}
+            />
             <div className="my-badge-button-group">
                 <Link to="/badge" className="my-badge-button cancel">
                     Cancel
