@@ -54,12 +54,12 @@
                 gap: 16px;
                 align-self: stretch;
 
-                .seonji-1 {
+                .seonji {
                     display: flex;
                     align-items: center;
                     gap: 4px;
 
-                    .checkbox-1 {
+                    .checkbox {
                         display: flex;
                         width: 24px;
                         height: 24px;
@@ -72,81 +72,13 @@
                         background: $koreasy-color-gray-03;
                     }
 
-                    .text-1 {
+                    .text {
                         color: $koreasy-color-black;
                         @include subtitle-medium;
                     }
-                }
 
-                .seonji-2 {
-                    display: flex;
-                    align-items: center;
-                    gap: 4px;
-
-                    .checkbox-2 {
-                        display: flex;
-                        width: 24px;
-                        height: 24px;
-                        padding: 6px;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        border-radius: 6px;
-                        background: $koreasy-color-gray-03;
-                    }
-
-                    .text-2 {
-                        color: $koreasy-color-black;
-                        @include subtitle-medium;
-                    }
-                }
-
-                .seonji-3 {
-                    display: flex;
-                    align-items: center;
-                    gap: 4px;
-
-                    .checkbox-3 {
-                        display: flex;
-                        width: 24px;
-                        height: 24px;
-                        padding: 6px;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        border-radius: 6px;
-                        background: $koreasy-color-gray-03;
-                    }
-
-                    .text-3 {
-                        color: $koreasy-color-black;
-                        @include subtitle-medium;
-                    }
-                }
-
-                .seonji-4 {
-                    display: flex;
-                    align-items: center;
-                    gap: 4px;
-
-                    .checkbox-4 {
-                        display: flex;
-                        width: 24px;
-                        height: 24px;
-                        padding: 6px;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        border-radius: 6px;
-                        background: $koreasy-color-gray-03;
-                    }
-
-                    .text-4 {
-                        color: $koreasy-color-black;
-                        @include subtitle-medium;
+                    .selected {
+                        color: $koreasy-color-primary;
                     }
                 }
             }
