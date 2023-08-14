@@ -1,8 +1,0 @@
-@import '../styles/variables/colors.scss';
-@import '../styles/variables/textStyles.scss';
-
-.word-test-list-view-name {
-    @include title01-heavy;
-    color: $koreasy-color-primary;
-    margin: 32px 20px 12px 20px;
-}

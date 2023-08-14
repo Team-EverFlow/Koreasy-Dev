@@ -1,0 +1,14 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.go-to-test-button {
+    @include body01-bold;
+    background-color: $koreasy-color-primary;
+    color: $koreasy-color-white;
+    border: none;
+    margin-right: 12px;
+    margin-left: 20px;
+    width: calc((100vw - 52px) / 2);
+    height: 40px;
+    border-radius: 12px;
+}

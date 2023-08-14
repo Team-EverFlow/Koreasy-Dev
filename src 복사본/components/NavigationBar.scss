@@ -1,0 +1,25 @@
+@import '../styles/variables/colors.scss';
+@import '../styles/variables/textStyles.scss';
+
+.previous-view {
+    @include body01-medium;
+    background-color: $koreasy-color-gray-06;
+    display: flex;
+    width: 100vw;
+    padding: 8px 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    .text {
+        align-items: center;
+        display: flex;
+        height: 22px;
+        gap: 12px;
+    }
+
+    .dump-box {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+    }
+}

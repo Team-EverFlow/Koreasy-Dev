@@ -1,0 +1,191 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    gap: 12px;
+
+    .quiz-item {
+        display: flex;
+        width: calc(100vw - 20px * 2);
+        padding: 20px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        border-radius: 20px;
+        background: var(--gray-6, #f2f2f7);
+
+        .quiz-state {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            align-self: stretch;
+
+            .quiz-number {
+                display: flex;
+                padding: 4px 12px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                border-radius: 8px;
+                background: var(--gray-1, #8e8e93);
+
+                .number {
+                    color: var(--gray-6, #f2f2f7);
+
+                    /* Subtitle | Bold */
+                    font-family: Pretendard;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 28px; /* 140% */
+                }
+            }
+
+            .question {
+                align-self: stretch;
+                color: var(--black, #1c1c1e);
+
+                /* Body01 | Regular */
+                font-family: Pretendard;
+                font-size: 17px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px; /* 129.412% */
+            }
+
+            .quiz-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                align-self: stretch;
+
+                .seonji-1 {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .checkbox-1 {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        padding: 6px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 6px;
+                        background: var(--gray-3, #c7c7cc);
+                    }
+
+                    .text-1 {
+                        color: var(--black, #1c1c1e);
+
+                        /* Subtitle | Medium */
+                        font-family: Pretendard;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 28px; /* 140% */
+                    }
+                }
+
+                .seonji-2 {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .checkbox-2 {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        padding: 6px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 6px;
+                        background: var(--gray-3, #c7c7cc);
+                    }
+
+                    .text-2 {
+                        color: var(--black, #1c1c1e);
+
+                        /* Subtitle | Medium */
+                        font-family: Pretendard;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 28px; /* 140% */
+                    }
+                }
+
+                .seonji-3 {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .checkbox-3 {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        padding: 6px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 6px;
+                        background: var(--gray-3, #c7c7cc);
+                    }
+
+                    .text-3 {
+                        color: var(--black, #1c1c1e);
+
+                        /* Subtitle | Medium */
+                        font-family: Pretendard;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 28px; /* 140% */
+                    }
+                }
+
+                .seonji-4 {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .checkbox-4 {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        padding: 6px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 6px;
+                        background: var(--gray-3, #c7c7cc);
+                    }
+
+                    .text-4 {
+                        color: var(--black, #1c1c1e);
+
+                        /* Subtitle | Medium */
+                        font-family: Pretendard;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 28px; /* 140% */
+                    }
+                }
+            }
+        }
+    }
+}
