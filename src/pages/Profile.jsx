@@ -60,7 +60,7 @@ function ProfileView() {
                         />
                         <ProfileButton
                             icon={'activities_icon'}
-                            title={'Activities'}
+                            title={'My Sentences'}
                             onClick={undefined}
                         />
                     </div>
