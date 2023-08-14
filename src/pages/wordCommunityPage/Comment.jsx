@@ -1,21 +1,42 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Heart from '../../components/Heart';
-
-import '../../styles/wordCommunityPage/Comment.scss';
 import Divider from '../../components/Divider';
 
-function Comment() {
-    let comment = {
-        userName: 'TestUserName',
-        date: '2023.09.01',
-        comment: '와! 내가 정말 좋아하는 한국어 단어야!\n두번째\n세번째',
-        heartCnt: 3,
-    };
-    const heartColor = useRef(null);
-    const heartColorChange = () => {
-        if (heartColor) {
-            heartColor.current.style.color = 'red';
+import '../../styles/wordCommunityPage/Comment.scss';
+
+function Comment({ wordComment }) {
+    let [comment, setComment] = useState(
+        wordComment
+            ? { ...wordComment }
+            : {
+                  userName: 'testUserName',
+                  date: '2023.08.14',
+                  commentID: 'abcd',
+                  commentInfo: '토마토 먹고싶다',
+                  heartCnt: 2,
+              },
+    );
+    let [isHeartClick, setIsHeartClick] = useState(false); // 서버에서 값 받아와 확인
+
+    const clickHeart = item => {
+        if (!isHeartClick) {
+            setComment(comment => ({
+                ...comment,
+                [item]: comment.heartCnt + 1,
+            }));
+            setIsHeartClick(true);
+        } else {
+            setComment(comment => ({
+                ...comment,
+                [item]: comment.heartCnt - 1,
+            }));
+            setIsHeartClick(false);
         }
+        // 서버로 하트 값 전송
+    };
+
+    const deleteComment = () => {
+        // 서버로 코멘트 id값 전송
     };
 
     return (
@@ -24,15 +45,20 @@ function Comment() {
                 <button className="user-name">{comment.userName}</button>
                 <div className="comment-date">{comment.date}</div>
             </div>
-            <div className="comment-comment">{comment.comment}</div>
+            <div className="comment-comment">{comment.commentInfo}</div>
             <div className="comment-util">
                 <div className="heart-frame">
-                    <button className="heart">
+                    <button
+                        className="heart"
+                        onClick={() => clickHeart('heartCnt')}
+                    >
                         <Heart />
                     </button>
                     {comment.heartCnt}
                 </div>
-                <button className="comment-delete">Delete</button>
+                <button className="comment-delete" onClick={deleteComment}>
+                    Delete
+                </button>
             </div>
 
             <Divider />
