@@ -73,7 +73,7 @@ function ProfileView() {
                             </Link>
                         </div>
                     </div>
-                    <BadgeGroup badges={profile.badges} />
+                    <BadgeGroup badges={profile.badges} detail={false} />
                 </div>
             </div>
         </div>

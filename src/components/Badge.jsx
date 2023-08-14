@@ -9,8 +9,9 @@ import moment from 'moment';
  * @param {BadgeObject} badge 뱃지
  * @param {MouseEventHandler<T> | undefined} onClick 클릭하면 반환하는 이벤트
  * @param {boolean} [checked=false] 뱃지 선택 유무 (MyBadgeSetting 에서만 사용되는 뷰)
+ * @param {boolean} [detail=true] detail
  */
-function Badge({ badge, onClick, checked = false }) {
+function Badge({ badge, onClick, checked = false, detail = true }) {
     if (!badge.hasOwnProperty('check')) {
         badge.check = false;
     }
@@ -37,11 +38,13 @@ function Badge({ badge, onClick, checked = false }) {
                 <img src={Check} className="badge-check" alt="check-mark" />
             </div>
             <span className="badge-title">{badge.title}</span>
-            <span className="badge-date">
-                {badge.date !== undefined
-                    ? moment(badge.date).format('YYYY-MM-DD')
-                    : ''}
-            </span>
+            {detail && (
+                <span className="badge-date">
+                    {badge.date !== undefined
+                        ? moment(badge.date).format('YYYY-MM-DD')
+                        : ''}
+                </span>
+            )}
         </div>
     );
 }
