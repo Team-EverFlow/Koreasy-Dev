@@ -30,7 +30,6 @@ const Header = ({
         if (userInfo !== null) {
             userInfo = userInfo.uid;
         } else {
-            userInfo = GetCurrentUserFromFirebase();
             navigate('../login');
         }
         GetUserInformation(userInfo).then(result => {
