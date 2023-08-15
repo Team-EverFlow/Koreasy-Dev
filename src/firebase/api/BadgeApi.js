@@ -1,8 +1,9 @@
-import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { arrayUnion, doc, increment, updateDoc } from 'firebase/firestore';
 import { db } from '../root';
 import {
     BADGE_COLLECTION_ID,
     DOES_NOT_EXIST_DOC,
+    MYBADGE_COLLECTION_ID,
     USER_COLLECTION_ID,
 } from '../type/const';
 import { GetCurrentUserFromFirebase } from './userAPI';
@@ -52,4 +53,28 @@ export async function GetBadgeData(badgeId) {
     }
 }
 
-export async function UpdateBadgeProgressValue(uid, badgeId) {}
+/**
+ *
+ * @param {string} uid
+ * @param {string} badgeId
+ * @param {string} value
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
+ */
+export async function UpdateBadgeProgressValue(uid, badgeId, value) {
+    try {
+        const myBadgeRef = doc(
+            db,
+            USER_COLLECTION_ID,
+            uid,
+            MYBADGE_COLLECTION_ID,
+            badgeId,
+        );
+
+        await updateDoc(myBadgeRef, {
+            progressValue: increment(value),
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}

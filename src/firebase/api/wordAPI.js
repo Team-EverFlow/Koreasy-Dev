@@ -23,7 +23,7 @@ import {
 import { db } from '../root';
 import '../type/typedef';
 import { GetCurrentUserFromFirebase } from './userAPI';
-import { CreateCommentEvent } from '../functions/Events';
+import { CreateCommentEvent, DeleteCommentEvent } from '../functions/Events';
 
 /**
  * word의 id를 이용하여 해당 Word doc을 불러옴
@@ -173,7 +173,7 @@ export async function CreateComment(wordId, comment) {
             comment,
             hearCount: 0,
         });
-        window.dispatchEvent(CreateCommentEvent);
+        window.dispatchEvent(CreateCommentEvent());
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
@@ -187,9 +187,20 @@ export async function CreateComment(wordId, comment) {
  * @returns {Promise<void>}
  */
 export async function DeleteComment(wordId, commentId) {
-    return deleteDoc(
-        doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID, commentId),
-    );
+    try {
+        await deleteDoc(
+            doc(
+                db,
+                WORD_COLLECTION_ID,
+                wordId,
+                COMMENT_COLLECTION_ID,
+                commentId,
+            ),
+        );
+        window.dispatchEvent(DeleteCommentEvent());
+    } catch (e) {
+        return { success: false, error: e };
+    }
 }
 
 /**

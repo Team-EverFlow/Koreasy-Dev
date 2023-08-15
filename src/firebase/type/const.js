@@ -7,3 +7,4 @@ export const COMMENT_COLLECTION_ID = 'Comment';
 export const BADGE_COLLECTION_ID = 'Badge';
 export const MYBADGE_COLLECTION_ID = 'MyBadge';
 export const CREATE_COMMENT_EVENT_NAME = 'create_comment';
+export const DELETE_COMMENT_EVENT_NAME = 'delete_comment';

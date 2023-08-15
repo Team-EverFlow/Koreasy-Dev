@@ -9,7 +9,6 @@ import {
 import { browserLocalPersistence, getAuth } from 'firebase/auth';
 import { firebaseConfig } from './token';
 import './token.js';
-import { GetUserInformation } from './api/userAPI';
 import { GetBadgeData, UpdateBadgeProgressValue } from './api/BadgeApi';
 import {
     DOES_NOT_EXIST_DOC,
@@ -33,22 +32,20 @@ auth.onAuthStateChanged(async user => {
         );
         const userBadgeDocs = await getDocs(userBadgeRef);
         const myBadges = [];
-        userBadgeDocs.forEach(v =>
-            myBadges.push({
-                ...v.data(),
-                badgeId: v.id,
-            }),
-        );
-        const userInformation = {
-            ...userDoc.data(),
-            myBadges,
-        };
-        console.log(userInformation);
-        userInformation.myBadges.forEach(async v => {
-            const badge = await GetBadgeData(v.badgeId);
+        userBadgeDocs.forEach(v => myBadges.push(v.id));
+        myBadges.forEach(async badgeId => {
+            const badge = await GetBadgeData(badgeId);
             if (!badge.success) return console.error(badge.error);
-            window.addEventListener(badge.data.eventName, async () => {
-                await UpdateBadgeProgressValue(user.uid, badge.data.id);
+            badge.data.eventName.forEach(async eventName => {
+                window.addEventListener(eventName, async e => {
+                    const { success, error } = await UpdateBadgeProgressValue(
+                        user.uid,
+                        badge.data.id,
+                        e.detail.op,
+                    );
+                    if (!success) console.error(error);
+                });
+                console.log('Event Listner: ', eventName);
             });
         });
     }
