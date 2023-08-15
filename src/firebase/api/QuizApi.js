@@ -58,7 +58,7 @@ export async function GetTestDataList(testId) {
  * @param {string} testDataId
  * @param {number} solve
  * @param {number} question
- * @returns {{ success: boolean, error: any | undefined }}
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
  */
 export async function SetTestScore(testDataId, solve, question) {
     try {
