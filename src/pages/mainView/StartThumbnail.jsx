@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../styles/StartThumbnail.scss';
 import Chevrion from '../../components/Chevrion';
@@ -14,12 +15,13 @@ const StartThumbnail = ({ startText }) => {
     let text = {
         head: "Let's check my Korean level.",
         start: 'Go to test',
-        link: '.',
+        link: './testList',
     };
     let Thumbnail = Thumbnail2;
     if (startText !== 'bookmark') {
         text.head = 'Learn more Korean words';
         text.start = 'Go to word book';
+        text.link = './wordbook';
         Thumbnail = Thumbnail1;
     }
 
@@ -34,22 +36,22 @@ const StartThumbnail = ({ startText }) => {
             </div>
             <div className="text-area">
                 {text.head}
-                <a
-                    href={text.link}
+                <Link
+                    to={text.link}
                     className="link-offset-2 link-underline link-underline-opacity-0"
                 >
                     <div className="start-button text-lite">
                         {text.start}
                         <Chevrion color="MainColor" />
                     </div>
-                </a>
+                </Link>
                 <div className="share-button text-lite">
-                    <a
-                        href={text.link}
+                    <Link
+                        to={text.link}
                         className="text-lite link-offset-2 link-underline link-underline-opacity-0"
                     >
                         Share this service
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
