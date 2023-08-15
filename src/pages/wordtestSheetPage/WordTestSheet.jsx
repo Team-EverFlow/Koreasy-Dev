@@ -23,19 +23,9 @@ const WordtestSheetPage = () => {
         subtitle: '',
         quizzes: [],
     });
-
-    const handleOptionClick = (quizIndex, optionIndex) => {
-        const newSelectedOptionStates = [...selectedOptionStates];
-        const isSelected =
-            newSelectedOptionStates[quizIndex].selectedOptionIndex ===
-            optionIndex;
-
-        newSelectedOptionStates[quizIndex].selectedOptionIndex = isSelected
-            ? null
-            : optionIndex;
-        newSelectedOptionStates[quizIndex].isChecked = !isSelected;
-        setSelectedOptionStates(newSelectedOptionStates);
-    };
+    const [enableCheckbox, setEnableCheckbox] = useState(false);
+    const [showCheckbox, setShowCheckbox] = useState(true);
+    const [showResult, setShowResult] = useState(false);
 
     useEffect(() => {
         GetTestDataList(quizId).then(result => {
@@ -53,6 +43,21 @@ const WordtestSheetPage = () => {
         });
     }, []);
 
+    const handleOptionClick = (quizIndex, optionIndex) => {
+        if (showResult) return;
+
+        const newSelectedOptionStates = [...selectedOptionStates];
+        const isSelected =
+            newSelectedOptionStates[quizIndex].selectedOptionIndex ===
+            optionIndex;
+
+        newSelectedOptionStates[quizIndex].selectedOptionIndex = isSelected
+            ? null
+            : optionIndex;
+        newSelectedOptionStates[quizIndex].isChecked = !isSelected;
+        setSelectedOptionStates(newSelectedOptionStates);
+    };
+
     /**
      * 채점하는 함수입니다.
      * @param {Quiz[]} quizzes 문제가 들어간 값
@@ -66,11 +71,10 @@ const WordtestSheetPage = () => {
             correct[index] = quiz.choose[userChosen[index]] === quiz.answer;
             if (correct[index]) count += 1;
         });
+
+        setShowResult(true);
         return [count, correct];
     };
-
-    const [showScore, setShowScore] = useState(false);
-    const [showResult, setShowResult] = useState(false); // 추가된 상태 값
 
     return (
         <div className="wordtestsheet-page">
@@ -85,17 +89,20 @@ const WordtestSheetPage = () => {
                     onHandleOptionClick={handleOptionClick}
                     selectedOption={selectedOptionStates}
                 />
-                <WordTestCheckOut
-                    onClick={() => {
-                        onGradingEvent(
-                            quizData.quizzes,
-                            selectedOptionStates.map(
-                                state => state.selectedOptionIndex,
-                            ),
-                        );
-                    }}
-                />
-                {showScore && <WordTestScore />}
+                {showCheckbox && (
+                    <WordTestCheckOut
+                        onClick={() => {
+                            onGradingEvent(
+                                quizData.quizzes,
+                                selectedOptionStates.map(
+                                    state => state.selectedOptionIndex,
+                                ),
+                            );
+                        }}
+                        disable={!enableCheckbox}
+                    />
+                )}
+                {showResult && <WordTestScore />}
                 {showResult && <WordTestResult />}
             </div>
         </div>

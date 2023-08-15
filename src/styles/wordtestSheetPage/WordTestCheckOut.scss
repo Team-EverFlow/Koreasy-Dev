@@ -10,7 +10,11 @@
     align-items: center;
     gap: 10px;
     border-radius: 12px;
-    background: $koreasy-color-gray-03;
+    background: $koreasy-color-primary;
+
+    &.disabled {
+        background: $koreasy-color-gray-03;
+    }
 
     .checkout-text {
         color: $koreasy-color-white;
