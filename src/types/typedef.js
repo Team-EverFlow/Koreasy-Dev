@@ -20,6 +20,7 @@
 
 /**
  * @typedef {Object} QuizChooseStatus
+ * @property {boolean | undefined} result
  * @property {number | null} selectedOptionIndex
  * @property {number | null} correctOptionIndex
  * @property {number | null} incorrectOptionIndex

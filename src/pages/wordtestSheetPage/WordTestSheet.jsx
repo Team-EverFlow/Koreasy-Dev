@@ -40,6 +40,7 @@ const WordtestSheetPage = () => {
                 setSelectedOptionStates(
                     result.data.quizzes.map((quiz, _2) => {
                         return {
+                            result: undefined,
                             selectedOptionIndex: null,
                             correctOptionIndex: null,
                             incorrectOptionIndex: null,
@@ -119,6 +120,7 @@ const WordtestSheetPage = () => {
 
         const newSelectedOptionStates = [...selectedOptionStates];
         result.map((quizResult, index) => {
+            newSelectedOptionStates[index].result = quizResult;
             if (quizResult) {
                 newSelectedOptionStates[index].correctOptionIndex =
                     selectedOptionStates[index].selectedOptionIndex;

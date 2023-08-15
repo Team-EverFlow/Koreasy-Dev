@@ -15,7 +15,7 @@ const WordTestQuiz = ({
     quizzes,
     onHandleOptionClick,
     selectedOption,
-    result= false,
+    result = false,
 }) => {
     /**
      * @param {number} optionIndex
@@ -36,7 +36,15 @@ const WordTestQuiz = ({
             {quizzes.map((quiz, quizIndex) => (
                 <div key={quiz.id} className="quiz-item">
                     <div className="quiz-state">
-                        <div className="quiz-number">
+                        <div
+                            className={`quiz-number ${
+                                result
+                                    ? selectedOption[quizIndex].result
+                                        ? 'correct'
+                                        : 'incorrect'
+                                    : ''
+                            }`}
+                        >
                             <div className="number">{quizIndex + 1}</div>
                         </div>
                         <div className="question">{quiz.question}</div>
