@@ -42,7 +42,9 @@ export function GetCurrentUserFromFirebase() {
  * @returns { Promise<{success: boolean, error: any, user: UserInformation | undefined}> }
  */
 export async function GetCurrentUserInformation() {
-    return await GetUserInformation(GetCurrentUserFromFirebase().uid);
+    const user = GetCurrentUserFromFirebase();
+    if (!user) return { success: false, error: 'User is null' };
+    return await GetUserInformation(user.uid);
 }
 
 /**
