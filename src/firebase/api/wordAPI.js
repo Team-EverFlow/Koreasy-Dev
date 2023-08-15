@@ -211,8 +211,8 @@ export async function GetWordList() {
 
 /**
  * 일정 기간 사이에 생성된 단어들을 반환합니다
- * @param {Date} startDate
- * @param {Date} endDate
+ * @param {Date} startDate 시작 날짜
+ * @param {Date} endDate 끝 날짜 (endDate는 검색 범위에 포함되지 않습니다)
  * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
  */
 export async function GetWordListSpan(startDate, endDate) {
@@ -221,7 +221,7 @@ export async function GetWordListSpan(startDate, endDate) {
         const wordQry = query(
             wordRef,
             where('addedTime', '>=', Timestamp.fromDate(startDate)),
-            where('addedTime', '<=', Timestamp.fromDate(endDate)),
+            where('addedTime', '<', Timestamp.fromDate(endDate)),
         );
         const wordDocs = await getDocs(wordQry);
         const result = [];
@@ -230,4 +230,24 @@ export async function GetWordListSpan(startDate, endDate) {
     } catch (e) {
         return { success: false, error: e };
     }
+}
+
+/**
+ * 오늘의 단어에 해당되는 단어를 불러옵니다.
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ */
+export async function GetTodayWordList() {
+    const currentDate = new Date();
+    return GetWordListSpan(
+        new Date(
+            currentDate.getFullYear,
+            currentDate.getMonth,
+            currentDate.getDate,
+        ),
+        new Date(
+            currentDate.getFullYear,
+            currentDate.getMonth,
+            currentDate.getDate + 1,
+        ),
+    );
 }
