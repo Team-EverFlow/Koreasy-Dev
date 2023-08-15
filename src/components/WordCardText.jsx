@@ -1,5 +1,5 @@
 import React from 'react';
-import './WordCardText.scss';
+import '../styles/components/WordCardText.scss';
 
 /**
  *
