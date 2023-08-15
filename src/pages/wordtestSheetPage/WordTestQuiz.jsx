@@ -4,6 +4,13 @@ import QuizData from '../../dummyData/QuizData';
 import CheckboxImage from '../../assets/images/Checkbox.svg';
 
 const WordtestQuiz = () => {
+    const [searchParameter, _] = useSearchParams();
+    const navigate = useNavigate();
+    if (!searchParameter.has('id')) {
+        navigate('/testList');
+    }
+    const quizId = searchParameter.get('id');
+
     const [selectedSeonjiStates, setSelectedSeonjiStates] = useState(
         QuizData.map(quiz => ({
             selectedSeonjiIndex: null,
