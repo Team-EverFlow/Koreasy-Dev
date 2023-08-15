@@ -1,8 +1,28 @@
 import React from 'react';
 import '../../styles/wordtestSheetPage/WordTestQuiz.scss';
-import CheckboxImage from '../../assets/images/Checkbox.svg';
+import { ReactComponent as CorrectImage } from '../../assets/images/correct.svg';
+import { ReactComponent as IncorrectImage } from '../../assets/images/incorrect.svg';
 
-const WordtestQuiz = ({ quizzes, onHandleOptionClick, selectedOption }) => {
+const WordtestQuiz = ({
+    quizzes,
+    onHandleOptionClick,
+    selectedOption,
+    result,
+}) => {
+    /**
+     * @param {number} optionIndex
+     * @param {QuizChooseStatus} status
+     */
+    const optionStyle = (optionIndex, status) => {
+        if (status.correctOptionIndex === optionIndex && result)
+            return ['correct', CorrectImage];
+        else if (status.incorrectOptionIndex === optionIndex && result)
+            return ['incorrect', IncorrectImage];
+        else if (status.selectedOptionIndex === optionIndex)
+            return ['selected', CorrectImage];
+        return ['', undefined];
+    };
+
     return (
         <div className="quiz-container">
             {quizzes.map((quiz, quizIndex) => (
@@ -14,16 +34,15 @@ const WordtestQuiz = ({ quizzes, onHandleOptionClick, selectedOption }) => {
                         <div className="question">{quiz.question}</div>
                         <div className="quiz-content">
                             {quiz.choose.map((option, optionIndex) => {
-                                const isSelected =
-                                    selectedOption[quizIndex]
-                                        .selectedOptionIndex === optionIndex;
-
+                                const [optionStyleResult, ImageComponent] =
+                                    optionStyle(
+                                        optionIndex,
+                                        selectedOption[quizIndex],
+                                    );
                                 return (
                                     <div
                                         key={optionIndex}
-                                        className={`seonji ${
-                                            isSelected ? 'selected' : ''
-                                        }`}
+                                        className={`seonji ${optionStyleResult}`}
                                         onClick={() =>
                                             onHandleOptionClick(
                                                 quizIndex,
@@ -31,26 +50,14 @@ const WordtestQuiz = ({ quizzes, onHandleOptionClick, selectedOption }) => {
                                             )
                                         }
                                     >
-                                        <div
-                                            className={`checkbox ${
-                                                isSelected ? 'selected' : ''
-                                            }`}
-                                        >
-                                            {isSelected && (
-                                                <img
-                                                    src={CheckboxImage}
-                                                    alt="Checkbox"
-                                                    className="checkbox-image"
-                                                />
+                                        <div className="checkbox">
+                                            {ImageComponent !== undefined && (
+                                                <ImageComponent />
                                             )}
                                         </div>
-                                        <div
-                                            className={`text ${
-                                                isSelected ? 'selected' : ''
-                                            }`}
-                                        >
+                                        <span className="text">
                                             {option.trim()}
-                                        </div>
+                                        </span>
                                     </div>
                                 );
                             })}

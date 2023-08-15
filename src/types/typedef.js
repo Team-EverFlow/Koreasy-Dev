@@ -17,3 +17,12 @@
  * @property {Array<BadgeObject>} badges
  *
  */
+
+/**
+ * @typedef {Object} QuizChooseStatus
+ * @property {number | null} selectedOptionIndex
+ * @property {number | null} correctOptionIndex
+ * @property {number | null} incorrectOptionIndex
+ * @property {boolean} isCorrect
+ *
+ */

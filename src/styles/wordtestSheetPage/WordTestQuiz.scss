@@ -35,6 +35,14 @@
                 border-radius: 8px;
                 background: $koreasy-color-gray-01;
 
+                &.correct {
+                    background: $koreasy-color-primary;
+                }
+
+                &.incorrect {
+                    background: $koreasy-color-red;
+                }
+
                 .number {
                     color: $koreasy-color-gray-06;
                     @include subtitle-bold;
@@ -77,8 +85,25 @@
                         @include subtitle-medium;
                     }
 
-                    .selected {
-                        color: $koreasy-color-primary;
+                    &.selected,
+                    &.correct {
+                        .checkbox {
+                            background: $koreasy-color-primary;
+                        }
+
+                        .text {
+                            color: $koreasy-color-primary;
+                        }
+                    }
+
+                    &.incorrect {
+                        .checkbox {
+                            background: $koreasy-color-red;
+                        }
+
+                        .text {
+                            color: $koreasy-color-red;
+                        }
                     }
                 }
             }

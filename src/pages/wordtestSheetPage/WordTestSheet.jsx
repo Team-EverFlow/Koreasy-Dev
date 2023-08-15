@@ -16,7 +16,6 @@ const WordtestSheetPage = () => {
         navigate('/testList');
     }
     const quizId = searchParameter.get('id');
-
     const [selectedOptionStates, setSelectedOptionStates] = useState([]);
     const [quizData, setQuizData] = useState({
         title: '',
@@ -30,15 +29,17 @@ const WordtestSheetPage = () => {
     useEffect(() => {
         GetTestDataList(quizId).then(result => {
             if (result.success) {
-                setQuizData(result.data);
                 setSelectedOptionStates(
-                    result.data.quizzes.map((_1, _2) => {
+                    result.data.quizzes.map((quiz, _2) => {
                         return {
                             selectedOptionIndex: null,
+                            correctOptionIndex: null,
+                            incorrectOptionIndex: null,
                             isChecked: false,
                         };
                     }),
                 );
+                setQuizData(result.data);
             }
         });
     }, []);
@@ -104,6 +105,7 @@ const WordtestSheetPage = () => {
                     quizzes={quizData.quizzes}
                     onHandleOptionClick={handleOptionClick}
                     selectedOption={selectedOptionStates}
+                    result={showResult}
                 />
                 {showCheckbox && (
                     <WordTestCheckOut
