@@ -33,6 +33,7 @@ const WordtestSheetPage = () => {
     const [enableCheckbox, setEnableCheckbox] = useState(false);
     const [showCheckbox, setShowCheckbox] = useState(true);
     const [showResult, setShowResult] = useState(false);
+    const [correction, setCorrection] = useState(0);
 
     useEffect(() => {
         GetTestDataList(quizId).then(result => {
@@ -117,6 +118,7 @@ const WordtestSheetPage = () => {
             quizData.quizzes,
             selectedOptionStates.map(state => state.selectedOptionIndex),
         );
+        setCorrection(correction);
 
         const newSelectedOptionStates = [...selectedOptionStates];
         result.map((quizResult, index) => {
@@ -156,7 +158,12 @@ const WordtestSheetPage = () => {
                         disable={!enableCheckbox}
                     />
                 )}
-                {showResult && <WordTestScore />}
+                {showResult && (
+                    <WordTestScore
+                        quizzes={quizData.quizzes.length}
+                        correction={correction}
+                    />
+                )}
                 {showResult && <WordTestResult />}
             </div>
         </div>
