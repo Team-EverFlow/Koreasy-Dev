@@ -118,7 +118,7 @@ export async function AddBookmark(id) {
         if (data) return { success: true };
         const pushData = {
             id,
-            date: new Date(),
+            date: Timestamp.fromDate(new Date()),
         };
         await updateDoc(userInfoRef, { bookmark: arrayUnion(pushData) });
         return { success: true };
@@ -167,7 +167,7 @@ export async function CreateComment(wordId, comment) {
         );
         await addDoc(commentRef, {
             username: user.displayName,
-            date: new Date(),
+            date: Timestamp.fromDate(new Date()),
             comment,
             hearCount: 0,
         });
