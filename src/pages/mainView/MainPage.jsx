@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import LearnTodayWord from './LearnTodayWord.jsx';
 import StartThumbnail from './StartThumbnail.jsx';
@@ -69,20 +70,13 @@ function MainPage() {
                             </button>
                         </div>
                     </div>
-                    <a
+                    <Link
                         className="stats link-offset-2 link-underline link-underline-opacity-0"
-                        href="."
-                    >
-                        <div className="stats-text">Check my stats</div>
-                        <Chevrion color="MainColor" />
-                    </a>
-                    <a
-                        className="stats link-offset-2 link-underline link-underline-opacity-0"
-                        href="."
+                        to="./profile/badge"
                     >
                         <div className="stats-text">View my badges</div>
                         <Chevrion color="MainColor" />
-                    </a>
+                    </Link>
                 </div>
             </div>
             <Footer />
