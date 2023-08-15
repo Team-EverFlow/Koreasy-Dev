@@ -1,39 +1,30 @@
-// src/Router.js
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainView from './pages/MyBadgesSetting';
-import Profile from './pages/Profile';
-import MyBadges from './pages/MyBadges';
-import MyBadgesSetting from './pages/MyBadgesSetting';
+
+import MainView from './pages/mainView/MainPage';
 import Login from './pages/Login';
-import WordTestList from './pages/wordTest/WordTestList';
-import TestPageGoToTest from './pages/wordTest/TestPageGoToTest';
-import TestPageLearnWords from './pages/wordTest/TestPageLearnWords';
+import Profile from './pages/Profile';
+import MyBadges from './pages/mybadge/MyBadges';
+import MyBadgesSetting from './pages/mybadge/MyBadgesSetting';
 import WordBook from './pages/wordbookPage/WordBook';
-import WordWeek0 from './pages/wordweekPage/WordWeek0';
+import WordTestList from './pages/wordTest/WordTestList';
+import TodayWord from './pages/todayWordPage/TodayWordView';
 
 const Router = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/" element={<WordTestList />} />
-                <Route
-                    path="/TestPageGoToTest"
-                    element={<TestPageGoToTest />}
-                />
-                <Route
-                    path="/TestPageLearnWords"
-                    element={<TestPageLearnWords />}
-                />
-
                 <Route path="/" element={<MainView />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/badge" element={<MyBadges />} />
-                <Route path="/badge/setting" element={<MyBadgesSetting />} />
+                <Route path="/profile/badge" element={<MyBadges />} />
+                <Route
+                    path="/profile/badge/setting"
+                    element={<MyBadgesSetting />}
+                />
                 <Route path="/wordbook" element={<WordBook />} />
-                <Route path="/wordweek0" element={<WordWeek0 />} />
+                <Route path="/todayword" element={<TodayWord />} />
+                <Route path="/testList" element={<WordTestList />} />
             </Routes>
         </BrowserRouter>
     );
