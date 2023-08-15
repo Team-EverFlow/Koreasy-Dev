@@ -60,7 +60,9 @@ function TodayWordView() {
                     </div>
                 </ReactCardFlip>
             ))}
-            <TodayCheckComponent checkText={isCheckText} />
+            <div className="today-check-frame">
+                <TodayCheckComponent checkText={isCheckText} />
+            </div>
         </div>
     );
 }
