@@ -19,6 +19,10 @@
         align-items: center;
         float: left;
 
+        .service-name-link {
+            color: $koreasy-color-black;
+        }
+
         .profile-icon {
             width: 36px;
             height: 36px;

@@ -1,10 +1,16 @@
-import React from 'react';
-import './Header.scss';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 import ProfileIconDump from '../assets/images/ProfileRed.svg';
 import NavigationBar from './NavigationBar';
 import Divider from './Divider';
 import PageTitle from './PageTitle';
-import { Link } from 'react-router-dom';
+import {
+    GetCurrentUserFromFirebase,
+    GetUserInformation,
+} from '../firebase/api/userAPI';
+
+import '../styles/components/Header.scss';
 
 // Header
 /**
@@ -17,15 +23,36 @@ const Header = ({
     viewName = undefined,
     navigationViewName = 'PreviousView',
 }) => {
-    const ProfileIcon = ProfileIconDump;
+    const [profileIcon, setProfileIcon] = useState(ProfileIconDump);
+    let navigate = useNavigate();
+    useEffect(() => {
+        let userInfo = GetCurrentUserFromFirebase();
+        if (userInfo !== null) {
+            userInfo = userInfo.uid;
+        } else {
+            userInfo = GetCurrentUserFromFirebase();
+            navigate('./login');
+        }
+        GetUserInformation(userInfo).then(result => {
+            if (result.success) {
+                setProfileIcon(result.user.profileAvatarUrl);
+            }
+        });
+    });
+
     return (
         <div>
             <div className="header">
                 <div className="service-name">
-                    Koreasy
+                    <Link
+                        to="/"
+                        className="service-name-link link-offset-2 link-underline link-underline-opacity-0"
+                    >
+                        Koreasy
+                    </Link>
                     <Link to="/profile">
                         <img
-                            src={ProfileIcon}
+                            src={profileIcon}
                             alt="Profile"
                             className="profile-icon"
                         />
