@@ -8,6 +8,8 @@ import WordTestScore from './WordTestScore';
 import WordTestResult from './WordTestResult';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { GetTestDataList, SetTestScore } from '../../firebase/api/QuizApi';
+import { DOES_NOT_EXIST_DOC } from '../../firebase/type/const';
+import { ToastGenerator } from '../../components/ToastGenerator';
 
 const WordtestSheetPage = () => {
     const [searchParameter, _] = useSearchParams();
@@ -35,6 +37,9 @@ const WordtestSheetPage = () => {
     const [showResult, setShowResult] = useState(false);
     const [correction, setCorrection] = useState(0);
 
+    const [NotFoundToast, showNotFoundToast] = ToastGenerator();
+    const [ExceptionToast, showExceptionToast] = ToastGenerator();
+
     useEffect(() => {
         GetTestDataList(quizId).then(result => {
             if (result.success) {
@@ -50,6 +55,13 @@ const WordtestSheetPage = () => {
                     }),
                 );
                 setQuizData(result.data);
+            } else {
+                if (result.error === DOES_NOT_EXIST_DOC) {
+                    showNotFoundToast();
+                } else {
+                    showExceptionToast();
+                }
+                setTimeout(() => navigate('/testList'), 3000);
             }
         });
     }, []);
@@ -168,6 +180,14 @@ const WordtestSheetPage = () => {
                 )}
                 {showResult && <WordTestResult />}
             </div>
+            <NotFoundToast
+                icon={true}
+                message="알 수 없는 퀴즈 ID입니다.\n올바른 퀴즈를 선택해주세요."
+            />
+            <ExceptionToast
+                icon={true}
+                message="퀴즈를 불러오는 도중에 에러가 발생하였습니다.\n잠시 후에 다시 시도해주세요."
+            />
         </div>
     );
 };
