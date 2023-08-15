@@ -7,6 +7,7 @@
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
  * @property {Array<TestScore>} [testScore]
+ * @property {import('firebase/firestore').Timestamp} attendance
  */
 
 /**
