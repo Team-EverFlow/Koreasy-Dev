@@ -1,11 +1,18 @@
 import { auth, db } from '../root';
-import { DOES_NOT_EXIST_DOC, USER_COLLECTION_ID } from '../type/const';
+import {
+    BADGE_COLLECTION_ID,
+    DOES_NOT_EXIST_DOC,
+    MYBADGE_COLLECTION_ID,
+    USER_COLLECTION_ID,
+} from '../type/const';
 import {
     setDoc,
     doc,
     updateDoc,
     arrayUnion,
     Timestamp,
+    getDocs,
+    collection,
 } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
@@ -21,15 +28,31 @@ export async function RegisterUser(initialUserInformation = {}) {
     try {
         const user = GetCurrentUserFromFirebase();
         await setDoc(doc(db, USER_COLLECTION_ID, user.uid), {
+            username: user.displayName,
+            profileBackgroundColor: 'black',
+            profileAvatarUrl: user.photoURL,
             recentWord: [],
             repBadge: [],
             bookmark: [],
             testScore: [],
-            username: user.displayName,
-            profileBackgroundColor: 'black',
-            profileAvatarUrl: user.photoURL,
+            attendance: [],
             ...initialUserInformation,
         });
+        const badgeSnap = await getDocs(collection(db, BADGE_COLLECTION_ID));
+        for (const badge of badgeSnap.docs) {
+            await setDoc(
+                doc(
+                    db,
+                    USER_COLLECTION_ID,
+                    user.uid,
+                    MYBADGE_COLLECTION_ID,
+                    badge.id,
+                ),
+                {
+                    progressValue: 0,
+                },
+            );
+        }
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
@@ -41,7 +64,7 @@ export async function RegisterUser(initialUserInformation = {}) {
  * @returns {import('firebase/auth').User | null}
  */
 export function GetCurrentUserFromFirebase() {
-    return auth.currentUser;
+    return auth?.currentUser;
 }
 
 /**
@@ -64,7 +87,27 @@ export async function GetUserInformation(UID) {
         const userSnapRef = await GetDocFromCollection(USER_COLLECTION_ID, UID);
         if (!userSnapRef.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
-        return { success: true, user: userSnapRef.data() };
+        const userBadgeRef = collection(
+            db,
+            USER_COLLECTION_ID,
+            UID,
+            MYBADGE_COLLECTION_ID,
+        );
+        const userBadgeDocs = await getDocs(userBadgeRef);
+        const myBadges = [];
+        userBadgeDocs.forEach(v =>
+            myBadges.push({
+                ...v.data(),
+                badgeId: v.id,
+            }),
+        );
+        return {
+            success: true,
+            user: {
+                ...userSnapRef.data(),
+                myBadges,
+            },
+        };
     } catch (e) {
         return { success: false, error: e };
     }
