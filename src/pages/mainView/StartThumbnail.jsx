@@ -47,7 +47,7 @@ const StartThumbnail = ({ startText }) => {
                 </Link>
                 <div className="share-button text-lite">
                     <Link
-                        to={text.link}
+                        to="./"
                         className="text-lite link-offset-2 link-underline link-underline-opacity-0"
                     >
                         Share this service
