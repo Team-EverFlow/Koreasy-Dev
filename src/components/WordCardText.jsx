@@ -1,12 +1,9 @@
 import React from 'react';
-import '../../styles/WordCardText.scss';
+import './WordCardText.scss';
 
 /**
  *
- * @typedef {object} word { word: "krWord", pronunciation: "[text]", enWord: "parts of speech - enWord"
- * @property {string} krWord '사과'
- * @property {string} pronunciation '[sagua]'
- * @property {string} enWord 'partOfSpeech - enWord'
+ * @param {{word: {wordId: string, wordKr: string, wirdEn: string, pronunciation: string, meaning: string }}}
  * @returns
  */
 function WordCardText({ word }) {
