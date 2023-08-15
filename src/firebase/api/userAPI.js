@@ -1,6 +1,12 @@
 import { auth, db } from '../root';
 import { DOES_NOT_EXIST_DOC, USER_COLLECTION_ID } from '../type/const';
-import { setDoc, doc } from 'firebase/firestore';
+import {
+    setDoc,
+    doc,
+    updateDoc,
+    arrayUnion,
+    Timestamp,
+} from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
 import { signOut } from 'firebase/auth';
@@ -71,6 +77,25 @@ export async function GetUserInformation(UID) {
 export async function SignOutFromFirebase() {
     try {
         await signOut(auth);
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 해당 Date를 현재 유저의 UserInformation.attendace에 추가합니다.
+ * @param {Date} date
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
+ */
+export async function AddAttendance(date) {
+    try {
+        const user = GetCurrentUserFromFirebase();
+        if (!user) return { success: false, error: 'User is null' };
+        const userInfoRef = doc(db, USER_COLLECTION_ID, user.uid);
+        await updateDoc(userInfoRef, {
+            attendance: arrayUnion(Timestamp.fromDate(date)),
+        });
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
