@@ -11,7 +11,7 @@ import WordTestList from './pages/wordTest/WordTestList';
 import TestPageGoToTest from './pages/wordTest/TestPageGoToTest';
 import TestPageLearnWords from './pages/wordTest/TestPageLearnWords';
 import WordBook from './pages/wordbookPage/WordBook';
-import WordWeek0 from './pages/wordweekPage/WordWeek0';
+import WordWeek from './pages/wordweekPage/WordWeek';
 
 const Router = () => {
     return (
@@ -33,7 +33,7 @@ const Router = () => {
                 <Route path="/badge" element={<MyBadges />} />
                 <Route path="/badge/setting" element={<MyBadgesSetting />} />
                 <Route path="/wordbook" element={<WordBook />} />
-                <Route path="/wordweek0" element={<WordWeek0 />} />
+                <Route path="/wordweek" element={<WordWeek />} />
             </Routes>
         </BrowserRouter>
     );

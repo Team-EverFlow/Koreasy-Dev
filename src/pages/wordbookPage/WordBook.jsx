@@ -14,7 +14,10 @@ const WordBook = () => {
                 <div className="date-section">
                     {DateData.map((content, index) => (
                         <Link
-                            to={`/WordWeek${index}`}
+                            to={{
+                                pathname: '/wordweek',
+                                state: { wordIdList: content.wordIdList },
+                            }}
                             key={index}
                             className="dateitem-container"
                         >

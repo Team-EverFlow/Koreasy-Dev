@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header.jsx';
-import '../../styles/wordweekStyles/WordWeek0.scss';
+import '../../styles/wordweekStyles/WordWeek.scss';
 import WordData from '../../dummyData/WordData.js';
 import WordExampleSentence from './WordExampleSentence.jsx';
 import WordExampleToggle from './WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
+import { useLocation } from 'react-router-dom';
 
-const WordWeek0 = () => {
+const WordWeek = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
 
     const handleExampleToggle = wordId => {
@@ -22,11 +23,17 @@ const WordWeek0 = () => {
         return visibleExamples.includes(wordId);
     };
 
+    const location = useLocation();
+    console.log(location.state);
+    const wordIdList = location.state?.wordIdList || [];
+
     return (
-        <div className="wordweek0-container">
+        <div className="wordweek-container">
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
-                {WordData.map((content, index) => (
+                {WordData.filter(content =>
+                    wordIdList.includes(content.wordId),
+                ).map((content, index) => (
                     <React.Fragment key={content.wordId}>
                         <div
                             key={content.wordId}
@@ -78,4 +85,4 @@ const WordWeek0 = () => {
     );
 };
 
-export default WordWeek0;
+export default WordWeek;
