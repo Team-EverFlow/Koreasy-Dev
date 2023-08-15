@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
-// import Sound from '../../assets/images/Sound.svg';
+import { Link } from 'react-router-dom';
+
+import Sound from '../../assets/images/Sound.svg';
 import ExampleSentence from '../../components/ExampleSentence';
 import Bookmark from '../../components/Bookmark';
-
 import Reply from '../../assets/images/Reply.svg';
 import MySentences from '../../assets/images/MySentences.svg';
 

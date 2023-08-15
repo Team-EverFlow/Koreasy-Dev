@@ -1,5 +1,5 @@
 import React from 'react';
-import './ExampleSentence.scss';
+import '../styles/components/ExampleSentence.scss';
 import Sound from '../assets/images/Sound.svg';
 
 /**

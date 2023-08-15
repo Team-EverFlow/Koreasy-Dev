@@ -1,5 +1,5 @@
-@import '../styles/variables/colors.scss';
-@import '../styles/variables/textStyles.scss';
+@import '../variables/colors';
+@import '../variables/textStyles';
 
 .header {
     display: flex;
@@ -19,11 +19,20 @@
         align-items: center;
         float: left;
 
+        .service-name-link {
+            color: $koreasy-color-black;
+        }
+
         .profile-icon {
             width: 36px;
             height: 36px;
             flex-shrink: 0;
             float: right;
+            border-radius: 18px;
         }
     }
+}
+
+.pagetitle {
+    margin-top: 32px;
 }
