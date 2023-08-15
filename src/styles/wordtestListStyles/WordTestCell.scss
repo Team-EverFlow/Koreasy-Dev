@@ -1,5 +1,5 @@
-@import '../styles/variables/colors.scss';
-@import '../styles/variables/textStyles.scss';
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
 
 .word-test-main-container {
     display: flex;
@@ -8,7 +8,7 @@
     .word-test-list-title {
         padding-left: 0;
         align-items: center;
-        margin-left: 20px;
+        margin: 12px 20px;
 
         .big-title {
             @include title02-bold;
@@ -19,7 +19,6 @@
         .small-title {
             @include body01-regular;
             color: $koreasy-color-gray-01;
-            margin-bottom: 16px;
         }
     }
 
@@ -27,11 +26,9 @@
         display: flex;
         justify-content: center;
         border-bottom: 1px solid;
-        padding-bottom: 16px;
-        margin-bottom: 12px;
+        padding: 0 0 12px 0;
         width: calc(100vw - 40px);
-        margin-left: auto;
-        margin-right: auto;
+        margin: 4px auto 0 auto;
         color: $koreasy-color-gray-03;
     }
 }

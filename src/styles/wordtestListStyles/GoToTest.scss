@@ -1,5 +1,5 @@
-@import '../styles/variables/colors.scss';
-@import '../styles/variables/textStyles.scss';
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
 
 .go-to-test-button {
     @include body01-bold;
