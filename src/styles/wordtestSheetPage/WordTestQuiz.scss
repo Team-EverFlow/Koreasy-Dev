@@ -1,0 +1,112 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    gap: 12px;
+
+    .quiz-item {
+        display: flex;
+        width: calc(100vw - 20px * 2);
+        padding: 20px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        border-radius: 20px;
+        background: $koreasy-color-gray-06;
+
+        .quiz-state {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            align-self: stretch;
+
+            .quiz-number {
+                display: flex;
+                padding: 4px 12px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                border-radius: 8px;
+                background: $koreasy-color-gray-01;
+
+                &.correct {
+                    background: $koreasy-color-primary;
+                }
+
+                &.incorrect {
+                    background: $koreasy-color-red;
+                }
+
+                .number {
+                    color: $koreasy-color-gray-06;
+                    @include subtitle-bold;
+                }
+            }
+
+            .question {
+                align-self: stretch;
+                color: $koreasy-color-black;
+                @include body01-regular;
+            }
+
+            .quiz-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                align-self: stretch;
+
+                .seonji {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+
+                    .checkbox {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        padding: 6px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        border-radius: 6px;
+                        background: $koreasy-color-gray-03;
+                    }
+
+                    .text {
+                        color: $koreasy-color-black;
+                        @include subtitle-medium;
+                    }
+
+                    &.selected,
+                    &.correct {
+                        .checkbox {
+                            background: $koreasy-color-primary;
+                        }
+
+                        .text {
+                            color: $koreasy-color-primary;
+                        }
+                    }
+
+                    &.incorrect {
+                        .checkbox {
+                            background: $koreasy-color-red;
+                        }
+
+                        .text {
+                            color: $koreasy-color-red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
