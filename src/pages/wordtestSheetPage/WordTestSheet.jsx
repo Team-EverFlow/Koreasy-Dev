@@ -43,6 +43,14 @@ const WordtestSheetPage = () => {
         });
     }, []);
 
+    const isCheckboxEnable = selectedOption => {
+        let count = 0;
+        selectedOption.map((checked, _) => {
+            if (checked) count += 1;
+        });
+        return count === selectedOption.length;
+    };
+
     const handleOptionClick = (quizIndex, optionIndex) => {
         if (showResult) return;
 
@@ -55,6 +63,14 @@ const WordtestSheetPage = () => {
             ? null
             : optionIndex;
         newSelectedOptionStates[quizIndex].isChecked = !isSelected;
+
+        setEnableCheckbox(
+            isCheckboxEnable(
+                newSelectedOptionStates.map(selectedOption => {
+                    return selectedOption.isChecked;
+                }),
+            ),
+        );
         setSelectedOptionStates(newSelectedOptionStates);
     };
 

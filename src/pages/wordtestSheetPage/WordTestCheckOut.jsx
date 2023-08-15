@@ -5,7 +5,7 @@ const WordTestCheckOut = ({ onClick, disable }) => {
     return (
         <div
             className={`checkout-box ${disable ? 'disabled' : ''}`}
-            onClick={onClick}
+            onClick={!disable ? onClick : undefined}
         >
             <div className="checkout-text">Check Out</div>
         </div>
