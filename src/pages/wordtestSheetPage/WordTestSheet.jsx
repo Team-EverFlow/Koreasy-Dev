@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/wordtestSheetPage/WordTestSheet.scss';
 import Header from '../../components/Header';
 import WordTestTitle from './WordTestTitle';
@@ -7,8 +7,11 @@ import WordTestCheckOut from './WordTestCheckOut';
 import WordTestScore from './WordTestScore';
 import WordTestResult from './WordTestResult';
 
-const WordtestQuiz = () => {
+const WordtestSheetPage = () => {
     const dateText = '1st week, Aug 2023';
+    const [showScore, setShowScore] = useState(false);
+    const [showResult, setShowResult] = useState(false); // 추가된 상태 값
+
     return (
         <div className="wordtestsheet-page">
             <Header isNavigationBar={false} />
@@ -16,11 +19,11 @@ const WordtestQuiz = () => {
                 <WordTestTitle dateText={dateText} />
                 <WordTestQuiz />
                 <WordTestCheckOut />
-                <WordTestScore />
-                <WordTestResult />
+                {showScore && <WordTestScore />}
+                {showResult && <WordTestResult />}
             </div>
         </div>
     );
 };
 
-export default WordtestQuiz;
+export default WordtestSheetPage;

@@ -12,7 +12,7 @@
     border-radius: 12px;
     background: $koreasy-color-gray-03;
 
-    checkout-text {
+    .checkout-text {
         color: $koreasy-color-white;
         text-align: center;
         @include subtitle-bold;
