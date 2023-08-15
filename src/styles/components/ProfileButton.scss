@@ -1,6 +1,5 @@
-@import '../styles/variables/colors';
-@import '../styles/variables/textStyles';
-
+@import '../variables/colors';
+@import '../variables/textStyles';
 
 button.profile-button {
     background: none;
@@ -19,18 +18,22 @@ button.profile-button {
         width: 80px;
 
         &.activities_icon {
-            background: url("../assets/images/activites.svg") no-repeat center, $koreasy-color-gray-06;
+            background:
+                url('../../assets/images/activites.svg') no-repeat center,
+                $koreasy-color-gray-06;
         }
 
         &.bookmarks_icon {
-            background: url("../assets/images/bookmarks.svg") no-repeat center, $koreasy-color-gray-06;
+            background:
+                url('../../assets/images/bookmarks.svg') no-repeat center,
+                $koreasy-color-gray-06;
         }
     }
 
     span {
         @include body02-regular;
 
-        color: #000000;
+        color: $koreasy-color-black;
         text-align: center;
     }
 }

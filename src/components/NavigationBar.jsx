@@ -1,6 +1,6 @@
 import React from 'react';
 import Chevron from './Chevrion';
-import './NavigationBar.scss';
+import '../styles/components/NavigationBar.scss';
 import { useNavigate } from 'react-router-dom';
 
 // Navigation Bar

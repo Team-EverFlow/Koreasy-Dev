@@ -1,5 +1,5 @@
 import React from 'react';
-import './Badge.scss';
+import '../styles/components/Badge.scss';
 import Check from '../assets/images/check.svg';
 import '../types/typedef';
 import moment from 'moment';

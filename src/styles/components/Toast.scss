@@ -1,9 +1,7 @@
-@import "../styles/variables/colors";
-@import "../styles/variables/textStyles";
-
+@import '../variables/colors';
+@import '../variables/textStyles';
 
 .toast-group {
-
     bottom: 30px;
     display: flex;
     position: fixed;
@@ -14,8 +12,12 @@
 
     &.show {
         visibility: visible;
-        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        -webkit-animation:
+            fadein 0.5s,
+            fadeout 0.5s 2.5s;
+        animation:
+            fadein 0.5s,
+            fadeout 0.5s 2.5s;
     }
 
     div.toast-content {
@@ -33,7 +35,7 @@
         }
 
         span.toast-icon {
-            background: url("../assets/images/warning.svg") no-repeat center;
+            background: url('../../assets/images/warning.svg') no-repeat center;
             background-size: 24px;
             height: 32px;
             width: 32px;
@@ -49,7 +51,6 @@
                 display: block;
             }
         }
-    ;
     }
 }
 

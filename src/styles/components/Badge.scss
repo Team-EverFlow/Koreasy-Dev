@@ -1,5 +1,5 @@
-@import "../styles/variables/colors";
-@import "../styles/variables/textStyles";
+@import '../variables/colors';
+@import '../variables/textStyles';
 
 div.badge {
     display: flex;
@@ -16,7 +16,7 @@ div.badge {
             background: $koreasy-color-gray-04;
 
             img {
-                opacity: .5;
+                opacity: 0.5;
             }
         }
     }

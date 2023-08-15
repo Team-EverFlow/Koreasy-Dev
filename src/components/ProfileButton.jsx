@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProfileButton.scss';
+import '../styles/components/ProfileButton.scss';
 
 function ProfileButton({ icon, title, onClick }) {
     return (
