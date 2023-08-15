@@ -1,5 +1,5 @@
 import React from 'react';
-import './BadgeGroup.scss';
+import '../styles/components/BadgeGroup.scss';
 import Badge from './Badge';
 import '../types/typedef';
 
@@ -18,6 +18,7 @@ function BadgeGroup({ badges, onClick = undefined }) {
                             ? onClick(index, badge.id)
                             : undefined;
                     }}
+                    key={index}
                 />
             ))}
         </div>

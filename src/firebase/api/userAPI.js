@@ -3,6 +3,7 @@ import { DOES_NOT_EXIST_DOC, USER_COLLECTION_ID } from '../type/const';
 import { setDoc, doc } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
+import { signOut } from 'firebase/auth';
 
 /**
  * UserInformation을 User collection에 UID를 PK로 저장
@@ -42,7 +43,9 @@ export function GetCurrentUserFromFirebase() {
  * @returns { Promise<{success: boolean, error: any, user: UserInformation | undefined}> }
  */
 export async function GetCurrentUserInformation() {
-    return await GetUserInformation(GetCurrentUserFromFirebase().uid);
+    const user = GetCurrentUserFromFirebase();
+    if (!user) return { success: false, error: 'User is null' };
+    return await GetUserInformation(user.uid);
 }
 
 /**
@@ -56,6 +59,19 @@ export async function GetUserInformation(UID) {
         if (!userSnapRef.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
         return { success: true, user: userSnapRef.data() };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * Firebase에서 로그아웃합니다.
+ * @returns {Promise<{success: boolean, error: any | undefined}}
+ */
+export async function SignOutFromFirebase() {
+    try {
+        await signOut(auth);
+        return { success: true };
     } catch (e) {
         return { success: false, error: e };
     }

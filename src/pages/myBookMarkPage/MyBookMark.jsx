@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header.jsx';
-import '../../styles/wordweekStyles/WordWeek0.scss';
+import '../../styles/wordweekStyles/WordWeek.scss';
 import WordData from '../../dummyData/WordData.js';
-import WordExampleSentence from './WordExampleSentence.jsx';
-import WordExampleToggle from './WordExampleToggle.jsx';
+import WordExampleSentence from '../wordweekPage/WordExampleSentence.jsx';
+import WordExampleToggle from '../wordweekPage/WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
+import UserInformation from '../../dummyData/UserInformation.js';
 
-const WordWeek0 = () => {
+const MyBookMark = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
 
     const handleExampleToggle = wordId => {
@@ -22,11 +23,17 @@ const WordWeek0 = () => {
         return visibleExamples.includes(wordId);
     };
 
+    const filteredWordData = WordData.filter(word => {
+        return UserInformation.bookmark.some(
+            item => item.wordId === word.wordId,
+        );
+    });
+
     return (
-        <div className="wordweek0-container">
+        <div className="wordweek-container">
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
-                {WordData.map((content, index) => (
+                {filteredWordData.map((content, index) => (
                     <React.Fragment key={content.wordId}>
                         <div
                             key={content.wordId}
@@ -78,4 +85,4 @@ const WordWeek0 = () => {
     );
 };
 
-export default WordWeek0;
+export default MyBookMark;

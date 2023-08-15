@@ -6,6 +6,7 @@ import {
 } from '../type/const';
 import { GetDocFromCollection } from '../functions/util';
 import {
+    Timestamp,
     addDoc,
     arrayRemove,
     arrayUnion,
@@ -117,7 +118,7 @@ export async function AddBookmark(id) {
         if (data) return { success: true };
         const pushData = {
             id,
-            date: new Date(),
+            date: Timestamp.fromDate(new Date()),
         };
         await updateDoc(userInfoRef, { bookmark: arrayUnion(pushData) });
         return { success: true };
@@ -166,7 +167,7 @@ export async function CreateComment(wordId, comment) {
         );
         await addDoc(commentRef, {
             username: user.displayName,
-            date: new Date(),
+            date: Timestamp.fromDate(new Date()),
             comment,
             hearCount: 0,
         });
@@ -185,5 +186,68 @@ export async function CreateComment(wordId, comment) {
 export async function DeleteComment(wordId, commentId) {
     return deleteDoc(
         doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID, commentId),
+    );
+}
+
+/**
+ * 현재 시각 이전에 생성된 단어들을 전부 불러옵니다
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ */
+export async function GetWordList() {
+    try {
+        const wordRef = collection(db, WORD_COLLECTION_ID);
+        const wordQry = query(
+            wordRef,
+            where('addedTime', '<=', Timestamp.fromDate(new Date())),
+        );
+        const wordDocs = await getDocs(wordQry);
+        const result = [];
+        for (const doc of wordDocs.docs) result.push(doc.data());
+        return { success: true, data: result };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 일정 기간 사이에 생성된 단어들을 반환합니다
+ * @param {Date} startDate 시작 날짜
+ * @param {Date} endDate 끝 날짜 (endDate는 검색 범위에 포함되지 않습니다)
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ */
+export async function GetWordListSpan(startDate, endDate) {
+    try {
+        const wordRef = collection(db, WORD_COLLECTION_ID);
+        const wordQry = query(
+            wordRef,
+            where('addedTime', '>=', Timestamp.fromDate(startDate)),
+            where('addedTime', '<', Timestamp.fromDate(endDate)),
+        );
+        const wordDocs = await getDocs(wordQry);
+        const result = [];
+        for (const doc of wordDocs.docs) result.push(doc.data());
+        return { success: true, data: result };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 오늘의 단어에 해당되는 단어를 불러옵니다.
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ */
+export async function GetTodayWordList() {
+    const currentDate = new Date();
+    return GetWordListSpan(
+        new Date(
+            currentDate.getFullYear,
+            currentDate.getMonth,
+            currentDate.getDate,
+        ),
+        new Date(
+            currentDate.getFullYear,
+            currentDate.getMonth,
+            currentDate.getDate + 1,
+        ),
     );
 }
