@@ -1,11 +1,6 @@
 import { auth } from '../root';
 import { USER_COLLECTION_ID } from '../type/const';
-import {
-    signInWithPopup,
-    GoogleAuthProvider,
-    setPersistence,
-    browserLocalPersistence,
-} from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
 
@@ -16,7 +11,6 @@ import { GetDocFromCollection } from '../functions/util';
 export async function GoogleAuth() {
     try {
         const googleProvider = new GoogleAuthProvider();
-        await setPersistence(auth, browserLocalPersistence);
         const { user } = await signInWithPopup(auth, googleProvider);
         const userDocSnap = await GetDocFromCollection(
             USER_COLLECTION_ID,

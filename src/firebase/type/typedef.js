@@ -30,6 +30,7 @@
  * @property {string} meaning
  * @property {ExampleSentence[]} exampleSentence
  * @property {Array<Comment>} comments
+ * @property {import('firebase/firestore').Timestamp} addedTime
  */
 
 /**
