@@ -6,6 +6,7 @@ import {
 } from '../type/const';
 import { GetDocFromCollection } from '../functions/util';
 import {
+    Timestamp,
     addDoc,
     arrayRemove,
     arrayUnion,
@@ -186,4 +187,47 @@ export async function DeleteComment(wordId, commentId) {
     return deleteDoc(
         doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID, commentId),
     );
+}
+
+/**
+ * 현재 시각 이전에 생성된 단어들을 전부 불러옵니다
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ */
+export async function GetWordList() {
+    try {
+        const wordRef = collection(db, WORD_COLLECTION_ID);
+        const wordQry = query(
+            wordRef,
+            where('addedTime', '<=', Timestamp.fromDate(new Date())),
+        );
+        const wordDocs = await getDocs(wordQry);
+        const result = [];
+        for (const doc of wordDocs.docs) result.push(doc.data());
+        return { success: true, data: result };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 일정 기간 사이에 생성된 단어들을 반환합니다
+ * @param {Date} startDate
+ * @param {Date} endDate
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ */
+export async function GetWordListSpan(startDate, endDate) {
+    try {
+        const wordRef = collection(db, WORD_COLLECTION_ID);
+        const wordQry = query(
+            wordRef,
+            where('addedTime', '>=', Timestamp.fromDate(startDate)),
+            where('addedTime', '<=', Timestamp.fromDate(endDate)),
+        );
+        const wordDocs = await getDocs(wordQry);
+        const result = [];
+        for (const doc of wordDocs.docs) result.push(doc.data());
+        return { success: true, data: result };
+    } catch (e) {
+        return { success: false, error: e };
+    }
 }

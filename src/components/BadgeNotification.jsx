@@ -1,5 +1,5 @@
 import React from 'react';
-import './BadgeNotification.scss';
+import '../styles/components/BadgeNotification.scss';
 import BadgeData from '../dummyData/BadgeData';
 
 const BadgeNotification = ({ badgeId }) => {

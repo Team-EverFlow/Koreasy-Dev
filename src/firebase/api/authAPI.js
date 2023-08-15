@@ -9,8 +9,8 @@ import { GetDocFromCollection } from '../functions/util';
  * @returns {Promise<{state: ("signIn" | "register" | "error"), user: import("firebase/auth").User | undefined, error: any }>}
  */
 export async function GoogleAuth() {
-    const googleProvider = new GoogleAuthProvider();
     try {
+        const googleProvider = new GoogleAuthProvider();
         const { user } = await signInWithPopup(auth, googleProvider);
         const userDocSnap = await GetDocFromCollection(
             USER_COLLECTION_ID,
