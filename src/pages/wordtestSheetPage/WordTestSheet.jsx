@@ -108,12 +108,12 @@ const WordtestSheetPage = () => {
             correct[index] = quiz.choose[userChosen[index]] === quiz.answer;
             if (correct[index]) count += 1;
         });
-
-        setShowCheckbox(false);
-        setShowResult(true);
         return [count, correct];
     };
     const onCheckoutClickEvent = () => {
+        setShowCheckbox(false);
+        setShowResult(true);
+
         const [correction, result] = onGradingEvent(
             quizData.quizzes,
             selectedOptionStates.map(state => state.selectedOptionIndex),
