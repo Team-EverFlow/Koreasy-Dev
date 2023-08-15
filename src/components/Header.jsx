@@ -31,7 +31,7 @@ const Header = ({
             userInfo = userInfo.uid;
         } else {
             userInfo = GetCurrentUserFromFirebase();
-            navigate('./login');
+            navigate('../login');
         }
         GetUserInformation(userInfo).then(result => {
             if (result.success) {
@@ -62,7 +62,12 @@ const Header = ({
 
             {isNavigationBar && <NavigationBar viewName={navigationViewName} />}
             <Divider />
-            {viewName !== undefined && <PageTitle viewName={viewName} />}
+
+            {viewName !== undefined && (
+                <div className="pagetitle">
+                    <PageTitle viewName={viewName} />
+                </div>
+            )}
         </div>
     );
 };
