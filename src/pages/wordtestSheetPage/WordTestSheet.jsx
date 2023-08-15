@@ -16,7 +16,15 @@ const WordtestSheetPage = () => {
         navigate('/testList');
     }
     const quizId = searchParameter.get('id');
+
+    /**
+     * @type {QuizChooseStatus}
+     */
     const [selectedOptionStates, setSelectedOptionStates] = useState([]);
+
+    /**
+     * @type {TestData}
+     */
     const [quizData, setQuizData] = useState({
         title: '',
         subtitle: '',
@@ -44,6 +52,11 @@ const WordtestSheetPage = () => {
         });
     }, []);
 
+    /**
+     * Checkbox 를 활성화해도 되는지 확인하는 함수
+     * @param {Array<QuizChooseStatus>} selectedOption
+     * @returns {boolean}
+     */
     const isCheckboxEnable = selectedOption => {
         let count = 0;
         selectedOption.map((checked, _) => {
@@ -52,6 +65,11 @@ const WordtestSheetPage = () => {
         return count === selectedOption.length;
     };
 
+    /**
+     *
+     * @param {number} quizIndex
+     * @param {number} optionIndex
+     */
     const handleOptionClick = (quizIndex, optionIndex) => {
         if (showResult) return;
 
@@ -89,8 +107,31 @@ const WordtestSheetPage = () => {
             if (correct[index]) count += 1;
         });
 
+        setShowCheckbox(false);
         setShowResult(true);
         return [count, correct];
+    };
+    const onCheckoutClickEvent = () => {
+        const [correction, result] = onGradingEvent(
+            quizData.quizzes,
+            selectedOptionStates.map(state => state.selectedOptionIndex),
+        );
+
+        const newSelectedOptionStates = [...selectedOptionStates];
+        result.map((quizResult, index) => {
+            if (quizResult) {
+                newSelectedOptionStates[index].correctOptionIndex =
+                    selectedOptionStates[index].selectedOptionIndex;
+            } else {
+                newSelectedOptionStates[index].incorrectOptionIndex =
+                    selectedOptionStates[index].selectedOptionIndex;
+                newSelectedOptionStates[index].correctOptionIndex =
+                    quizData.quizzes[index].choose.indexOf(
+                        quizData.quizzes[index].answer,
+                    );
+            }
+        });
+        setSelectedOptionStates(newSelectedOptionStates);
     };
 
     return (
@@ -109,14 +150,7 @@ const WordtestSheetPage = () => {
                 />
                 {showCheckbox && (
                     <WordTestCheckOut
-                        onClick={() => {
-                            onGradingEvent(
-                                quizData.quizzes,
-                                selectedOptionStates.map(
-                                    state => state.selectedOptionIndex,
-                                ),
-                            );
-                        }}
+                        onClick={onCheckoutClickEvent}
                         disable={!enableCheckbox}
                     />
                 )}

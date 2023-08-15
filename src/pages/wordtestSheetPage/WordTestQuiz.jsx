@@ -3,11 +3,19 @@ import '../../styles/wordtestSheetPage/WordTestQuiz.scss';
 import { ReactComponent as CorrectImage } from '../../assets/images/correct.svg';
 import { ReactComponent as IncorrectImage } from '../../assets/images/incorrect.svg';
 
-const WordtestQuiz = ({
+/**
+ *
+ * @param {Array<Quiz>} quizzes
+ * @param {function} onHandleOptionClick
+ * @param {Array<QuizChooseStatus>} selectedOption
+ * @param {boolean} [result=false] result
+ * @returns {JSX.Element}
+ */
+const WordTestQuiz = ({
     quizzes,
     onHandleOptionClick,
     selectedOption,
-    result,
+    result= false,
 }) => {
     /**
      * @param {number} optionIndex
@@ -69,4 +77,4 @@ const WordtestQuiz = ({
     );
 };
 
-export default WordtestQuiz;
+export default WordTestQuiz;
