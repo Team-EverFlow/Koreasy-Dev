@@ -45,7 +45,7 @@ function ProfileView() {
                 });
             }
         });
-    });
+    }, []);
     return (
         <div>
             <Header />
