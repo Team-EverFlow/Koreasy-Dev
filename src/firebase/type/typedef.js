@@ -6,9 +6,15 @@
  * @property {Array<string>} [recentWord]
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
- *
+ * @property {Array<TestScore>} [testScore]
  */
 
+/**
+ * @typedef {Object} TestScore
+ * @property {string} testDataId
+ * @property {number} solve
+ * @property {number} question
+ */
 /**
  * @typedef {Object} Bookmark
  * @property {string} id
@@ -17,11 +23,13 @@
 
 /**
  * @typedef {Object} Word
+ * @property {string} id
  * @property {string} wordKr
  * @property {string} wordEn
  * @property {string} pronunciation
  * @property {string} meaning
  * @property {ExampleSentence[]} exampleSentence
+ * @property {Array<Comment>} comments
  */
 
 /**
@@ -66,4 +74,13 @@
  * @property {string} title
  * @property {string} date
  * @property {string} testDataId
+ */
+
+/**
+ * @typedef {Object} Comment
+ * @property {string} id
+ * @property {string} username
+ * @property {Date} date
+ * @property {string} comment
+ * @property {int} heartCount
  */
