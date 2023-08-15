@@ -7,7 +7,7 @@ import WordTestCheckOut from './WordTestCheckOut';
 import WordTestScore from './WordTestScore';
 import WordTestResult from './WordTestResult';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { GetTestDataList } from '../../firebase/api/QuizApi';
+import { GetTestDataList, SetTestScore } from '../../firebase/api/QuizApi';
 
 const WordtestSheetPage = () => {
     const [searchParameter, _] = useSearchParams();
@@ -136,6 +136,8 @@ const WordtestSheetPage = () => {
             }
         });
         setSelectedOptionStates(newSelectedOptionStates);
+
+        SetTestScore(quizId, correction, quizData.quizzes.length);
     };
 
     return (
