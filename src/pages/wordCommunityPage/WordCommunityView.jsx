@@ -5,7 +5,7 @@ import AddComment from './AddComment';
 import WordCardText from '../../components/WordCardText';
 import Header from '../../components/Header';
 
-import wordCommentDump from '../../utils/dumpFile/wordCommentDump';
+import wordCommentDump from '../../dummyData/wordCommentDump';
 
 import '../../styles/wordCommunityPage/WordCommunityView.scss';
 

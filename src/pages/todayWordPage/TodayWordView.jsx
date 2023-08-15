@@ -6,7 +6,7 @@ import Header from '../../components/Header.jsx';
 import TodayCheckComponent from './TodayCheckComponent.jsx';
 import backCardImg from '../../assets/images/Thumbnail1.png';
 
-import WordData from '../../utils/dumpFile/todayWordDump.js';
+import WordData from '../../dummyData/todayWordDump.js';
 
 import '../../styles/todayWordPage/TodayWordView.scss';
 
