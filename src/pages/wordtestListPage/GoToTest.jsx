@@ -4,7 +4,7 @@ import '../../styles/wordtestListStyles/GoToTest.scss';
 
 const GoToTest = ({ id }) => (
     <div className="go-to-test">
-        <Link to="/">
+        <Link to={`/testWord?id=${id}`}>
             <button className="go-to-test-button">Go to test</button>
         </Link>
     </div>
