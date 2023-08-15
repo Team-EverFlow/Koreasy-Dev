@@ -10,6 +10,7 @@ import WordBook from './pages/wordbookPage/WordBook';
 import WordWeek from './pages/wordweekPage/WordWeek';
 import WordTestList from './pages/wordTest/WordTestList';
 import TodayWord from './pages/todayWordPage/TodayWordView';
+import MyBookMark from './pages/myBookMarkPage/MyBookMark';
 
 const Router = () => {
     return (
@@ -25,6 +26,7 @@ const Router = () => {
                 />
                 <Route path="/wordbook" element={<WordBook />} />
                 <Route path="/wordweek" element={<WordWeek />} />
+                <Route path="/mybookmark" element={<MyBookMark />} />
                 <Route path="/todayword" element={<TodayWord />} />
                 <Route path="/testList" element={<WordTestList />} />
             </Routes>
