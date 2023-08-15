@@ -150,11 +150,13 @@ const WordtestSheetPage = () => {
         });
         setSelectedOptionStates(newSelectedOptionStates);
 
-        SetTestScore(quizId, correction, quizData.quizzes.length).then(result => {
-            if (!result.success) {
-                showSavedExceptionToast();
-            }
-        });
+        SetTestScore(quizId, correction, quizData.quizzes.length).then(
+            result => {
+                if (!result.success) {
+                    showSavedExceptionToast();
+                }
+            },
+        );
     };
 
     return (
