@@ -18,7 +18,7 @@
 /**
  * @typedef {Object} Bookmark
  * @property {string} id
- * @property {Date} date
+ * @property {import('firebase/firestore').Timestamp} date
  */
 
 /**
@@ -81,7 +81,7 @@
  * @typedef {Object} Comment
  * @property {string} id
  * @property {string} username
- * @property {Date} date
+ * @property {import('firebase/firestore').Timestamp} date
  * @property {string} comment
  * @property {int} heartCount
  */
