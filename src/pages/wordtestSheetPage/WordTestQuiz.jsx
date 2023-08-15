@@ -20,9 +20,7 @@ const WordtestQuiz = () => {
         newSelectedSeonjiStates[quizIndex].selectedSeonjiIndex = isSelected
             ? null
             : seonjiIndex;
-        newSelectedSeonjiStates[quizIndex].isChecked = isSelected
-            ? false
-            : true;
+        newSelectedSeonjiStates[quizIndex].isChecked = !isSelected;
         setSelectedSeonjiStates(newSelectedSeonjiStates);
     };
 

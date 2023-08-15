@@ -11,7 +11,7 @@ const WordTestList = () => {
 
     return (
         <div>
-            <Header isNavigationBar={false} viewName="ViewName" />
+            <Header isNavigationBar={false} viewName="Wordtest" />
             {tests.map((item, index) => (
                 <WordTestCell
                     key={index}
