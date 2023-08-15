@@ -23,10 +23,10 @@ function MyBadgesViewSetting() {
             <Header isNavigationBar={true} viewName="My Badges" />
             <BadgeGroup badges={badge} onClick={onBadgeClick} />
             <div className="my-badge-button-group">
-                <Link to="/badge" className="my-badge-button cancel">
+                <Link to="/profile/badge" className="my-badge-button cancel">
                     Cancel
                 </Link>
-                <Link to="/badge" className="my-badge-button">
+                <Link to="/profile/badge" className="my-badge-button">
                     Confirm
                 </Link>
             </div>
