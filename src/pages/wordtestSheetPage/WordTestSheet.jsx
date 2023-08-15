@@ -39,6 +39,7 @@ const WordtestSheetPage = () => {
 
     const [NotFoundToast, showNotFoundToast] = ToastGenerator();
     const [ExceptionToast, showExceptionToast] = ToastGenerator();
+    const [SavedExceptionToast, showSavedExceptionToast] = ToastGenerator();
 
     useEffect(() => {
         GetTestDataList(quizId).then(result => {
@@ -149,7 +150,11 @@ const WordtestSheetPage = () => {
         });
         setSelectedOptionStates(newSelectedOptionStates);
 
-        SetTestScore(quizId, correction, quizData.quizzes.length);
+        SetTestScore(quizId, correction, quizData.quizzes.length).then(result => {
+            if (!result.success) {
+                showSavedExceptionToast();
+            }
+        });
     };
 
     return (
@@ -182,11 +187,15 @@ const WordtestSheetPage = () => {
             </div>
             <NotFoundToast
                 icon={true}
-                message="알 수 없는 퀴즈 ID입니다.\n올바른 퀴즈를 선택해주세요."
+                message="잘못된 퀴즈 아이디가 입력되었어요.\n올바른 퀴즈를 선택해주세요."
             />
             <ExceptionToast
                 icon={true}
-                message="퀴즈를 불러오는 도중에 에러가 발생하였습니다.\n잠시 후에 다시 시도해주세요."
+                message="퀴즈를 불러오는 과정에서 오류가 발생하였어요.\n잠시 후에 다시 시도해주세요."
+            />
+            <SavedExceptionToast
+                icon={true}
+                message="퀴즈 정보를 저장하는 과정에서 오류가 발생하였어요.\n잠시 후에 다시 시도해주세요."
             />
         </div>
     );
