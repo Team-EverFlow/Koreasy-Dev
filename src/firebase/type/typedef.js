@@ -52,6 +52,7 @@
  * @typedef {Object} MyBadge
  * @property {string} badgeId
  * @property {number} progressValue
+ * @property {import('firebase/firestore').Timestamp} addedTime
  */
 /**
  * @typedef {Object} Badge
