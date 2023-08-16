@@ -8,7 +8,7 @@ import MyBadges from './pages/mybadge/MyBadges';
 import MyBadgesSetting from './pages/mybadge/MyBadgesSetting';
 import WordBook from './pages/wordbookPage/WordBook';
 import WordWeek from './pages/wordweekPage/WordWeek';
-import WordTestList from './pages/wordTest/WordTestList';
+import WordTestList from './pages/wordtestListPage/WordTestList';
 import TodayWord from './pages/todayWordPage/TodayWordView';
 import MyBookMark from './pages/myBookMarkPage/MyBookMark';
 import WordTestSheet from './pages/wordtestSheetPage/WordTestSheet';
