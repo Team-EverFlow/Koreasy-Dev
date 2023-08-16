@@ -6,7 +6,7 @@ import WordExampleToggle from '../wordweekPage/WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
 import UserInformation from '../../dummyData/UserInformation.js';
-import { GetWordList, GetWordListSpan } from '../../firebase/api/wordAPI';
+import { GetWordList } from '../../firebase/api/wordAPI';
 
 const MyBookMark = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
@@ -40,7 +40,7 @@ const MyBookMark = () => {
 
     return (
         <div className="wordweek-container">
-            <Header isNavigationBar={true} viewName="ViewName" />
+            <Header isNavigationBar={true} viewName="Bookmark" />
             <div className="content">
                 {wordList.map((content, index) => (
                     <React.Fragment key={content.id}>
