@@ -39,7 +39,7 @@ const WordWeek = () => {
 
     return (
         <div className="wordweek-container">
-            <Header isNavigationBar={true} viewName="ViewName" />
+            <Header isNavigationBar={true} viewName="WordBook Detail" />
             <div className="content">
                 {wordList.map((content, index) => (
                     <React.Fragment key={content.id}>
