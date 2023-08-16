@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordbookStyles/WordBook.scss';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ const WordBook = () => {
     return (
         <div className="wordbook-container">
             <div className="wordbook-container">
-                <Header isNavigationBar={false} viewName="ViewName" />
+                <Header isNavigationBar={false} viewName="WordBook" />
                 <div className="date-section">
                     {DateData.map((content, index) => (
                         <Link
