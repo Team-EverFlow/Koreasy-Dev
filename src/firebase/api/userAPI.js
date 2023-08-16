@@ -1,6 +1,5 @@
 import { auth, db } from '../root';
 import {
-    BADGE_COLLECTION_ID,
     DOES_NOT_EXIST_DOC,
     MYBADGE_COLLECTION_ID,
     USER_COLLECTION_ID,
@@ -45,21 +44,6 @@ export async function RegisterUser(initialUserInformation = {}) {
             attendance: [],
             ...initialUserInformation,
         });
-        const badgeSnap = await getDocs(collection(db, BADGE_COLLECTION_ID));
-        for (const badge of badgeSnap.docs) {
-            await setDoc(
-                doc(
-                    db,
-                    USER_COLLECTION_ID,
-                    user.uid,
-                    MYBADGE_COLLECTION_ID,
-                    badge.id,
-                ),
-                {
-                    progressValue: 0,
-                },
-            );
-        }
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
