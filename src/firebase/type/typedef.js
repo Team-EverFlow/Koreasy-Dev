@@ -7,6 +7,8 @@
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
  * @property {Array<TestScore>} [testScore]
+ * @property {import('firebase/firestore').Timestamp[]} [attendance]
+ * @property {MyBadge[]} [myBadges]
  */
 
 /**
@@ -47,12 +49,18 @@
  */
 
 /**
+ * @typedef {Object} MyBadge
+ * @property {string} badgeId
+ * @property {number} progressValue
+ */
+/**
  * @typedef {Object} Badge
+ * @property {string} id
  * @property {string} name
  * @property {string} imageUrl
  * @property {string} description
- * @property {string} goalValue
- * @property {string} eventName
+ * @property {number} goalValue
+ * @property {string[]} eventName
  */
 
 /**
