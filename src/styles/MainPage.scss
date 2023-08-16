@@ -35,12 +35,12 @@
             }
 
             .title-more {
-                color: $koreasy-color-white;
+                color: $koreasy-color-gray-03;
                 @include body02-medium;
             }
         }
 
-        .words {
+        .auto-words {
             width: calc(100vw - 40px);
             display: flex;
             justify-content: center;
