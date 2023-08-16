@@ -143,6 +143,11 @@ export async function AddAttendance(date) {
             attendance: arrayUnion(Timestamp.fromDate(date)),
         });
         window.dispatchEvent(AttendanceEvent());
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
 
 /**
  * 현재 유저를 데이터에서 삭제합니다.
