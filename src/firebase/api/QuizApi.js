@@ -17,6 +17,7 @@ import {
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
 import { GetCurrentUserFromFirebase } from './userAPI';
+import { TestResultEvent } from '../functions/Events';
 
 /**
  * WordTest의 값을 List로 반환합니다.
@@ -81,6 +82,7 @@ export async function SetTestScore(testDataId, solve, question) {
             question,
         };
         await updateDoc(userInfoRef, { testScore: arrayUnion(pushData) });
+        window.dispatchEvent(TestResultEvent(solve));
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
