@@ -1,5 +1,10 @@
+/**
+ *
+ * @type {Array<BadgeObject>}
+ */
 const badgeList = [
     {
+        id: "QdGBdC049TjTxzz1EYKf ",
         title: '출석체크 뱃지',
         type: 'attend',
         level: 1,
@@ -7,6 +12,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '댓글 갯수 뱃지',
         type: 'comment',
         level: 1,
@@ -14,6 +20,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '단어시험 횟수 뱃지',
         type: 'test',
         level: 1,
@@ -21,6 +28,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '출석체크 뱃지',
         type: 'attend',
         level: 2,
@@ -28,6 +36,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '댓글 갯수 뱃지',
         type: 'comment',
         level: 2,
@@ -35,6 +44,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '단어시험 횟수 뱃지',
         type: 'test',
         level: 2,
@@ -42,6 +52,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '출석체크 뱃지',
         type: 'attend',
         level: 3,
@@ -49,6 +60,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '댓글 갯수 뱃지',
         type: 'comment',
         level: 3,
@@ -56,6 +68,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '단어시험 횟수 뱃지',
         type: 'test',
         level: 3,
@@ -63,6 +76,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '출석체크 뱃지',
         type: 'attend',
         level: 4,
@@ -70,6 +84,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '댓글 갯수 뱃지',
         type: 'comment',
         level: 4,
@@ -77,6 +92,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: "AIInImgrTirg5OAtf0sX",
         title: '단어시험 횟수 뱃지',
         type: 'test',
         level: 4,
@@ -84,6 +100,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '출석체크 뱃지',
         type: 'attend',
         level: 5,
@@ -91,6 +108,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: "ayvdW3j37hIZjBgJPeYu",
         title: '댓글 갯수 뱃지',
         type: 'comment',
         level: 5,
@@ -98,6 +116,7 @@ const badgeList = [
         active: true,
     },
     {
+        id: undefined,
         title: '단어시험 횟수 뱃지',
         type: 'test',
         level: 5,
