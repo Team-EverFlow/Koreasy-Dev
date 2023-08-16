@@ -1,9 +1,9 @@
 import { auth, db } from '../root';
 import { DOES_NOT_EXIST_DOC, USER_COLLECTION_ID } from '../type/const';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc, deleteDoc } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
-import { signOut } from 'firebase/auth';
+import { deleteUser, signOut } from 'firebase/auth';
 
 /**
  * UserInformation을 User collection에 UID를 PK로 저장
@@ -71,6 +71,22 @@ export async function GetUserInformation(UID) {
 export async function SignOutFromFirebase() {
     try {
         await signOut(auth);
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+/**
+ * 현재 유저를 데이터에서 삭제합니다.
+ * (Firebase Auth 정보 삭제, Firestore 유저 DB 삭제)
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function DeleteUser() {
+    try {
+        const user = GetCurrentUserFromFirebase();
+        if (!user) return { success: false, error: 'User is null' };
+        await deleteDoc(doc(db, USER_COLLECTION_ID, user.uid));
+        await deleteUser(user);
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
