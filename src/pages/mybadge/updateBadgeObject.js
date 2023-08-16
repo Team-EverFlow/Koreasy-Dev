@@ -26,7 +26,6 @@ export function updateBadgeObjectFromMyBadge(badge, myBadge) {
     };
 }
 
-
 /**
  * Firestore-Badge 에서 불러온 Badge 데이터를 Badge Object에 적절하게 변환합니다.
  * @param {BadgeObject} badge
@@ -37,6 +36,6 @@ export function updateBadgeObjectFromBackendBadge(badge, badgeInfo) {
     return {
         ...badge,
         description: badgeInfo.description,
-        achievement: badgeInfo.goalValue
+        achievement: badgeInfo.goalValue,
     };
 }
