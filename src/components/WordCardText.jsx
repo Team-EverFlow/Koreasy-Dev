@@ -30,7 +30,7 @@ function WordCardText({ word, index }) {
     );
 
     useEffect(() => {
-        setWordCard({ ...word[index] });
+        word && setWordCard({ ...word[index] });
     }, [word, index]);
 
     return (
