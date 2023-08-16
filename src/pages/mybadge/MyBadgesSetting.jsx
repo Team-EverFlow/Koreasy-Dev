@@ -3,8 +3,9 @@ import Header from '../../components/Header';
 import BadgeGroup from '../../components/BadgeGroup';
 import '../../styles/MyBadge.scss';
 import badgeList from './badgeList';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastGenerator } from '../../components/ToastGenerator';
+import { UpdateRepBadge } from '../../firebase/api/BadgeApi';
 
 function MyBadgesViewSetting() {
     // TODO(profile.repBadge)
@@ -12,6 +13,8 @@ function MyBadgesViewSetting() {
         Array(badgeList.length).fill(false),
     );
     const [MaxSelectWarningToast, onMaxSelectWarningCall] = ToastGenerator();
+    const [ExceptionToast, onExceptionToast] = ToastGenerator();
+    const navigate = useNavigate();
     const onBadgeClick = id => {
         if (!badgeList[id].active) {
             return;
@@ -25,6 +28,21 @@ function MyBadgesViewSetting() {
             return prevState.map((badgeChecked, index) => {
                 return index === id ? !badgeChecked : badgeChecked;
             });
+        });
+    };
+
+    const onConfirmButtonClick = () => {
+        UpdateRepBadge(
+            selectedBadge
+                .filter(Boolean)
+                .map((_, index) => badgeList[index].id),
+        ).then(result => {
+            if (result.success) {
+                navigate('/profile/badge');
+            } else {
+                console.log(result.error);
+                onExceptionToast();
+            }
         });
     };
 
@@ -45,16 +63,23 @@ function MyBadgesViewSetting() {
                 badgesChecked={selectedBadge}
             />
             <div className="my-badge-button-group">
-                <Link to="/badge" className="my-badge-button cancel">
+                <Link to="/profile/badge" className="my-badge-button cancel">
                     Cancel
                 </Link>
-                <Link to="/badge" className="my-badge-button">
+                <button
+                    className="my-badge-button"
+                    onClick={onConfirmButtonClick}
+                >
                     Confirm
-                </Link>
+                </button>
             </div>
             <MaxSelectWarningToast
                 icon={false}
                 message="You can select up to 6 badges."
+            />
+            <ExceptionToast
+                icon={true}
+                message="알 수 없는 오류가 발생하였어요.\n잠시 후 다시 시도해주세요."
             />
         </div>
     );
