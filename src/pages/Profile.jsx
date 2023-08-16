@@ -8,6 +8,9 @@ import BadgeGroup from '../components/BadgeGroup';
 import Chevrion from '../components/Chevrion';
 import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 import { Link } from 'react-router-dom';
+import unknownBadge from './mybadge/unknownBadge';
+import { ToastGenerator } from '../components/ToastGenerator';
+import badgeList from './mybadge/badgeList';
 
 function ProfileView() {
     let [profile, setProfile] = useState({
@@ -16,16 +19,7 @@ function ProfileView() {
         badges: [],
     });
 
-    const convertBadgeObject = object => {
-        return object;
-    }; // TODO()
-    const defaultBadge = {
-        title: 'Python 최고',
-        imageUrl: 'https://yhs.kr/static/image/python.svg',
-        date: new Date(),
-        active: false,
-        check: false,
-    };
+    let [MySentenceWIPToast, onMySentenceWIPToastCall] = ToastGenerator();
 
     useEffect(() => {
         GetCurrentUserInformation().then(result => {
@@ -35,13 +29,20 @@ function ProfileView() {
                     name: result.user.username,
                     profileIcon:
                         result.user.profileAvatarUrl ?? ProfileIconDump,
-                    badges: convertBadgeObject(
-                        result.user.repBadge.concat(
+                    badges: result.user.repBadge
+                        .map(badgeId => {
+                            return {
+                                ...badgeList.find(
+                                    badge => badge.id === badgeId,
+                                ),
+                                active: true,
+                            };
+                        })
+                        .concat(
                             Array(6 - result.user.repBadge.length).fill(
-                                defaultBadge,
+                                unknownBadge,
                             ),
                         ),
-                    ),
                 });
             }
         });
@@ -66,8 +67,10 @@ function ProfileView() {
                         />
                         <ProfileButton
                             icon="activities_icon"
-                            title="Activities"
-                            onClick={undefined}
+                            title="My Sentences"
+                            onClick={() => {
+                                onMySentenceWIPToastCall();
+                            }}
                         />
                     </div>
 
@@ -79,9 +82,13 @@ function ProfileView() {
                             </Link>
                         </div>
                     </div>
-                    <BadgeGroup badges={profile.badges} />
+                    <BadgeGroup badges={profile.badges} detail={false} />
                 </div>
             </div>
+            <MySentenceWIPToast
+                message="아직은 준비 중인 기능입니다.\n재미있는 기능을 위해 노력하도록 할께요!"
+                icon={false}
+            />
         </div>
     );
 }
