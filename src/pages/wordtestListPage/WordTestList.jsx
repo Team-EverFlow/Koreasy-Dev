@@ -13,8 +13,8 @@ const WordTestList = () => {
                     result.data.map(quiz => {
                         return {
                             id: quiz.testDataId,
-                            listTitle: quiz.title,
-                            dateText: quiz.date,
+                            title: quiz.title,
+                            date: quiz.date.toDate(),
                         };
                     }),
                 );
@@ -29,8 +29,8 @@ const WordTestList = () => {
                 <WordTestCell
                     key={index}
                     id={item.id}
-                    listTitle={item.listTitle}
-                    dateText={item.dateText}
+                    title={item.title}
+                    date={item.date}
                 />
             ))}
         </div>
