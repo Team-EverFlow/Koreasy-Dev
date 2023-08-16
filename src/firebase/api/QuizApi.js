@@ -57,9 +57,9 @@ export async function GetTestDataList(testId) {
 /**
  * 모의고사 점수를 현재유저의 UserInformation에 저장합니다.
  * @param {string} testDataId
- * @param {string} solve
- * @param {string} question
- * @returns {{ success: boolean, error: any | undefined }}
+ * @param {number} solve
+ * @param {number} question
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
  */
 export async function SetTestScore(testDataId, solve, question) {
     try {

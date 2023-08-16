@@ -1,33 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import Sound from '../../assets/images/Sound.svg';
 import ExampleSentence from '../../components/ExampleSentence';
-import '../../styles/TodayWordCard.scss';
 import Bookmark from '../../components/Bookmark';
+import Reply from '../../assets/images/Reply.svg';
+import MySentences from '../../assets/images/MySentences.svg';
 
-function TodayWordCard() {
-    let wordCard = {
-        krWord: '사과',
-        pronunciation: '[sagua]',
-        enWord: 'noun - Apple',
+import '../../styles/todayWordPage/TodayWordCard.scss';
+
+/**
+ *
+ * @param {{wordId: string, wordKr: string, wordEn: string, pronunciation: string, meaning: string,
+ * ExampleSentence: {sentenceKr: string, sentenceEn: string}}} wordData wordData json data
+ * @returns
+ */
+function TodayWordCard({ wordData, onClick }) {
+    let [isClickCard, setIsClickCard] = useState(false);
+
+    const handleClick = () => {
+        setIsClickCard(!isClickCard);
+        if (onClick) {
+            onClick(!isClickCard);
+        }
     };
-    let exampleCard = {
-        exampleText: '나는 사과사의 아이폰을 이용한다.',
-        mean: "I'm using iPhone by apple company.",
-    };
+
     return (
-        <div className="todaywordcard-background">
-            <div className="useally">
+        <div className="todaywordcard-background" onClick={handleClick}>
+            <div className="wordInfo-frame">
                 <div className="mean">
                     <div className="text-box">
-                        <div className="krWord">{wordCard.krWord}</div>
-                        <div className="sound-box">
+                        <div className="krWord">{wordData.wordKr}</div>
+                        {/* <div className="sound-box">
                             <img src={Sound} alt="sound" />
-                        </div>
+                        </div> */}
                         <div className="pronunciation">
-                            {wordCard.pronunciation}
+                            {wordData.pronunciation}
                         </div>
                     </div>
-                    <div className="info">{wordCard.enWord}</div>
+                    <div className="todaywordcard-info">{wordData.wordEn}</div>
                 </div>
                 <div className="bookmark-box">
                     <Bookmark />
@@ -36,15 +47,33 @@ function TodayWordCard() {
             <div className="example-frame">
                 Example sentence
                 <ExampleSentence
-                    isSound={true}
-                    exampleText={exampleCard.exampleText}
-                    mean={exampleCard.mean}
+                    isSound={false}
+                    ExampleSentence={wordData.exampleSentence[0]}
                 />
                 <ExampleSentence
-                    isSound={true}
-                    exampleText={exampleCard.exampleText}
-                    mean={exampleCard.mean}
+                    isSound={false}
+                    ExampleSentence={wordData.exampleSentence[1]}
                 />
+            </div>
+            <div className="option-frame">
+                <Link
+                    to={'./todayword/reply?id=' + wordData.wordId}
+                    className="option-buttion link-offset-2 link-underline link-underline-opacity-0"
+                >
+                    <div className="icon-box">
+                        <img src={Reply} alt="Reply" />
+                    </div>
+                    Reply
+                </Link>
+                <Link
+                    to="."
+                    className="option-buttion link-offset-2 link-underline link-underline-opacity-0"
+                >
+                    <div className="icon-box">
+                        <img src={MySentences} alt="My Sentences" />
+                    </div>
+                    My Sentences
+                </Link>
             </div>
         </div>
     );

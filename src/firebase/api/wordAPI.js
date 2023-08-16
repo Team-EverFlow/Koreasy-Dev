@@ -254,14 +254,14 @@ export async function GetTodayWordList() {
     const currentDate = new Date();
     return GetWordListSpan(
         new Date(
-            currentDate.getFullYear,
-            currentDate.getMonth,
-            currentDate.getDate,
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            currentDate.getDate(),
         ),
         new Date(
-            currentDate.getFullYear,
-            currentDate.getMonth,
-            currentDate.getDate + 1,
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            currentDate.getDate() + 1,
         ),
     );
 }

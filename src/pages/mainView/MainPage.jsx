@@ -2,7 +2,7 @@ import React from 'react';
 
 import LearnTodayWord from './LearnTodayWord.jsx';
 import StartThumbnail from './StartThumbnail.jsx';
-import WordCardText from './WordCardText.jsx';
+import WordCardText from '../../components/WordCardText.jsx';
 import Chevrion from '../../components/Chevrion.jsx';
 import Header from '../../components/Header.jsx';
 import Footer from '../../components/Footer.jsx';

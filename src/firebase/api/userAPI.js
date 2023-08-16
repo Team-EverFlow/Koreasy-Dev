@@ -12,11 +12,12 @@ import {
     arrayUnion,
     Timestamp,
     getDocs,
+    deleteDoc,
     collection,
 } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
-import { signOut } from 'firebase/auth';
+import { deleteUser, signOut } from 'firebase/auth';
 import { AttendanceEvent } from '../functions/Events';
 
 /**
@@ -127,6 +128,7 @@ export async function SignOutFromFirebase() {
     }
 }
 
+
 /**
  * 해당 Date를 현재 유저의 UserInformation.attendace에 추가합니다.
  * @param {Date} date
@@ -141,6 +143,18 @@ export async function AddAttendance(date) {
             attendance: arrayUnion(Timestamp.fromDate(date)),
         });
         window.dispatchEvent(AttendanceEvent());
+
+/**
+ * 현재 유저를 데이터에서 삭제합니다.
+ * (Firebase Auth 정보 삭제, Firestore 유저 DB 삭제)
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function DeleteUser() {
+    try {
+        const user = GetCurrentUserFromFirebase();
+        if (!user) return { success: false, error: 'User is null' };
+        await deleteDoc(doc(db, USER_COLLECTION_ID, user.uid));
+        await deleteUser(user);
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
