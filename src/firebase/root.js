@@ -37,6 +37,13 @@ auth.onAuthStateChanged(async user => {
         badges.forEach(async badgeId => {
             const badge = await GetBadgeData(badgeId);
             if (!badge.success) return console.error(badge.error);
+            const mybadgeDoc = await GetDocFromCollection(
+                USER_COLLECTION_ID,
+                user.uid,
+                MYBADGE_COLLECTION_ID,
+                badge.data.id,
+            );
+            if (mybadgeDoc.exists() && mybadgeDoc.data().addedTime) return;
             badge.data.eventName.forEach(async eventName => {
                 window.addEventListener(eventName, async e => {
                     const { success, error } = await UpdateBadgeProgressValue(
@@ -44,7 +51,7 @@ auth.onAuthStateChanged(async user => {
                         badge.data.id,
                         e.detail,
                     );
-                    if (!success) console.error(error);
+                    if (!success) return console.error(error);
                     const badgeDoc = await GetDocFromCollection(
                         USER_COLLECTION_ID,
                         user.uid,
@@ -57,7 +64,7 @@ auth.onAuthStateChanged(async user => {
                             user.uid,
                             badge.data.id,
                         );
-                        if (!status.success) console.error(status.error);
+                        if (!status.success) return console.error(status.error);
                     }
                 });
             });
