@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordweekStyles/WordWeek.scss';
-import WordData from '../../dummyData/WordData.js';
 import WordExampleSentence from './WordExampleSentence.jsx';
 import WordExampleToggle from './WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
