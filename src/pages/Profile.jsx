@@ -10,6 +10,7 @@ import { GetCurrentUserInformation } from '../firebase/api/userAPI';
 import { Link } from 'react-router-dom';
 import unknownBadge from './mybadge/unknownBadge';
 import { ToastGenerator } from '../components/ToastGenerator';
+import badgeList from './mybadge/badgeList';
 
 function ProfileView() {
     let [profile, setProfile] = useState({
@@ -17,10 +18,6 @@ function ProfileView() {
         profileIcon: ProfileIconDump,
         badges: [],
     });
-
-    const convertBadgeObject = object => {
-        return object;
-    }; // TODO()
 
     let [MySentenceWIPToast, onMySentenceWIPToastCall] = ToastGenerator();
 
@@ -32,13 +29,17 @@ function ProfileView() {
                     name: result.user.username,
                     profileIcon:
                         result.user.profileAvatarUrl ?? ProfileIconDump,
-                    badges: convertBadgeObject(
-                        result.user.repBadge.concat(
+                    badges: result.user.repBadge
+                        .map(badgeId => {
+                            return badgeList.find(
+                                badge => badge.id === badgeId,
+                            );
+                        })
+                        .concat(
                             Array(6 - result.user.repBadge.length).fill(
                                 unknownBadge,
                             ),
                         ),
-                    ),
                 });
             }
         });
