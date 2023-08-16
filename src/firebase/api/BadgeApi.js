@@ -6,7 +6,7 @@ import { GetCurrentUserFromFirebase } from './userAPI';
 /**
  * 해당 뱃지 id를 현재 유저의 UserInformation repBadge 를 설정합니다.
  * @param {Array<string>} badgeId
- * @returns {{ success: boolean, error: any | undefined }}
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
  */
 export async function UpdateRepBadge(badgeId) {
     try {
