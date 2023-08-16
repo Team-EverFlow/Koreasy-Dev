@@ -4,7 +4,6 @@ import BadgeGroup from '../../components/BadgeGroup';
 import '../../styles/MyBadge.scss';
 import badgeList from './badgeList';
 import { Link } from 'react-router-dom';
-import badge from '../../components/Badge';
 import { ToastGenerator } from '../../components/ToastGenerator';
 
 function MyBadgesViewSetting() {
