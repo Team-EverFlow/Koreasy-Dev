@@ -31,9 +31,12 @@ function ProfileView() {
                         result.user.profileAvatarUrl ?? ProfileIconDump,
                     badges: result.user.repBadge
                         .map(badgeId => {
-                            return badgeList.find(
-                                badge => badge.id === badgeId,
-                            );
+                            return {
+                                ...badgeList.find(
+                                    badge => badge.id === badgeId,
+                                ),
+                                active: true
+                            };
                         })
                         .concat(
                             Array(6 - result.user.repBadge.length).fill(
