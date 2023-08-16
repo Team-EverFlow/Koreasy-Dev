@@ -9,12 +9,12 @@ import {
     setDoc,
     doc,
     updateDoc,
+    deleteDoc,
     arrayUnion,
     Timestamp,
     getDocs,
     collection,
 } from 'firebase/firestore';
-import { DOES_NOT_EXIST_DOC, USER_COLLECTION_ID } from '../type/const';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
 import { deleteUser, signOut } from 'firebase/auth';
