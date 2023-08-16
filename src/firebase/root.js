@@ -9,12 +9,18 @@ import {
 import { browserLocalPersistence, getAuth } from 'firebase/auth';
 import { firebaseConfig } from './token';
 import './token.js';
-import { GetBadgeData, UpdateBadgeProgressValue } from './api/BadgeApi';
+import {
+    AddBadgeAddedTime,
+    GetBadgeData,
+    UpdateBadgeProgressValue,
+} from './api/BadgeApi';
 import {
     BADGE_COLLECTION_ID,
     DOES_NOT_EXIST_DOC,
+    MYBADGE_COLLECTION_ID,
     USER_COLLECTION_ID,
 } from './type/const';
+import { GetDocFromCollection } from './functions/util';
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
@@ -39,6 +45,20 @@ auth.onAuthStateChanged(async user => {
                         e.detail,
                     );
                     if (!success) console.error(error);
+                    const badgeDoc = await GetDocFromCollection(
+                        USER_COLLECTION_ID,
+                        user.uid,
+                        MYBADGE_COLLECTION_ID,
+                        badge.data.id,
+                    );
+                    if (!badgeDoc.exists()) console.error(DOES_NOT_EXIST_DOC);
+                    if (badgeDoc.data().progressValue >= badge.data.goalValue) {
+                        const status = await AddBadgeAddedTime(
+                            user.uid,
+                            badge.data.id,
+                        );
+                        if (!status.success) console.error(status.error);
+                    }
                 });
             });
         });
