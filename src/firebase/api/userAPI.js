@@ -17,6 +17,7 @@ import {
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
 import { signOut } from 'firebase/auth';
+import { AttendanceEvent } from '../functions/Events';
 
 /**
  * UserInformation을 User collection에 UID를 PK로 저장
@@ -139,6 +140,7 @@ export async function AddAttendance(date) {
         await updateDoc(userInfoRef, {
             attendance: arrayUnion(Timestamp.fromDate(date)),
         });
+        window.dispatchEvent(AttendanceEvent());
         return { success: true };
     } catch (e) {
         return { success: false, error: e };

@@ -1,4 +1,12 @@
-import { arrayUnion, doc, increment, updateDoc } from 'firebase/firestore';
+import {
+    arrayUnion,
+    collection,
+    doc,
+    getDoc,
+    increment,
+    setDoc,
+    updateDoc,
+} from 'firebase/firestore';
 import { db } from '../root';
 import {
     BADGE_COLLECTION_ID,
@@ -60,7 +68,7 @@ export async function GetBadgeData(badgeId) {
  * @param {string} value
  * @returns {Promise<{ success: boolean, error: any | undefined }>}
  */
-export async function UpdateBadgeProgressValue(uid, badgeId, value) {
+export async function UpdateBadgeProgressValue(uid, badgeId, { set, op }) {
     try {
         const myBadgeRef = doc(
             db,
@@ -69,9 +77,13 @@ export async function UpdateBadgeProgressValue(uid, badgeId, value) {
             MYBADGE_COLLECTION_ID,
             badgeId,
         );
-
+        const myBadgeDoc = await getDoc(myBadgeRef);
+        if (!myBadgeDoc.exists()) {
+            await setDoc(myBadgeRef, { progressValue: op });
+            return { success: true };
+        }
         await updateDoc(myBadgeRef, {
-            progressValue: increment(value),
+            progressValue: set ? op : increment(op),
         });
         return { success: true };
     } catch (e) {

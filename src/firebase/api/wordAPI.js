@@ -1,6 +1,5 @@
 import {
     COMMENT_COLLECTION_ID,
-    CREATE_COMMENT_EVENT_NAME,
     DOES_NOT_EXIST_DOC,
     USER_COLLECTION_ID,
     WORD_COLLECTION_ID,
@@ -128,6 +127,7 @@ export async function AddBookmark(id) {
         return { success: false, error: e };
     }
 }
+
 /**
  * 해당 단어를 현재 유저의 프로필의 북마크 목록에서 제거합니다.
  * @param {string} id

@@ -11,8 +11,8 @@ import { firebaseConfig } from './token';
 import './token.js';
 import { GetBadgeData, UpdateBadgeProgressValue } from './api/BadgeApi';
 import {
+    BADGE_COLLECTION_ID,
     DOES_NOT_EXIST_DOC,
-    MYBADGE_COLLECTION_ID,
     USER_COLLECTION_ID,
 } from './type/const';
 const app = initializeApp(firebaseConfig);
@@ -24,16 +24,11 @@ auth.onAuthStateChanged(async user => {
         const userDocRef = doc(db, USER_COLLECTION_ID, user.uid);
         const userDoc = await getDoc(userDocRef);
         if (!userDoc.exists()) return console.error(DOES_NOT_EXIST_DOC);
-        const userBadgeRef = collection(
-            db,
-            USER_COLLECTION_ID,
-            user.uid,
-            MYBADGE_COLLECTION_ID,
-        );
-        const userBadgeDocs = await getDocs(userBadgeRef);
-        const myBadges = [];
-        userBadgeDocs.forEach(v => myBadges.push(v.id));
-        myBadges.forEach(async badgeId => {
+        const badgeRef = collection(db, BADGE_COLLECTION_ID);
+        const badgeDocs = await getDocs(badgeRef);
+        const badges = [];
+        badgeDocs.forEach(v => badges.push(v.id));
+        badges.forEach(async badgeId => {
             const badge = await GetBadgeData(badgeId);
             if (!badge.success) return console.error(badge.error);
             badge.data.eventName.forEach(async eventName => {
@@ -41,11 +36,10 @@ auth.onAuthStateChanged(async user => {
                     const { success, error } = await UpdateBadgeProgressValue(
                         user.uid,
                         badge.data.id,
-                        e.detail.op,
+                        e.detail,
                     );
                     if (!success) console.error(error);
                 });
-                console.log('Event Listner: ', eventName);
             });
         });
     }

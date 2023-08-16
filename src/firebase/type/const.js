@@ -8,3 +8,5 @@ export const BADGE_COLLECTION_ID = 'Badge';
 export const MYBADGE_COLLECTION_ID = 'MyBadge';
 export const CREATE_COMMENT_EVENT_NAME = 'create_comment';
 export const DELETE_COMMENT_EVENT_NAME = 'delete_comment';
+export const TEST_RESULT_EVENT_NAME = 'test_result';
+export const ATTENDANCE_EVENT_NAME = 'attendance';
