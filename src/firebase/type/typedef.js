@@ -82,7 +82,7 @@
 /**
  * @typedef {Object} WordTestView
  * @property {string} title
- * @property {string} date
+ * @property {import('firebase/firestore').Timestamp} date
  * @property {string} testDataId
  */
 

@@ -5,6 +5,8 @@ import {
     doc,
     getDoc,
     getDocs,
+    orderBy,
+    query,
     updateDoc,
 } from 'firebase/firestore';
 import { db } from '../root';
@@ -26,7 +28,8 @@ import { TestResultEvent } from '../functions/Events';
 export async function GetWordTestList() {
     try {
         const wordTestRef = collection(db, WORDTESTVIEW_COLLECTION_ID);
-        const docs = await getDocs(wordTestRef);
+        const wordTestQry = query(wordTestRef, orderBy('date'));
+        const docs = await getDocs(wordTestQry);
         const result = [];
         for (let index = 0; index < docs.size; index++)
             result.push(docs.docs[index].data());
