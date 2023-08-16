@@ -10,13 +10,15 @@ const WordTestList = () => {
         GetWordTestList().then(result => {
             if (result.success) {
                 setQuizList(
-                    result.data.map(quiz => {
-                        return {
-                            id: quiz.testDataId,
-                            title: quiz.title,
-                            date: quiz.date.toDate(),
-                        };
-                    }),
+                    result.data
+                        .map(quiz => {
+                            return {
+                                id: quiz.testDataId,
+                                title: quiz.title,
+                                date: quiz.date.toDate(),
+                            };
+                        })
+                        .sort((a, b) => a.date - b.date),
                 );
             }
         });
