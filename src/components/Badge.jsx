@@ -37,7 +37,9 @@ function Badge({ badge, onClick, checked = false, detail = true }) {
                 <img src={badgeImage} alt="badge icon" />
                 <img src={Check} className="badge-check" alt="check-mark" />
             </div>
-            <span className="badge-title">{badge.title}</span>
+            <span className="badge-title">
+                {badge.title} {badge.type !== 'special' && `Lv.${badge.level}`}
+            </span>
             {detail && (
                 <span className="badge-detail">
                     {badge.date !== undefined

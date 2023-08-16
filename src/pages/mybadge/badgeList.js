@@ -5,7 +5,7 @@
 const badgeList = [
     {
         id: 'QdGBdC049TjTxzz1EYKf',
-        title: '출석체크 뱃지',
+        title: 'Attend',
         type: 'attend',
         level: 1,
         // date: new Date(),
@@ -13,7 +13,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '댓글 갯수 뱃지',
+        title: 'Reply',
         type: 'comment',
         level: 1,
         // date: new Date(),
@@ -21,7 +21,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '단어시험 횟수 뱃지',
+        title: 'Test',
         type: 'test',
         level: 1,
         // date: new Date(),
@@ -29,7 +29,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '출석체크 뱃지',
+        title: 'Attend',
         type: 'attend',
         level: 2,
         // date: new Date(),
@@ -37,7 +37,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '댓글 갯수 뱃지',
+        title: 'Reply',
         type: 'comment',
         level: 2,
         // date: new Date(),
@@ -45,7 +45,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '단어시험 횟수 뱃지',
+        title: 'Test',
         type: 'test',
         level: 2,
         // date: new Date(),
@@ -53,7 +53,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '출석체크 뱃지',
+        title: 'Attend',
         type: 'attend',
         level: 3,
         // date: new Date(),
@@ -61,7 +61,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '댓글 갯수 뱃지',
+        title: 'Reply',
         type: 'comment',
         level: 3,
         // date: new Date(),
@@ -69,7 +69,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '단어시험 횟수 뱃지',
+        title: 'Test',
         type: 'test',
         level: 3,
         // date: new Date(),
@@ -77,7 +77,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '출석체크 뱃지',
+        title: 'Attend',
         type: 'attend',
         level: 4,
         // date: new Date(),
@@ -85,7 +85,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '댓글 갯수 뱃지',
+        title: 'Reply',
         type: 'comment',
         level: 4,
         // date: new Date(),
@@ -93,7 +93,7 @@ const badgeList = [
     },
     {
         id: 'AIInImgrTirg5OAtf0sX',
-        title: '단어시험 횟수 뱃지',
+        title: 'Test',
         type: 'test',
         level: 4,
         // date: new Date(),
@@ -101,7 +101,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '출석체크 뱃지',
+        title: 'Attend',
         type: 'attend',
         level: 5,
         // date: new Date(),
@@ -109,7 +109,7 @@ const badgeList = [
     },
     {
         id: 'ayvdW3j37hIZjBgJPeYu',
-        title: '댓글 갯수 뱃지',
+        title: 'Reply',
         type: 'comment',
         level: 5,
         // date: new Date(),
@@ -117,7 +117,7 @@ const badgeList = [
     },
     {
         id: undefined,
-        title: '단어시험 횟수 뱃지',
+        title: 'Test',
         type: 'test',
         level: 5,
         // date: new Date(),
