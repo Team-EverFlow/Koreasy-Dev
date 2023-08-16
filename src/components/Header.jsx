@@ -30,7 +30,8 @@ const Header = ({
         if (userInfo !== null) {
             userInfo = userInfo.uid;
         } else {
-            navigate('../login');
+            console.log('go to login page');
+            navigate(process.env.PUBLIC_URL + '/login');
         }
         GetUserInformation(userInfo).then(result => {
             if (result.success) {

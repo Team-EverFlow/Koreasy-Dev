@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SignOutFromFirebase } from '../firebase/api/userAPI';
+import { SignOutFromFirebase, DeleteUser } from '../firebase/api/userAPI';
 
 import '../styles/components/Footer.scss';
 
 const Footer = () => {
     function signOut() {
         SignOutFromFirebase();
-        window.location.replace('/login');
+        window.location.replace(process.env.PUBLIC_URL + '/login');
+    }
+
+    function withdrawal() {
+        DeleteUser();
+        window.location.replace(process.env.PUBLIC_URL + '/login');
     }
 
     return (
@@ -33,7 +38,7 @@ const Footer = () => {
                 <p>
                     <Link
                         className="text link-offset-2 link-underline link-underline-opacity-0"
-                        onClick={signOut}
+                        onClick={withdrawal}
                     >
                         Withdrawal
                     </Link>
