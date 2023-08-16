@@ -6,22 +6,31 @@
  * @property {Array<string>} [recentWord]
  * @property {Array<string>} [repBadge]
  * @property {Array<Bookmark>} [bookmark]
- *
+ * @property {Array<TestScore>} [testScore]
  */
 
 /**
+ * @typedef {Object} TestScore
+ * @property {string} testDataId
+ * @property {number} solve
+ * @property {number} question
+ */
+/**
  * @typedef {Object} Bookmark
  * @property {string} id
- * @property {Date} date
+ * @property {import('firebase/firestore').Timestamp} date
  */
 
 /**
  * @typedef {Object} Word
+ * @property {string} id
  * @property {string} wordKr
  * @property {string} wordEn
  * @property {string} pronunciation
  * @property {string} meaning
  * @property {ExampleSentence[]} exampleSentence
+ * @property {Array<Comment>} comments
+ * @property {import('firebase/firestore').Timestamp} addedTime
  */
 
 /**
@@ -66,4 +75,13 @@
  * @property {string} title
  * @property {string} date
  * @property {string} testDataId
+ */
+
+/**
+ * @typedef {Object} Comment
+ * @property {string} id
+ * @property {string} username
+ * @property {import('firebase/firestore').Timestamp} date
+ * @property {string} comment
+ * @property {int} heartCount
  */

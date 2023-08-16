@@ -1,4 +1,4 @@
-import './Toast.scss';
+import '../styles/components/Toast.scss';
 
 /**
  * Toast Component
@@ -15,7 +15,10 @@ export function Toast({ reference, message, icon = false }) {
                 <div className="toast-message">
                     {message.split('\\n').map(message_content => {
                         return (
-                            <span className="toast-message-block">
+                            <span
+                                className="toast-message-block"
+                                key={message_content}
+                            >
                                 {message_content}
                             </span>
                         );

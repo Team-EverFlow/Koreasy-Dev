@@ -1,5 +1,5 @@
 import React from 'react';
-import './BadgeGroup.scss';
+import '../styles/components/BadgeGroup.scss';
 import Badge from './Badge';
 import '../types/typedef';
 
@@ -29,6 +29,7 @@ function BadgeGroup({
                     }}
                     checked={badgesChecked[index]}
                     detail={detail}
+                    key={index}
                 />
             ))}
         </div>

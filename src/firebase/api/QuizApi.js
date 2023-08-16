@@ -1,12 +1,22 @@
-import { collection, getDocs } from 'firebase/firestore';
+import {
+    arrayRemove,
+    arrayUnion,
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    updateDoc,
+} from 'firebase/firestore';
 import { db } from '../root';
 import {
     DOES_NOT_EXIST_DOC,
     TESTDATA_COLLECTION_ID,
+    USER_COLLECTION_ID,
     WORDTESTVIEW_COLLECTION_ID,
 } from '../type/const';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
+import { GetCurrentUserFromFirebase } from './userAPI';
 
 /**
  * WordTest의 값을 List로 반환합니다.
@@ -39,6 +49,39 @@ export async function GetTestDataList(testId) {
         if (!testDataSnap.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
         return { success: true, data: testDataSnap.data() };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+/**
+ * 모의고사 점수를 현재유저의 UserInformation에 저장합니다.
+ * @param {string} testDataId
+ * @param {number} solve
+ * @param {number} question
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
+ */
+export async function SetTestScore(testDataId, solve, question) {
+    try {
+        const userInfoRef = doc(
+            db,
+            USER_COLLECTION_ID,
+            GetCurrentUserFromFirebase().uid,
+        );
+        const userInfoSnap = await getDoc(userInfoRef);
+        if (!userInfoSnap.exists())
+            return { success: false, error: DOES_NOT_EXIST_DOC };
+        const data = userInfoSnap
+            .data()
+            .testScore.find(v => v.testDataId === testDataId);
+        if (data)
+            await updateDoc(userInfoRef, { testScore: arrayRemove(data) });
+        const pushData = {
+            testDataId,
+            solve,
+            question,
+        };
+        await updateDoc(userInfoRef, { testScore: arrayUnion(pushData) });
+        return { success: true };
     } catch (e) {
         return { success: false, error: e };
     }

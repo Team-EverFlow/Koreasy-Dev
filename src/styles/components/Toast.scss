@@ -1,0 +1,99 @@
+@import '../variables/colors';
+@import '../variables/textStyles';
+
+.toast-group {
+    bottom: 30px;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    visibility: hidden;
+    width: 100%;
+    z-index: 999;
+
+    &.show {
+        visibility: visible;
+        -webkit-animation:
+            fadein 0.5s,
+            fadeout 0.5s 2.5s;
+        animation:
+            fadein 0.5s,
+            fadeout 0.5s 2.5s;
+    }
+
+    div.toast-content {
+        align-items: center;
+        background-color: $koreasy-color-gray-06;
+        border-radius: 50px;
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        padding: 8px 36px;
+
+        &.toast-icon-content {
+            padding: 8px 32px;
+        }
+
+        span.toast-icon {
+            background: url('../../assets/images/warning.svg') no-repeat center;
+            background-size: 24px;
+            height: 32px;
+            width: 32px;
+        }
+
+        div.toast-message {
+            @include subtext-medium;
+            color: $koreasy-color-gray-00;
+            display: flex;
+            flex-direction: column;
+
+            span.toast-message-block {
+                display: block;
+            }
+        }
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

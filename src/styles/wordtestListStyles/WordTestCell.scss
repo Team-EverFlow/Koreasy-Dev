@@ -1,0 +1,34 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
+.word-test-main-container {
+    display: flex;
+    flex-direction: column;
+
+    .word-test-list-title {
+        padding-left: 0;
+        align-items: center;
+        margin: 12px 20px;
+
+        .big-title {
+            @include title02-bold;
+            color: $koreasy-color-black;
+            margin-bottom: 4px;
+        }
+
+        .small-title {
+            @include body01-regular;
+            color: $koreasy-color-gray-01;
+        }
+    }
+
+    .word-test-button-set {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid;
+        padding: 0 0 12px 0;
+        width: calc(100vw - 40px);
+        margin: 4px auto 0 auto;
+        color: $koreasy-color-gray-03;
+    }
+}

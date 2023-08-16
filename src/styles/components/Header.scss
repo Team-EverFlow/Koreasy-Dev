@@ -1,0 +1,38 @@
+@import '../variables/colors';
+@import '../variables/textStyles';
+
+.header {
+    display: flex;
+    width: 100vw;
+    height: 66px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $koreasy-color-gray-06;
+
+    .service-name {
+        @include title01-heavy;
+        position: absolute;
+        padding: 12px 20px 16px 20px;
+        left: 0;
+        right: 0;
+        justify-content: space-between;
+        align-items: center;
+        float: left;
+
+        .service-name-link {
+            color: $koreasy-color-black;
+        }
+
+        .profile-icon {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            float: right;
+            border-radius: 18px;
+        }
+    }
+}
+
+.pagetitle {
+    margin-top: 32px;
+}

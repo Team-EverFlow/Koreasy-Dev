@@ -1,9 +1,9 @@
 import React from 'react';
-import './ProfileButton.scss';
+import '../styles/components/ProfileButton.scss';
 
 function ProfileButton({ icon, title, onClick }) {
     return (
-        <button onClick={onClick} className={'profile-button'}>
+        <button onClick={onClick} className="profile-button">
             <div className={'profile-button-icon ' + icon} />
             <span>{title}</span>
         </button>
