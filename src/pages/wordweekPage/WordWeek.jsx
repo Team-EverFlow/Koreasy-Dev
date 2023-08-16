@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordweekStyles/WordWeek.scss';
 import WordData from '../../dummyData/WordData.js';
@@ -7,6 +7,7 @@ import WordExampleToggle from './WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
 import { useLocation } from 'react-router-dom';
+import { GetWordListSpan } from '../../firebase/api/wordAPI';
 
 const WordWeek = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
@@ -24,16 +25,27 @@ const WordWeek = () => {
     };
 
     const location = useLocation();
-    console.log(location.state);
-    const wordIdList = location.state?.wordIdList || [];
+    const firstDay = location.state?.firstDay || new Date();
+    const lastDay = location.state?.lastDay || new Date();
+
+    const [wordList, setWordList] = useState([]);
+
+    console.log(firstDay);
+    console.log(lastDay);
+    useEffect(() => {
+        GetWordListSpan(firstDay, lastDay).then(result => {
+            console.log(result.data);
+            if (result.success) {
+                setWordList(result.data);
+            }
+        });
+    }, []);
 
     return (
         <div className="wordweek-container">
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
-                {WordData.filter(content =>
-                    wordIdList.includes(content.wordId),
-                ).map((content, index) => (
+                {wordList.map((content, index) => (
                     <React.Fragment key={content.wordId}>
                         <div
                             key={content.wordId}
