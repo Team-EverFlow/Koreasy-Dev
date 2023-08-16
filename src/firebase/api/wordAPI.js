@@ -167,9 +167,10 @@ export async function CreateComment(wordId, comment) {
         );
         await addDoc(commentRef, {
             username: user.displayName,
+            userId: user.uid,
             date: Timestamp.fromDate(new Date()),
             comment,
-            hearCount: 0,
+            heartUsers: [],
         });
         return { success: true };
     } catch (e) {
@@ -179,14 +180,33 @@ export async function CreateComment(wordId, comment) {
 
 /**
  * 단어의 특정 댓글을 삭제합니다
+ * (현재 유저와 댓글을 작성한 유저가 같을 경우에만 삭제합니다.)
  * @param {string} wordId
  * @param {string} commentId
- * @returns {Promise<void>}
+ * @returns {Promise<{success: boolean, error: any | undefined}>}
  */
 export async function DeleteComment(wordId, commentId) {
-    return deleteDoc(
-        doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID, commentId),
-    );
+    try {
+        const commentDoc = await getDoc(
+            doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID),
+        );
+        if (!commentDoc.exists())
+            return { success: false, error: DOES_NOT_EXIST_DOC };
+        if (commentDoc.data().userId !== GetCurrentUserFromFirebase().uid)
+            return { success: false, error: 'Permission denied' };
+        await deleteDoc(
+            doc(
+                db,
+                WORD_COLLECTION_ID,
+                wordId,
+                COMMENT_COLLECTION_ID,
+                commentId,
+            ),
+        );
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
 }
 
 /**
@@ -227,6 +247,28 @@ export async function GetWordListSpan(startDate, endDate) {
         const result = [];
         for (const doc of wordDocs.docs) result.push(doc.data());
         return { success: true, data: result };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * wordId로부터 Comment 목록을 반환합니다.
+ * @param {string} wordId
+ * @returns {Promise<{success: boolean, error: any | undefined, data: Comment | undefined}>}
+ */
+export async function GetCommentsFromWord(wordId) {
+    try {
+        const commentDocs = await getDocs(
+            collection(db, WORD_COLLECTION_ID, wordId),
+        );
+        const comments = [];
+        for (const comment of commentDocs.docs)
+            comments.push({
+                id: comment.id,
+                ...comment.data(),
+            });
+        return { success: true, data: comments };
     } catch (e) {
         return { success: false, error: e };
     }
