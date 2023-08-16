@@ -6,12 +6,17 @@ import WordCardText from '../../components/WordCardText.jsx';
 import { GetTodayWordList } from '../../firebase/api/wordAPI.js';
 
 function AutoScrollWord() {
-    const [wordCardText, setWordCardText] = useState([]);
+    const [wordCardText, setWordCardText] = useState();
+    const autoScrollTag = [
+        'carousel-item active',
+        'carousel-item',
+        'carousel-item',
+        'carousel-item',
+    ];
 
     useEffect(() => {
         GetTodayWordList().then(result => {
-            setWordCardText([...result.data]);
-            console.log(wordCardText);
+            setWordCardText(result.data);
         });
     }, []);
 
@@ -21,13 +26,17 @@ function AutoScrollWord() {
                 id="carouselExampleAutoplaying"
                 className="carousel slide"
                 data-bs-ride="carousel"
+                data-bs-interval="3000"
             >
                 <div className="carousel-inner">
                     {wordCardText &&
-                        Object.values(wordCardText).map((item, index) => (
-                            <div className="carousel-item active" key={index}>
+                        Object.values(wordCardText).map((_, index) => (
+                            <div className={autoScrollTag[index]} key={index}>
                                 <div className="card-margin">
-                                    <WordCardText word={wordCardText[item]} />
+                                    <WordCardText
+                                        word={wordCardText}
+                                        index={index}
+                                    />
                                 </div>
                             </div>
                         ))}
