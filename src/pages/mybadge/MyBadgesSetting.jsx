@@ -7,11 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastGenerator } from '../../components/ToastGenerator';
 import { UpdateRepBadge } from '../../firebase/api/BadgeApi';
 import { GetCurrentUserInformation } from '../../firebase/api/userAPI';
+import { updateBadgeObjectFromMyBadges } from './updateBadgeObject';
 
 function MyBadgesViewSetting() {
     const [selectedBadge, setSelectedBadge] = useState(
         Array(badgeList.length).fill(false),
     );
+    const [badges, setBadgeList] = useState(badgeList);
     const [MaxSelectWarningToast, onMaxSelectWarningCall] = ToastGenerator();
     const [ExceptionToast, onExceptionToast] = ToastGenerator();
     const navigate = useNavigate();
@@ -19,9 +21,17 @@ function MyBadgesViewSetting() {
     useEffect(() => {
         GetCurrentUserInformation().then(result => {
             if (result.success) {
-                const repBadge = result.user.repBadge;
-                badgeList.map((badge, index) => {
-                    if (repBadge.includes(badge.id)) {
+                setBadgeList(prevBadge => {
+                    return prevBadge.map((badge, _) => {
+                        return updateBadgeObjectFromMyBadges(
+                            badge,
+                            result.user.myBadges,
+                        );
+                    });
+                });
+
+                badges.map((badge, index) => {
+                    if (result.user.repBadge.includes(badge.id)) {
                         setSelectedBadge(prevState => {
                             return prevState.map((badgeChecked, badgeIndex) => {
                                 return badgeIndex === index;
@@ -32,8 +42,8 @@ function MyBadgesViewSetting() {
             }
         });
     }, []);
-    const onBadgeClick = (badgeIndex, id) => {
-        if (!badgeList[badgeIndex].active) {
+    const onBadgeClick = (badgeIndex, _) => {
+        if (!badges[badgeIndex].active) {
             return;
         }
 
@@ -51,12 +61,13 @@ function MyBadgesViewSetting() {
     const onConfirmButtonClick = () => {
         UpdateRepBadge(
             selectedBadge
-                .filter(Boolean)
-                .map((_, index) => badgeList[index].id),
+                .map((value, index) => (value ? badgeList[index].id : null))
+                .filter(index => index !== null),
         ).then(result => {
             if (result.success) {
                 navigate('/profile/badge');
             } else {
+                // console.log(result.error);
                 onExceptionToast();
             }
         });
@@ -74,7 +85,7 @@ function MyBadgesViewSetting() {
                 </span>
             </div>
             <BadgeGroup
-                badges={badgeList}
+                badges={badges}
                 onClick={onBadgeClick}
                 badgesChecked={selectedBadge}
             />
