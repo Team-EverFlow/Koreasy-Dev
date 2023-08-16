@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/components/ExampleSentence.scss';
 import Sound from '../assets/images/Sound.svg';
 
@@ -23,8 +23,8 @@ function ExampleSentence({ isSound, ExampleSentence }) {
                     </div>
                 </div>
             )}
-            <div>{ExampleSentence.sentenceKr}</div>
-            <div>{ExampleSentence.sentenceEn}</div>
+            {ExampleSentence && <div>{ExampleSentence.sentenceKr}</div>}
+            {ExampleSentence && <div>{ExampleSentence.sentenceEn}</div>}
         </div>
     );
 }
