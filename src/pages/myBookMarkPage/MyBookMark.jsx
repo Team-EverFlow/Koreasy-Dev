@@ -24,9 +24,7 @@ const MyBookMark = () => {
     };
 
     const filteredWordData = WordData.filter(word => {
-        return UserInformation.bookmark.some(
-            item => item.wordId === word.wordId,
-        );
+        return UserInformation.bookmark.some(item => item.id === word.id);
     });
 
     return (
@@ -34,9 +32,9 @@ const MyBookMark = () => {
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
                 {filteredWordData.map((content, index) => (
-                    <React.Fragment key={content.wordId}>
+                    <React.Fragment key={content.id}>
                         <div
-                            key={content.wordId}
+                            key={content.id}
                             className="item"
                             style={{ top: `${index * 135}px` }}
                         >
@@ -58,22 +56,22 @@ const MyBookMark = () => {
                                     <div
                                         className="item-example"
                                         onClick={() =>
-                                            handleExampleToggle(content.wordId)
+                                            handleExampleToggle(content.id)
                                         }
                                     >
-                                        {isVisible(content.wordId)
+                                        {isVisible(content.id)
                                             ? 'Hide'
                                             : 'About Word'}
                                     </div>
                                 </button>
                             </div>
                             <div className="bookmark-icon">
-                                <Bookmark wordId={content.wordId} />
+                                <Bookmark wordId={content.id} />
                             </div>
                         </div>
-                        {isVisible(content.wordId) && (
+                        {isVisible(content.id) && (
                             <WordExampleSentence
-                                wordId={content.wordId}
+                                wordId={content.id}
                                 exampleSentences={content.exampleSentence}
                             />
                         )}

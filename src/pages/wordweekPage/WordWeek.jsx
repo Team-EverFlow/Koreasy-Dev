@@ -30,11 +30,8 @@ const WordWeek = () => {
 
     const [wordList, setWordList] = useState([]);
 
-    console.log(firstDay);
-    console.log(lastDay);
     useEffect(() => {
         GetWordListSpan(firstDay, lastDay).then(result => {
-            console.log(result.data);
             if (result.success) {
                 setWordList(result.data);
             }
@@ -46,9 +43,9 @@ const WordWeek = () => {
             <Header isNavigationBar={true} viewName="ViewName" />
             <div className="content">
                 {wordList.map((content, index) => (
-                    <React.Fragment key={content.wordId}>
+                    <React.Fragment key={content.id}>
                         <div
-                            key={content.wordId}
+                            key={content.id}
                             className="item"
                             style={{ top: `${index * 135}px` }}
                         >
@@ -70,22 +67,22 @@ const WordWeek = () => {
                                     <div
                                         className="item-example"
                                         onClick={() =>
-                                            handleExampleToggle(content.wordId)
+                                            handleExampleToggle(content.id)
                                         }
                                     >
-                                        {isVisible(content.wordId)
+                                        {isVisible(content.id)
                                             ? 'Hide'
                                             : 'About Word'}
                                     </div>
                                 </button>
                             </div>
                             <div className="bookmark-icon">
-                                <Bookmark wordId={content.wordId} />
+                                <Bookmark wordId={content.id} />
                             </div>
                         </div>
-                        {isVisible(content.wordId) && (
+                        {isVisible(content.id) && (
                             <WordExampleSentence
-                                wordId={content.wordId}
+                                wordId={content.id}
                                 exampleSentences={content.exampleSentence}
                             />
                         )}
