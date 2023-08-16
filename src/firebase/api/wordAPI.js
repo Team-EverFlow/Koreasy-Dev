@@ -229,7 +229,8 @@ export async function GetWordList() {
         );
         const wordDocs = await getDocs(wordQry);
         const result = [];
-        for (const doc of wordDocs.docs) result.push(doc.data());
+        for (const doc of wordDocs.docs)
+            result.push({ ...doc.data(), id: doc.id });
         return { success: true, data: result };
     } catch (e) {
         return { success: false, error: e };
