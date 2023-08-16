@@ -5,8 +5,8 @@ import WordExampleSentence from '../wordweekPage/WordExampleSentence.jsx';
 import WordExampleToggle from '../wordweekPage/WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
-import UserInformation from '../../dummyData/UserInformation.js';
 import { GetWordList } from '../../firebase/api/wordAPI';
+import { GetCurrentUserInformation } from '../../firebase/api/userAPI';
 
 const MyBookMark = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
@@ -25,17 +25,20 @@ const MyBookMark = () => {
 
     const [wordList, setWordList] = useState([]);
     useEffect(() => {
-        GetWordList().then(result => {
-            if (result.success) {
+        (async () => {
+            const userInformationResult = await GetCurrentUserInformation();
+            const result = await GetWordList();
+
+            if (result.success && userInformationResult.success) {
                 setWordList(
                     result.data.filter(word => {
-                        return UserInformation.bookmark.some(
+                        return userInformationResult.user.bookmark.some(
                             item => item.id === word.id,
                         );
                     }),
                 );
             }
-        });
+        })();
     }, []);
 
     return (
