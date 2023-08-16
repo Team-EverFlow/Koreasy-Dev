@@ -9,15 +9,20 @@ import {
     setDoc,
     doc,
     updateDoc,
-    deleteDoc,
     arrayUnion,
     Timestamp,
     getDocs,
+    deleteDoc,
     collection,
 } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
-import { deleteUser, signOut } from 'firebase/auth';
+import {
+    GoogleAuthProvider,
+    deleteUser,
+    reauthenticateWithPopup,
+    signOut,
+} from 'firebase/auth';
 import { AttendanceEvent } from '../functions/Events';
 
 /**
@@ -129,23 +134,6 @@ export async function SignOutFromFirebase() {
 }
 
 /**
- * 현재 유저를 데이터에서 삭제합니다.
- * (Firebase Auth 정보 삭제, Firestore 유저 DB 삭제)
- * @returns {Promise<{ success: boolean, error: any | undefined }}
- */
-export async function DeleteUser() {
-    try {
-        const user = GetCurrentUserFromFirebase();
-        if (!user) return { success: false, error: 'User is null' };
-        await deleteDoc(doc(db, USER_COLLECTION_ID, user.uid));
-        await deleteUser(user);
-        return { success: true };
-    } catch (e) {
-        return { success: false, error: e };
-    }
-}
-
-/**
  * 해당 Date를 현재 유저의 UserInformation.attendace에 추가합니다.
  * @param {Date} date
  * @returns {Promise<{ success: boolean, error: any | undefined }>}
@@ -159,6 +147,39 @@ export async function AddAttendance(date) {
             attendance: arrayUnion(Timestamp.fromDate(date)),
         });
         window.dispatchEvent(AttendanceEvent());
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 현재 유저를 데이터에서 삭제합니다.
+ * (Firebase Auth 정보 삭제, Firestore 유저 DB 삭제)
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function DeleteUser() {
+    try {
+        const user = GetCurrentUserFromFirebase();
+        if (!user) return { success: false, error: 'User is null' };
+        await reauthenticateWithPopup(user, new GoogleAuthProvider());
+        await deleteDoc(doc(db, USER_COLLECTION_ID, user.uid));
+        const myBadgesDocs = await getDocs(
+            collection(db, USER_COLLECTION_ID, user.uid, MYBADGE_COLLECTION_ID),
+        );
+        myBadgesDocs.forEach(async docs => {
+            console.log(docs.id);
+            await deleteDoc(
+                doc(
+                    db,
+                    USER_COLLECTION_ID,
+                    user.uid,
+                    MYBADGE_COLLECTION_ID,
+                    docs.id,
+                ),
+            );
+        });
+        await deleteUser(user);
         return { success: true };
     } catch (e) {
         return { success: false, error: e };

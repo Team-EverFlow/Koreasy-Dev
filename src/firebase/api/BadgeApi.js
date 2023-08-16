@@ -1,6 +1,6 @@
 import {
+    Timestamp,
     arrayUnion,
-    collection,
     doc,
     getDoc,
     increment,
@@ -88,5 +88,32 @@ export async function UpdateBadgeProgressValue(uid, badgeId, { set, op }) {
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
+    }
+}
+/**
+ * 뱃지 취득 시간을 추가합니다.
+ * @param {string} uid
+ * @param {string} badgeId
+ * @returns {Promise<{ success: boolean, error: any | undefined }>}
+ */
+export async function AddBadgeAddedTime(uid, badgeId) {
+    try {
+        const myBadgeRef = doc(
+            db,
+            USER_COLLECTION_ID,
+            uid,
+            MYBADGE_COLLECTION_ID,
+            badgeId,
+        );
+        const myBadgeDoc = await getDoc(myBadgeRef);
+        if (!myBadgeDoc.exists()) {
+            return { success: false, error: DOES_NOT_EXIST_DOC };
+        }
+        await updateDoc(myBadgeRef, {
+            addedTime: Timestamp.fromDate(new Date()),
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: true, error: e };
     }
 }

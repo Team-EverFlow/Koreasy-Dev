@@ -52,6 +52,7 @@
  * @typedef {Object} MyBadge
  * @property {string} badgeId
  * @property {number} progressValue
+ * @property {import('firebase/firestore').Timestamp} addedTime
  */
 /**
  * @typedef {Object} Badge
@@ -89,7 +90,8 @@
  * @typedef {Object} Comment
  * @property {string} id
  * @property {string} username
+ * @property {string} userId
  * @property {import('firebase/firestore').Timestamp} date
  * @property {string} comment
- * @property {int} heartCount
+ * @property {string[]} reactUsers
  */
