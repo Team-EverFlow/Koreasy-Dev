@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/components/WordCardText.scss';
 
 /**
@@ -6,31 +6,40 @@ import '../styles/components/WordCardText.scss';
  * @param {{word: {wordId: string, wordKr: string, wirdEn: string, pronunciation: string, meaning: string }}}
  * @returns
  */
-function WordCardText({ word }) {
-    let wordCard =
-        word !== undefined
+function WordCardText({ word, index }) {
+    const [wordCard, setWordCard] = useState(
+        word === undefined
             ? {
-                  krWord: word.krWord ? word.krWord : 'krWord',
-                  pronunciation: word.pronunciation
-                      ? word.pronunciation
-                      : '[pronunciation]',
-                  enWord: word.enWord
-                      ? word.enWord
-                      : 'parts of speech - enWord',
-              }
-            : {
-                  krWord: '사과',
+                  wordId: 'word1',
+                  wordKr: '사과',
+                  wordEn: 'Apple',
                   pronunciation: '[sagua]',
-                  enWord: 'noun - Apple',
-              };
+                  meaning: 'noun-Apple',
+                  exampleSentence: [
+                      {
+                          sentenceKr: '나는 사과사의 아이폰을 사용한다.',
+                          sentenceEr: 'I am using iPhone by apple company',
+                      },
+                      {
+                          sentenceKr: '나는 사과사의 아이폰을 사용한다.',
+                          sentenceEr: 'I am using iPhone by apple company',
+                      },
+                  ],
+              }
+            : word[index],
+    );
+
+    useEffect(() => {
+        setWordCard({ ...word[index] });
+    }, [word, index]);
 
     return (
         <div className="card-background">
             <div className="kr-word">
-                <div className="kr-text">{wordCard.krWord}</div>
+                <div className="kr-text">{wordCard.wordKr}</div>
                 <div className="pronunciation">{wordCard.pronunciation}</div>
             </div>
-            <div className="en-word">{wordCard.enWord}</div>
+            <div className="en-word">{wordCard.meaning}</div>
         </div>
     );
 }
