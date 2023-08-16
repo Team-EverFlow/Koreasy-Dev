@@ -4,7 +4,7 @@
  */
 const badgeList = [
     {
-        id: 'QdGBdC049TjTxzz1EYKf ',
+        id: 'QdGBdC049TjTxzz1EYKf',
         title: '출석체크 뱃지',
         type: 'attend',
         level: 1,

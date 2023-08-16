@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import BadgeGroup from '../../components/BadgeGroup';
 import '../../styles/MyBadge.scss';
@@ -6,17 +6,34 @@ import badgeList from './badgeList';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastGenerator } from '../../components/ToastGenerator';
 import { UpdateRepBadge } from '../../firebase/api/BadgeApi';
+import { GetCurrentUserInformation } from '../../firebase/api/userAPI';
 
 function MyBadgesViewSetting() {
-    // TODO(profile.repBadge)
     const [selectedBadge, setSelectedBadge] = useState(
         Array(badgeList.length).fill(false),
     );
     const [MaxSelectWarningToast, onMaxSelectWarningCall] = ToastGenerator();
     const [ExceptionToast, onExceptionToast] = ToastGenerator();
     const navigate = useNavigate();
-    const onBadgeClick = id => {
-        if (!badgeList[id].active) {
+
+    useEffect(() => {
+        GetCurrentUserInformation().then(result => {
+            if (result.success) {
+                const repBadge = result.user.repBadge;
+                badgeList.map((badge, index) => {
+                    if (repBadge.includes(badge.id)) {
+                        setSelectedBadge(prevState => {
+                            return prevState.map((badgeChecked, badgeIndex) => {
+                                return badgeIndex === index;
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    }, []);
+    const onBadgeClick = (badgeIndex, id) => {
+        if (!badgeList[badgeIndex].active) {
             return;
         }
 
@@ -26,7 +43,7 @@ function MyBadgesViewSetting() {
         }
         setSelectedBadge(prevState => {
             return prevState.map((badgeChecked, index) => {
-                return index === id ? !badgeChecked : badgeChecked;
+                return index === badgeIndex ? !badgeChecked : badgeChecked;
             });
         });
     };
@@ -40,7 +57,6 @@ function MyBadgesViewSetting() {
             if (result.success) {
                 navigate('/profile/badge');
             } else {
-                console.log(result.error);
                 onExceptionToast();
             }
         });
