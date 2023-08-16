@@ -22,5 +22,6 @@ export function updateBadgeObjectFromMyBadge(badge, myBadge) {
         ...badge,
         active: myBadge.progressValue >= badge.achievement ?? 0,
         currentAchievement: myBadge.progressValue,
+        date: myBadge.addedTime.toDate(),
     };
 }
