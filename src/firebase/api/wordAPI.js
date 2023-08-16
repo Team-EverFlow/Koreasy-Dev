@@ -170,7 +170,7 @@ export async function CreateComment(wordId, comment) {
             userId: user.uid,
             date: Timestamp.fromDate(new Date()),
             comment,
-            heartUsers: [],
+            reactUsers: [],
         });
         return { success: true };
     } catch (e) {
@@ -274,6 +274,53 @@ export async function GetCommentsFromWord(wordId) {
     }
 }
 
+/**
+ * 댓글에 반응을 추가합니다.
+ * @param {string} wordId
+ * @param {string} commentId
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function AddReactComment(wordId, commentId) {
+    try {
+        const commentRef = doc(
+            db,
+            WORD_COLLECTION_ID,
+            wordId,
+            COMMENT_COLLECTION_ID,
+            commentId,
+        );
+        await updateDoc(commentRef, {
+            reactUsers: arrayUnion(GetCurrentUserFromFirebase().uid),
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 댓글에 반응을 삭제 합니다.
+ * @param {string} wordId
+ * @param {string} commentId
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function DeleteReactComment(wordId, commentId) {
+    try {
+        const commentRef = doc(
+            db,
+            WORD_COLLECTION_ID,
+            wordId,
+            COMMENT_COLLECTION_ID,
+            commentId,
+        );
+        await updateDoc(commentRef, {
+            reactUsers: arrayRemove(GetCurrentUserFromFirebase().uid),
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
 /**
  * 오늘의 단어에 해당되는 단어를 불러옵니다.
  * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}

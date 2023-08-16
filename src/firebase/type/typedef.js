@@ -84,5 +84,5 @@
  * @property {string} userId
  * @property {import('firebase/firestore').Timestamp} date
  * @property {string} comment
- * @property {string[]} heartUsers
+ * @property {string[]} reactUsers
  */
