@@ -17,7 +17,12 @@ import {
 } from 'firebase/firestore';
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
-import { deleteUser, signOut } from 'firebase/auth';
+import {
+    GoogleAuthProvider,
+    deleteUser,
+    reauthenticateWithPopup,
+    signOut,
+} from 'firebase/auth';
 import { AttendanceEvent } from '../functions/Events';
 
 /**
@@ -128,7 +133,6 @@ export async function SignOutFromFirebase() {
     }
 }
 
-
 /**
  * 해당 Date를 현재 유저의 UserInformation.attendace에 추가합니다.
  * @param {Date} date
@@ -158,7 +162,23 @@ export async function DeleteUser() {
     try {
         const user = GetCurrentUserFromFirebase();
         if (!user) return { success: false, error: 'User is null' };
+        await reauthenticateWithPopup(user, new GoogleAuthProvider());
         await deleteDoc(doc(db, USER_COLLECTION_ID, user.uid));
+        const myBadgesDocs = await getDocs(
+            collection(db, USER_COLLECTION_ID, user.uid, MYBADGE_COLLECTION_ID),
+        );
+        myBadgesDocs.forEach(async docs => {
+            console.log(docs.id);
+            await deleteDoc(
+                doc(
+                    db,
+                    USER_COLLECTION_ID,
+                    user.uid,
+                    MYBADGE_COLLECTION_ID,
+                    docs.id,
+                ),
+            );
+        });
         await deleteUser(user);
         return { success: true };
     } catch (e) {
