@@ -35,7 +35,7 @@ function ProfileView() {
                                 ...badgeList.find(
                                     badge => badge.id === badgeId,
                                 ),
-                                active: true
+                                active: true,
                             };
                         })
                         .concat(
