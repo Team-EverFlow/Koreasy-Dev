@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import { AddBookmark } from '../firebase/api/wordAPI.js';
+
 import UserInformation from '../dummyData/UserInformation.js';
 
 const BookmarkIcon = ({ wordId }) => {
@@ -17,7 +20,11 @@ const BookmarkIcon = ({ wordId }) => {
               ]
             : UserInformation.bookmark.filter(item => item.wordId !== wordId);
 
-        console.log('Updated Bookmark:', updatedBookmark);
+        // console.log('Updated Bookmark:', updatedBookmark);
+        AddBookmark(wordId).then(result => {
+            console.log(wordId);
+            console.log(result.success, result.error);
+        });
 
         UserInformation.bookmark = updatedBookmark;
     };
