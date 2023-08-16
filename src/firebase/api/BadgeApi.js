@@ -1,4 +1,4 @@
-import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../root';
 import { USER_COLLECTION_ID } from '../type/const';
 import { GetCurrentUserFromFirebase } from './userAPI';
@@ -15,7 +15,7 @@ export async function UpdateRepBadge(badgeId) {
             USER_COLLECTION_ID,
             GetCurrentUserFromFirebase().uid,
         );
-        await updateDoc(userInfoRef, { repBadge: arrayUnion(badgeId) });
+        await updateDoc(userInfoRef, { repBadge: badgeId });
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
