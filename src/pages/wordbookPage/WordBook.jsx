@@ -7,6 +7,7 @@ import Divider from '../../components/Divider.jsx';
 import Chevrion from '../../components/Chevrion.jsx';
 import { GetWordList } from '../../firebase/api/wordAPI';
 import moment from 'moment';
+import { ordinalSuffix } from '../../utils/ordinalSuffix';
 
 const WordBook = () => {
     const getMonthWeek = function (date) {
@@ -37,8 +38,8 @@ const WordBook = () => {
                             const monthWeek = getMonthWeek(addedTime);
                             const firstDay = getSunday(addedTime);
                             const lastDay = new Date(
-                                new Date(addedTime).setDate(
-                                    addedTime.getDate() + 6,
+                                new Date(firstDay).setDate(
+                                    firstDay.getDate() + 6,
                                 ),
                             );
                             return !prevState.some(
@@ -53,6 +54,7 @@ const WordBook = () => {
                                           lastDay: lastDay,
                                           weekend: monthWeek,
                                           month: firstDay.getMonth(),
+                                          moment: moment(firstDay),
                                           weekOfYear: moment(firstDay).week(),
                                       },
                                   ]
@@ -67,27 +69,45 @@ const WordBook = () => {
             <div className="wordbook-container">
                 <Header isNavigationBar={false} viewName="WordBook" />
                 <div className="date-section">
-                    {DateData.map((content, index) => (
-                        <Link
-                            to="/wordweek"
-                            state={{ wordIdList: content.wordIdList }}
-                            key={index}
-                            className="dateitem-container"
-                        >
-                            <div className="date-item">
-                                <div className="date-info">
-                                    <span className="date-text">
-                                        {content.dateText}
-                                    </span>
-                                    <span className="date-range">
-                                        {content.dateRange}
-                                    </span>
+                    {wordbook.map((content, index) => {
+                        const dateToString = content.moment.format('MMM YYYY');
+                        const wordbook = {
+                            title: `${ordinalSuffix(
+                                content.weekend,
+                            )} week, ${dateToString}`,
+                            range: `${moment(content.firstDay).format(
+                                'YYYY.MM.DD',
+                            )}~
+                            ${moment(content.lastDay).format('MM.DD')}`,
+                        };
+                        return (
+                            <Link
+                                to="/wordweek"
+                                state={{
+                                    firstDay: content.firstDay,
+                                    lastDay: content.lastDay,
+                                }}
+                                key={index}
+                                className="dateitem-container"
+                            >
+                                <div className="date-item">
+                                    <div className="date-info">
+                                        <span className="date-text">
+                                            {wordbook.title}
+                                        </span>
+                                        <span className="date-range">
+                                            {wordbook.range}
+                                        </span>
+                                    </div>
+                                    <Chevrion
+                                        direction="Right"
+                                        color="MainColor"
+                                    />
                                 </div>
-                                <Chevrion direction="Right" color="MainColor" />
-                            </div>
-                            <Divider />
-                        </Link>
-                    ))}
+                                <Divider />
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </div>
