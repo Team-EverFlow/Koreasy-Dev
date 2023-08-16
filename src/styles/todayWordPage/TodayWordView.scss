@@ -1,3 +1,6 @@
+@import '../variables/colors.scss';
+@import '../variables/textStyles.scss';
+
 .todaywordview {
     display: inline-flex;
     flex-direction: column;
@@ -26,6 +29,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include title01-heavy;
+    background-color: $koreasy-color-gray-06;
+    border: $koreasy-color-gray-04 solid 3px;
+    border-radius: 16px;
+    color: $koreasy-color-gray-02;
 }
 
 .wordcard-height {

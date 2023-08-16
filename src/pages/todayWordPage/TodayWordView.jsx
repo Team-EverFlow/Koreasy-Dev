@@ -7,6 +7,7 @@ import TodayCheckComponent from './TodayCheckComponent.jsx';
 import backCardImg from '../../assets/images/Thumbnail1.png';
 
 import WordData from '../../dummyData/todayWordDump.js';
+import { GetTodayWordList } from '../../firebase/api/wordAPI.js';
 
 import '../../styles/todayWordPage/TodayWordView.scss';
 
@@ -18,10 +19,18 @@ function TodayWordView() {
         third: false,
         fourth: false,
     });
-
+    const [wordCardData, setWordCardData] = useState([...WordData]);
     let wordCard = useRef(null);
 
     useEffect(() => {
+        GetTodayWordList().then(result => {
+            if (result.success) {
+                setWordCardData(result.data);
+            } else {
+                console.log(result.error);
+            }
+        });
+
         if (wordCard.current) {
             const wordCardHeight = wordCard.current.scrollHeight;
             setWordCardHeight(wordCardHeight);
@@ -38,28 +47,34 @@ function TodayWordView() {
     return (
         <div className="todaywordview">
             <Header />
-            {Object.keys(isCheckText).map((item, index) => (
-                <ReactCardFlip
-                    isFlipped={isCheckText[item]}
-                    flipDirection="horizontal"
-                    className="card-box"
-                    key={index}
-                >
-                    <div
-                        className="todayword-back-img"
-                        style={{ height: wordCardHeight + 'px' }}
+            {wordCard &&
+                Object.keys(isCheckText).map((item, index) => (
+                    <ReactCardFlip
+                        isFlipped={isCheckText[item]}
+                        flipDirection="horizontal"
+                        className="card-box"
+                        key={index}
                     >
-                        <img
+                        <div
+                            className="todayword-back-img"
+                            style={{ height: wordCardHeight + 'px' }}
+                            onClick={() => handleClick(item)}
+                        >
+                            Tab and Check Today Word
+                            {/* <img
                             src={backCardImg}
                             alt="backcard"
                             onClick={() => handleClick(item)}
-                        />
-                    </div>
-                    <div ref={wordCard} className="wordcard-height">
-                        <TodayWordCard wordData={WordData[index]} />
-                    </div>
-                </ReactCardFlip>
-            ))}
+                        /> */}
+                        </div>
+                        <div ref={wordCard} className="wordcard-height">
+                            <TodayWordCard
+                                wordData={wordCardData}
+                                index={index}
+                            />
+                        </div>
+                    </ReactCardFlip>
+                ))}
             <div className="today-check-frame">
                 <TodayCheckComponent checkText={isCheckText} />
             </div>
