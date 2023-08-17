@@ -215,7 +215,7 @@ export async function DeleteComment(wordId, commentId) {
 
 /**
  * 현재 시각 이전에 생성된 단어들을 전부 불러옵니다
- * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
+ * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[] | undefined}>}
  */
 export async function GetWordList() {
     try {
@@ -226,7 +226,11 @@ export async function GetWordList() {
         );
         const wordDocs = await getDocs(wordQry);
         const result = [];
-        for (const doc of wordDocs.docs) result.push(doc.data());
+        for (const doc of wordDocs.docs)
+            result.push({
+                ...doc.data(),
+                id: doc.id,
+            });
         return { success: true, data: result };
     } catch (e) {
         return { success: false, error: e };
@@ -249,7 +253,11 @@ export async function GetWordListSpan(startDate, endDate) {
         );
         const wordDocs = await getDocs(wordQry);
         const result = [];
-        for (const doc of wordDocs.docs) result.push(doc.data());
+        for (const doc of wordDocs.docs)
+            result.push({
+                ...doc.data(),
+                id: doc.id,
+            });
         return { success: true, data: result };
     } catch (e) {
         return { success: false, error: e };
