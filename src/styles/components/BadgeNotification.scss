@@ -4,12 +4,20 @@
 .badgenotification-container {
     display: flex;
     width: 270px;
-    padding: 52px 0px;
+    padding: 52px 0;
     flex-direction: column;
     align-items: center;
     gap: 24px;
     border-radius: 32px;
     background: $koreasy-color-gray-06;
+
+    &.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s,
+        fadeout 0.5s 2.5s;
+        animation: fadein 0.5s,
+        fadeout 0.5s 2.5s;
+    }
 
     .badgenotification-item {
         display: flex;
@@ -51,6 +59,7 @@
             }
         }
     }
+
     .badgenotification-text {
         align-self: stretch;
         color: $koreasy-color-black;
@@ -58,3 +67,40 @@
         @include body02-bold;
     }
 }
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+

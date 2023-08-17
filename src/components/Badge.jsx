@@ -3,6 +3,7 @@ import '../styles/components/Badge.scss';
 import Check from '../assets/images/check.svg';
 import '../types/typedef';
 import moment from 'moment';
+import { badgeImage } from '../utils/badgeImage';
 
 /**
  * Badge 컴포넌트
@@ -15,14 +16,7 @@ function Badge({ badge, onClick, checked = false, detail = true }) {
     if (!badge.hasOwnProperty('check')) {
         badge.check = false;
     }
-    const badgeImage =
-        badge.type !== 'special'
-            ? require(`../assets/badges/${badge.type}_badge/${
-                  badge.type
-              }_badge_lv${badge.level}${!badge.active ? '_disable' : ''}.svg`)
-            : require(`../assets/badges/special_badge/${badge.imageId}${
-                  !badge.active ? '_disable' : ''
-              }.svg`);
+    const BadgeImage = badgeImage(badge);
     return (
         <div
             className={
@@ -34,7 +28,7 @@ function Badge({ badge, onClick, checked = false, detail = true }) {
             }
         >
             <div className="badge-image" onClick={onClick}>
-                <img src={badgeImage} alt="badge icon" />
+                <img src={BadgeImage} alt="badge icon" />
                 <img src={Check} className="badge-check" alt="check-mark" />
             </div>
             <span className="badge-title">

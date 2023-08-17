@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../styles/components/BadgeNotification.scss';
-import BadgeData from '../dummyData/BadgeData';
+import BadgeList from '../pages/mybadge/badgeList';
+import { badgeImage } from '../utils/badgeImage';
 
+/**
+ * @param {String} badgeId
+ * @param {boolean} show
+ * @returns {Array<JSX.Element | function()>}
+ * @constructor
+ */
 const BadgeNotification = ({ badgeId }) => {
-    const badge = BadgeData.find(b => b.badgeId === badgeId);
+    const badge = BadgeList.find(b => b.id === badgeId);
+    const reference = useRef(null);
+    const onBadgeNotification = () => {
+        if (reference === null) return;
+        reference.current.classList.add('show');
+        setTimeout(function () {
+            reference.current.classList.remove('show');
+        }, 3000);
+    };
 
     if (!badge) {
-        return null;
+        return [<div />, onBadgeNotification];
     }
 
     const formatDate = date => {
@@ -15,16 +30,13 @@ const BadgeNotification = ({ badgeId }) => {
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}.${month}.${day}`;
     };
+    const BadgeImage = badgeImage(badge);
 
-    return (
-        <div className="badgenotification-container">
+    return [
+        <div className="badgenotification-container" ref={reference}>
             <div className="badgenotification-item">
                 <div className="badgenotification-picture">
-                    <img
-                        src={badge.imageUrl}
-                        alt="Badge"
-                        className="badge-image"
-                    />
+                    <img src={BadgeImage} alt="Badge" className="badge-image" />
                 </div>
 
                 <div className="badgenotification-state">
@@ -40,8 +52,9 @@ const BadgeNotification = ({ badgeId }) => {
                 <div>{badge.title}</div>
                 <div>🎉🎉🎉</div>
             </div>
-        </div>
-    );
+        </div>,
+        onBadgeNotification,
+    ];
 };
 
 export default BadgeNotification;
