@@ -1,40 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { AddBookmark } from '../firebase/api/wordAPI.js';
+import { AddBookmark, RemoveBookmark } from '../firebase/api/wordAPI.js';
 
-import UserInformation from '../dummyData/UserInformation.js';
+import { GetCurrentUserInformation } from '../firebase/api/userAPI.js';
 
 const BookmarkIcon = ({ wordId }) => {
-    const [isClicked, setIsClicked] = useState(
-        UserInformation.bookmark.some(item => item.wordId === wordId),
-    );
+    const [isClicked, setIsClicked] = useState(false);
+    console.log(isClicked);
+    useEffect(() => {
+        GetCurrentUserInformation().then(result => {
+            if (result) {
+                setIsClicked(true);
+            } else {
+                console.log(result.error);
+            }
+        });
+    }, [wordId]);
 
     const handleClick = () => {
+        if (isClicked) {
+            RemoveBookmark(wordId).then(result => {
+                if (result.success) {
+                    setIsClicked(false);
+                } else {
+                    console.log(result.error);
+                    // 토스트 띄워도 좋을거같네요
+                }
+            });
+        } else {
+            AddBookmark(wordId).then(result => {
+                if (result.success) {
+                    console.log(wordId);
+                } else {
+                    console.log(result.error);
+                }
+            });
+        }
         const updatedIsClicked = !isClicked;
         setIsClicked(updatedIsClicked);
-
-        const updatedBookmark = updatedIsClicked
-            ? [
-                  ...UserInformation.bookmark,
-                  { wordId, bookmarkDate: getCurrentDate() },
-              ]
-            : UserInformation.bookmark.filter(item => item.wordId !== wordId);
-
-        // console.log('Updated Bookmark:', updatedBookmark);
-        AddBookmark(wordId).then(result => {
-            console.log(wordId);
-            console.log(result.success, result.error);
-        });
-
-        UserInformation.bookmark = updatedBookmark;
-    };
-
-    const getCurrentDate = () => {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        return `${year}${month}${day}`;
     };
 
     return (
