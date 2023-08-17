@@ -11,7 +11,7 @@ jobs:
     env:
       FB_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       SSH_DEPLOY: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
-      GIT_PUBLISH_SSH: "git@github.com:Team-EverFlow/Koreasy-Distribution.git"
+      GIT_PUBLISH_SSH: "git@github.com:Team-EverFlow/koreasy.git"
       GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
       
     steps:
