@@ -18,6 +18,7 @@ function Comment({ wordComment }) {
     );
     let [isHeartClick, setIsHeartClick] = useState(false); // 서버에서 값 받아와 확인
 
+    console.log(wordComment);
     const clickHeart = item => {
         if (!isHeartClick) {
             setComment(comment => ({
@@ -45,7 +46,7 @@ function Comment({ wordComment }) {
                 <button className="user-name">{comment.userName}</button>
                 <div className="comment-date">{comment.date}</div>
             </div>
-            <div className="comment-comment">{comment.commentInfo}</div>
+            <div className="comment-comment">{comment.comment}</div>
             <div className="comment-util">
                 <div className="heart-frame">
                     <button

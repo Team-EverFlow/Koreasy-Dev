@@ -6,15 +6,20 @@ import AddComment from './AddComment';
 import WordCardText from '../../components/WordCardText';
 import Header from '../../components/Header';
 
-import wordCommentDump from '../../dummyData/wordCommentDump';
-import { GetWordUsingId, CreateComment } from '../../firebase/api/wordAPI';
+// import wordCommentDump from '../../dummyData/wordCommentDump';
+import {
+    GetWordUsingId,
+    CreateComment,
+    GetCommentsFromWord,
+} from '../../firebase/api/wordAPI';
 
 import '../../styles/wordCommunityPage/WordCommunityView.scss';
 
 function WordCommunityView() {
     const [serchParams, setSearchParams] = useSearchParams();
     const id = serchParams.get('id');
-    const [wordComment, setWordComment] = useState({ ...wordCommentDump });
+    const [wordCard, setWordCard] = useState(null);
+    const [wordComment, setWordComment] = useState(null);
 
     function reload(textValue, setText) {
         //버튼 실행 조건(텍스트 카운트)
@@ -31,25 +36,38 @@ function WordCommunityView() {
         GetWordUsingId(id).then(result => {
             if (result.success) {
                 setWordComment({ ...result.data });
+            } else {
+                console.log(result.error);
             }
         });
-    }, []);
-    console.log(wordComment);
+        GetCommentsFromWord(id).then(result => {
+            if (result.success) {
+                setWordCard({ ...result.data });
+            } else {
+                console.log(result.error);
+            }
+        });
+    }, [id]);
+
     return (
         <>
-            <Header isNavigationBar={true} navigationViewName="사과" />
+            <Header
+                isNavigationBar={true}
+                navigationViewName={wordCard && wordCard.wordKr}
+            />
             <div className="community-background">
                 <div className="community-word-info">
                     <WordCardText />
                 </div>
 
                 <div className="community-comment">
-                    {Object.keys(wordComment.comments).map((_, index) => (
-                        <Comment
-                            key={index}
-                            wordComment={wordComment.comments[index]}
-                        />
-                    ))}
+                    {wordComment &&
+                        Object.keys(wordComment.comments).map((_, index) => (
+                            <Comment
+                                key={index}
+                                wordComment={Array(wordComment.comments)[index]}
+                            />
+                        ))}
                 </div>
 
                 <AddComment uploadButton={reload} />

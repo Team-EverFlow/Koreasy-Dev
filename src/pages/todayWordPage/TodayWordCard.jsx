@@ -58,8 +58,6 @@ function TodayWordCard({ wordData, index, onClick }) {
         }
     };
 
-    console.log(wordCard.id);
-
     return (
         <div className="todaywordcard-background" onClick={handleClick}>
             <div className="wordInfo-frame">
