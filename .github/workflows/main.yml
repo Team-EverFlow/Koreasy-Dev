@@ -1,0 +1,59 @@
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    name: react-build
+    runs-on: ubuntu-latest
+    env:
+      FB_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      SSH_DEPLOY: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
+      GIT_PUBLISH_SSH: "git@github.com:Team-EverFlow/Koreasy-Distribution.git"
+      GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
+      
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+      - name: Generate Firebase Token
+        run: |
+          echo "$FB_TOKEN" | base64 --decode > "./src/firebase/token.js"
+
+      - name: npm install & npm run build
+        env:
+          CI: false
+        run: |
+          npm install
+          npm run build
+      
+      - name: Ssh key deploy
+        run: |
+          mkdir --parents ~/.ssh
+          DEPLOY_FILE="$HOME/.ssh/id_rsa"
+          echo "$SSH_DEPLOY" > "$DEPLOY_FILE"
+          chmod 600 "$DEPLOY_FILE"
+          ssh-keyscan -H "github.com" >> "$HOME/.ssh/known_hosts"
+
+      - name: Git config
+        run: |
+          git config --global user.email "github-action@github.com"
+          git config --global user.name "github-action"
+          git config --global init.defaultBranch "main"
+
+      - name: Clone publish repo'
+        run: |
+          git clone "$GIT_PUBLISH_SSH" ~/git_clone_temp/
+          
+      - name: publish_git_update
+        run: |
+          pwd
+          ls
+          cp -r build/* $HOME/git_clone_temp
+          cd ~/git_clone_temp
+          git add .
+          git commit -m "github-action $GIT_PREVIOUS_COMMIT"
+          git remote add publish "$GIT_PUBLISH_SSH"
+          git push publish main
