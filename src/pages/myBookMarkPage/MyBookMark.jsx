@@ -80,7 +80,10 @@ const MyBookMark = () => {
                                 </button>
                             </div>
                             <div className="bookmark-icon">
-                                <Bookmark wordId={content.id} />
+                                <Bookmark
+                                    wordId={content.id}
+                                    isBookmarked={true}
+                                />
                             </div>
                         </div>
                         {isVisible(content.id) && (
