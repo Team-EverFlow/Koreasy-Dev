@@ -6,6 +6,7 @@ div.my-badge-button-group {
     display: flex;
     gap: 8px;
     padding: 32px 20px 0 20px;
+    margin-bottom: 40px;
     width: 100%;
 
     .my-badge-button {
@@ -25,5 +26,23 @@ div.my-badge-button-group {
             background: $koreasy-color-gray-06;
             color: $koreasy-color-primary;
         }
+    }
+}
+
+div.my-badge-count-group {
+    display: flex;
+    padding: 0 20px;
+    margin: 12px 0 20px 0;
+    justify-content: space-between;
+    align-items: center;
+
+    span.my-badge-count-description {
+        @include body02-medium;
+        color: $koreasy-color-gray-01;
+    }
+
+    span.my-badge-count {
+        @include body02-bold;
+        color: $koreasy-color-gray-00;
     }
 }

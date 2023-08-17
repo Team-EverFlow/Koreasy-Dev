@@ -5,6 +5,8 @@ import {
     doc,
     getDoc,
     getDocs,
+    orderBy,
+    query,
     updateDoc,
 } from 'firebase/firestore';
 import { db } from '../root';
@@ -17,6 +19,7 @@ import {
 import '../type/typedef';
 import { GetDocFromCollection } from '../functions/util';
 import { GetCurrentUserFromFirebase } from './userAPI';
+import { TestResultEvent } from '../functions/Events';
 
 /**
  * WordTest의 값을 List로 반환합니다.
@@ -25,7 +28,8 @@ import { GetCurrentUserFromFirebase } from './userAPI';
 export async function GetWordTestList() {
     try {
         const wordTestRef = collection(db, WORDTESTVIEW_COLLECTION_ID);
-        const docs = await getDocs(wordTestRef);
+        const wordTestQry = query(wordTestRef, orderBy('date'));
+        const docs = await getDocs(wordTestQry);
         const result = [];
         for (let index = 0; index < docs.size; index++)
             result.push(docs.docs[index].data());
@@ -81,6 +85,7 @@ export async function SetTestScore(testDataId, solve, question) {
             question,
         };
         await updateDoc(userInfoRef, { testScore: arrayUnion(pushData) });
+        window.dispatchEvent(TestResultEvent(solve));
         return { success: true };
     } catch (e) {
         return { success: false, error: e };

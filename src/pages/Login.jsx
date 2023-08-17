@@ -40,7 +40,6 @@ function LoginPage() {
 
     const onLoginButtonClick = () => {
         onSignEvent().then(result => {
-            console.log(result);
             if (result) {
                 navigate('/');
             }

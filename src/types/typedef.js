@@ -1,11 +1,16 @@
 /**
  * @typedef {Object} BadgeObject
- * @property {number} id
+ * @property {string | undefined} id
  * @property {string} title
- * @property {string} imageUrl
+ * @property {("special" | "attend" | "comment" | "test")} type
+ * @property {number} level
  * @property {boolean} active
- * @property {boolean} [check=false] check
- * @property {Date} date
+ * @property {string | undefined} [imageId=undefined] imageId
+ * @property {number | undefined} [achievement=undefined] achievement
+ * @property {number | undefined} [currentAchievement=undefined] currentAchievement
+ * @property {string | undefined} [achievementCommentSuffix=undefined] achievementCommentSuffix
+ * @property {description | undefined} [description=''] description
+ * @property {Date | undefined} [date=undefined] date
  *
  */
 

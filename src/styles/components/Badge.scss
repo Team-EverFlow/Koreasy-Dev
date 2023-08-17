@@ -23,10 +23,10 @@ div.badge {
 
     &.check {
         div.badge-image {
-            border: $koreasy-color-primary solid 1px;
-
             img.badge-check {
+                border: #44da92 solid 2px;
                 display: block;
+                background: rgba(255, 255, 255, 0.8);
             }
         }
     }
@@ -40,16 +40,17 @@ div.badge {
         height: 100px;
 
         img {
-            padding: 10px;
             width: 100px;
             height: 100px;
         }
 
         img.badge-check {
+            border-radius: 50px;
             position: absolute;
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: 1;
         }
     }
 
@@ -60,9 +61,12 @@ div.badge {
         margin: 0 0 4px 0;
     }
 
-    span.badge-date {
+    span.badge-detail {
         @include subtext-regular;
+
+        display: block;
         color: black;
+        min-height: 18px;
         text-align: center;
     }
 }

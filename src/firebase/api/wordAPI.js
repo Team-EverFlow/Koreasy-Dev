@@ -22,6 +22,7 @@ import {
 import { db } from '../root';
 import '../type/typedef';
 import { GetCurrentUserFromFirebase } from './userAPI';
+import { CreateCommentEvent, DeleteCommentEvent } from '../functions/Events';
 
 /**
  * word의 id를 이용하여 해당 Word doc을 불러옴
@@ -126,6 +127,7 @@ export async function AddBookmark(id) {
         return { success: false, error: e };
     }
 }
+
 /**
  * 해당 단어를 현재 유저의 프로필의 북마크 목록에서 제거합니다.
  * @param {string} id
@@ -167,10 +169,12 @@ export async function CreateComment(wordId, comment) {
         );
         await addDoc(commentRef, {
             username: user.displayName,
+            userId: user.uid,
             date: Timestamp.fromDate(new Date()),
             comment,
-            hearCount: 0,
+            reactUsers: [],
         });
+        window.dispatchEvent(CreateCommentEvent());
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
@@ -179,14 +183,34 @@ export async function CreateComment(wordId, comment) {
 
 /**
  * 단어의 특정 댓글을 삭제합니다
+ * (현재 유저와 댓글을 작성한 유저가 같을 경우에만 삭제합니다.)
  * @param {string} wordId
  * @param {string} commentId
- * @returns {Promise<void>}
+ * @returns {Promise<{success: boolean, error: any | undefined}>}
  */
 export async function DeleteComment(wordId, commentId) {
-    return deleteDoc(
-        doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID, commentId),
-    );
+    try {
+        const commentDoc = await getDoc(
+            doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID),
+        );
+        if (!commentDoc.exists())
+            return { success: false, error: DOES_NOT_EXIST_DOC };
+        if (commentDoc.data().userId !== GetCurrentUserFromFirebase().uid)
+            return { success: false, error: 'Permission denied' };
+        await deleteDoc(
+            doc(
+                db,
+                WORD_COLLECTION_ID,
+                wordId,
+                COMMENT_COLLECTION_ID,
+                commentId,
+            ),
+        );
+        window.dispatchEvent(DeleteCommentEvent());
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
 }
 
 /**
@@ -233,6 +257,75 @@ export async function GetWordListSpan(startDate, endDate) {
     }
 }
 
+/**
+ * wordId로부터 Comment 목록을 반환합니다.
+ * @param {string} wordId
+ * @returns {Promise<{success: boolean, error: any | undefined, data: Comment | undefined}>}
+ */
+export async function GetCommentsFromWord(wordId) {
+    try {
+        const commentDocs = await getDocs(
+            collection(db, WORD_COLLECTION_ID, wordId),
+        );
+        const comments = [];
+        for (const comment of commentDocs.docs)
+            comments.push({
+                id: comment.id,
+                ...comment.data(),
+            });
+        return { success: true, data: comments };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 댓글에 반응을 추가합니다.
+ * @param {string} wordId
+ * @param {string} commentId
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function AddReactComment(wordId, commentId) {
+    try {
+        const commentRef = doc(
+            db,
+            WORD_COLLECTION_ID,
+            wordId,
+            COMMENT_COLLECTION_ID,
+            commentId,
+        );
+        await updateDoc(commentRef, {
+            reactUsers: arrayUnion(GetCurrentUserFromFirebase().uid),
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
+
+/**
+ * 댓글에 반응을 삭제 합니다.
+ * @param {string} wordId
+ * @param {string} commentId
+ * @returns {Promise<{ success: boolean, error: any | undefined }}
+ */
+export async function DeleteReactComment(wordId, commentId) {
+    try {
+        const commentRef = doc(
+            db,
+            WORD_COLLECTION_ID,
+            wordId,
+            COMMENT_COLLECTION_ID,
+            commentId,
+        );
+        await updateDoc(commentRef, {
+            reactUsers: arrayRemove(GetCurrentUserFromFirebase().uid),
+        });
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: e };
+    }
+}
 /**
  * 오늘의 단어에 해당되는 단어를 불러옵니다.
  * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}
