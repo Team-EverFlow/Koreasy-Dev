@@ -62,6 +62,7 @@
  * @property {string} description
  * @property {number} goalValue
  * @property {string[]} eventName
+ * @property {string} successEventName
  */
 
 /**

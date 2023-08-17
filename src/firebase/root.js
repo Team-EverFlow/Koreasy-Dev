@@ -21,6 +21,8 @@ import {
     USER_COLLECTION_ID,
 } from './type/const';
 import { GetDocFromCollection } from './functions/util';
+import { SuccessBadgeEvent } from './functions/Events';
+
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
@@ -34,18 +36,19 @@ auth.onAuthStateChanged(async user => {
         const badgeDocs = await getDocs(badgeRef);
         const badges = [];
         badgeDocs.forEach(v => badges.push(v.id));
-        badges.forEach(async badgeId => {
+        for (const badgeId of badges) {
             const badge = await GetBadgeData(badgeId);
-            if (!badge.success) return console.error(badge.error);
+            if (!badge.success) console.error(badge.error);
             const mybadgeDoc = await GetDocFromCollection(
                 USER_COLLECTION_ID,
                 user.uid,
                 MYBADGE_COLLECTION_ID,
                 badge.data.id,
             );
-            if (mybadgeDoc.exists() && mybadgeDoc.data().addedTime) return;
-            badge.data.eventName.forEach(async eventName => {
+            if (mybadgeDoc.exists() && mybadgeDoc.data().addedTime) continue;
+            for (const eventName of badge.data.eventName) {
                 window.addEventListener(eventName, async e => {
+                    console.log(e);
                     const { success, error } = await UpdateBadgeProgressValue(
                         user.uid,
                         badge.data.id,
@@ -64,10 +67,16 @@ auth.onAuthStateChanged(async user => {
                             user.uid,
                             badge.data.id,
                         );
+                        window.dispatchEvent(
+                            SuccessBadgeEvent(
+                                badge.data.successEventName,
+                                badge.data.id,
+                            ),
+                        );
                         if (!status.success) return console.error(status.error);
                     }
                 });
-            });
-        });
+            }
+        }
     }
 });

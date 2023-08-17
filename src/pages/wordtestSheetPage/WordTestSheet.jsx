@@ -10,6 +10,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { GetTestDataList, SetTestScore } from '../../firebase/api/QuizApi';
 import { DOES_NOT_EXIST_DOC } from '../../firebase/type/const';
 import { ToastGenerator } from '../../components/ToastGenerator';
+import BadgeNotificationGenerator from '../../components/BadgeNotificationGenerator';
+import { TEST_RESULT_ACHIEVEMENT_EVENT_NAME } from '../../types/const';
 
 const WordtestSheetPage = () => {
     const [searchParameter, _] = useSearchParams();
@@ -40,6 +42,9 @@ const WordtestSheetPage = () => {
     const [NotFoundToast, showNotFoundToast] = ToastGenerator();
     const [ExceptionToast, showExceptionToast] = ToastGenerator();
     const [SavedExceptionToast, showSavedExceptionToast] = ToastGenerator();
+    const BadgeComponent = BadgeNotificationGenerator(
+        TEST_RESULT_ACHIEVEMENT_EVENT_NAME,
+    );
 
     useEffect(() => {
         GetTestDataList(quizId).then(result => {
@@ -199,6 +204,7 @@ const WordtestSheetPage = () => {
                 icon={true}
                 message="퀴즈 정보를 저장하는 과정에서 오류가 발생하였어요.\n잠시 후에 다시 시도해주세요."
             />
+            <BadgeComponent />
         </div>
     );
 };
