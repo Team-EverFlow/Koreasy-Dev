@@ -186,7 +186,10 @@ export async function DeleteComment(wordId, commentId) {
         if (!commentDoc.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
         if (commentDoc.data().userId !== GetCurrentUserFromFirebase().uid)
-            return { success: false, error: 'Permission denied' };
+            return {
+                success: false,
+                error: 'Permission denied',
+            };
         await deleteDoc(
             doc(
                 db,
@@ -216,7 +219,8 @@ export async function GetWordList() {
         );
         const wordDocs = await getDocs(wordQry);
         const result = [];
-        for (const doc of wordDocs.docs) result.push(doc.data());
+        for (const doc of wordDocs.docs)
+            result.push({ ...doc.data(), id: doc.id });
         return { success: true, data: result };
     } catch (e) {
         return { success: false, error: e };
@@ -239,7 +243,8 @@ export async function GetWordListSpan(startDate, endDate) {
         );
         const wordDocs = await getDocs(wordQry);
         const result = [];
-        for (const doc of wordDocs.docs) result.push(doc.data());
+        for (const doc of wordDocs.docs)
+            result.push({ ...doc.data(), id: doc.id });
         return { success: true, data: result };
     } catch (e) {
         return { success: false, error: e };
@@ -322,6 +327,7 @@ export async function DeleteReactComment(wordId, commentId) {
         return { success: false, error: e };
     }
 }
+
 /**
  * 오늘의 단어에 해당되는 단어를 불러옵니다.
  * @returns {Promise<{ success: boolean, error: any | undefined, data: Word[]}>}

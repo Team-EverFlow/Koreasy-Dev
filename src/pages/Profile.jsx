@@ -7,7 +7,7 @@ import ProfileButton from '../components/ProfileButton';
 import BadgeGroup from '../components/BadgeGroup';
 import Chevrion from '../components/Chevrion';
 import { GetCurrentUserInformation } from '../firebase/api/userAPI';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import unknownBadge from './mybadge/unknownBadge';
 import { ToastGenerator } from '../components/ToastGenerator';
 import badgeList from './mybadge/badgeList';
@@ -18,6 +18,7 @@ function ProfileView() {
         profileIcon: ProfileIconDump,
         badges: [],
     });
+    const navigate = useNavigate();
 
     let [MySentenceWIPToast, onMySentenceWIPToastCall] = ToastGenerator();
 
@@ -63,7 +64,9 @@ function ProfileView() {
                         <ProfileButton
                             icon="bookmarks_icon"
                             title="Bookmarks"
-                            onClick={undefined}
+                            onClick={() => {
+                                navigate('/myBookmark');
+                            }}
                         />
                         <ProfileButton
                             icon="activities_icon"
