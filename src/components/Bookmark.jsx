@@ -4,18 +4,22 @@ import { AddBookmark, RemoveBookmark } from '../firebase/api/wordAPI.js';
 
 import { GetCurrentUserInformation } from '../firebase/api/userAPI.js';
 
-const BookmarkIcon = ({ wordId }) => {
+const BookmarkIcon = ({ wordId, isBookmarked = undefined }) => {
     const [isClicked, setIsClicked] = useState(false);
     console.log(isClicked);
     useEffect(() => {
-        GetCurrentUserInformation().then(result => {
-            if (result) {
-                setIsClicked(true);
-            } else {
-                console.log(result.error);
-            }
-        });
-    }, [wordId]);
+        if (isBookmarked === undefined) {
+            GetCurrentUserInformation().then(result => {
+                if (result) {
+                    setIsClicked(true);
+                } else {
+                    console.log(result.error);
+                }
+            });
+        } else if (isBookmarked === true) {
+            setIsClicked(true);
+        }
+    }, [wordId, isBookmarked]);
 
     const handleClick = () => {
         if (isClicked) {
