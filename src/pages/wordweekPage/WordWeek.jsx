@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordweekStyles/WordWeek.scss';
-import WordData from '../../dummyData/WordData.js';
 import WordExampleSentence from './WordExampleSentence.jsx';
 import WordExampleToggle from './WordExampleToggle.jsx';
 import Divider from '../../components/Divider.jsx';
 import Bookmark from '../../components/Bookmark.jsx';
 import { useLocation } from 'react-router-dom';
+import { GetWordListSpan } from '../../firebase/api/wordAPI';
 
 const WordWeek = () => {
     const [visibleExamples, setVisibleExamples] = useState([]);
@@ -24,19 +24,27 @@ const WordWeek = () => {
     };
 
     const location = useLocation();
-    console.log(location.state);
-    const wordIdList = location.state?.wordIdList || [];
+    const firstDay = location.state?.firstDay || new Date();
+    const lastDay = location.state?.lastDay || new Date();
+
+    const [wordList, setWordList] = useState([]);
+
+    useEffect(() => {
+        GetWordListSpan(firstDay, lastDay).then(result => {
+            if (result.success) {
+                setWordList(result.data);
+            }
+        });
+    }, []);
 
     return (
         <div className="wordweek-container">
-            <Header isNavigationBar={true} viewName="ViewName" />
+            <Header isNavigationBar={true} viewName="WordBook Detail" />
             <div className="content">
-                {WordData.filter(content =>
-                    wordIdList.includes(content.wordId),
-                ).map((content, index) => (
-                    <React.Fragment key={content.wordId}>
+                {wordList.map((content, index) => (
+                    <React.Fragment key={content.id}>
                         <div
-                            key={content.wordId}
+                            key={content.id}
                             className="item"
                             style={{ top: `${index * 135}px` }}
                         >
@@ -58,22 +66,22 @@ const WordWeek = () => {
                                     <div
                                         className="item-example"
                                         onClick={() =>
-                                            handleExampleToggle(content.wordId)
+                                            handleExampleToggle(content.id)
                                         }
                                     >
-                                        {isVisible(content.wordId)
+                                        {isVisible(content.id)
                                             ? 'Hide'
                                             : 'About Word'}
                                     </div>
                                 </button>
                             </div>
                             <div className="bookmark-icon">
-                                <Bookmark wordId={content.wordId} />
+                                <Bookmark wordId={content.id} />
                             </div>
                         </div>
-                        {isVisible(content.wordId) && (
+                        {isVisible(content.id) && (
                             <WordExampleSentence
-                                wordId={content.wordId}
+                                wordId={content.id}
                                 exampleSentences={content.exampleSentence}
                             />
                         )}
