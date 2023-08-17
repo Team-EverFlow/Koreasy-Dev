@@ -1,6 +1,27 @@
 @import '../variables/colors';
 @import '../variables/textStyles';
 
+.badge-notification-overlay {
+    align-items: center;
+    background: rgba(28, 28, 30, .4);
+    display: flex;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    height: 100vh;
+    visibility: hidden;
+    width: 100vw;
+
+    &.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s,
+        fadeout 0.5s 2.5s;
+        animation: fadein 0.5s,
+        fadeout 0.5s 2.5s;
+    }
+}
+
 .badgenotification-container {
     display: flex;
     width: 270px;
@@ -10,14 +31,6 @@
     gap: 24px;
     border-radius: 32px;
     background: $koreasy-color-gray-06;
-
-    &.show {
-        visibility: visible;
-        -webkit-animation: fadein 0.5s,
-        fadeout 0.5s 2.5s;
-        animation: fadein 0.5s,
-        fadeout 0.5s 2.5s;
-    }
 
     .badgenotification-item {
         display: flex;
