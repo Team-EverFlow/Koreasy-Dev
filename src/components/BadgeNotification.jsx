@@ -5,23 +5,13 @@ import { badgeImage } from '../utils/badgeImage';
 
 /**
  * @param {String} badgeId
- * @param {boolean} show
- * @returns {Array<JSX.Element | function()>}
+ * @param reference
  * @constructor
  */
-const BadgeNotification = ({ badgeId }) => {
-    const badge = BadgeList.find(b => b.id === badgeId);
-    const reference = useRef(null);
-    const onBadgeNotification = () => {
-        if (reference === null) return;
-        reference.current.classList.add('show');
-        setTimeout(function () {
-            reference.current.classList.remove('show');
-        }, 3000);
-    };
-
+const BadgeNotification = ({ badgeId, reference }) => {
+    const badge = BadgeList.find(badge => badge.id === badgeId);
     if (!badge) {
-        return [<div />, onBadgeNotification];
+        return <div ref={reference} />;
     }
 
     const formatDate = date => {
@@ -32,7 +22,7 @@ const BadgeNotification = ({ badgeId }) => {
     };
     const BadgeImage = badgeImage(badge);
 
-    return [
+    return (
         <div className="badgenotification-container" ref={reference}>
             <div className="badgenotification-item">
                 <div className="badgenotification-picture">
@@ -42,7 +32,7 @@ const BadgeNotification = ({ badgeId }) => {
                 <div className="badgenotification-state">
                     <div className="badgenotification-title">{badge.title}</div>
                     <div className="badgenotification-date">
-                        {formatDate(badge.date)}
+                        {formatDate(badge.date ?? new Date())}
                     </div>
                 </div>
             </div>
@@ -52,9 +42,8 @@ const BadgeNotification = ({ badgeId }) => {
                 <div>{badge.title}</div>
                 <div>🎉🎉🎉</div>
             </div>
-        </div>,
-        onBadgeNotification,
-    ];
+        </div>
+    );
 };
 
 export default BadgeNotification;
