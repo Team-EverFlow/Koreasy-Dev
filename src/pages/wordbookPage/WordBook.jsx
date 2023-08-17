@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header.jsx';
 import '../../styles/wordbookStyles/WordBook.scss';
 import { Link } from 'react-router-dom';
-import DateData from '../../dummyData/DateData.js';
 import Divider from '../../components/Divider.jsx';
 import Chevrion from '../../components/Chevrion.jsx';
 import { GetWordList } from '../../firebase/api/wordAPI';
@@ -31,8 +30,8 @@ const WordBook = () => {
         GetWordList().then(result => {
             if (result.success) {
                 result.data
-                    .sort((a, b) => a.addedTime.toDate() - b.addedTime.toDate())
-                    .map(word => {
+                    .sort((a, b) => b.addedTime.toDate() - a.addedTime.toDate())
+                    .map((word, _) => {
                         const addedTime = word.addedTime.toDate();
                         setWordbook(prevState => {
                             const monthWeek = getMonthWeek(addedTime);
@@ -60,6 +59,7 @@ const WordBook = () => {
                                   ]
                                 : prevState;
                         });
+                        return word;
                     });
             }
         });
