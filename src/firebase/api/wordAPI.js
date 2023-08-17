@@ -34,23 +34,13 @@ export async function GetWordUsingId(id) {
         const word = await GetDocFromCollection(WORD_COLLECTION_ID, id);
         if (!word.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };
-        const commentSnap = await getDocs(
-            collection(db, WORD_COLLECTION_ID, id, COMMENT_COLLECTION_ID),
-        );
-        const comments = [];
-        commentSnap.forEach(v =>
-            comments.push({
-                id: v.id,
-                ...v.data(),
-            }),
-        );
-
+        const comments = await GetCommentsFromWord(word.id);
         return {
             success: true,
             data: {
                 ...word.data(),
                 id: word.id,
-                comments,
+                comments: comments.data || [],
             },
         };
     } catch (e) {
@@ -260,12 +250,19 @@ export async function GetWordListSpan(startDate, endDate) {
 /**
  * wordId로부터 Comment 목록을 반환합니다.
  * @param {string} wordId
- * @returns {Promise<{success: boolean, error: any | undefined, data: Comment | undefined}>}
+ * @returns {Promise<{success: boolean, error: any | undefined, data: Comment[] | undefined}>}
  */
 export async function GetCommentsFromWord(wordId) {
     try {
         const commentDocs = await getDocs(
-            collection(db, WORD_COLLECTION_ID, wordId),
+            query(
+                collection(
+                    db,
+                    WORD_COLLECTION_ID,
+                    wordId,
+                    COMMENT_COLLECTION_ID,
+                ),
+            ),
         );
         const comments = [];
         for (const comment of commentDocs.docs)
