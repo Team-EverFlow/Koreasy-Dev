@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import '../styles/components/BadgeNotification.scss';
 import BadgeList from '../pages/mybadge/badgeList';
 import { badgeImage } from '../utils/badgeImage';
