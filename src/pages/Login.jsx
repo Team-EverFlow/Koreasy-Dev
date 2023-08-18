@@ -64,9 +64,6 @@ function LoginPage() {
                         Sign in with Google
                     </span>
                 </Button>
-                <span className="login-button-description">
-                    Sign up with Google
-                </span>
             </div>
             <RegisterFailedToast
                 message="회원가입에 실패하였어요.\n잠시 후에 다시 시도해주세요."
