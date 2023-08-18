@@ -85,7 +85,7 @@ export async function SetTestScore(testDataId, solve, question) {
             question,
         };
         await updateDoc(userInfoRef, { testScore: arrayUnion(pushData) });
-        window.dispatchEvent(TestResultEvent(solve));
+        if (solve >= 5) window.dispatchEvent(TestResultEvent(1));
         return { success: true };
     } catch (e) {
         return { success: false, error: e };
