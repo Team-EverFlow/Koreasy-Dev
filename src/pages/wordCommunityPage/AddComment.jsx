@@ -7,10 +7,10 @@ function AddComment({ uploadButton }) {
 
     const checkText = event => {
         setText(event.target.value);
-        // console.log(event.target.value);
     };
 
     function uploadText() {
+        console.log('textValue : ', textValue);
         uploadButton(textValue, setText);
     }
 

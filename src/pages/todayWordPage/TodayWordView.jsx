@@ -8,6 +8,8 @@ import backCardImg from '../../assets/images/Thumbnail1.png';
 
 import WordData from '../../dummyData/todayWordDump.js';
 import { GetTodayWordList } from '../../firebase/api/wordAPI.js';
+import BadgeNotificationGenerator from '../../components/BadgeNotificationGenerator.jsx';
+import { ATTENDANCE_ACHIEVEMENT_EVENT_NAME } from '../../types/const.js';
 
 import '../../styles/todayWordPage/TodayWordView.scss';
 
@@ -21,6 +23,9 @@ function TodayWordView() {
     });
     const [wordCardData, setWordCardData] = useState([...WordData]);
     let wordCard = useRef(null);
+    const BadgeComponent = BadgeNotificationGenerator(
+        ATTENDANCE_ACHIEVEMENT_EVENT_NAME,
+    );
 
     useEffect(() => {
         GetTodayWordList().then(result => {
@@ -78,6 +83,7 @@ function TodayWordView() {
             <div className="today-check-frame">
                 <TodayCheckComponent checkText={isCheckText} />
             </div>
+            <BadgeComponent />
         </div>
     );
 }

@@ -181,7 +181,13 @@ export async function CreateComment(wordId, comment) {
 export async function DeleteComment(wordId, commentId) {
     try {
         const commentDoc = await getDoc(
-            doc(db, WORD_COLLECTION_ID, wordId, COMMENT_COLLECTION_ID),
+            doc(
+                db,
+                WORD_COLLECTION_ID,
+                wordId,
+                COMMENT_COLLECTION_ID,
+                commentId,
+            ),
         );
         if (!commentDoc.exists())
             return { success: false, error: DOES_NOT_EXIST_DOC };

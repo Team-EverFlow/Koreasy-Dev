@@ -28,7 +28,7 @@ function Comment({ id, wordComment, user }) {
     let [isHeartClick, setIsHeartClick] = useState(false); // 서버에서 값 받아와 확인
     useEffect(() => {
         setIsHeartClick(user && comment.reactUsers.includes(user.id));
-    }, [user]);
+    }, [user, comment, wordComment]);
 
     const clickHeart = item => {
         if (!isHeartClick) {
@@ -46,20 +46,29 @@ function Comment({ id, wordComment, user }) {
                 ),
             }));
             setIsHeartClick(false);
-            DeleteReactComment(id, comment.commentId);
+            DeleteReactComment(id, comment.commentId).then(result => {
+                setComment();
+            });
         }
     };
 
     const deleteComment = () => {
-        if (comment.userId !== id) return;
-        DeleteComment(id, comment.commentId);
+        console.log('test1');
+        if (comment.userId !== user.id) return;
+        console.log('test2');
+        DeleteComment(id, comment.commentId).then(result => {
+            if (result.success) {
+                console.log('comment delete!');
+            } else {
+                console.log(result.error);
+            }
+        });
     };
-
     return (
         <div className="comment-background">
             <div className="name-frame">
                 <button className="user-name">{comment.username}</button>
-                <div className="comment-date">{Date(comment.date.seconds)}</div>
+                <div className="comment-date">{comment.date.seconds}</div>
             </div>
             <div className="comment-comment">{comment.comment}</div>
             <div className="comment-util">
@@ -72,7 +81,7 @@ function Comment({ id, wordComment, user }) {
                     </button>
                     {comment.reactUsers.length}
                 </div>
-                {user === comment.userId && (
+                {user && user.id === comment.userId && (
                     <button className="comment-delete" onClick={deleteComment}>
                         Delete
                     </button>
