@@ -31,7 +31,7 @@ const Header = ({
             userInfo = userInfo.uid;
         } else {
             console.log('go to login page');
-            navigate(process.env.PUBLIC_URL + '/login');
+            navigate('/login');
         }
         GetUserInformation(userInfo).then(result => {
             if (result.success) {

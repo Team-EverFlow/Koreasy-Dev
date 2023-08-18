@@ -15,9 +15,11 @@ const BadgeNotificationGenerator = callbackEventName => {
         setBadgeId(e.detail.badgeId);
         // console.log(reference.current);
         setTimeout(() => {
+            if (!reference.current) return;
             reference.current.classList.add('show');
         }, 1000);
         setTimeout(function () {
+            if (!reference.current) return;
             reference.current.classList.remove('show');
         }, 3000);
     });

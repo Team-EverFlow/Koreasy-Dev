@@ -10,6 +10,7 @@ export function ToastGenerator() {
     const onToastCallEvent = () => {
         reference.current.classList.add('show');
         setTimeout(function () {
+            if (!reference.current) return;
             reference.current.classList.remove('show');
         }, 3000);
     };

@@ -12,7 +12,7 @@ const BadgeNotification = ({ badgeId, reference }) => {
     let badge = BadgeList.map(badge => {
         return { ...badge, active: true };
     }).find(badge => badge.id === badgeId);
-    console.log(badge);
+
     if (!badge) {
         return <div ref={reference} />;
     }

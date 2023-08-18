@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import Comment from './Comment';
 import AddComment from './AddComment';
-import WordCardText from '../../components/WordCardText';
+import WordCardText from '../../components/commentWordCardText';
 import Header from '../../components/Header';
 
 // import wordCommentDump from '../../dummyData/wordCommentDump';

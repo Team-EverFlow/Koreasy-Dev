@@ -17,8 +17,11 @@ function AutoScrollWord() {
     useEffect(() => {
         GetTodayWordList().then(result => {
             setWordCardText(result.data);
+            // console.log(result.data);
         });
     }, []);
+
+    // console.log(wordCardText);
 
     return (
         <div className="auto-words">

@@ -22,7 +22,7 @@ function MainPage() {
                 </div>
                 <div className="recent-word">
                     <div className="title">
-                        <div className="title-header">Recent Korean Words</div>
+                        <div className="title-header">Today Korean Words</div>
                         <Link
                             to="./wordbook"
                             className="title-more link-offset-2 link-underline link-underline-opacity-0"
