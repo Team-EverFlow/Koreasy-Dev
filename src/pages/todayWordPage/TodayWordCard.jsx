@@ -89,14 +89,14 @@ function TodayWordCard({ wordData, index, onClick }) {
                         Reply
                     </Link>
                     <Link
-                        to="."
+                        to="../wordbook"
                         className="option-buttion link-offset-2 link-underline link-underline-opacity-0"
                         onClick={onMySenteceClick}
                     >
                         <div className="icon-box">
                             <img src={MySentences} alt="My Sentences" />
                         </div>
-                        My Sentences
+                        WordBook
                     </Link>
                 </div>
             )}
