@@ -96,6 +96,7 @@ export async function GetUserInformation(UID) {
             success: true,
             user: {
                 ...userSnapRef.data(),
+                id: userSnapRef.id,
                 myBadges,
             },
         };
