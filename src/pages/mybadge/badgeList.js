@@ -135,7 +135,7 @@ const badgeList = [
         type: 'test',
         level: 5, // date: new Date(),
         active: false,
-        achievement: 100,
+        achievement: 10,
         achievementCommentSuffix: 'tests',
     },
 ];

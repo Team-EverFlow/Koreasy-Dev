@@ -38,7 +38,10 @@ auth.onAuthStateChanged(async user => {
         badgeDocs.forEach(v => badges.push(v.id));
         for (const badgeId of badges) {
             const badge = await GetBadgeData(badgeId);
-            if (!badge.success) console.error(badge.error);
+            if (!badge.success) {
+                console.error(badge.error);
+                continue;
+            }
             const mybadgeDoc = await GetDocFromCollection(
                 USER_COLLECTION_ID,
                 user.uid,
@@ -46,6 +49,7 @@ auth.onAuthStateChanged(async user => {
                 badge.data.id,
             );
             if (mybadgeDoc.exists() && mybadgeDoc.data().addedTime) continue;
+            console.log(badge.data.eventName);
             for (const eventName of badge.data.eventName) {
                 if (!window.everflowEvents) window.everflowEvents = [eventName];
                 else window.everflowEvents.push(eventName);
@@ -63,7 +67,8 @@ auth.onAuthStateChanged(async user => {
                         MYBADGE_COLLECTION_ID,
                         badge.data.id,
                     );
-                    if (!badgeDoc.exists()) console.error(DOES_NOT_EXIST_DOC);
+                    if (!badgeDoc.exists())
+                        return console.error(DOES_NOT_EXIST_DOC);
                     if (badgeDoc.data().progressValue >= badge.data.goalValue) {
                         const status = await AddBadgeAddedTime(
                             user.uid,
