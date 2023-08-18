@@ -10,6 +10,7 @@ import {
     DeleteComment,
 } from '../../firebase/api/wordAPI';
 import '../../styles/wordCommunityPage/Comment.scss';
+import { GetCurrentUserFromFirebase } from '../../firebase/api/userAPI';
 
 function Comment({ id, wordComment, user }) {
     let [comment, setComment] = useState(
@@ -27,31 +28,34 @@ function Comment({ id, wordComment, user }) {
               },
     );
 
-    let [isHeartClick, setIsHeartClick] = useState(false); // 서버에서 값 받아와 확인
+    let [isHeartClick, setIsHeartClick] = useState(false);
     useEffect(() => {
-        setIsHeartClick(user && comment.reactUsers.includes(user.id));
-    }, [user, comment, wordComment]);
+        setIsHeartClick(
+            comment.reactUsers.includes(GetCurrentUserFromFirebase().uid),
+        );
+    }, []);
 
-    const clickHeart = item => {
+    const clickHeart = () => {
+        console.log(isHeartClick);
         if (!isHeartClick) {
-            setComment(comment => ({
-                ...comment,
-                reactUsers: comment.reactUsers.concat(comment.userId),
-            }));
-            setIsHeartClick(true);
             AddReactComment(id, comment.commentId);
-        } else {
             setComment(comment => ({
                 ...comment,
-                reactUsers: comment.reactUsers.filter(
-                    user => user !== comment.userId,
+                reactUsers: comment.reactUsers.concat(
+                    GetCurrentUserFromFirebase().uid,
                 ),
             }));
-            setIsHeartClick(false);
+        } else {
             DeleteReactComment(id, comment.commentId).then(result => {
-                setComment();
+                setComment(comment => ({
+                    ...comment,
+                    reactUsers: comment.reactUsers.filter(
+                        user => user !== GetCurrentUserFromFirebase().uid,
+                    ),
+                }));
             });
         }
+        setIsHeartClick(v => !v);
     };
 
     const deleteComment = () => {
@@ -80,10 +84,7 @@ function Comment({ id, wordComment, user }) {
             <div className="comment-comment">{comment.comment}</div>
             <div className="comment-util">
                 <div className="heart-frame">
-                    <button
-                        className="heart"
-                        onClick={() => clickHeart('hearCount')}
-                    >
+                    <button className="heart" onClick={clickHeart}>
                         <Heart isClicked={isHeartClick} />
                     </button>
                     {comment.reactUsers.length}
