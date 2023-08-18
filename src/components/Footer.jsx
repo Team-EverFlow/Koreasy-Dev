@@ -1,19 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { SignOutFromFirebase, DeleteUser } from '../firebase/api/userAPI';
 
 import '../styles/components/Footer.scss';
 
 const Footer = () => {
+    let navigate = useNavigate();
     function signOut() {
         SignOutFromFirebase();
-        window.location.replace(process.env.PUBLIC_URL + '/login');
+        navigate('/login');
     }
 
     function withdrawal() {
         DeleteUser();
-        window.location.replace(process.env.PUBLIC_URL + '/login');
+        navigate('/login');
     }
 
     return (
