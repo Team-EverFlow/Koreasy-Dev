@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/components/WordCardText.scss';
+import '../styles/components/mainWordCardText.scss';
 
 /**
  *
@@ -16,7 +16,10 @@ function WordCardText({ word, index }) {
     return (
         <div className="card-background">
             <div className="kr-word">
-                <div className="kr-text">{wordCard && wordCard.wordKr}</div>
+                <div className="kr-text">
+                    {console.log('?', wordCard && wordCard.wordKr)}
+                    {wordCard && wordCard.wordKr}
+                </div>
                 <div className="pronunciation">
                     {wordCard && wordCard.pronunciation}
                 </div>

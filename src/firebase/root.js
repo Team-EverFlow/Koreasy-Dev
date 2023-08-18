@@ -67,6 +67,7 @@ auth.onAuthStateChanged(async user => {
                             user.uid,
                             badge.data.id,
                         );
+                        console.log('root: ', badge.data.successEventName);
                         window.dispatchEvent(
                             SuccessBadgeEvent(
                                 badge.data.successEventName,

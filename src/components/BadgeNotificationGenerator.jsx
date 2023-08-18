@@ -9,11 +9,17 @@ import BadgeNotification from './BadgeNotification';
 const BadgeNotificationGenerator = callbackEventName => {
     const reference = useRef(null);
     const [badgeId, setBadgeId] = useState('');
-    window.addEventListener(callbackEventName, async e => {
+    window.addEventListener(callbackEventName, e => {
+        console.log('listner callback:', callbackEventName);
         if (reference === null) return;
         setBadgeId(e.detail.badgeId);
-        reference.current.classList.add('show');
+        // console.log(reference.current);
+        setTimeout(() => {
+            if (!reference.current) return;
+            reference.current.classList.add('show');
+        }, 1000);
         setTimeout(function () {
+            if (!reference.current) return;
             reference.current.classList.remove('show');
         }, 3000);
     });

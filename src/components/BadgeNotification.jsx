@@ -9,7 +9,10 @@ import { badgeImage } from '../utils/badgeImage';
  * @constructor
  */
 const BadgeNotification = ({ badgeId, reference }) => {
-    const badge = BadgeList.find(badge => badge.id === badgeId);
+    let badge = BadgeList.map(badge => {
+        return { ...badge, active: true };
+    }).find(badge => badge.id === badgeId);
+
     if (!badge) {
         return <div ref={reference} />;
     }

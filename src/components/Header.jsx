@@ -30,7 +30,8 @@ const Header = ({
         if (userInfo !== null) {
             userInfo = userInfo.uid;
         } else {
-            navigate('../login');
+            console.log('go to login page');
+            navigate('/login');
         }
         GetUserInformation(userInfo).then(result => {
             if (result.success) {
@@ -40,7 +41,7 @@ const Header = ({
     });
 
     return (
-        <div>
+        <div className="header-cover">
             <div className="header">
                 <div className="service-name">
                     <Link

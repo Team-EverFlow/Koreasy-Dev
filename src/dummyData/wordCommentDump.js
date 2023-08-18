@@ -1,6 +1,6 @@
 const wordCommunity = {
-    wordId: 'adf',
-    wordCommentList: [
+    id: 'adf',
+    comments: [
         {
             userName: 'testUserName',
             date: '2023.08.14',

@@ -1,42 +1,55 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { SignOutFromFirebase, DeleteUser } from '../firebase/api/userAPI';
 
 import '../styles/components/Footer.scss';
 
 const Footer = () => {
+    function signOut() {
+        SignOutFromFirebase();
+        window.location.replace(process.env.PUBLIC_URL + '/login');
+    }
+
+    function withdrawal() {
+        DeleteUser();
+        window.location.replace(process.env.PUBLIC_URL + '/login');
+    }
+
     return (
         <div className="background">
             <div className="text">
                 <p>
-                    <a
+                    <Link
                         className="text link-offset-2 link-underline link-underline-opacity-0"
-                        href="https://halogen.notion.site/Koreasy-8019c878f7b745758e5a20c643525722?pvs=4"
+                        to="https://halogen.notion.site/Koreasy-8019c878f7b745758e5a20c643525722?pvs=4"
                     >
                         Privacy Policy
-                    </a>
+                    </Link>
                 </p>
                 <p>
-                    <a
+                    <Link
                         className="text link-offset-2 link-underline link-underline-opacity-0"
-                        href="."
+                        onClick={signOut}
                     >
                         Sign out
-                    </a>
+                    </Link>
                 </p>
                 <p>
-                    <a
+                    <Link
                         className="text link-offset-2 link-underline link-underline-opacity-0"
-                        href="."
+                        onClick={withdrawal}
                     >
                         Withdrawal
-                    </a>
+                    </Link>
                 </p>
                 <p>
-                    <a
+                    <Link
                         className="text link-offset-2 link-underline link-underline-opacity-0"
                         href="https://halogen.notion.site/Koreasy-8019c878f7b745758e5a20c643525722?pvs=4"
                     >
                         About team
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

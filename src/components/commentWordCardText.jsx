@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/components/WordCardText.scss';
+import '../styles/components/commentWordCardText.scss';
 
 /**
  *
@@ -7,10 +7,10 @@ import '../styles/components/WordCardText.scss';
  * @returns
  */
 function WordCardText({ word, index }) {
-    const [wordCard, setWordCard] = useState(word && word[index]);
+    const [wordCard, setWordCard] = useState(word && word);
     // console.log('console lpg : ', wordCard);
     useEffect(() => {
-        setWordCard({ ...word[index] });
+        setWordCard({ ...word });
     }, [word, index]);
     // console.log(wordCard, word);
     return (
@@ -21,7 +21,9 @@ function WordCardText({ word, index }) {
                     {wordCard && wordCard.pronunciation}
                 </div>
             </div>
-            <div className="en-word">{wordCard && wordCard.meaning}</div>
+            <div className="comment-en-word">
+                {wordCard && wordCard.meaning}
+            </div>
         </div>
     );
 }
