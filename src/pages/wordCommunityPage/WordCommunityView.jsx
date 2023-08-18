@@ -14,12 +14,14 @@ import {
 } from '../../firebase/api/wordAPI';
 
 import '../../styles/wordCommunityPage/WordCommunityView.scss';
+import { GetCurrentUserInformation } from '../../firebase/api/userAPI';
 
 function WordCommunityView() {
     const [serchParams, setSearchParams] = useSearchParams();
     const id = serchParams.get('id');
-    const [wordCard, setWordCard] = useState(null);
-    const [wordComment, setWordComment] = useState(null);
+    const [wordCard, setWordCard] = useState([]);
+    const [wordComment, setWordComment] = useState([]);
+    const [user, setUser] = useState(undefined);
 
     function reload(textValue, setText) {
         //버튼 실행 조건(텍스트 카운트)
@@ -31,23 +33,37 @@ function WordCommunityView() {
             window.location.reload();
         }
     }
-
     useEffect(() => {
         GetWordUsingId(id).then(result => {
             if (result.success) {
-                setWordComment({ ...result.data });
+                setWordCard(result.data);
             } else {
                 console.log(result.error);
             }
         });
         GetCommentsFromWord(id).then(result => {
             if (result.success) {
-                setWordCard({ ...result.data });
+                setWordComment(result.data);
             } else {
                 console.log(result.error);
             }
         });
+        GetCurrentUserInformation().then(result => {
+            if (result.success) {
+                setUser(result.user);
+            }
+        });
     }, [id]);
+
+    let wordCommentLength = false;
+    if (wordComment && Object.keys(wordComment).length !== 0) {
+        console.log(wordComment, Object.keys(wordComment).length);
+        wordCommentLength = true;
+    } else {
+        wordCommentLength = false;
+    }
+    console.log(wordCommentLength);
+    console.log(wordComment);
 
     return (
         <>
@@ -57,15 +73,17 @@ function WordCommunityView() {
             />
             <div className="community-background">
                 <div className="community-word-info">
-                    <WordCardText />
+                    <WordCardText word={wordCard} />
                 </div>
-
                 <div className="community-comment">
-                    {wordComment &&
-                        Object.keys(wordComment.comments).map((_, index) => (
+                    {wordCommentLength &&
+                        wordComment !== undefined &&
+                        wordComment.map((comment, index) => (
                             <Comment
                                 key={index}
-                                wordComment={Array(wordComment.comments)[index]}
+                                id={id}
+                                user={user}
+                                wordComment={comment}
                             />
                         ))}
                 </div>
