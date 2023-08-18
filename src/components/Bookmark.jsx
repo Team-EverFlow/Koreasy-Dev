@@ -6,12 +6,15 @@ import { GetCurrentUserInformation } from '../firebase/api/userAPI.js';
 
 const BookmarkIcon = ({ wordId, isBookmarked = undefined }) => {
     const [isClicked, setIsClicked] = useState(false);
-    console.log(isClicked);
     useEffect(() => {
         if (isBookmarked === undefined) {
             GetCurrentUserInformation().then(result => {
-                if (result) {
-                    setIsClicked(true);
+                if (result.success) {
+                    const data = [...result.user.bookmark];
+
+                    setIsClicked(
+                        !!data.find(item => item.id === wordId) ? true : false,
+                    );
                 } else {
                     console.log(result.error);
                 }
@@ -19,7 +22,7 @@ const BookmarkIcon = ({ wordId, isBookmarked = undefined }) => {
         } else if (isBookmarked === true) {
             setIsClicked(true);
         }
-    }, [wordId, isBookmarked]);
+    }, [wordId]);
 
     const handleClick = () => {
         if (isClicked) {
