@@ -31,13 +31,13 @@ function MainPage() {
                         </Link>
                     </div>
                     <AutoScrollWord />
-                    <Link
+                    {/* <Link
                         className="stats link-offset-2 link-underline link-underline-opacity-0"
                         to="./profile/badge"
                     >
                         <div className="stats-text">View my badges</div>
                         <Chevrion color="MainColor" />
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
             <Footer />
