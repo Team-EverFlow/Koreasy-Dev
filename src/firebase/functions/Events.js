@@ -31,3 +31,9 @@ export const AttendanceEvent = () =>
             op: +1,
         },
     });
+export const SuccessBadgeEvent = (eventId, badgeId) =>
+    new CustomEvent(eventId, {
+        detail: {
+            badgeId: badgeId,
+        },
+    });
