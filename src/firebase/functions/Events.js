@@ -21,7 +21,6 @@ export const DeleteCommentEvent = () =>
 export const TestResultEvent = score =>
     new CustomEvent(TEST_RESULT_EVENT_NAME, {
         detail: {
-            set: true,
             op: score,
         },
     });
