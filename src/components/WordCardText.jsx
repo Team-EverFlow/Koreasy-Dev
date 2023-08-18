@@ -7,39 +7,21 @@ import '../styles/components/WordCardText.scss';
  * @returns
  */
 function WordCardText({ word, index }) {
-    const [wordCard, setWordCard] = useState(
-        word === undefined
-            ? {
-                  wordId: 'word1',
-                  wordKr: '사과',
-                  wordEn: 'Apple',
-                  pronunciation: '[sagua]',
-                  meaning: 'noun-Apple',
-                  exampleSentence: [
-                      {
-                          sentenceKr: '나는 사과사의 아이폰을 사용한다.',
-                          sentenceEr: 'I am using iPhone by apple company',
-                      },
-                      {
-                          sentenceKr: '나는 사과사의 아이폰을 사용한다.',
-                          sentenceEr: 'I am using iPhone by apple company',
-                      },
-                  ],
-              }
-            : word[index],
-    );
+    const [wordCard, setWordCard] = useState(word && word[index]);
 
     useEffect(() => {
-        word && setWordCard({ ...word[index] });
+        setWordCard({ ...word });
     }, [word, index]);
-
+    // console.log(wordCard, word);
     return (
         <div className="card-background">
             <div className="kr-word">
-                <div className="kr-text">{wordCard.wordKr}</div>
-                <div className="pronunciation">{wordCard.pronunciation}</div>
+                <div className="kr-text">{wordCard && wordCard.wordKr}</div>
+                <div className="pronunciation">
+                    {wordCard && wordCard.pronunciation}
+                </div>
             </div>
-            <div className="en-word">{wordCard.meaning}</div>
+            <div className="en-word">{wordCard && wordCard.meaning}</div>
         </div>
     );
 }
