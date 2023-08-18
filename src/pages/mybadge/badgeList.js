@@ -13,7 +13,7 @@ const badgeList = [
         achievementCommentSuffix: 'days',
     },
     {
-        id: undefined,
+        id: 'imkey239hZ8PS6oCJ08Z',
         title: 'Reply',
         type: 'comment',
         level: 1, // date: new Date(),
@@ -22,7 +22,7 @@ const badgeList = [
         achievementCommentSuffix: 'replies',
     },
     {
-        id: undefined,
+        id: 'Rl0ZIIZTLmxtq0pSn6ra',
         title: 'Test',
         type: 'test',
         level: 1, // date: new Date(),
@@ -31,7 +31,7 @@ const badgeList = [
         achievementCommentSuffix: 'tests',
     },
     {
-        id: undefined,
+        id: 'GuMD9v2YJMY6WIBOWqd1',
         title: 'Attend',
         type: 'attend',
         level: 2, // date: new Date(),
@@ -40,7 +40,7 @@ const badgeList = [
         achievementCommentSuffix: 'days',
     },
     {
-        id: undefined,
+        id: 'ayvdW3j37hIZjBgJPeYu',
         title: 'Reply',
         type: 'comment',
         level: 2, // date: new Date(),
@@ -49,7 +49,7 @@ const badgeList = [
         achievementCommentSuffix: 'replies',
     },
     {
-        id: undefined,
+        id: 'ThCJ6S1PLNBPtw4Ipcrm',
         title: 'Test',
         type: 'test',
         level: 2, // date: new Date(),
@@ -58,7 +58,7 @@ const badgeList = [
         achievementCommentSuffix: 'tests',
     },
     {
-        id: undefined,
+        id: 'xGJGWnWA8rmSGV94QbTX ',
         title: 'Attend',
         type: 'attend',
         level: 3, // date: new Date(),
@@ -67,7 +67,7 @@ const badgeList = [
         achievementCommentSuffix: 'days',
     },
     {
-        id: undefined,
+        id: 'Yz5c6szjQS2v4IZbM6E1',
         title: 'Reply',
         type: 'comment',
         level: 3, // date: new Date(),
@@ -76,7 +76,7 @@ const badgeList = [
         achievementCommentSuffix: 'replies',
     },
     {
-        id: undefined,
+        id: 'cW4dbVmDWvUh42wSec2y',
         title: 'Test',
         type: 'test',
         level: 3, // date: new Date(),
@@ -85,7 +85,7 @@ const badgeList = [
         achievementCommentSuffix: 'tests',
     },
     {
-        id: undefined,
+        id: 'ANm31cZ8JyhboYh91jFe',
         title: 'Attend',
         type: 'attend',
         level: 4, // date: new Date(),
@@ -94,7 +94,7 @@ const badgeList = [
         achievementCommentSuffix: 'days',
     },
     {
-        id: undefined,
+        id: 'TCqH6zsFYheTbhW7zy4b',
         title: 'Reply',
         type: 'comment',
         level: 4, // date: new Date(),
@@ -112,7 +112,7 @@ const badgeList = [
         achievementCommentSuffix: 'tests',
     },
     {
-        id: undefined,
+        id: 'CB0vQpfr7Ll5BVUSew3o',
         title: 'Attend',
         type: 'attend',
         level: 5, // date: new Date(),
@@ -126,11 +126,11 @@ const badgeList = [
         type: 'comment',
         level: 5, // date: new Date(),
         active: false,
-        achievement: 10,
+        achievement: 100,
         achievementCommentSuffix: 'replies',
     },
     {
-        id: undefined,
+        id: '5iVbVJj7tSGCKxrAfQdy',
         title: 'Test',
         type: 'test',
         level: 5, // date: new Date(),
