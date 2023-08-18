@@ -4,7 +4,7 @@ import '../../styles/wordtestListStyles/LearnWords.scss';
 
 const LearnWords = () => (
     <div className="learn-words">
-        <Link to="/">
+        <Link to="../wordbook">
             <button className="learn-words-button">Learn Words</button>
         </Link>
     </div>

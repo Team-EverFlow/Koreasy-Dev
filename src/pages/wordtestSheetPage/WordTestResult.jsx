@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import '../../styles/wordtestSheetPage/WordTestResult.scss';
 
 const WordTestResult = () => {
     return (
         <div className="wordtestresult-container">
             <div className="wordtestresult-learn">
-                <div className="wordtestresult-learn-text">
+                <Link
+                    className="wordtestresult-learn-text link-offset-2 link-underline link-underline-opacity-0"
+                    to="../wordbook"
+                >
                     Learn more words
-                </div>
+                </Link>
             </div>
         </div>
     );
