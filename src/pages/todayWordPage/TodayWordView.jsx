@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 
 import TodayWordCard from './TodayWordCard.jsx';
 import Header from '../../components/Header.jsx';
 import TodayCheckComponent from './TodayCheckComponent.jsx';
-import backCardImg from '../../assets/images/Thumbnail1.png';
 
 import WordData from '../../dummyData/todayWordDump.js';
 import { GetTodayWordList } from '../../firebase/api/wordAPI.js';
@@ -12,6 +11,7 @@ import BadgeNotificationGenerator from '../../components/BadgeNotificationGenera
 import { ATTENDANCE_ACHIEVEMENT_EVENT_NAME } from '../../types/const.js';
 
 import '../../styles/todayWordPage/TodayWordView.scss';
+import { AddAttendance } from '../../firebase/api/userAPI';
 
 function TodayWordView() {
     const [wordCardHeight, setWordCardHeight] = useState(200);
@@ -41,6 +41,15 @@ function TodayWordView() {
             setWordCardHeight(wordCardHeight);
         }
     }, []);
+    useEffect(() => {
+        if (
+            ((isCheckText.first === isCheckText.second) ===
+                isCheckText.third) ===
+            isCheckText.fourth
+        ) {
+            AddAttendance(new Date()).then(_ => {});
+        }
+    }, [isCheckText]);
 
     const handleClick = cnt => {
         setIsCheckText(isCheckText => ({
