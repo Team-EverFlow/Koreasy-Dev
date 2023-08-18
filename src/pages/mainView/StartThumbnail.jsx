@@ -24,6 +24,17 @@ const StartThumbnail = ({ startText }) => {
         text.link = './wordbook';
         Thumbnail = Thumbnail1;
     }
+    function shareClick() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'koreasy',
+                text: 'esay way to run korean',
+                url: 'https://team-everflow.github.io/koreasy',
+            });
+        } else {
+            alert('공유하기가 지원되지 않는 환경 입니다.');
+        }
+    }
 
     return (
         <div className="thumbnail-background">
@@ -47,6 +58,7 @@ const StartThumbnail = ({ startText }) => {
                 </Link>
                 <div className="share-button text-lite">
                     <Link
+                        onClick={shareClick}
                         to="./"
                         className="text-lite link-offset-2 link-underline link-underline-opacity-0"
                     >
