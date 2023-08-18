@@ -47,6 +47,8 @@ auth.onAuthStateChanged(async user => {
             );
             if (mybadgeDoc.exists() && mybadgeDoc.data().addedTime) continue;
             for (const eventName of badge.data.eventName) {
+                if (!window.everflowEvents) window.everflowEvents = [eventName];
+                else window.everflowEvents.push(eventName);
                 window.addEventListener(eventName, async e => {
                     console.log(e);
                     const { success, error } = await UpdateBadgeProgressValue(
@@ -78,6 +80,11 @@ auth.onAuthStateChanged(async user => {
                     }
                 });
             }
+        }
+    } else {
+        if (!window.everflowEvents) return;
+        for (const event of window.everflowEvents) {
+            window.removeEventListener(event, () => {});
         }
     }
 });
