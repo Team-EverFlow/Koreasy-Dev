@@ -43,9 +43,9 @@ function TodayWordView() {
     }, []);
     useEffect(() => {
         if (
-            ((isCheckText.first === isCheckText.second) ===
-                isCheckText.third) ===
-            isCheckText.fourth
+            Object.values(isCheckText)
+                .map(v => v === true)
+                .every(Boolean)
         ) {
             AddAttendance(new Date()).then(_ => {});
         }

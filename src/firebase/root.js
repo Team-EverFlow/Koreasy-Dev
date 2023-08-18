@@ -49,7 +49,6 @@ auth.onAuthStateChanged(async user => {
                 badge.data.id,
             );
             if (mybadgeDoc.exists() && mybadgeDoc.data().addedTime) continue;
-            console.log(badge.data.eventName);
             for (const eventName of badge.data.eventName) {
                 if (!window.everflowEvents) window.everflowEvents = [eventName];
                 else window.everflowEvents.push(eventName);
