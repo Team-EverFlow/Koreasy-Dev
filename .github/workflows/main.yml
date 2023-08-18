@@ -12,7 +12,7 @@ jobs:
       FB_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       SSH_DEPLOY: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
       GIT_PUBLISH_SSH: "git@github.com:Team-EverFlow/koreasy.git"
-      GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
+      GIT_PREVIOUS_COMMIT: ${{ github.sha }}
       
     steps:
       - name: Git checkout
