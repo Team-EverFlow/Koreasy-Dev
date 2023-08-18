@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+
 import Heart from '../../components/Heart';
 import Divider from '../../components/Divider';
 
@@ -64,11 +66,16 @@ function Comment({ id, wordComment, user }) {
             }
         });
     };
+
     return (
         <div className="comment-background">
             <div className="name-frame">
                 <button className="user-name">{comment.username}</button>
-                <div className="comment-date">{comment.date.seconds}</div>
+                <div className="comment-date">
+                    {moment(new Date(comment.date.seconds * 1000)).format(
+                        'YYYY.MM.DD HH:MM',
+                    )}
+                </div>
             </div>
             <div className="comment-comment">{comment.comment}</div>
             <div className="comment-util">

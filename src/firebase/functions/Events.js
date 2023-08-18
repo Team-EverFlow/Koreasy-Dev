@@ -30,9 +30,11 @@ export const AttendanceEvent = () =>
             op: +1,
         },
     });
-export const SuccessBadgeEvent = (eventId, badgeId) =>
-    new CustomEvent(eventId, {
+export const SuccessBadgeEvent = (eventId, badgeId) => {
+    console.log('successs:', eventId);
+    return new CustomEvent(eventId, {
         detail: {
             badgeId: badgeId,
         },
     });
+};

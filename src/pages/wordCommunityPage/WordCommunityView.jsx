@@ -30,11 +30,22 @@ function WordCommunityView() {
         REPLIES_ACHIEVEMENT_EVENT_NAME,
     );
 
-    function reload(textValue, setText) {
+    function uploadComment(textValue, setText) {
         //버튼 실행 조건(텍스트 카운트)
         if (textValue.length <= 250 || textValue.length > 0) {
             CreateComment(id, textValue).then(result => {
                 console.log('roload Value : ', result.success, textValue);
+                const user = GetCurrentUserFromFirebase();
+                setWordComment([
+                    ...wordComment,
+                    {
+                        username: user.displayName,
+                        userId: user.uid,
+                        date: Timestamp.fromDate(new Date()),
+                        comment: textValue,
+                        reactUsers: [],
+                    },
+                ]);
             });
             /* GetCommentsFromWord(id).then(result => {
                 if (result.success) {
@@ -43,17 +54,7 @@ function WordCommunityView() {
                     console.log(result.error);
                 }
             }); */
-            const user = GetCurrentUserFromFirebase();
-            setWordComment([
-                ...wordComment,
-                {
-                    username: user.displayName,
-                    userId: user.uid,
-                    date: Timestamp.fromDate(new Date()),
-                    textValue,
-                    reactUsers: [],
-                },
-            ]);
+
             setText('');
         }
     }
@@ -83,7 +84,6 @@ function WordCommunityView() {
 
     let wordCommentLength = false;
     if (wordComment && Object.keys(wordComment).length !== 0) {
-        console.log(wordComment, Object.keys(wordComment).length);
         wordCommentLength = true;
     } else {
         wordCommentLength = false;
@@ -112,7 +112,7 @@ function WordCommunityView() {
                         ))}
                 </div>
 
-                <AddComment uploadButton={reload} />
+                <AddComment uploadButton={uploadComment} />
             </div>
             <BadgeComponent />
         </>
