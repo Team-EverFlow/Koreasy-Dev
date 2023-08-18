@@ -41,7 +41,7 @@ const Header = ({
     });
 
     return (
-        <div>
+        <div className="header-cover">
             <div className="header">
                 <div className="service-name">
                     <Link
