@@ -65,7 +65,7 @@ function ProfileView() {
                             icon="bookmarks_icon"
                             title="Bookmarks"
                             onClick={() => {
-                                navigate('/myBookmark');
+                                navigate('./myBookmark');
                             }}
                         />
                         <ProfileButton
