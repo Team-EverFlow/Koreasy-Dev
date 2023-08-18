@@ -5,6 +5,7 @@ import Divider from '../../components/Divider';
 import {
     AddReactComment,
     DeleteReactComment,
+    DeleteComment,
 } from '../../firebase/api/wordAPI';
 import '../../styles/wordCommunityPage/Comment.scss';
 
@@ -48,10 +49,10 @@ function Comment({ id, wordComment, user }) {
             DeleteReactComment(id, comment.commentId);
         }
     };
-    console.log(comment);
 
     const deleteComment = () => {
-        // 서버로 코멘트 id값 전송
+        if (comment.userId !== id) return;
+        DeleteComment(id, comment.commentId);
     };
 
     return (
@@ -71,9 +72,11 @@ function Comment({ id, wordComment, user }) {
                     </button>
                     {comment.reactUsers.length}
                 </div>
-                <button className="comment-delete" onClick={deleteComment}>
-                    Delete
-                </button>
+                {user === comment.userId && (
+                    <button className="comment-delete" onClick={deleteComment}>
+                        Delete
+                    </button>
+                )}
             </div>
 
             <Divider />
