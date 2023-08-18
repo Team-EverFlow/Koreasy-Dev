@@ -82,7 +82,7 @@ const WordBook = () => {
                         };
                         return (
                             <Link
-                                to="/wordweek"
+                                to="/wordbook/wordweek"
                                 state={{
                                     firstDay: content.firstDay,
                                     lastDay: content.lastDay,

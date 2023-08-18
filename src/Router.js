@@ -27,8 +27,8 @@ const Router = () => {
                     element={<MyBadgesSetting />}
                 />
                 <Route path="/wordbook" element={<WordBook />} />
-                <Route path="/wordweek" element={<WordWeek />} />
-                <Route path="/mybookmark" element={<MyBookMark />} />
+                <Route path="/wordbook/wordweek" element={<WordWeek />} />
+                <Route path="/profile/mybookmark" element={<MyBookMark />} />
                 <Route path="/todayword" element={<TodayWord />} />
                 <Route path="/todayword/reply" element={<WordCommunity />} />
                 <Route path="/testList" element={<WordTestList />} />
