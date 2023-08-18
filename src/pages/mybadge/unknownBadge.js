@@ -1,6 +1,6 @@
 const unknownBadge = {
     imageId: 'unknown_badge',
-    title: 'Unknown Badge',
+    title: 'Unknown',
     type: 'special',
     active: true,
 };
